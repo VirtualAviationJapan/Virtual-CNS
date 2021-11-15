@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: da960c9306aa0cf4b9a099c1bfe6ffd4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - innerMarker: {fileID: 8300000, guid: d4dc514d14235814db6ef5d6974fb8fa, type: 3}
+  - middleMarker: {fileID: 8300000, guid: c21a1bec21ebeb24ba98c01e26bb73a6, type: 3}
+  - outerMarker: {fileID: 8300000, guid: c7b4cd98fa45123418453a1e8951bea3, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

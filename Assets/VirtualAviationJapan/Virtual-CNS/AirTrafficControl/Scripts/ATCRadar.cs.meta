@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 82e165f71a618f54c8c4982c8f402a40
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - seaLevel: {instanceID: 0}
+  - raderOrigin: {instanceID: 0}
+  - symbolTemplate: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

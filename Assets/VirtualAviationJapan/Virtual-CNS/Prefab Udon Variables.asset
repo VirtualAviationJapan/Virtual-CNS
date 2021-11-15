@@ -1,0 +1,439 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba914234891ddd458239d9a948eaa9a, type: 3}
+  m_Name: Prefab Udon Variables
+  m_EditorClassIdentifier: 
+  udonVariables:
+  - prefabInstance: {fileID: 569492682127777669, guid: 237c12deddddb1e45b3a58948dd433a3,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/AirTrafficControl/ATCRadar.prefab
+    udonVariables:
+    - udonInstance: {fileID: 8189051253713307260, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+      gameObjectName: ATCRadar
+      variables:
+      - symbolName: callsigns
+        objectReference: {fileID: 0}
+        value: System.String[]
+      - symbolName: ownerDetectors
+        objectReference: {fileID: 0}
+        value: UnityEngine.GameObject[]
+      - symbolName: raderOrigin
+        objectReference: {fileID: 9131443994452592907, guid: 237c12deddddb1e45b3a58948dd433a3,
+          type: 3}
+        value: ATCRadar (UnityEngine.Transform)
+      - symbolName: range
+        objectReference: {fileID: 0}
+        value: 10
+      - symbolName: seaLevel
+        objectReference: {fileID: 1980905520720510667, guid: 237c12deddddb1e45b3a58948dd433a3,
+          type: 3}
+        value: SeaLevel (UnityEngine.Transform)
+      - symbolName: symbolContainer
+        objectReference: {fileID: 556893333511481238, guid: 237c12deddddb1e45b3a58948dd433a3,
+          type: 3}
+        value: Symbols (UnityEngine.RectTransform)
+      - symbolName: symbolTemplate
+        objectReference: {fileID: 0}
+        value: null
+      - symbolName: tailNumbers
+        objectReference: {fileID: 0}
+        value: System.String[]
+      - symbolName: traffics
+        objectReference: {fileID: 0}
+        value: UnityEngine.Transform[]
+      - symbolName: uiRadius
+        objectReference: {fileID: 0}
+        value: 512
+      - symbolName: uiSize
+        objectReference: {fileID: 0}
+        value: 1024
+    - udonInstance: {fileID: 7393717010850321093, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+      gameObjectName: Camera
+      variables:
+      - symbolName: overrideRawImage
+        objectReference: {fileID: 5599339446110034285, guid: 237c12deddddb1e45b3a58948dd433a3,
+          type: 3}
+        value: Background (UnityEngine.UI.RawImage)
+  - prefabInstance: {fileID: 9188513304304757168, guid: 5b09fcaee5957164983595889fdf67ef,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/AirTrafficControl/ATCRadar_ASR+ASDE.prefab
+    udonVariables:
+    - udonInstance: {fileID: 7845521561972477997, guid: 5b09fcaee5957164983595889fdf67ef,
+        type: 3}
+      gameObjectName: Camera
+      variables:
+      - symbolName: overrideRawImage
+        objectReference: {fileID: 0}
+        value: null
+    - udonInstance: {fileID: 7735670965812278906, guid: 5b09fcaee5957164983595889fdf67ef,
+        type: 3}
+      gameObjectName: Camera
+      variables:
+      - symbolName: overrideRawImage
+        objectReference: {fileID: 4644764000977731026, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Background (UnityEngine.UI.RawImage)
+    - udonInstance: {fileID: 8963296901679588035, guid: 5b09fcaee5957164983595889fdf67ef,
+        type: 3}
+      gameObjectName: Ground
+      variables:
+      - symbolName: callsigns
+        objectReference: {fileID: 0}
+        value: System.String[]
+      - symbolName: ownerDetectors
+        objectReference: {fileID: 0}
+        value: UnityEngine.GameObject[]
+      - symbolName: raderOrigin
+        objectReference: {fileID: 8320464487074016692, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Ground (UnityEngine.Transform)
+      - symbolName: range
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: seaLevel
+        objectReference: {fileID: 1638407169539037812, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: SeaLevel (UnityEngine.Transform)
+      - symbolName: symbolContainer
+        objectReference: {fileID: 755239392935150377, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Symbols (UnityEngine.RectTransform)
+      - symbolName: symbolTemplate
+        objectReference: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
+          type: 3}
+        value: Symbol (UnityEngine.GameObject)
+      - symbolName: tailNumbers
+        objectReference: {fileID: 0}
+        value: System.String[]
+      - symbolName: traffics
+        objectReference: {fileID: 0}
+        value: UnityEngine.Transform[]
+    - udonInstance: {fileID: 8925708417393886356, guid: 5b09fcaee5957164983595889fdf67ef,
+        type: 3}
+      gameObjectName: Tower
+      variables:
+      - symbolName: callsigns
+        objectReference: {fileID: 0}
+        value: System.String[]
+      - symbolName: ownerDetectors
+        objectReference: {fileID: 0}
+        value: UnityEngine.GameObject[]
+      - symbolName: raderOrigin
+        objectReference: {fileID: 8413359445652671459, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Tower (UnityEngine.Transform)
+      - symbolName: seaLevel
+        objectReference: {fileID: 1226862746114554915, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: SeaLevel (UnityEngine.Transform)
+      - symbolName: symbolContainer
+        objectReference: {fileID: 991176407718208894, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Symbols (UnityEngine.RectTransform)
+      - symbolName: symbolTemplate
+        objectReference: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
+          type: 3}
+        value: Symbol (UnityEngine.GameObject)
+      - symbolName: tailNumbers
+        objectReference: {fileID: 0}
+        value: System.String[]
+      - symbolName: traffics
+        objectReference: {fileID: 0}
+        value: UnityEngine.Transform[]
+  - prefabInstance: {fileID: 8860283968945522380, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Communication/COM.prefab
+    udonVariables:
+    - udonInstance: {fileID: 5469812941369223539, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      gameObjectName: AudioOrigin
+      variables:
+      - symbolName: animators
+        objectReference: {fileID: 0}
+        value: null
+      - symbolName: exclusive
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: frequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: frequencyText
+        objectReference: {fileID: 2898343676193069737, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+          type: 3}
+        value: COM Frequency (TMPro.TextMeshPro)
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 4
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: receiver
+        objectReference: {fileID: 5170157790456946066, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+          type: 3}
+        value: Receiver (VRC.Udon.UdonBehaviour)
+      - symbolName: transmitter
+        objectReference: {fileID: 3257697797242231783, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+          type: 3}
+        value: Transmitter (VRC.Udon.UdonBehaviour)
+    - udonInstance: {fileID: 1122962943743423624, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      gameObjectName: COM
+      variables:
+      - symbolName: inVehicleOnly
+        objectReference: {fileID: 1850306972323829191, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+          type: 3}
+        value: InVehicleOnly (UnityEngine.Transform)
+      - symbolName: seatedPlayerOnly
+        objectReference: {fileID: 6461910921874164730, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+          type: 3}
+        value: PlayerOnly (UnityEngine.Transform)
+    - udonInstance: {fileID: 5170157790456946066, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      gameObjectName: Receiver
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: frequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: limitRange
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: maxRange
+        objectReference: {fileID: 0}
+        value: 20
+      - symbolName: sync
+        objectReference: {fileID: 0}
+        value: False
+    - udonInstance: {fileID: 3257697797242231783, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      gameObjectName: Transmitter
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: deactivateDelay
+        objectReference: {fileID: 0}
+        value: 0
+      - symbolName: frequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: minDistance
+        objectReference: {fileID: 0}
+        value: 5
+  - prefabInstance: {fileID: 639365265884741348, guid: 578939c098d5e4c4996a5e731cc9646e,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Navigation/MarkerReceiver.prefab
+    udonVariables:
+    - udonInstance: {fileID: 5882310169002956352, guid: 578939c098d5e4c4996a5e731cc9646e,
+        type: 3}
+      gameObjectName: MarkerReceiver
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 1530120663727962394, guid: 578939c098d5e4c4996a5e731cc9646e,
+          type: 3}
+        value: MarkerReceiver (UnityEngine.AudioSource)
+      - symbolName: innerMarker
+        objectReference: {fileID: 8300000, guid: d4dc514d14235814db6ef5d6974fb8fa,
+          type: 3}
+        value: InnerMarker (UnityEngine.AudioClip)
+      - symbolName: middleMarker
+        objectReference: {fileID: 8300000, guid: c21a1bec21ebeb24ba98c01e26bb73a6,
+          type: 3}
+        value: MiddleNarker (UnityEngine.AudioClip)
+      - symbolName: outerMarker
+        objectReference: {fileID: 8300000, guid: c7b4cd98fa45123418453a1e8951bea3,
+          type: 3}
+        value: OuterMarker (UnityEngine.AudioClip)
+  - prefabInstance: {fileID: 3529275777104368382, guid: 0ea916e95f1dbb1499d552671054563c,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Navigation/NavaidDatabase.prefab
+    udonVariables:
+    - udonInstance: {fileID: 7163797180875894949, guid: 0ea916e95f1dbb1499d552671054563c,
+        type: 3}
+      gameObjectName: NavaidDatabase
+      variables:
+      - symbolName: capabilities
+        objectReference: {fileID: 0}
+        value: System.UInt32[]
+      - symbolName: dmeTransforms
+        objectReference: {fileID: 0}
+        value: UnityEngine.Transform[]
+      - symbolName: glideSlopeTransforms
+        objectReference: {fileID: 0}
+        value: UnityEngine.Transform[]
+      - symbolName: identities
+        objectReference: {fileID: 0}
+        value: System.String[]
+      - symbolName: transforms
+        objectReference: {fileID: 0}
+        value: UnityEngine.Transform[]
+  - prefabInstance: {fileID: 5473186176520402743, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Navigation/NavSelector.prefab
+    udonVariables:
+    - udonInstance: {fileID: 4511030736683079602, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+        type: 3}
+      gameObjectName: CourseKnob
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 549508131763715134, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+          type: 3}
+        value: Audio Source (UnityEngine.AudioSource)
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: O
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _StepCourse
+      - symbolName: eventTarget
+        objectReference: {fileID: 7714114272565546510, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+          type: 3}
+        value: NavSelector (VRC.Udon.UdonBehaviour)
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+      - symbolName: inVR
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: knobAxis
+        objectReference: {fileID: 0}
+        value: (0.0, 0.0, 1.0)
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 5
+      - symbolName: knobUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: _DecrementCourse
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: _IncrementCourse
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: switchSound
+        objectReference: {fileID: 8300000, guid: 484bb1a0a09f3f644806c74d9c794a58,
+          type: 3}
+        value: MenuSelect (UnityEngine.AudioClip)
+    - udonInstance: {fileID: 3046480631828489827, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+        type: 3}
+      gameObjectName: NavKnob
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 549508131763715134, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+          type: 3}
+        value: Audio Source (UnityEngine.AudioSource)
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: I
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _IncrementIndex
+      - symbolName: eventTarget
+        objectReference: {fileID: 7714114272565546510, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+          type: 3}
+        value: NavSelector (VRC.Udon.UdonBehaviour)
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+      - symbolName: inVR
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: knobAxis
+        objectReference: {fileID: 0}
+        value: (0.0, 0.0, 1.0)
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+      - symbolName: knobUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: _DecrementIndex
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: _IncrementIndex
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: switchSound
+        objectReference: {fileID: 8300000, guid: 484bb1a0a09f3f644806c74d9c794a58,
+          type: 3}
+        value: MenuSelect (UnityEngine.AudioClip)
+    - udonInstance: {fileID: 7714114272565546510, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+        type: 3}
+      gameObjectName: NavSelector
+      variables:
+      - symbolName: courseStep
+        objectReference: {fileID: 0}
+        value: 10
+      - symbolName: defaultCourse
+        objectReference: {fileID: 0}
+        value: 0
+      - symbolName: defaultIndex
+        objectReference: {fileID: 0}
+        value: 0
+      - symbolName: defaultOBS
+        objectReference: {fileID: 0}
+        value: 180
+      - symbolName: defaultVOR
+        objectReference: {fileID: 0}
+        value: 0
+      - symbolName: obsStep
+        objectReference: {fileID: 0}
+        value: 10
