@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dba914234891ddd458239d9a948eaa9a, type: 3}
-  m_Name: Prefab Udon Variables
+  m_Name: Virtual-CNS
   m_EditorClassIdentifier: 
   udonVariables:
   - prefabInstance: {fileID: 569492682127777669, guid: 237c12deddddb1e45b3a58948dd433a3,
@@ -43,8 +43,9 @@ MonoBehaviour:
           type: 3}
         value: Symbols (UnityEngine.RectTransform)
       - symbolName: symbolTemplate
-        objectReference: {fileID: 0}
-        value: null
+        objectReference: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
+          type: 3}
+        value: Symbol (UnityEngine.GameObject)
       - symbolName: tailNumbers
         objectReference: {fileID: 0}
         value: System.String[]
@@ -109,10 +110,6 @@ MonoBehaviour:
         objectReference: {fileID: 755239392935150377, guid: 5b09fcaee5957164983595889fdf67ef,
           type: 3}
         value: Symbols (UnityEngine.RectTransform)
-      - symbolName: symbolTemplate
-        objectReference: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
-          type: 3}
-        value: Symbol (UnityEngine.GameObject)
       - symbolName: tailNumbers
         objectReference: {fileID: 0}
         value: System.String[]
@@ -141,10 +138,6 @@ MonoBehaviour:
         objectReference: {fileID: 991176407718208894, guid: 5b09fcaee5957164983595889fdf67ef,
           type: 3}
         value: Symbols (UnityEngine.RectTransform)
-      - symbolName: symbolTemplate
-        objectReference: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
-          type: 3}
-        value: Symbol (UnityEngine.GameObject)
       - symbolName: tailNumbers
         objectReference: {fileID: 0}
         value: System.String[]
@@ -428,12 +421,3 @@ MonoBehaviour:
       - symbolName: defaultIndex
         objectReference: {fileID: 0}
         value: 0
-      - symbolName: defaultOBS
-        objectReference: {fileID: 0}
-        value: 180
-      - symbolName: defaultVOR
-        objectReference: {fileID: 0}
-        value: 0
-      - symbolName: obsStep
-        objectReference: {fileID: 0}
-        value: 10
