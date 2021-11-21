@@ -28,6 +28,7 @@ namespace MonacaAirfrafts
         public string[] identities = { };
         public Transform[] dmeTransforms = { };
         public Transform[] glideSlopeTransforms = { };
+        public bool[] hideFromMaps = {};
 
         public Transform[] waypointTransforms = {};
         public string[] waypointIdentities = {};
@@ -64,6 +65,7 @@ namespace MonacaAirfrafts
             identities = navaids.Select(n => n.identity).ToArray();
             dmeTransforms = navaids.Select(n => n.DmeTransform).ToArray();
             glideSlopeTransforms = navaids.Select(n => n.glideSlope).ToArray();
+            hideFromMaps = navaids.Select(n => n.hideFromMap).ToArray();
 
             var waypoints = rootObjects.SelectMany(o => o.GetComponentsInChildren<Waypoint>());
             waypointTransforms = waypoints.Select(w => w.transform).ToArray();
@@ -122,21 +124,21 @@ namespace MonacaAirfrafts
 
             using (new EditorGUILayout.HorizontalScope())
             {
-                waypointIndex = EditorGUILayout.Popup(waypointIndex, db.identities.ToArray());
+                waypointIndex = EditorGUILayout.Popup(waypointIndex, db.waypointIdentities.ToArray());
 
                 if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll();
             }
 
-            var navaid = db.transforms[navaidIndex].GetComponent<Navaid>();
+            var waypoint = db.waypointTransforms[waypointIndex].GetComponent<Waypoint>();
 
-            EditorGUILayout.ObjectField("Navaid", navaid, navaid.GetType(), true);
+            EditorGUILayout.ObjectField("Waypoint", waypoint, waypoint.GetType(), true);
 
-            var serializedNavaid = new SerializedObject(navaid);
+            var serializedNavaid = new SerializedObject(waypoint);
             var property = serializedNavaid.GetIterator();
             property.NextVisible(true);
             while (property.NextVisible(false))
             {
-                var disabled = property.name == nameof(Navaid.glideSlope) && !navaid.IsILS;
+                var disabled = false;
                 using (new EditorGUI.DisabledGroupScope(disabled))
                 {
                     EditorGUILayout.PropertyField(property, true);
@@ -150,10 +152,10 @@ namespace MonacaAirfrafts
             tabIndex = GUILayout.Toolbar(tabIndex, tabs);
             switch (tabIndex)
             {
-                case 1:
+                case 0:
                     NavaidGUI();
                     break;
-                case 2:
+                case 1:
                     WaypointGUI();
                     break;
             }

@@ -24,7 +24,7 @@ namespace MonacaAirfrafts
         public GameObject vorTemplate, vordmeTemplate, waypointTemplate, aerodromeTemplate;
         public float updateInterval = 10;
 
-        private Transform[]  navaidMarkers, waypointMarkers;
+        private Transform[] navaidMarkers, waypointMarkers;
         private NavaidDatabase database;
         private float scale;
 
@@ -39,8 +39,8 @@ namespace MonacaAirfrafts
             database = databaseObject.GetComponent<NavaidDatabase>();
             if (database == null) return;
 
-            navaidMarkers = InstantiateMarkers(database.identities, database.capabilities, true);
-            waypointMarkers = InstantiateMarkers(database.waypointIdentities, database.waypointTypes, false);
+            navaidMarkers = InstantiateMarkers(database.identities, database.capabilities, database.hideFromMaps, true);
+            waypointMarkers = InstantiateMarkers(database.waypointIdentities, database.waypointTypes, null, false);
 
             SetRange(initialRange);
 
@@ -85,11 +85,12 @@ namespace MonacaAirfrafts
             }
         }
 
-        private Transform[] InstantiateMarkers(string[] identities, uint[] types, bool isNavaid)
+        private Transform[] InstantiateMarkers(string[] identities, uint[] types, bool[] hideFlags, bool isNavaid)
         {
             var markers = new Transform[identities.Length];
             for (var i = 0; i < identities.Length; i++)
             {
+                if (hideFlags != null && hideFlags[i]) continue;
                 var template = isNavaid ? GetNavaidTemplate(types[i]) : GetWaypointTemplate(types[i]);
                 if (template == null) continue;
 

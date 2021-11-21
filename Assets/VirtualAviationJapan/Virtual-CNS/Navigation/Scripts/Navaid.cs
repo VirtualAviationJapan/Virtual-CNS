@@ -20,6 +20,7 @@ namespace MonacaAirfrafts
         public string identity;
         public NavaidCapability capability;
         public Transform glideSlope;
+        public bool hideFromMap;
 
         public bool IsNDB => (capability & NavaidCapability.NDB) != 0;
         public bool IsILS => (capability & NavaidCapability.ILS) != 0;
