@@ -24,13 +24,16 @@ MonoBehaviour:
       - symbolName: callsigns
         objectReference: {fileID: 0}
         value: System.String[]
+      - symbolName: headingOffset
+        objectReference: {fileID: 0}
+        value: 0
       - symbolName: ownerDetectors
         objectReference: {fileID: 0}
         value: UnityEngine.GameObject[]
       - symbolName: raderOrigin
-        objectReference: {fileID: 9131443994452592907, guid: 237c12deddddb1e45b3a58948dd433a3,
+        objectReference: {fileID: 1175444624684368957, guid: 237c12deddddb1e45b3a58948dd433a3,
           type: 3}
-        value: ATCRadar (UnityEngine.Transform)
+        value: RaderOrigin (UnityEngine.Transform)
       - symbolName: range
         objectReference: {fileID: 0}
         value: 10
@@ -43,20 +46,22 @@ MonoBehaviour:
           type: 3}
         value: Symbols (UnityEngine.RectTransform)
       - symbolName: symbolTemplate
-        objectReference: {fileID: 0}
-        value: null
+        objectReference: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
+          type: 3}
+        value: Symbol (UnityEngine.GameObject)
       - symbolName: tailNumbers
         objectReference: {fileID: 0}
         value: System.String[]
+      - symbolName: terrainCamera
+        objectReference: {fileID: 7142938738102189551, guid: 237c12deddddb1e45b3a58948dd433a3,
+          type: 3}
+        value: Camera (UnityEngine.Camera)
       - symbolName: traffics
         objectReference: {fileID: 0}
         value: UnityEngine.Transform[]
       - symbolName: uiRadius
         objectReference: {fileID: 0}
         value: 512
-      - symbolName: uiSize
-        objectReference: {fileID: 0}
-        value: 1024
     - udonInstance: {fileID: 7393717010850321093, guid: 237c12deddddb1e45b3a58948dd433a3,
         type: 3}
       gameObjectName: Camera
@@ -64,7 +69,7 @@ MonoBehaviour:
       - symbolName: overrideRawImage
         objectReference: {fileID: 5599339446110034285, guid: 237c12deddddb1e45b3a58948dd433a3,
           type: 3}
-        value: Background (UnityEngine.UI.RawImage)
+        value: Terrain (UnityEngine.UI.RawImage)
   - prefabInstance: {fileID: 9188513304304757168, guid: 5b09fcaee5957164983595889fdf67ef,
       type: 3}
     prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/AirTrafficControl/ATCRadar_ASR+ASDE.prefab
@@ -74,8 +79,9 @@ MonoBehaviour:
       gameObjectName: Camera
       variables:
       - symbolName: overrideRawImage
-        objectReference: {fileID: 0}
-        value: null
+        objectReference: {fileID: 5174635658119879557, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Terrain (UnityEngine.UI.RawImage)
     - udonInstance: {fileID: 7735670965812278906, guid: 5b09fcaee5957164983595889fdf67ef,
         type: 3}
       gameObjectName: Camera
@@ -83,7 +89,7 @@ MonoBehaviour:
       - symbolName: overrideRawImage
         objectReference: {fileID: 4644764000977731026, guid: 5b09fcaee5957164983595889fdf67ef,
           type: 3}
-        value: Background (UnityEngine.UI.RawImage)
+        value: Terrain (UnityEngine.UI.RawImage)
     - udonInstance: {fileID: 8963296901679588035, guid: 5b09fcaee5957164983595889fdf67ef,
         type: 3}
       gameObjectName: Ground
@@ -95,9 +101,9 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: UnityEngine.GameObject[]
       - symbolName: raderOrigin
-        objectReference: {fileID: 8320464487074016692, guid: 5b09fcaee5957164983595889fdf67ef,
+        objectReference: {fileID: 2130582059318534274, guid: 5b09fcaee5957164983595889fdf67ef,
           type: 3}
-        value: Ground (UnityEngine.Transform)
+        value: RaderOrigin (UnityEngine.Transform)
       - symbolName: range
         objectReference: {fileID: 0}
         value: 1
@@ -109,13 +115,13 @@ MonoBehaviour:
         objectReference: {fileID: 755239392935150377, guid: 5b09fcaee5957164983595889fdf67ef,
           type: 3}
         value: Symbols (UnityEngine.RectTransform)
-      - symbolName: symbolTemplate
-        objectReference: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
-          type: 3}
-        value: Symbol (UnityEngine.GameObject)
       - symbolName: tailNumbers
         objectReference: {fileID: 0}
         value: System.String[]
+      - symbolName: terrainCamera
+        objectReference: {fileID: 7989822654318188880, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Camera (UnityEngine.Camera)
       - symbolName: traffics
         objectReference: {fileID: 0}
         value: UnityEngine.Transform[]
@@ -130,9 +136,9 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: UnityEngine.GameObject[]
       - symbolName: raderOrigin
-        objectReference: {fileID: 8413359445652671459, guid: 5b09fcaee5957164983595889fdf67ef,
+        objectReference: {fileID: 1885638876106770133, guid: 5b09fcaee5957164983595889fdf67ef,
           type: 3}
-        value: Tower (UnityEngine.Transform)
+        value: RaderOrigin (UnityEngine.Transform)
       - symbolName: seaLevel
         objectReference: {fileID: 1226862746114554915, guid: 5b09fcaee5957164983595889fdf67ef,
           type: 3}
@@ -141,13 +147,13 @@ MonoBehaviour:
         objectReference: {fileID: 991176407718208894, guid: 5b09fcaee5957164983595889fdf67ef,
           type: 3}
         value: Symbols (UnityEngine.RectTransform)
-      - symbolName: symbolTemplate
-        objectReference: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
-          type: 3}
-        value: Symbol (UnityEngine.GameObject)
       - symbolName: tailNumbers
         objectReference: {fileID: 0}
         value: System.String[]
+      - symbolName: terrainCamera
+        objectReference: {fileID: 7591932997096685319, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Camera (UnityEngine.Camera)
       - symbolName: traffics
         objectReference: {fileID: 0}
         value: UnityEngine.Transform[]

@@ -15,6 +15,7 @@ using UdonSharpEditor;
 namespace VirtualAviationJapan
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+    [DefaultExecutionOrder(-100)] // Before OneShotCamera
     public class ATCRadar : UdonSharpBehaviour
     {
         public Transform seaLevel;
@@ -23,12 +24,13 @@ namespace VirtualAviationJapan
         public Transform symbolContainer;
         public float range = 10.0f;
         public float uiRadius = 512.0f;
+        [Range(-360.0f, 360.0f)] public float headingOffset = 0.0f;
+        public Camera terrainCamera;
 
         [HideInInspector] public Transform[] traffics = {};
         [HideInInspector] public string[] tailNumbers = {};
         [HideInInspector] public string[] callsigns = {};
         [HideInInspector] public GameObject[] ownerDetectors = {};
-
 
         private Transform[] symbols = {};
         private TextMeshProUGUI[] symbolTexts = {};
@@ -59,6 +61,8 @@ namespace VirtualAviationJapan
                 symbolTexts[i] = symbolText;
                 symbolText.text = tailNumbers[i];
             }
+
+            if (terrainCamera) terrainCamera.orthographicSize = range * 1852;
         }
 
         private void Update()
@@ -76,6 +80,7 @@ namespace VirtualAviationJapan
             var ownerDetector = ownerDetectors[index];
 
             var position = traffic.position - raderOrigin.position;
+            var offsetRotation = Quaternion.AngleAxis(headingOffset, Vector3.forward);
 
             if (position.magnitude <= range * 1852)
             {
@@ -88,9 +93,9 @@ namespace VirtualAviationJapan
                 previousPositions[index] = position;
                 previousTimes[index] = time;
 
-                var rotation = Quaternion.AngleAxis(Vector3.SignedAngle(Vector3.forward, Vector3.Scale(groundVelocity, new Vector3(-1, 1, 1)), Vector3.up), Vector3.forward);
+                var rotation = offsetRotation * Quaternion.AngleAxis(Vector3.SignedAngle(Vector3.forward, Vector3.Scale(groundVelocity, new Vector3(-1, 1, 1)), Vector3.up), Vector3.forward);
 
-                symbol.transform.localPosition = (Vector3.right * position.x + Vector3.up * position.z) * scale;
+                symbol.transform.localPosition = offsetRotation * (Vector3.right * position.x + Vector3.up * position.z) * scale;
                 symbol.transform.localRotation = rotation;
 
                 var owner = Networking.GetOwner(ownerDetector).displayName;

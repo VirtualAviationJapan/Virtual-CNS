@@ -72,8 +72,9 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LineContrast: 150
-    - _LineWidth: 0.4
+    - _LineContrast: 256
+    - _LineThreshold: 256
+    - _LineWidth: 0.6
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -83,7 +84,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - __dirty: 1
+    - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Emission: {r: 0.2, g: 0.2, b: 0.2, a: 1}
