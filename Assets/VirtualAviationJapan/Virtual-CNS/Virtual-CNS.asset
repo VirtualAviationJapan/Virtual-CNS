@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dba914234891ddd458239d9a948eaa9a, type: 3}
-  m_Name: Prefab Udon Variables
+  m_Name: Virtual-CNS
   m_EditorClassIdentifier: 
   udonVariables:
   - prefabInstance: {fileID: 569492682127777669, guid: 237c12deddddb1e45b3a58948dd433a3,
@@ -242,6 +242,17 @@ MonoBehaviour:
       - symbolName: minDistance
         objectReference: {fileID: 0}
         value: 5
+  - prefabInstance: {fileID: 5468552486160625247, guid: bb4adc2c91e3ed04a959c0e2f2e5c0ee,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Navigation/MarkerBeacon.prefab
+    udonVariables:
+    - udonInstance: {fileID: 4912852581688657447, guid: bb4adc2c91e3ed04a959c0e2f2e5c0ee,
+        type: 3}
+      gameObjectName: MarkerBeacon
+      variables:
+      - symbolName: type
+        objectReference: {fileID: 0}
+        value: 0
   - prefabInstance: {fileID: 639365265884741348, guid: 578939c098d5e4c4996a5e731cc9646e,
       type: 3}
     prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Navigation/MarkerReceiver.prefab
@@ -289,6 +300,39 @@ MonoBehaviour:
       - symbolName: transforms
         objectReference: {fileID: 0}
         value: UnityEngine.Transform[]
+  - prefabInstance: {fileID: 7390337853901919145, guid: 43f8d530a693b5740b8aeebf3072a084,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Navigation/NaviagionMap.prefab
+    udonVariables:
+    - udonInstance: {fileID: 683264133058764181, guid: 43f8d530a693b5740b8aeebf3072a084,
+        type: 3}
+      gameObjectName: Map
+      variables:
+      - symbolName: aerodromeTemplate
+        objectReference: {fileID: 5859124962298582621, guid: 4cfe402e47d35be488b0bd93ed197e62,
+          type: 3}
+        value: Nav_Marker_Aerodrome (UnityEngine.GameObject)
+      - symbolName: initialRange
+        objectReference: {fileID: 0}
+        value: 10
+      - symbolName: uiRadius
+        objectReference: {fileID: 0}
+        value: 810
+      - symbolName: updateInterval
+        objectReference: {fileID: 0}
+        value: 10
+      - symbolName: vordmeTemplate
+        objectReference: {fileID: 5859124962298582621, guid: 8e142c44eb3d155499fe7ddf94b22711,
+          type: 3}
+        value: Nav_Marker_VORDME (UnityEngine.GameObject)
+      - symbolName: vorTemplate
+        objectReference: {fileID: 5859124962298582621, guid: 5c7752819fe50ab4d9173fc6bd485938,
+          type: 3}
+        value: Nav_Marker_VOR (UnityEngine.GameObject)
+      - symbolName: waypointTemplate
+        objectReference: {fileID: 5859124962298582621, guid: 1c52303808d199c409b71d93e316a5ee,
+          type: 3}
+        value: Nav_Marker_Waypoint (UnityEngine.GameObject)
   - prefabInstance: {fileID: 5473186176520402743, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
       type: 3}
     prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Navigation/NavSelector.prefab
@@ -434,12 +478,3 @@ MonoBehaviour:
       - symbolName: defaultIndex
         objectReference: {fileID: 0}
         value: 0
-      - symbolName: defaultOBS
-        objectReference: {fileID: 0}
-        value: 180
-      - symbolName: defaultVOR
-        objectReference: {fileID: 0}
-        value: 0
-      - symbolName: obsStep
-        objectReference: {fileID: 0}
-        value: 10
