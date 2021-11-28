@@ -3,6 +3,7 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.SDK3.Components;
+using UdonToolkit;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
@@ -27,10 +28,10 @@ namespace VirtualAviationJapan
         [Range(-360.0f, 360.0f)] public float headingOffset = 0.0f;
         public Camera terrainCamera;
 
-        [HideInInspector] public Transform[] traffics = {};
-        [HideInInspector] public string[] tailNumbers = {};
-        [HideInInspector] public string[] callsigns = {};
-        [HideInInspector] public GameObject[] ownerDetectors = {};
+        [Disabled][ListView("Traffics")] public Transform[] traffics = {};
+        [Disabled][ListView("Traffics")] public string[] tailNumbers = {};
+        [Disabled][ListView("Traffics")] public string[] callsigns = {};
+        [Disabled][ListView("Traffics")] public GameObject[] ownerDetectors = {};
 
         private Transform[] symbols = {};
         private TextMeshProUGUI[] symbolTexts = {};
@@ -113,6 +114,7 @@ namespace VirtualAviationJapan
         }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
+        [Button("Force Refresh Now", true)]
         public void Setup()
         {
             var rootObjects = gameObject.scene.GetRootGameObjects();
@@ -121,7 +123,7 @@ namespace VirtualAviationJapan
             traffics = trafficSources.Select(s => s.transform).ToArray();
             tailNumbers = trafficSources.Select(s => s.tailNumber).ToArray();
             callsigns = trafficSources.Select(s => s.callsign).ToArray();
-            ownerDetectors = trafficSources.Select(s => s.gameObject.GetUdonSharpComponentsInChildren<UdonSharpBehaviour>().FirstOrDefault(u => u.GetType().Name == "EngineController").gameObject ?? s.gameObject).ToArray();
+            ownerDetectors = trafficSources.Select(s => s.gameObject.GetUdonSharpComponentsInChildren<UdonSharpBehaviour>().FirstOrDefault(u => u.GetType().Name == "EngineController" || u.GetType().Name == "SaccAirVehicle").gameObject ?? s.gameObject).ToArray();
         }
 
         [InitializeOnLoadMethod]

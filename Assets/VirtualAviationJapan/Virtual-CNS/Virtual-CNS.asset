@@ -100,28 +100,12 @@ MonoBehaviour:
       - symbolName: ownerDetectors
         objectReference: {fileID: 0}
         value: UnityEngine.GameObject[]
-      - symbolName: raderOrigin
-        objectReference: {fileID: 2130582059318534274, guid: 5b09fcaee5957164983595889fdf67ef,
-          type: 3}
-        value: RaderOrigin (UnityEngine.Transform)
       - symbolName: range
         objectReference: {fileID: 0}
         value: 1
-      - symbolName: seaLevel
-        objectReference: {fileID: 1638407169539037812, guid: 5b09fcaee5957164983595889fdf67ef,
-          type: 3}
-        value: SeaLevel (UnityEngine.Transform)
-      - symbolName: symbolContainer
-        objectReference: {fileID: 755239392935150377, guid: 5b09fcaee5957164983595889fdf67ef,
-          type: 3}
-        value: Symbols (UnityEngine.RectTransform)
       - symbolName: tailNumbers
         objectReference: {fileID: 0}
         value: System.String[]
-      - symbolName: terrainCamera
-        objectReference: {fileID: 7989822654318188880, guid: 5b09fcaee5957164983595889fdf67ef,
-          type: 3}
-        value: Camera (UnityEngine.Camera)
       - symbolName: traffics
         objectReference: {fileID: 0}
         value: UnityEngine.Transform[]
@@ -135,25 +119,9 @@ MonoBehaviour:
       - symbolName: ownerDetectors
         objectReference: {fileID: 0}
         value: UnityEngine.GameObject[]
-      - symbolName: raderOrigin
-        objectReference: {fileID: 1885638876106770133, guid: 5b09fcaee5957164983595889fdf67ef,
-          type: 3}
-        value: RaderOrigin (UnityEngine.Transform)
-      - symbolName: seaLevel
-        objectReference: {fileID: 1226862746114554915, guid: 5b09fcaee5957164983595889fdf67ef,
-          type: 3}
-        value: SeaLevel (UnityEngine.Transform)
-      - symbolName: symbolContainer
-        objectReference: {fileID: 991176407718208894, guid: 5b09fcaee5957164983595889fdf67ef,
-          type: 3}
-        value: Symbols (UnityEngine.RectTransform)
       - symbolName: tailNumbers
         objectReference: {fileID: 0}
         value: System.String[]
-      - symbolName: terrainCamera
-        objectReference: {fileID: 7591932997096685319, guid: 5b09fcaee5957164983595889fdf67ef,
-          type: 3}
-        value: Camera (UnityEngine.Camera)
       - symbolName: traffics
         objectReference: {fileID: 0}
         value: UnityEngine.Transform[]
