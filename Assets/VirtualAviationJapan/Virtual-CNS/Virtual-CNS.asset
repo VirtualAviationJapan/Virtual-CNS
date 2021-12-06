@@ -207,6 +207,12 @@ MonoBehaviour:
       - symbolName: frequency
         objectReference: {fileID: 0}
         value: 1
+      - symbolName: indicator
+        objectReference: {fileID: 0}
+        value: null
+      - symbolName: indicatorAsLocal
+        objectReference: {fileID: 0}
+        value: True
       - symbolName: minDistance
         objectReference: {fileID: 0}
         value: 5

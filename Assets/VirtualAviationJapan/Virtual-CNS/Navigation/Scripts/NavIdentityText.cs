@@ -4,8 +4,8 @@ using TMPro;
 
 namespace VirtualAviationJapan
 {
-    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
-    [DefaultExecutionOrder(1000)] // After NavSelector
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+    [DefaultExecutionOrder(100)] // After NavSelector
     public class NavIdentityText : UdonSharpBehaviour
     {
         public TextMeshPro text;
