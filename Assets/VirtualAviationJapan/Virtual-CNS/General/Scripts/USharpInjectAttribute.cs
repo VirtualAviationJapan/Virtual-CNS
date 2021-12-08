@@ -72,7 +72,7 @@ namespace VirtualAviationJapan
         }
 
         [InitializeOnLoadMethod]
-        private static void InitializeOnLoad()
+        public static void InitializeOnLoad()
         {
             EditorSceneManager.sceneSaving += (scene, _) => AutoSetup(scene);
             SceneManager.activeSceneChanged += (_, next) => AutoSetup(next);

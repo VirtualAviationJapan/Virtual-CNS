@@ -68,7 +68,7 @@ namespace VirtualAviationJapan
         }
 
         [InitializeOnLoadMethod]
-        private static void RegisterCallbacks()
+        public static void RegisterCallbacks()
         {
             EditorSceneManager.sceneSaving += (scene, _) => AutoIncrement(scene);
             EditorSceneManager.sceneLoaded += (scene, _) => AutoIncrement(scene);
