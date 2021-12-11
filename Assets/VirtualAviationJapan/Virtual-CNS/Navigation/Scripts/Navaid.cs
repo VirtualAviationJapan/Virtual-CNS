@@ -23,9 +23,16 @@ namespace MonacaAirfrafts
         public bool hideFromMap;
 
         public bool IsNDB => (capability & NavaidCapability.NDB) != 0;
-        public bool IsILS => (capability & NavaidCapability.ILS) != 0;
         public bool IsVOR => (capability & NavaidCapability.VOR) != 0;
-        public Transform DmeTransform => IsILS ? glideSlope : transform;
+        public bool IsILS => (capability & NavaidCapability.ILS) != 0;
+        public bool HasDME => (capability & NavaidCapability.DME) != 0;
+        public Transform DmeTransform {
+            get {
+                if (!HasDME) return null;
+                if (IsILS && glideSlope != null) return glideSlope;
+                return transform;
+            }
+        }
 
         private void Reset()
         {
@@ -36,13 +43,5 @@ namespace MonacaAirfrafts
         {
             gameObject.name = identity;
         }
-
-#if UNITY_EDITOR
-        [CustomEditor(typeof(Navaid))]
-        [CanEditMultipleObjects]
-        public class NavaidEditor : Editor
-        {
-        }
-#endif
     }
 }
