@@ -19,6 +19,7 @@ namespace MonacaAirfrafts
         public const uint WAYPOINT_WAYPOINT = 0;
         public const uint WAYPOINT_AERDROME = 1;
 
+        public float magneticDeclination = 0.0f;
         public float uiRadius = 810.0f;
         [Tooltip("NM")] public float initialRange = 10.0f;
         public GameObject vorTemplate, vordmeTemplate, waypointTemplate, aerodromeTemplate;
@@ -45,6 +46,9 @@ namespace MonacaAirfrafts
             SetRange(initialRange);
 
             gameObject.SetActive(true);
+
+            var navaidDatabaseObj = GameObject.Find("NavaidDatabase");
+            if (navaidDatabaseObj) magneticDeclination = (float)((UdonBehaviour)navaidDatabaseObj.GetComponent(typeof(UdonBehaviour))).GetProgramVariable("magneticDeclination");
         }
 
         private void Update()
@@ -123,7 +127,7 @@ namespace MonacaAirfrafts
         private void UpdateTransform(float scale)
         {
 
-            var rotation = Quaternion.AngleAxis(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(transform.forward, Vector3.up), Vector3.up), Vector3.forward);
+            var rotation = Quaternion.AngleAxis(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(transform.forward, Vector3.up), Vector3.up) + magneticDeclination, Vector3.forward);
             transform.localRotation = rotation;
 
             var inverseRotation = Quaternion.Inverse(rotation);

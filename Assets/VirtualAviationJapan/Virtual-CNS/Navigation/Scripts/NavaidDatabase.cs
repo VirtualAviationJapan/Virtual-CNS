@@ -23,6 +23,8 @@ namespace MonacaAirfrafts
         public const uint WAYPOINT_WAYPOINT = 0;
         public const uint WAYPOINT_AERDROME = 1;
 
+        public float magneticDeclination = 0.0f;
+
         public Transform[] transforms = { };
         public uint[] capabilities = { };
         public string[] identities = { };
@@ -47,6 +49,12 @@ namespace MonacaAirfrafts
         }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            this.UpdateProxy();
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, Quaternion.AngleAxis(-magneticDeclination, Vector3.up) * Vector3.forward * 10 + transform.position);
+        }
         public static IEnumerable<T> GetUdonSharpComponentsInScene<T>() where T : UdonSharpBehaviour
         {
             return FindObjectsOfType<UdonBehaviour>()
@@ -149,6 +157,9 @@ namespace MonacaAirfrafts
 
         public override void OnInspectorGUI()
         {
+            serializedObject.Update();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(NavaidDatabase.magneticDeclination)));
+
             tabIndex = GUILayout.Toolbar(tabIndex, tabs);
             switch (tabIndex)
             {
@@ -159,6 +170,8 @@ namespace MonacaAirfrafts
                     WaypointGUI();
                     break;
             }
+
+            serializedObject.ApplyModifiedProperties();;
         }
 
         [InitializeOnLoadMethod]
