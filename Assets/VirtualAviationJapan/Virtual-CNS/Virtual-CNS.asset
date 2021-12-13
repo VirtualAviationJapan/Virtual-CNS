@@ -234,7 +234,7 @@ MonoBehaviour:
         value: False
       - symbolName: radius
         objectReference: {fileID: 0}
-        value: 0.0075
+        value: 0.01
       - symbolName: switchSound
         objectReference: {fileID: 8300000, guid: 484bb1a0a09f3f644806c74d9c794a58,
           type: 3}
@@ -301,7 +301,7 @@ MonoBehaviour:
         value: False
       - symbolName: radius
         objectReference: {fileID: 0}
-        value: 0.0075
+        value: 0.01
       - symbolName: switchSound
         objectReference: {fileID: 8300000, guid: 484bb1a0a09f3f644806c74d9c794a58,
           type: 3}
@@ -429,7 +429,7 @@ MonoBehaviour:
         value: False
       - symbolName: radius
         objectReference: {fileID: 0}
-        value: 0.0075
+        value: 0.01
       - symbolName: switchSound
         objectReference: {fileID: 8300000, guid: 484bb1a0a09f3f644806c74d9c794a58,
           type: 3}
@@ -529,7 +529,7 @@ MonoBehaviour:
         value: False
       - symbolName: radius
         objectReference: {fileID: 0}
-        value: 0.0075
+        value: 0.01
       - symbolName: switchSound
         objectReference: {fileID: 8300000, guid: 484bb1a0a09f3f644806c74d9c794a58,
           type: 3}
@@ -689,6 +689,9 @@ MonoBehaviour:
       - symbolName: ownerOnly
         objectReference: {fileID: 0}
         value: False
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.015
       - symbolName: switchSound
         objectReference: {fileID: 8300000, guid: 484bb1a0a09f3f644806c74d9c794a58,
           type: 3}
@@ -753,6 +756,9 @@ MonoBehaviour:
       - symbolName: ownerOnly
         objectReference: {fileID: 0}
         value: False
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.015
       - symbolName: switchSound
         objectReference: {fileID: 8300000, guid: 484bb1a0a09f3f644806c74d9c794a58,
           type: 3}
