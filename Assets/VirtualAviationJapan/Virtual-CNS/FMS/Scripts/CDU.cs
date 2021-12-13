@@ -18,10 +18,10 @@ namespace VirtualAviationJapan
         public UdonSharpBehaviour startFunction;
 
         [NonSerialized] public FMC fmc;
-
         private void Start()
         {
             fmc = GetComponentInParent<FMC>();
+            fmc._Subscribe(this);
 
             UpdateInputText();
 
@@ -112,7 +112,7 @@ namespace VirtualAviationJapan
         }
         public void _DeleteInput()
         {
-            input = input.Substring(0, Mathf.Max(input.Length - 1, 0));
+            input = input.Substring(0, Mathf.Max(input.Length - 2, 0));
         }
 
         private void UpdateInputText()

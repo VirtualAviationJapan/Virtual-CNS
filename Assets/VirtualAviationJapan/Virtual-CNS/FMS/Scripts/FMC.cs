@@ -13,8 +13,7 @@ namespace VirtualAviationJapan
     {
         const int MAX_SUBSCRIBERS = 32;
         const string EVENT_UPDATED = "_FMC_Updated";
-        [NonSerialized] public UdonSharpBehaviour[] subscribers;
-
+        private UdonSharpBehaviour[] subscribers;
         private void Start()
         {
             subscribers = new UdonSharpBehaviour[MAX_SUBSCRIBERS];
@@ -43,6 +42,16 @@ namespace VirtualAviationJapan
 
         [Header("COM")]
         public Transceiver[] transceivers = { };
+
+        private void COM_Start()
+        {
+            foreach (var transceiver in transceivers)
+            {
+                transceiver._Subscribe(this);
+            }
+        }
+
+        public void _Transceiver_Frequency_Changed() => _Dispatch(EVENT_UPDATED);
 
         public bool _IsValidComFrequency(float value)
         {
