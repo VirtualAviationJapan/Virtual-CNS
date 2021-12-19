@@ -29,6 +29,23 @@ namespace VirtualAviationJapan
             }
         }
 
+        private string NAV1
+        {
+            get => cdu.fmc ? cdu.fmc._GetNavIdentity(0) : null;
+            set
+            {
+                if (cdu.fmc) cdu.fmc._SetNavTargetByIdentity(0, value);
+            }
+        }
+        private string NAV2
+        {
+            get => cdu.fmc ? cdu.fmc._GetNavIdentity(1) : null;
+            set
+            {
+                if (cdu.fmc) cdu.fmc._SetNavTargetByIdentity(1, value);
+            }
+        }
+
         public void _OnPageEnter(CDU cdu)
         {
             this.cdu = cdu;
@@ -47,9 +64,21 @@ namespace VirtualAviationJapan
             UpdateDisplay();
         }
 
+        public void _L3()
+        {
+            NAV1 = cdu._StringInput(NAV1);
+            UpdateDisplay();
+        }
+
+        public void _R3()
+        {
+            NAV2 = cdu._StringInput(NAV2);
+            UpdateDisplay();
+        }
+
         public void _Refresh() => UpdateDisplay();
 
-        private string FrequencyText(float value) =>  $"{value:0.0#}";
+        private string FrequencyText(float value) =>  $"{value:0.000}";
 
 #region Display
         private string Color(string color, string text) => $"<color={color}>{text}</color>";
@@ -63,7 +92,7 @@ namespace VirtualAviationJapan
 
             cdu.leftLineText[0].text = DataLine("COM 1", FrequencyText(COM1));
             cdu.leftLineText[1].text = DataLine("RCL 1", null);
-            cdu.leftLineText[2].text = DataLine("NAV 1", null);
+            cdu.leftLineText[2].text = DataLine("NAV 1", NAV1);
             cdu.leftLineText[3].text = DataLine("NAV 1", $"{Color("#08f", "AUTO")}/{Color("#fff", Size("75%", "MAN"))}");
             cdu.leftLineText[4].text = null;
             cdu.leftLineText[5].text = DataLine("ATC 1", Color("#fff", "1200"));
@@ -77,7 +106,7 @@ namespace VirtualAviationJapan
 
             cdu.rightLineText[0].text = DataLine("COM 2", FrequencyText(COM2));
             cdu.rightLineText[1].text = DataLine("PRE 2", null);
-            cdu.rightLineText[2].text = DataLine("NAV 2", null);
+            cdu.rightLineText[2].text = DataLine("NAV 2", NAV2);
             cdu.rightLineText[3].text = DataLine("NAV 2", $"{Color("#08f", "AUTO")}/{Color("#fff", Size("75%", "MAN"))}");
             cdu.rightLineText[4].text = null;
             cdu.rightLineText[5].text = DataLine("ATC 2", Color("#fff", ""));

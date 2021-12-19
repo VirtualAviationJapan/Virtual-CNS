@@ -82,6 +82,13 @@ namespace VirtualAviationJapan
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
         }
 
+        public void _SetIndex(int value)
+        {
+            _TakeOwnership();
+            Index = value;
+            RequestSerialization();
+        }
+
         public void _IncrementIndex()
         {
             _TakeOwnership();

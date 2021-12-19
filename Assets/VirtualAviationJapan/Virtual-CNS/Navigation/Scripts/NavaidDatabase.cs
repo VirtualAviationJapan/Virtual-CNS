@@ -48,6 +48,15 @@ namespace MonacaAirfrafts
             gameObject.name = nameof(NavaidDatabase);
         }
 
+        public int _FindIndexByIdentity(string identity)
+        {
+            for (var i = 0; i < Count; i++)
+            {
+                if (identities[i] == identity) return i;
+            }
+            return -1;
+        }
+
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {

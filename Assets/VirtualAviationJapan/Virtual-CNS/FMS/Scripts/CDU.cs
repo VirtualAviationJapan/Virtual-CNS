@@ -1,6 +1,5 @@
 ﻿
 using System;
-using BestHTTP.SecureProtocol.Org.BouncyCastle.Crypto.Encodings;
 using TMPro;
 using UdonSharp;
 using UnityEngine;
@@ -57,6 +56,19 @@ namespace VirtualAviationJapan
         public void _R5() => function._R5();
         public void _R6() => function._R6();
 
+        public string _StringInput(string currentValue)
+        {
+            if (_HasInput())
+            {
+                var value = input;
+                _ClearInput();
+                return value;
+            }
+
+            _SetInput(currentValue);
+            return currentValue;
+        }
+
         public float _FloatInput(float currentValue)
         {
             if (_HasInput())
@@ -109,10 +121,6 @@ namespace VirtualAviationJapan
         public void _OnInput()
         {
             UpdateInputText();
-        }
-        public void _DeleteInput()
-        {
-            input = input.Substring(0, Mathf.Max(input.Length - 2, 0));
         }
 
         private void UpdateInputText()
