@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: TerrainCamera
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: fd1f3405917880b44bdcb2b88b8e6223,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 3b4ee03a1e49b654ba10c2935b2b5f28,
     type: 2}
   udonAssembly: 
   assemblyError: 
