@@ -168,6 +168,7 @@ namespace MonacaAirfrafts
         {
             serializedObject.Update();
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(NavaidDatabase.magneticDeclination)));
+            serializedObject.ApplyModifiedProperties();;
 
             tabIndex = GUILayout.Toolbar(tabIndex, tabs);
             switch (tabIndex)
@@ -180,7 +181,6 @@ namespace MonacaAirfrafts
                     break;
             }
 
-            serializedObject.ApplyModifiedProperties();;
         }
 
         [InitializeOnLoadMethod]
