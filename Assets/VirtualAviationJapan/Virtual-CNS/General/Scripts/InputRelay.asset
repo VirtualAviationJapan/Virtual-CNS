@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: InputRelay
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 2b2fd9c9bb37349498d817ca4ebe4595,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 7dc14980e8a7c9240bf7ed518edcd464,
     type: 2}
   udonAssembly: 
   assemblyError: 
