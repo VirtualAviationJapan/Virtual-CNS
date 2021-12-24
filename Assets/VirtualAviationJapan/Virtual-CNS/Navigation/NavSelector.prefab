@@ -136,7 +136,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5849179726924508225}
-  - component: {fileID: 8853021027401092665}
   - component: {fileID: 3046480631828489827}
   m_Layer: 0
   m_Name: NavKnob
@@ -159,19 +158,6 @@ Transform:
   m_Father: {fileID: 3490976917157548710}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &8853021027401092665
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434821169876429705}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.015
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3046480631828489827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +196,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1867899383396426695}
-  - component: {fileID: 8090113286731984087}
   - component: {fileID: 4511030736683079602}
   m_Layer: 0
   m_Name: CourseKnob
@@ -233,19 +218,6 @@ Transform:
   m_Father: {fileID: 3490976917157548710}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &8090113286731984087
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3390338986010557873}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.015
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4511030736683079602
 MonoBehaviour:
   m_ObjectHideFlags: 0

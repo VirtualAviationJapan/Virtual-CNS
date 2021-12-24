@@ -772,7 +772,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5630828204231002829}
-  - component: {fileID: 4330629905434032770}
   - component: {fileID: 2636915768836682839}
   m_Layer: 0
   m_Name: CH
@@ -796,19 +795,6 @@ Transform:
   m_Father: {fileID: 2463213841261799368}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4330629905434032770
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5678265141842706266}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.015
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2636915768836682839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,7 +895,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8585407703875015937}
-  - component: {fileID: 3074735481512593035}
   - component: {fileID: 8165236940764748888}
   m_Layer: 0
   m_Name: RX
@@ -932,19 +917,6 @@ Transform:
   m_Father: {fileID: 2860909332150631414}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3074735481512593035
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7020218101073845190}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.01
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8165236940764748888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,7 +955,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4665865061661111427}
-  - component: {fileID: 4153773339897897230}
   - component: {fileID: 379357867903502125}
   m_Layer: 0
   m_Name: TX
@@ -1006,19 +977,6 @@ Transform:
   m_Father: {fileID: 2860909332150631414}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4153773339897897230
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7118412381702522438}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.01
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &379357867903502125
 MonoBehaviour:
   m_ObjectHideFlags: 0
