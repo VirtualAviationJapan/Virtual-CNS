@@ -23,6 +23,11 @@ namespace VirtualAviationJapan
 
         private void OnPostRender()
         {
+            SendCustomEventDelayedFrames(nameof(_LatePostRender), 1);
+        }
+
+        public void _LatePostRender()
+        {
             gameObject.SetActive(false);
 
             if (overrideRawImage != null)
