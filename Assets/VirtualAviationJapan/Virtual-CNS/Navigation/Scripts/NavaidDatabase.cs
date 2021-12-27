@@ -1,4 +1,4 @@
-using UdonSharp;
+﻿using UdonSharp;
 using UnityEngine;
 using VRC.Udon;
 using System;
@@ -12,7 +12,7 @@ using UdonSharpEditor;
 
 namespace MonacaAirfrafts
 {
-    [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class NavaidDatabase : UdonSharpBehaviour
     {
         public const uint NAVAID_NDB = 1;
