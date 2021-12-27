@@ -13,10 +13,11 @@ namespace VirtualAviationJapan
 
         public RawImage rawImage;
         public float range = 10;
-        public float updateInterval = 0.3f;
+        public int updateInterval = 10;
 
+        private float updateIntervalOffset;
         private new Camera camera;
-        private Vector2Int renderedTile;
+        private Vector2Int renderedTileIndex;
         private float TileSize => range * NM;
         private Transform origin;
         private Transform initialParent;
@@ -36,47 +37,78 @@ namespace VirtualAviationJapan
                 Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Enabled", gameObject);
             }
 
+            updateIntervalOffset = Random.Range(0, updateInterval);
+
             Render();
         }
 
         private void Update()
         {
-            var position = origin.position;
-            var tilePosition = new Vector2((position.x / TileSize) % 1.0f, (position.z / TileSize) % 1.0f);
+            if ((Time.frameCount + updateIntervalOffset) % updateInterval != 0) return;
 
-            if (GetTileIndex() != renderedTile) Render();
+            var worldPosition = origin.position;
+            var tileIndex = ToTileIndex(worldPosition);
 
-            transform.localPosition = Vector3.right * (position.x % TileSize) + Vector3.up * (position.z % TileSize);
+            if (tileIndex != renderedTileIndex) Render();
 
-            enabled = false;
-            SendCustomEventDelayedSeconds(nameof(_Enable), updateInterval);
+            var positionInTile = ToPositionInTile(worldPosition, tileIndex);
+
+            transform.localPosition = Vector3.right * positionInTile.x + Vector3.up * positionInTile.y;
         }
-
-        public void _Enable() => enabled = true;
 
         private void Render()
         {
-            var position = origin.position;
             transform.parent = null;
-            camera.transform.position = new Vector3(Mathf.FloorToInt(position.x / TileSize) * TileSize, position.y + 100.0f, Mathf.FloorToInt(position.z / TileSize) * TileSize);
+
+            var worldPosition = origin.position;
+            var tileIndex = ToTileIndex(worldPosition);
+            var tileCenter = GetTileCenter(tileIndex);
+            var wroldTileCenter = FromXZPosition(tileCenter);
+
+            camera.transform.position = wroldTileCenter + Vector3.up * 100.0f;
             camera.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
             camera.orthographicSize = TileSize;
             camera.enabled = true;
 
+            Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Rendering", gameObject);
         }
 
         private void OnPostRender()
         {
-            renderedTile = GetTileIndex();
-            camera.enabled = false;
-
+            renderedTileIndex = ToTileIndex(transform.position);
             transform.parent = initialParent;
+            SendCustomEventDelayedFrames(nameof(_DisableCamera), 1);
+
+            Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Rendered", gameObject);
         }
 
-        private Vector2Int GetTileIndex()
+        public void _DisableCamera()
         {
-            var position = origin.position;
-            return new Vector2Int(Mathf.FloorToInt(position.x / TileSize), Mathf.FloorToInt(position.y / TileSize));
+            camera.enabled = false;
+        }
+
+        private Vector2 ToXZPosition(Vector3 worldPosition)
+        {
+            return Vector2.right * worldPosition.x + Vector2.up * worldPosition.z;
+        }
+        private Vector3 FromXZPosition(Vector2 xzPosition)
+        {
+            return Vector3.right * xzPosition.x + Vector3.forward * xzPosition.y;
+        }
+
+        private Vector2Int ToTileIndex(Vector3 worldPosition)
+        {
+            return new Vector2Int(Mathf.RoundToInt(worldPosition.x / TileSize), Mathf.RoundToInt(worldPosition.y / TileSize));
+        }
+
+        private Vector2 GetTileCenter(Vector2Int tileIndex)
+        {
+            return ((Vector2)tileIndex) * TileSize;
+        }
+
+        private Vector2 ToPositionInTile(Vector3 worldPosition, Vector2Int tile)
+        {
+            return ToXZPosition(worldPosition) - GetTileCenter(tile);
         }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
