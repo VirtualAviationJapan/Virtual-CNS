@@ -1,4 +1,4 @@
-﻿
+
 using TMPro;
 using UdonSharp;
 using UnityEngine;
@@ -49,6 +49,8 @@ namespace MonacaAirfrafts
 
             var navaidDatabaseObj = GameObject.Find("NavaidDatabase");
             if (navaidDatabaseObj) magneticDeclination = (float)((UdonBehaviour)navaidDatabaseObj.GetComponent(typeof(UdonBehaviour))).GetProgramVariable("magneticDeclination");
+
+            Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized", gameObject);
         }
 
         private void Update()

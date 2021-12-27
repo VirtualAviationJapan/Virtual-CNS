@@ -17,6 +17,8 @@ namespace VirtualAviationJapan
 
             navSelector = GetComponentInParent<NavSelector>();
             navSelector._Subscribe(this);
+
+            Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized", gameObject);
         }
 
         public void _NavChanged()

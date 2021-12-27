@@ -1,4 +1,4 @@
-﻿using UdonSharp;
+using UdonSharp;
 using UnityEngine;
 using VRC.Udon;
 using System;
@@ -42,6 +42,11 @@ namespace MonacaAirfrafts
         public bool _IsVOR(int navaidIndex) => _HasCapability(navaidIndex, NAVAID_VOR);
         public bool _IsILS(int navaidIndex) => _HasCapability(navaidIndex, NAVAID_ILS);
         public bool _HasDME(int navaidIndex) => _HasCapability(navaidIndex, NAVAID_DME);
+
+        private void Start()
+        {
+            Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized", gameObject);
+        }
 
         private void Reset()
         {

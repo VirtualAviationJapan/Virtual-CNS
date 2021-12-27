@@ -61,6 +61,8 @@ namespace VirtualAviationJapan
 
             Index = defaultIndex;
             Course = defaultCourse;
+
+            Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Iniialized", gameObject);
         }
 
         public void _Subscribe(UdonSharpBehaviour subscriber)

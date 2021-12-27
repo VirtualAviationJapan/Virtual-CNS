@@ -32,6 +32,8 @@ namespace VirtualAviationJapan
 
                 camera = GetComponent<Camera>();
                 rawImage.texture = camera.targetTexture;
+
+                Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Enabled", gameObject);
             }
 
             Render();
