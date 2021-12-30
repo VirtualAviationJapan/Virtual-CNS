@@ -14,6 +14,7 @@ namespace VirtualAviationJapan
         private int updateIntervalOffset;
         private UdonSharpBehaviour airVehicle;
         private Transform origin;
+        private Rigidbody vehicleRigidbody;
         private float magneticDeclination;
         private void OnEnable()
         {
@@ -22,10 +23,10 @@ namespace VirtualAviationJapan
 
         private void Start()
         {
-            var root = GetComponentInParent<Rigidbody>();
+            vehicleRigidbody = GetComponentInParent<Rigidbody>();
 
-            origin = root.transform;
-            var entity = (UdonBehaviour)root.GetComponent(typeof(UdonBehaviour));
+            origin = vehicleRigidbody.transform;
+            var entity = (UdonBehaviour)vehicleRigidbody.GetComponent(typeof(UdonBehaviour));
             foreach (var ext in (UdonSharpBehaviour[])entity.GetProgramVariable("ExtensionUdonBehaviours"))
             {
                 if (ext.GetUdonTypeName() == "SaccAirVehicle")
@@ -62,13 +63,13 @@ namespace VirtualAviationJapan
             var airVel = (Vector3)airVehicle.GetProgramVariable("AirVel");
             if (gsText)
             {
-                gsText.text = $"<size=75%>GS</size>{(airVel + wind).magnitude * 1.94384f:##0}";
+                gsText.text = $"<size=75%>GS</size>{vehicleRigidbody.velocity.magnitude * 1.94384f:##0}";
             }
 
             if (tasText)
             {
                 var seaLevel = (float)airVehicle.GetProgramVariable("SeaLevel");
-                var tas = (origin.position.y - seaLevel) / 100 / 2 + Mathf.Abs(airVel.z) * 1.94384f;
+                var tas = (origin.position.y - seaLevel) / 100 / 2 + Mathf.Abs(Vector3.Dot(origin.forward, airVel)) * 1.94384f;
                 tasText.text = $"<size=75%>TAS</size>{tas:##0}";
             }
         }
