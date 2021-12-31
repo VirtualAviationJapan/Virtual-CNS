@@ -12,6 +12,8 @@ MonoImporter:
       type: 3}
   - aerodromeTemplate: {fileID: 5859124962298582621, guid: 4cfe402e47d35be488b0bd93ed197e62,
       type: 3}
+  - waypointRNAVTemplate: {fileID: 5859124962298582621, guid: 5047ec4ea1199744bb19237e97785f9d,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

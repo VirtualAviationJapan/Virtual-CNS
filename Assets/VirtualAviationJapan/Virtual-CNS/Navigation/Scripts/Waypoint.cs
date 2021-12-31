@@ -30,6 +30,7 @@ namespace MonacaAirfrafts
     {
         Waypoint,
         Aerodrome,
+        WaypointRNAV,
     }
 
 }

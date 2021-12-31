@@ -295,6 +295,9 @@ MonoBehaviour:
       - symbolName: initialRange
         objectReference: {fileID: 0}
         value: 10
+      - symbolName: magneticDeclination
+        objectReference: {fileID: 0}
+        value: 0
       - symbolName: uiRadius
         objectReference: {fileID: 0}
         value: 810
@@ -309,6 +312,10 @@ MonoBehaviour:
         objectReference: {fileID: 5859124962298582621, guid: 5c7752819fe50ab4d9173fc6bd485938,
           type: 3}
         value: Nav_Marker_VOR (UnityEngine.GameObject)
+      - symbolName: waypointRNAVTemplate
+        objectReference: {fileID: 5859124962298582621, guid: 5047ec4ea1199744bb19237e97785f9d,
+          type: 3}
+        value: Nav_Marker_Waypoint_RNAV (UnityEngine.GameObject)
       - symbolName: waypointTemplate
         objectReference: {fileID: 5859124962298582621, guid: 1c52303808d199c409b71d93e316a5ee,
           type: 3}

@@ -18,11 +18,12 @@ namespace MonacaAirfrafts
 
         public const uint WAYPOINT_WAYPOINT = 0;
         public const uint WAYPOINT_AERDROME = 1;
+        public const uint WAYPOINT_WAYPOINT_RNAV = 2;
 
         public float magneticDeclination = 0.0f;
         public float uiRadius = 810.0f;
         [Tooltip("NM")] public float initialRange = 10.0f;
-        public GameObject vorTemplate, vordmeTemplate, waypointTemplate, aerodromeTemplate;
+        public GameObject vorTemplate, vordmeTemplate, waypointTemplate, aerodromeTemplate, waypointRNAVTemplate;
         public float updateInterval = 10;
 
         private Transform[] navaidMarkers, waypointMarkers;
@@ -86,6 +87,8 @@ namespace MonacaAirfrafts
                     return waypointTemplate;
                 case WAYPOINT_AERDROME:
                     return aerodromeTemplate;
+                case WAYPOINT_WAYPOINT_RNAV:
+                    return waypointRNAVTemplate;
                 default:
                     return null;
             }

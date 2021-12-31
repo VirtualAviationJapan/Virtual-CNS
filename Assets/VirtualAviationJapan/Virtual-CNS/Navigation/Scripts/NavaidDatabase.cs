@@ -22,6 +22,7 @@ namespace MonacaAirfrafts
 
         public const uint WAYPOINT_WAYPOINT = 0;
         public const uint WAYPOINT_AERDROME = 1;
+        public const uint WAYPOINT_RNAV = 2;
 
         public float magneticDeclination = 0.0f;
 
