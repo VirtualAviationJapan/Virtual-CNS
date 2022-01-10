@@ -71,7 +71,7 @@ namespace VirtualAviationJapan
         public static void RegisterCallbacks()
         {
             EditorSceneManager.sceneSaving += (scene, _) => AutoIncrement(scene);
-            EditorSceneManager.sceneLoaded += (scene, _) => AutoIncrement(scene);
+            SceneManager.sceneLoaded += (scene, _) => AutoIncrement(scene);
         }
 #endif
     }

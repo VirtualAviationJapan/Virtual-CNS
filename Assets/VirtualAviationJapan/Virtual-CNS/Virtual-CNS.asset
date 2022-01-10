@@ -533,6 +533,73 @@ MonoBehaviour:
         objectReference: {fileID: 8300000, guid: 484bb1a0a09f3f644806c74d9c794a58,
           type: 3}
         value: MenuSelect (UnityEngine.AudioClip)
+    - udonInstance: {fileID: 8843556658552739927, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+        type: 3}
+      gameObjectName: NavKnob
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 549508131763715134, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+          type: 3}
+        value: Audio Source (UnityEngine.AudioSource)
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: I
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _IncrementIndex
+      - symbolName: eventTarget
+        objectReference: {fileID: 7714114272565546510, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
+          type: 3}
+        value: NavSelector (VRC.Udon.UdonBehaviour)
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+      - symbolName: inVR
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: knobAxis
+        objectReference: {fileID: 0}
+        value: (0.0, 0.0, 1.0)
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+      - symbolName: knobUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: _FastDecrementCourse
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: _FastIncrementCourse
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.015
+      - symbolName: switchSound
+        objectReference: {fileID: 8300000, guid: 484bb1a0a09f3f644806c74d9c794a58,
+          type: 3}
+        value: MenuSelect (UnityEngine.AudioClip)
     - udonInstance: {fileID: 7714114272565546510, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
         type: 3}
       gameObjectName: NavSelector

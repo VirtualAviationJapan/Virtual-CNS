@@ -117,13 +117,23 @@ namespace VirtualAviationJapan
             Course++;
             RequestSerialization();
         }
-
         public void _DecrementCourse()
         {
             _TakeOwnership();
             Course--;
             RequestSerialization();
         }
-
+        public void _FastIncrementCourse()
+        {
+            _TakeOwnership();
+            Course += courseStep;
+            RequestSerialization();
+        }
+        public void _FastDecrementCourse()
+        {
+            _TakeOwnership();
+            Course -= courseStep;
+            RequestSerialization();
+        }
     }
 }
