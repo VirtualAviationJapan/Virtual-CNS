@@ -19,6 +19,7 @@ namespace VirtualAviationJapan
         private void Start()
         {
             camera = GetComponent<Camera>();
+            camera.enabled = true;
         }
 
         private void OnPostRender()
