@@ -98,11 +98,11 @@ namespace VirtualAviationJapan
 
                 symbol.transform.localPosition = offsetRotation * (Vector3.right * position.x + Vector3.up * position.z) * scale;
                 symbol.transform.localRotation = rotation;
+                symbol.transform.localScale = Vector3.one * (groundSpeed < 5 ? 0.25f : 1.0f);
 
                 var owner = Networking.GetOwner(ownerDetector).displayName;
 
                 symbolText.transform.localRotation = Quaternion.Inverse(rotation);
-                symbolText.transform.localScale = Vector3.one * (groundSpeed < 5 ? 0.25f : 1.0f);
                 symbolText.text = $"{(string.IsNullOrEmpty(callsign) ? tailNumber : callsign)}\n{Mathf.FloorToInt(groundSpeed / 10.0f):00} {Mathf.FloorToInt(altitude / 100.0f):00}\n{owner}";
             }
             else SetActive(symbol, false);
@@ -130,12 +130,13 @@ namespace VirtualAviationJapan
         [InitializeOnLoadMethod]
         static public void RegisterCallback()
         {
+            SceneManager.sceneLoaded += (scene, __) => SetupAll(scene);
             EditorSceneManager.sceneSaving += (scene, __) => SetupAll(scene);
         }
 
         private static void SetupAll(Scene scene)
         {
-            foreach (var rader in scene.GetRootGameObjects().SelectMany(o => o.GetUdonSharpComponentsInChildren<ATCRadar>()))
+            foreach (var rader in scene.GetRootGameObjects().SelectMany(o => o.GetUdonSharpComponentsInChildren<ATCRadar>(true)))
             {
                 rader.Setup();
                 rader.ApplyProxyModifications();
