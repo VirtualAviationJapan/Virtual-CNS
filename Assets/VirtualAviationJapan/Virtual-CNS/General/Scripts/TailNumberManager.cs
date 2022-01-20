@@ -29,8 +29,20 @@ namespace VirtualAviationJapan
 
         private void Apply()
         {
-            foreach (var tn in GetComponentsInChildren<TailNumber>(true)) tn.Text = tailNumber;
-            foreach (var cs in GetComponentsInChildren<Callsign>(true)) cs.Text = callsign;
+            foreach (var tn in GetComponentsInChildren<TailNumber>(true))
+            {
+                tn.Text = tailNumber;
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+                EditorUtility.SetDirty(tn);
+#endif
+            }
+            foreach (var cs in GetComponentsInChildren<Callsign>(true))
+            {
+                cs.Text = callsign;
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+                EditorUtility.SetDirty(cs);
+#endif
+            }
         }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
@@ -41,29 +53,33 @@ namespace VirtualAviationJapan
             var replacements = scene.GetRootGameObjects()
                 .SelectMany(o => o.GetComponentsInChildren<TailNumberManager>())
                 .GroupBy(t => t.tailNumber)
-                .SelectMany(group => {
+                .SelectMany(group =>
+                {
                     return group.Select((manager, i) => (manager, numbers.Replace(group.Key, match => $"{int.Parse(match.Value) + i}", 1))).Skip(1);
                 });
             foreach (var (manager, tailNumber) in replacements)
             {
-                Debug.Log($"[{manager}] AutoIncrement: {manager.tailNumber} -> {tailNumber}");
+                Debug.Log($"[{manager}] AutoIncrement: {manager.tailNumber} -> {tailNumber}", manager);
                 manager.tailNumber = tailNumber;
                 manager.Apply();
+                EditorUtility.SetDirty(manager);
             }
 
             var callsignReplacements = scene.GetRootGameObjects()
                 .SelectMany(o => o.GetComponentsInChildren<TailNumberManager>())
                 .Where(t => !string.IsNullOrEmpty(t.callsign))
                 .GroupBy(t => t.callsign)
-                .SelectMany(group => {
+                .SelectMany(group =>
+                {
                     return group.Select((manager, i) => (manager, numbers.Replace(group.Key, match => $"{int.Parse(match.Value) + i}", 1))).Skip(1);
                 });
 
             foreach (var (manager, callsign) in callsignReplacements)
             {
-                Debug.Log($"[{manager}] AutoIncrement: {manager.callsign} -> {callsign}");
+                Debug.Log($"[{manager}] AutoIncrement: {manager.callsign} -> {callsign}", manager);
                 manager.callsign = callsign;
                 manager.Apply();
+                EditorUtility.SetDirty(manager);
             }
         }
 
