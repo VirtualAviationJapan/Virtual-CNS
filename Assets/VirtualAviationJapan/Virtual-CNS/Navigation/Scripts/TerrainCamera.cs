@@ -14,6 +14,7 @@ namespace VirtualAviationJapan
         public RawImage rawImage;
         public float range = 10;
         public int updateInterval = 10;
+        public float cameraAltitude = 1000.0f;
 
         private float updateIntervalOffset;
         private new Camera camera;
@@ -65,7 +66,7 @@ namespace VirtualAviationJapan
             var tileCenter = GetTileCenter(tileIndex);
             var wroldTileCenter = FromXZPosition(tileCenter);
 
-            camera.transform.position = wroldTileCenter + Vector3.up * 100.0f;
+            camera.transform.position = wroldTileCenter + Vector3.up * cameraAltitude;
             camera.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
             camera.orthographicSize = TileSize;
             camera.enabled = true;
