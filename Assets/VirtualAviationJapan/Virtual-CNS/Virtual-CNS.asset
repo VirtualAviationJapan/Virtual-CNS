@@ -613,3 +613,110 @@ MonoBehaviour:
       - symbolName: defaultIndex
         objectReference: {fileID: 0}
         value: 0
+  - prefabInstance: {fileID: 4443017957089848565, guid: 3fc509cd29c1ba7438eb58adad057312,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/TCAS/IVSI.prefab
+    udonVariables:
+    - udonInstance: {fileID: 4443017957089848331, guid: 3fc509cd29c1ba7438eb58adad057312,
+        type: 3}
+      gameObjectName: IVSI
+      variables:
+      - symbolName: smoothing
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: updateInterval
+        objectReference: {fileID: 0}
+        value: 9
+      - symbolName: verticalSpeedIndicatorTransform
+        objectReference: {fileID: 4443017958201499178, guid: 3fc509cd29c1ba7438eb58adad057312,
+          type: 3}
+        value: VS_Arrow (UnityEngine.RectTransform)
+  - prefabInstance: {fileID: 6937220872643601985, guid: 4b21d036316e5a54cacfa6884a914a08,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/TCAS/TCAS.prefab
+    udonVariables:
+    - udonInstance: {fileID: 6937220872643601987, guid: 4b21d036316e5a54cacfa6884a914a08,
+        type: 3}
+      gameObjectName: TCAS
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 4257289152103640264, guid: 4b21d036316e5a54cacfa6884a914a08,
+          type: 3}
+        value: AudioSource (UnityEngine.AudioSource)
+      - symbolName: cc
+        objectReference: {fileID: 8300000, guid: 2a4651b3bdd301e4ba897089225f5e33,
+          type: 3}
+        value: TCAS_CC_Clear_Of_Conflict (UnityEngine.AudioClip)
+      - symbolName: displayOrigin
+        objectReference: {fileID: 6937220870982303566, guid: 4b21d036316e5a54cacfa6884a914a08,
+          type: 3}
+        value: Traffics (UnityEngine.RectTransform)
+      - symbolName: displaySize
+        objectReference: {fileID: 0}
+        value: 1024
+      - symbolName: greenCircle
+        objectReference: {fileID: 6937220871489511573, guid: 4b21d036316e5a54cacfa6884a914a08,
+          type: 3}
+        value: VS_Green (UnityEngine.UI.Image)
+      - symbolName: layerMask
+        objectReference: {fileID: 0}
+        value: UnityEngine.LayerMask
+      - symbolName: raClimb
+        objectReference: {fileID: 8300000, guid: d776a7bb188dc1c4bbe97f36f28d8044,
+          type: 3}
+        value: TCAS_RA_Climb_Climb (UnityEngine.AudioClip)
+      - symbolName: raDescend
+        objectReference: {fileID: 8300000, guid: e1a7bc4d988074b468cb1e3d00cc72fa,
+          type: 3}
+        value: TCAS_RA_Decend_Decend (UnityEngine.AudioClip)
+      - symbolName: raIncreaseClimb
+        objectReference: {fileID: 8300000, guid: 00ba593d43b12a042aa5e27291ddf366,
+          type: 3}
+        value: TCAS_RA_Increase_Climb (UnityEngine.AudioClip)
+      - symbolName: raIncreaseDecend
+        objectReference: {fileID: 8300000, guid: 1c0290192a2f60041a0196d19a52bc4d,
+          type: 3}
+        value: TCAS_RA_Increase_Decend (UnityEngine.AudioClip)
+      - symbolName: range
+        objectReference: {fileID: 0}
+        value: 6
+      - symbolName: redCircle
+        objectReference: {fileID: 6937220872530714282, guid: 4b21d036316e5a54cacfa6884a914a08,
+          type: 3}
+        value: VS_Red (UnityEngine.UI.Image)
+      - symbolName: spriteImages
+        objectReference: {fileID: 0}
+        value: UnityEngine.Sprite[]
+      - symbolName: taTraffic
+        objectReference: {fileID: 8300000, guid: 6baaa61618e6c224796c78b4a8d5b929,
+          type: 3}
+        value: TCAS_TA_Traffic (UnityEngine.AudioClip)
+      - symbolName: trafficIconTemplate
+        objectReference: {fileID: 2870078186328356802, guid: 0c3557fda5ee7584c962994e3b118c59,
+          type: 3}
+        value: TrafficIcon (UnityEngine.GameObject)
+      - symbolName: updateInterval
+        objectReference: {fileID: 0}
+        value: 9
+  - prefabInstance: {fileID: 3546440120090630439, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/TCAS/TCAS_IVSI.prefab
+    udonVariables:
+    - udonInstance: {fileID: 9111187524535010034, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
+        type: 3}
+      gameObjectName: TCAS
+      variables:
+      - symbolName: spriteImages
+        objectReference: {fileID: 0}
+        value: UnityEngine.Sprite[]
+  - prefabInstance: {fileID: 4356322165659268482, guid: 0798d65dec87c6348968f5a44ac6bd82,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/TCAS/TCAS_IVSI+Body.prefab
+    udonVariables:
+    - udonInstance: {fileID: 8300925030759706199, guid: 0798d65dec87c6348968f5a44ac6bd82,
+        type: 3}
+      gameObjectName: TCAS
+      variables:
+      - symbolName: spriteImages
+        objectReference: {fileID: 0}
+        value: UnityEngine.Sprite[]
