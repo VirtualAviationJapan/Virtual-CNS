@@ -13,10 +13,11 @@ namespace VirtualAviationJapan
         private const float Knot = 1.94384f;
         private const float FPM = 196.85f;
         private const float dataTimeoutFrames = 2;
-        private const float minVerticalSpeed = 10; // feet/min;
+        private const float minVerticalSpeed = 5; // feet/min;
         private const float alertInterval = 3; // s
-        private const float minTrafficSpeed = 30; // m/s
-        private const float minDistance = 10; // m
+        private const float minTrafficSpeed = 1; // m/s
+        private const float minDistance = 20; // m
+        private const float minTrafficRadioAltitude = 360; // feet
 
         private const byte STATE_CLEAR = 0;
         private const byte STATE_PROXIMIATE = 1;
@@ -30,13 +31,18 @@ namespace VirtualAviationJapan
         public GameObject trafficIconTemplate;
         public Sprite[] spriteImages = {};
         public Transform displayOrigin;
-        public Image redCircle, greenCircle;
+        public GameObject vsClimb;
+        public GameObject vsDecend;
+        public GameObject vsIncreaseClimb;
+        public GameObject vsIncreaseDecend;
+        public float maxVerticalSpeed = 6000;
         public float range = 6;
         public float displaySize = 1024;
         public AudioSource audioSource;
         public AudioClip taTraffic, raClimb, raDescend, raIncreaseClimb, raIncreaseDecend, cc;
 
-        public LayerMask layerMask = 1 << 17;
+        public LayerMask trafficLayerMask = 1 << 17;
+        public LayerMask groundLayerMask = 1 << 0 | 1 << 4 | 1 << 11;
         public int updateInterval = 9;
 
         private int updateOffset;
@@ -52,10 +58,10 @@ namespace VirtualAviationJapan
             vehicleTransform = vehicleRigidbody ? vehicleRigidbody.transform : transform;
             vehicleId = vehicleTransform.gameObject.GetInstanceID();
 
-            SetVerticalSpeed(0, 0);
+            SetVerticalSpeed(null);
         }
 
-        private void Update()
+        public override void PostLateUpdate()
         {
             var frameCount = Time.frameCount;
             var time = Time.time;
@@ -67,7 +73,14 @@ namespace VirtualAviationJapan
             var vehicleHeading = Vector3.SignedAngle(Vector3.forward, vehicleTransform.forward, Vector3.up);
             var vehiclePosition = transform.position;
 
-            var colliders = Physics.OverlapSphere(vehicleTransform.position, 30 * NauticalMile, layerMask, QueryTriggerInteraction.Ignore);
+            RaycastHit hitInfo;
+            var hit = Physics.Raycast(vehicleTransform.position, Vector3.down, out hitInfo, 5000 / Feet, groundLayerMask, QueryTriggerInteraction.Collide);
+            var radioAltitude = hit ? hitInfo.distance * Feet : float.MaxValue;
+            if (radioAltitude < minTrafficRadioAltitude) return;
+
+            var groundAltitude = vehiclePosition.y * Feet - radioAltitude;
+
+            var colliders = Physics.OverlapSphere(vehicleTransform.position, 30 * NauticalMile, trafficLayerMask, QueryTriggerInteraction.Ignore);
             var currentState = STATE_CLEAR;
             foreach (var collider in colliders)
             {
@@ -79,7 +92,7 @@ namespace VirtualAviationJapan
                 var key = rigidbody.GetInstanceID();
                 if (key == vehicleId) continue;
 
-                var trafficState = UpdateTraffic(key, time, vehiclePosition, vehicleHeading, rigidbody.position);
+                var trafficState = UpdateTraffic(key, time, vehiclePosition, groundAltitude, vehicleHeading, rigidbody.position);
                 if (trafficState > currentState) currentState = trafficState;
             }
 
@@ -89,7 +102,7 @@ namespace VirtualAviationJapan
             else if (currentState == STATE_RA_DECEND) alertSound = raDescend;
             else if (currentState == STATE_RA_INCREASE_CLIMB) alertSound = raIncreaseClimb;
             else if (currentState == STATE_RA_INCREASE_DECEND) alertSound = raIncreaseDecend;
-            else if (currentState < STATE_TA) alertSound = cc;
+            else if (currentState < STATE_TA && prevState >= STATE_RA) alertSound = cc;
 
             var stateChanged = currentState != prevState;
             if (alertSound && stateChanged || currentState >= STATE_TA && (time - lastAlertedTime) >= alertInterval)
@@ -100,34 +113,37 @@ namespace VirtualAviationJapan
 
             if (stateChanged)
             {
-                if (currentState == STATE_RA_CLIMB)  SetVerticalSpeed(1500, 2000);
-                else if (currentState == STATE_RA_DECEND)  SetVerticalSpeed(-1500, -2000);
-                else if (currentState == STATE_RA_INCREASE_CLIMB)  SetVerticalSpeed(2500, 3000);
-                else if (currentState == STATE_RA_INCREASE_DECEND)  SetVerticalSpeed(-2500, -3000);
-                else SetVerticalSpeed(0, 0);
+                if (currentState == STATE_RA_CLIMB)  SetVerticalSpeed(vsClimb);
+                else if (currentState == STATE_RA_DECEND)  SetVerticalSpeed(vsDecend);
+                else if (currentState == STATE_RA_INCREASE_CLIMB)  SetVerticalSpeed(vsIncreaseClimb);
+                else if (currentState == STATE_RA_INCREASE_DECEND)  SetVerticalSpeed(vsIncreaseDecend);
+                else SetVerticalSpeed(null);
             }
             prevState = currentState;
         }
 
+        private readonly float Log2Scaler = 1.0f / Mathf.Log(2, 2);
+        private float ApplyLog2Curve(float value)
+        {
+            return Mathf.Log(Mathf.Abs(value) + 1, 2) * Log2Scaler * Mathf.Sign(value);
+        }
         private float GetFillAmount(float verticalSpeed)
         {
-            return Mathf.Clamp(Mathf.Log(Mathf.Abs(verticalSpeed / 1000) + 1, 2) / Mathf.Log(6 + 1, 2), 0, 1) * 0.5f + 0.5f;
+            return ApplyLog2Curve(Mathf.Clamp(verticalSpeed / maxVerticalSpeed, -1, 1)) * 0.5f + 0.5f;
         }
 
-        private void SetVerticalSpeed(float minimum, float maximum)
+        private void SetVerticalSpeed(GameObject o)
         {
-            if (!redCircle || !greenCircle) return;
-            var active = !Mathf.Approximately(minimum, 0) || !Mathf.Approximately(maximum, 0);
-            redCircle.gameObject.SetActive(active);
-            greenCircle.gameObject.SetActive(active);
-
-            if (active)
-            {
-                redCircle.fillAmount = GetFillAmount(minimum);
-                redCircle.fillClockwise = minimum >= 0;
-                greenCircle.fillAmount = GetFillAmount(maximum);
-                greenCircle.fillClockwise = maximum >= 0;
-            }
+            SetVerticalSpeedActive(o, vsClimb);
+            SetVerticalSpeedActive(o, vsDecend);
+            SetVerticalSpeedActive(o, vsIncreaseClimb);
+            SetVerticalSpeedActive(o, vsIncreaseDecend);
+        }
+        private void SetVerticalSpeedActive(GameObject activeObject, GameObject vsObject)
+        {
+            if (!vsObject) return;
+            var active = activeObject == vsObject;
+            if (active != vsObject.activeSelf) vsObject.SetActive(active);
         }
 
         #region HashTable
@@ -150,8 +166,10 @@ namespace VirtualAviationJapan
             return -1;
         }
 
-        private byte UpdateTraffic(int key, float time, Vector3 vehiclePosition, float vehicleHeading, Vector3 trafficPosition)
+        private byte UpdateTraffic(int key, float time, Vector3 vehiclePosition, float groundAltitude, float vehicleHeading, Vector3 trafficPosition)
         {
+            if ((trafficPosition.y - groundAltitude) * Feet < minTrafficRadioAltitude) return STATE_CLEAR;
+
             var trafficState = STATE_CLEAR;
             var index = GetIndex(key);
             if (index < 0) return trafficState;
@@ -189,7 +207,7 @@ namespace VirtualAviationJapan
                 var trafficIconObject = trafficIcon.gameObject;
                 if (!trafficIconObject.activeSelf) trafficIconObject.SetActive(true);
 
-                var scaledPosition = Quaternion.AngleAxis(-vehicleHeading, Vector3.up) * relativePosition * displaySize * 2.0f / (range * NauticalMile);
+                var scaledPosition = Quaternion.AngleAxis(-vehicleHeading, Vector3.up) * relativePosition * displaySize / (2.0f * range * NauticalMile);
                 trafficIcon.localPosition = Vector3.right * scaledPosition.x + Vector3.up * scaledPosition.z;
 
                 var notLevelFlight = verticalSpeed >= minVerticalSpeed || verticalSpeed <= -minVerticalSpeed;
@@ -206,7 +224,7 @@ namespace VirtualAviationJapan
                 if (estimatedTime >= 0 && distance > minDistance && trafficVelocity.magnitude > minTrafficSpeed)
                 {
                     if (estimatedTime < 10 && verticalDistance < 600) trafficState = vehicleId > key ? STATE_RA_INCREASE_CLIMB : STATE_RA_INCREASE_DECEND;
-                    else if (estimatedTime < 30 && verticalDistance < 600) trafficState = vehicleId < key ? STATE_RA_CLIMB : STATE_RA_DECEND;
+                    else if (estimatedTime < 30 && verticalDistance < 600) trafficState = vehicleId > key ? STATE_RA_CLIMB : STATE_RA_DECEND;
                     else if (estimatedTime < 48 && verticalDistance < 850) trafficState = STATE_TA;
                 }
                 if (trafficState == STATE_CLEAR && (estimatedTime >= 0 && estimatedTime < 48 || verticalDistance < 850)) trafficState = STATE_PROXIMIATE;

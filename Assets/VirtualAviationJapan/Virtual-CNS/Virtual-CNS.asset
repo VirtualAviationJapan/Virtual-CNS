@@ -74,6 +74,16 @@ MonoBehaviour:
       type: 3}
     prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/AirTrafficControl/ATCRadar_ASR+ASDE.prefab
     udonVariables:
+    - udonInstance: {fileID: 9092291196905367585, guid: 5b09fcaee5957164983595889fdf67ef,
+        type: 3}
+      gameObjectName: ATCRadar_ASR+ASDE
+      variables:
+      - symbolName: initialActive
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: initializeDelay
+        objectReference: {fileID: 0}
+        value: 0.5
     - udonInstance: {fileID: 7845521561972477997, guid: 5b09fcaee5957164983595889fdf67ef,
         type: 3}
       gameObjectName: Camera
@@ -97,18 +107,44 @@ MonoBehaviour:
       - symbolName: callsigns
         objectReference: {fileID: 0}
         value: System.String[]
+      - symbolName: headingOffset
+        objectReference: {fileID: 0}
+        value: 0
       - symbolName: ownerDetectors
         objectReference: {fileID: 0}
         value: UnityEngine.GameObject[]
+      - symbolName: raderOrigin
+        objectReference: {fileID: 2130582059318534274, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: RaderOrigin (UnityEngine.Transform)
       - symbolName: range
         objectReference: {fileID: 0}
         value: 1
+      - symbolName: seaLevel
+        objectReference: {fileID: 1638407169539037812, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: SeaLevel (UnityEngine.Transform)
+      - symbolName: symbolContainer
+        objectReference: {fileID: 755239392935150377, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Symbols (UnityEngine.RectTransform)
+      - symbolName: symbolTemplate
+        objectReference: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
+          type: 3}
+        value: Symbol (UnityEngine.GameObject)
       - symbolName: tailNumbers
         objectReference: {fileID: 0}
         value: System.String[]
+      - symbolName: terrainCamera
+        objectReference: {fileID: 7989822654318188880, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Camera (UnityEngine.Camera)
       - symbolName: traffics
         objectReference: {fileID: 0}
         value: UnityEngine.Transform[]
+      - symbolName: uiRadius
+        objectReference: {fileID: 0}
+        value: 512
     - udonInstance: {fileID: 8925708417393886356, guid: 5b09fcaee5957164983595889fdf67ef,
         type: 3}
       gameObjectName: Tower
@@ -116,15 +152,44 @@ MonoBehaviour:
       - symbolName: callsigns
         objectReference: {fileID: 0}
         value: System.String[]
+      - symbolName: headingOffset
+        objectReference: {fileID: 0}
+        value: 0
       - symbolName: ownerDetectors
         objectReference: {fileID: 0}
         value: UnityEngine.GameObject[]
+      - symbolName: raderOrigin
+        objectReference: {fileID: 1885638876106770133, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: RaderOrigin (UnityEngine.Transform)
+      - symbolName: range
+        objectReference: {fileID: 0}
+        value: 10
+      - symbolName: seaLevel
+        objectReference: {fileID: 1226862746114554915, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: SeaLevel (UnityEngine.Transform)
+      - symbolName: symbolContainer
+        objectReference: {fileID: 991176407718208894, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Symbols (UnityEngine.RectTransform)
+      - symbolName: symbolTemplate
+        objectReference: {fileID: 8689551074085981261, guid: ec369982e66c0784a8fd07db370a47e1,
+          type: 3}
+        value: Symbol (UnityEngine.GameObject)
       - symbolName: tailNumbers
         objectReference: {fileID: 0}
         value: System.String[]
+      - symbolName: terrainCamera
+        objectReference: {fileID: 7591932997096685319, guid: 5b09fcaee5957164983595889fdf67ef,
+          type: 3}
+        value: Camera (UnityEngine.Camera)
       - symbolName: traffics
         objectReference: {fileID: 0}
         value: UnityEngine.Transform[]
+      - symbolName: uiRadius
+        objectReference: {fileID: 0}
+        value: 512
   - prefabInstance: {fileID: 8860283968945522380, guid: bf3f9e72315f6574cbc57d5af7a927b9,
       type: 3}
     prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Communication/COM.prefab
@@ -219,6 +284,213 @@ MonoBehaviour:
       - symbolName: indicatorAsLocal
         objectReference: {fileID: 0}
         value: True
+      - symbolName: minDistance
+        objectReference: {fileID: 0}
+        value: 5
+  - prefabInstance: {fileID: 968385167625739463, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Communication/COM+ENC.prefab
+    udonVariables:
+    - udonInstance: {fileID: 4354635169393898360, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+        type: 3}
+      gameObjectName: AudioOrigin
+      variables:
+      - symbolName: animators
+        objectReference: {fileID: 0}
+        value: UnityEngine.Animator[]
+      - symbolName: exclusive
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: fastFrequencyStep
+        objectReference: {fileID: 0}
+        value: 2
+      - symbolName: frequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: '{0:#00.00#}'
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: frequencyText
+        objectReference: {fileID: 6899114721379352738, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+          type: 3}
+        value: COM Frequency (TMPro.TextMeshPro)
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 4
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: overrideFrequencyFormat
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: receiver
+        objectReference: {fileID: 3478607815518930841, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+          type: 3}
+        value: Receiver (VRC.Udon.UdonBehaviour)
+      - symbolName: transmitter
+        objectReference: {fileID: 6535781461230010860, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+          type: 3}
+        value: Transmitter (VRC.Udon.UdonBehaviour)
+    - udonInstance: {fileID: 8652532702798425731, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+        type: 3}
+      gameObjectName: COM+ENC
+      variables:
+      - symbolName: inVehicleOnly
+        objectReference: {fileID: 7938707176829915084, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+          type: 3}
+        value: InVehicleOnly (UnityEngine.Transform)
+      - symbolName: seatedPlayerOnly
+        objectReference: {fileID: 3326816253997617649, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+          type: 3}
+        value: PlayerOnly (UnityEngine.Transform)
+    - udonInstance: {fileID: 3478607815518930841, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+        type: 3}
+      gameObjectName: Receiver
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: frequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: indicator
+        objectReference: {fileID: 316081315625622464, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+          type: 3}
+        value: I_COM1 (UnityEngine.GameObject)
+      - symbolName: limitRange
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: maxRange
+        objectReference: {fileID: 0}
+        value: 20
+      - symbolName: sync
+        objectReference: {fileID: 0}
+        value: False
+    - udonInstance: {fileID: 6535781461230010860, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+        type: 3}
+      gameObjectName: Transmitter
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: deactivateDelay
+        objectReference: {fileID: 0}
+        value: 0
+      - symbolName: frequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: indicator
+        objectReference: {fileID: 2654318736617102019, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+          type: 3}
+        value: I_COM1_Mic (UnityEngine.GameObject)
+      - symbolName: indicatorAsLocal
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: minDistance
+        objectReference: {fileID: 0}
+        value: 5
+  - prefabInstance: {fileID: 2065681929752984301, guid: 75dd9956be075274a9d6b65d73622359,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Communication/COM+GMA.prefab
+    udonVariables:
+    - udonInstance: {fileID: 3293369884337837394, guid: 75dd9956be075274a9d6b65d73622359,
+        type: 3}
+      gameObjectName: AudioOrigin
+      variables:
+      - symbolName: animators
+        objectReference: {fileID: 0}
+        value: UnityEngine.Animator[]
+      - symbolName: exclusive
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: fastFrequencyStep
+        objectReference: {fileID: 0}
+        value: 2
+      - symbolName: frequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: '{0:#00.00#}'
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: frequencyText
+        objectReference: {fileID: 5648700999736780424, guid: 75dd9956be075274a9d6b65d73622359,
+          type: 3}
+        value: COM Frequency (TMPro.TextMeshPro)
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 4
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: overrideFrequencyFormat
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: receiver
+        objectReference: {fileID: 2422053176815329715, guid: 75dd9956be075274a9d6b65d73622359,
+          type: 3}
+        value: Receiver (VRC.Udon.UdonBehaviour)
+      - symbolName: transmitter
+        objectReference: {fileID: 5433981579699070918, guid: 75dd9956be075274a9d6b65d73622359,
+          type: 3}
+        value: Transmitter (VRC.Udon.UdonBehaviour)
+    - udonInstance: {fileID: 7622724238189283497, guid: 75dd9956be075274a9d6b65d73622359,
+        type: 3}
+      gameObjectName: COM+GMA
+      variables:
+      - symbolName: inVehicleOnly
+        objectReference: {fileID: 9219246623744518630, guid: 75dd9956be075274a9d6b65d73622359,
+          type: 3}
+        value: InVehicleOnly (UnityEngine.Transform)
+      - symbolName: seatedPlayerOnly
+        objectReference: {fileID: 4607633395052083163, guid: 75dd9956be075274a9d6b65d73622359,
+          type: 3}
+        value: PlayerOnly (UnityEngine.Transform)
+    - udonInstance: {fileID: 2422053176815329715, guid: 75dd9956be075274a9d6b65d73622359,
+        type: 3}
+      gameObjectName: Receiver
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: frequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: indicator
+        objectReference: {fileID: 4859357806225191941, guid: 75dd9956be075274a9d6b65d73622359,
+          type: 3}
+        value: COM1 (UnityEngine.GameObject)
+      - symbolName: limitRange
+        objectReference: {fileID: 0}
+        value: True
+      - symbolName: maxRange
+        objectReference: {fileID: 0}
+        value: 20
+      - symbolName: sync
+        objectReference: {fileID: 0}
+        value: False
+    - udonInstance: {fileID: 5433981579699070918, guid: 75dd9956be075274a9d6b65d73622359,
+        type: 3}
+      gameObjectName: Transmitter
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 0}
+        value: False
+      - symbolName: deactivateDelay
+        objectReference: {fileID: 0}
+        value: 0
+      - symbolName: frequency
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: indicator
+        objectReference: {fileID: 7249113624601892123, guid: 75dd9956be075274a9d6b65d73622359,
+          type: 3}
+        value: COM1 MIC (UnityEngine.GameObject)
       - symbolName: minDistance
         objectReference: {fileID: 0}
         value: 5
@@ -621,12 +893,18 @@ MonoBehaviour:
         type: 3}
       gameObjectName: IVSI
       variables:
+      - symbolName: maxAngle
+        objectReference: {fileID: 0}
+        value: 170
+      - symbolName: maxVerticalSpeed
+        objectReference: {fileID: 0}
+        value: 6000
       - symbolName: smoothing
         objectReference: {fileID: 0}
         value: 1
       - symbolName: updateInterval
         objectReference: {fileID: 0}
-        value: 9
+        value: 3
       - symbolName: verticalSpeedIndicatorTransform
         objectReference: {fileID: 4443017958201499178, guid: 3fc509cd29c1ba7438eb58adad057312,
           type: 3}
@@ -655,12 +933,17 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: 1024
       - symbolName: greenCircle
-        objectReference: {fileID: 6937220871489511573, guid: 4b21d036316e5a54cacfa6884a914a08,
-          type: 3}
-        value: VS_Green (UnityEngine.UI.Image)
+        objectReference: {fileID: 0}
+        value: null
+      - symbolName: groundLayerMask
+        objectReference: {fileID: 0}
+        value: UnityEngine.LayerMask
       - symbolName: layerMask
         objectReference: {fileID: 0}
         value: UnityEngine.LayerMask
+      - symbolName: maxVerticalSpeed
+        objectReference: {fileID: 0}
+        value: 6000
       - symbolName: raClimb
         objectReference: {fileID: 8300000, guid: d776a7bb188dc1c4bbe97f36f28d8044,
           type: 3}
@@ -681,20 +964,22 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: 6
       - symbolName: redCircle
-        objectReference: {fileID: 6937220872530714282, guid: 4b21d036316e5a54cacfa6884a914a08,
-          type: 3}
-        value: VS_Red (UnityEngine.UI.Image)
+        objectReference: {fileID: 0}
+        value: null
       - symbolName: spriteImages
         objectReference: {fileID: 0}
         value: UnityEngine.Sprite[]
       - symbolName: taTraffic
         objectReference: {fileID: 8300000, guid: 6baaa61618e6c224796c78b4a8d5b929,
           type: 3}
-        value: TCAS_TA_Traffic (UnityEngine.AudioClip)
+        value: TCAS_TA_Traffic_Traffic (UnityEngine.AudioClip)
       - symbolName: trafficIconTemplate
         objectReference: {fileID: 2870078186328356802, guid: 0c3557fda5ee7584c962994e3b118c59,
           type: 3}
         value: TrafficIcon (UnityEngine.GameObject)
+      - symbolName: trafficLayerMask
+        objectReference: {fileID: 0}
+        value: UnityEngine.LayerMask
       - symbolName: updateInterval
         objectReference: {fileID: 0}
         value: 9
@@ -702,21 +987,219 @@ MonoBehaviour:
       type: 3}
     prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/TCAS/TCAS_IVSI.prefab
     udonVariables:
+    - udonInstance: {fileID: 9111187524343723008, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
+        type: 3}
+      gameObjectName: IVSI
+      variables:
+      - symbolName: maxAngle
+        objectReference: {fileID: 0}
+        value: 170
+      - symbolName: maxVerticalSpeed
+        objectReference: {fileID: 0}
+        value: 6000
+      - symbolName: smoothing
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: updateInterval
+        objectReference: {fileID: 0}
+        value: 3
+      - symbolName: verticalSpeedIndicatorTransform
+        objectReference: {fileID: 9111187525178213921, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
+          type: 3}
+        value: VS_Arrow (UnityEngine.RectTransform)
     - udonInstance: {fileID: 9111187524535010034, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
         type: 3}
       gameObjectName: TCAS
       variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 2675253123709880441, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
+          type: 3}
+        value: AudioSource (UnityEngine.AudioSource)
+      - symbolName: cc
+        objectReference: {fileID: 8300000, guid: 2a4651b3bdd301e4ba897089225f5e33,
+          type: 3}
+        value: TCAS_CC_Clear_Of_Conflict (UnityEngine.AudioClip)
+      - symbolName: displayOrigin
+        objectReference: {fileID: 9111187524183317503, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
+          type: 3}
+        value: Traffics (UnityEngine.RectTransform)
+      - symbolName: displaySize
+        objectReference: {fileID: 0}
+        value: 1024
+      - symbolName: greenCircle
+        objectReference: {fileID: 0}
+        value: null
+      - symbolName: groundLayerMask
+        objectReference: {fileID: 0}
+        value: UnityEngine.LayerMask
+      - symbolName: layerMask
+        objectReference: {fileID: 0}
+        value: UnityEngine.LayerMask
+      - symbolName: maxVerticalSpeed
+        objectReference: {fileID: 0}
+        value: 6000
+      - symbolName: raClimb
+        objectReference: {fileID: 8300000, guid: d776a7bb188dc1c4bbe97f36f28d8044,
+          type: 3}
+        value: TCAS_RA_Climb_Climb (UnityEngine.AudioClip)
+      - symbolName: raDescend
+        objectReference: {fileID: 8300000, guid: e1a7bc4d988074b468cb1e3d00cc72fa,
+          type: 3}
+        value: TCAS_RA_Decend_Decend (UnityEngine.AudioClip)
+      - symbolName: raIncreaseClimb
+        objectReference: {fileID: 8300000, guid: 00ba593d43b12a042aa5e27291ddf366,
+          type: 3}
+        value: TCAS_RA_Increase_Climb (UnityEngine.AudioClip)
+      - symbolName: raIncreaseDecend
+        objectReference: {fileID: 8300000, guid: 1c0290192a2f60041a0196d19a52bc4d,
+          type: 3}
+        value: TCAS_RA_Increase_Decend (UnityEngine.AudioClip)
+      - symbolName: range
+        objectReference: {fileID: 0}
+        value: 6
+      - symbolName: redCircle
+        objectReference: {fileID: 0}
+        value: null
       - symbolName: spriteImages
         objectReference: {fileID: 0}
         value: UnityEngine.Sprite[]
-  - prefabInstance: {fileID: 4356322165659268482, guid: 0798d65dec87c6348968f5a44ac6bd82,
+      - symbolName: taTraffic
+        objectReference: {fileID: 8300000, guid: 6baaa61618e6c224796c78b4a8d5b929,
+          type: 3}
+        value: TCAS_TA_Traffic_Traffic (UnityEngine.AudioClip)
+      - symbolName: trafficIconTemplate
+        objectReference: {fileID: 2870078186328356802, guid: 0c3557fda5ee7584c962994e3b118c59,
+          type: 3}
+        value: TrafficIcon (UnityEngine.GameObject)
+      - symbolName: trafficLayerMask
+        objectReference: {fileID: 0}
+        value: UnityEngine.LayerMask
+      - symbolName: updateInterval
+        objectReference: {fileID: 0}
+        value: 9
+      - symbolName: vsClimb
+        objectReference: {fileID: 8009716014831834536, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
+          type: 3}
+        value: Climb (UnityEngine.GameObject)
+      - symbolName: vsDecend
+        objectReference: {fileID: 1982192061477796665, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
+          type: 3}
+        value: Decend (UnityEngine.GameObject)
+      - symbolName: vsIncreaseClimb
+        objectReference: {fileID: 4539743566402059138, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
+          type: 3}
+        value: IncreaseClimb (UnityEngine.GameObject)
+      - symbolName: vsIncreaseDecend
+        objectReference: {fileID: 3253934519127973690, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
+          type: 3}
+        value: IncreaseDecend (UnityEngine.GameObject)
+  - prefabInstance: {fileID: 6185517923078998787, guid: 0798d65dec87c6348968f5a44ac6bd82,
       type: 3}
     prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/TCAS/TCAS_IVSI+Body.prefab
     udonVariables:
-    - udonInstance: {fileID: 8300925030759706199, guid: 0798d65dec87c6348968f5a44ac6bd82,
+    - udonInstance: {fileID: 7015844962892972801, guid: 0798d65dec87c6348968f5a44ac6bd82,
+        type: 3}
+      gameObjectName: IVSI
+      variables:
+      - symbolName: maxAngle
+        objectReference: {fileID: 0}
+        value: 170
+      - symbolName: maxVerticalSpeed
+        objectReference: {fileID: 0}
+        value: 6000
+      - symbolName: smoothing
+        objectReference: {fileID: 0}
+        value: 1
+      - symbolName: updateInterval
+        objectReference: {fileID: 0}
+        value: 3
+      - symbolName: verticalSpeedIndicatorTransform
+        objectReference: {fileID: 7015844961648029984, guid: 0798d65dec87c6348968f5a44ac6bd82,
+          type: 3}
+        value: VS_Arrow (UnityEngine.RectTransform)
+    - udonInstance: {fileID: 7015844961004828147, guid: 0798d65dec87c6348968f5a44ac6bd82,
         type: 3}
       gameObjectName: TCAS
       variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 4182807899291139960, guid: 0798d65dec87c6348968f5a44ac6bd82,
+          type: 3}
+        value: AudioSource (UnityEngine.AudioSource)
+      - symbolName: cc
+        objectReference: {fileID: 8300000, guid: 2a4651b3bdd301e4ba897089225f5e33,
+          type: 3}
+        value: TCAS_CC_Clear_Of_Conflict (UnityEngine.AudioClip)
+      - symbolName: displayOrigin
+        objectReference: {fileID: 7015844962799693054, guid: 0798d65dec87c6348968f5a44ac6bd82,
+          type: 3}
+        value: Traffics (UnityEngine.RectTransform)
+      - symbolName: displaySize
+        objectReference: {fileID: 0}
+        value: 1024
+      - symbolName: greenCircle
+        objectReference: {fileID: 0}
+        value: null
+      - symbolName: groundLayerMask
+        objectReference: {fileID: 0}
+        value: UnityEngine.LayerMask
+      - symbolName: layerMask
+        objectReference: {fileID: 0}
+        value: UnityEngine.LayerMask
+      - symbolName: maxVerticalSpeed
+        objectReference: {fileID: 0}
+        value: 6000
+      - symbolName: raClimb
+        objectReference: {fileID: 8300000, guid: d776a7bb188dc1c4bbe97f36f28d8044,
+          type: 3}
+        value: TCAS_RA_Climb_Climb (UnityEngine.AudioClip)
+      - symbolName: raDescend
+        objectReference: {fileID: 8300000, guid: e1a7bc4d988074b468cb1e3d00cc72fa,
+          type: 3}
+        value: TCAS_RA_Decend_Decend (UnityEngine.AudioClip)
+      - symbolName: raIncreaseClimb
+        objectReference: {fileID: 8300000, guid: 00ba593d43b12a042aa5e27291ddf366,
+          type: 3}
+        value: TCAS_RA_Increase_Climb (UnityEngine.AudioClip)
+      - symbolName: raIncreaseDecend
+        objectReference: {fileID: 8300000, guid: 1c0290192a2f60041a0196d19a52bc4d,
+          type: 3}
+        value: TCAS_RA_Increase_Decend (UnityEngine.AudioClip)
+      - symbolName: range
+        objectReference: {fileID: 0}
+        value: 6
+      - symbolName: redCircle
+        objectReference: {fileID: 0}
+        value: null
       - symbolName: spriteImages
         objectReference: {fileID: 0}
         value: UnityEngine.Sprite[]
+      - symbolName: taTraffic
+        objectReference: {fileID: 8300000, guid: 6baaa61618e6c224796c78b4a8d5b929,
+          type: 3}
+        value: TCAS_TA_Traffic_Traffic (UnityEngine.AudioClip)
+      - symbolName: trafficIconTemplate
+        objectReference: {fileID: 2870078186328356802, guid: 0c3557fda5ee7584c962994e3b118c59,
+          type: 3}
+        value: TrafficIcon (UnityEngine.GameObject)
+      - symbolName: trafficLayerMask
+        objectReference: {fileID: 0}
+        value: UnityEngine.LayerMask
+      - symbolName: updateInterval
+        objectReference: {fileID: 0}
+        value: 9
+      - symbolName: vsClimb
+        objectReference: {fileID: 8071580087000392361, guid: 0798d65dec87c6348968f5a44ac6bd82,
+          type: 3}
+        value: Climb (UnityEngine.GameObject)
+      - symbolName: vsDecend
+        objectReference: {fileID: 337224855993895992, guid: 0798d65dec87c6348968f5a44ac6bd82,
+          type: 3}
+        value: Decend (UnityEngine.GameObject)
+      - symbolName: vsIncreaseClimb
+        objectReference: {fileID: 2318317713082748035, guid: 0798d65dec87c6348968f5a44ac6bd82,
+          type: 3}
+        value: IncreaseClimb (UnityEngine.GameObject)
+      - symbolName: vsIncreaseDecend
+        objectReference: {fileID: 3604134389569054779, guid: 0798d65dec87c6348968f5a44ac6bd82,
+          type: 3}
+        value: IncreaseDecend (UnityEngine.GameObject)

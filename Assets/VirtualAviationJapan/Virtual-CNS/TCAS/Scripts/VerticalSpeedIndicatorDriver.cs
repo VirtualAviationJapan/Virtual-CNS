@@ -13,6 +13,8 @@ namespace VirtualAviationJapan
         private const float FPM = 196.85f;
 
         public Transform verticalSpeedIndicatorTransform;
+        public float maxVerticalSpeed = 6000;
+        public float maxAngle = 170;
         public float smoothing = 1;
         public int updateInterval = 9;
         private Rigidbody vehicleRigidbody;
@@ -28,7 +30,7 @@ namespace VirtualAviationJapan
             updateOffset = UnityEngine.Random.Range(0, updateInterval);
             vehicleRigidbody = GetComponentInParent<Rigidbody>();
             vehicleTransform = vehicleRigidbody ? vehicleRigidbody.transform : transform;
-            angleScaler = 170.0f / Mathf.Log(6 + 1, 2);
+            angleScaler = 1.0f / Mathf.Log(2, 2);
         }
 
         private void Update()
@@ -41,10 +43,16 @@ namespace VirtualAviationJapan
             var vehicleAltitude = vehicleTransform.position.y;
 
             verticalSpeed = Mathf.Lerp(verticalSpeed, (vehicleAltitude - prevAltitude) * FPM / deltaTime, deltaTime / smoothing);
-            verticalSpeedIndicatorTransform.localRotation = Quaternion.AngleAxis(Mathf.Clamp(Mathf.Log(Mathf.Abs(verticalSpeed / 1000) + 1, 2) * angleScaler, 0, 170) * Mathf.Sign(verticalSpeed), -Vector3.forward);
+            verticalSpeedIndicatorTransform.localRotation = Quaternion.AngleAxis(ApplyLog2Curve(Mathf.Clamp(verticalSpeed / maxVerticalSpeed, -1, 1)) * maxAngle, -Vector3.forward);
 
             lastUpdateTime = time;
             prevAltitude = vehicleAltitude;
+        }
+
+        private readonly float Log2Scaler = 1.0f / Mathf.Log(2, 2);
+        private float ApplyLog2Curve(float value)
+        {
+            return Mathf.Log(Mathf.Abs(value) + 1, 2) * Log2Scaler * Mathf.Sign(value);
         }
     }
 }
