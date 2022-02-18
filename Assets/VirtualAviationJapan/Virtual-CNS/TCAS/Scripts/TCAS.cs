@@ -2,6 +2,7 @@ using TMPro;
 using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
+using VRC.SDKBase;
 
 namespace VirtualAviationJapan
 {
@@ -10,13 +11,12 @@ namespace VirtualAviationJapan
     {
         private const float NauticalMile  = 1852;
         private const float Feet = 3.28084f;
-        private const float Knot = 1.94384f;
         private const float FPM = 196.85f;
         private const float dataTimeoutFrames = 2;
-        private const float minVerticalSpeed = 5; // feet/min;
+        private const float minVerticalSpeed = 10; // feet/min;
         private const float alertInterval = 3; // s
         private const float minTrafficSpeed = 1; // m/s
-        private const float minDistance = 20; // m
+        private const float minDistance = 5; // m
         private const float minTrafficRadioAltitude = 360; // feet
 
         private const byte STATE_CLEAR = 0;
@@ -29,7 +29,6 @@ namespace VirtualAviationJapan
         private const byte STATE_RA_INCREASE_DECEND = 24;
 
         public GameObject trafficIconTemplate;
-        public Sprite[] spriteImages = {};
         public Transform displayOrigin;
         public GameObject vsClimb;
         public GameObject vsDecend;
@@ -56,7 +55,7 @@ namespace VirtualAviationJapan
             updateOffset = UnityEngine.Random.Range(0, updateInterval);
             vehicleRigidbody = GetComponentInParent<Rigidbody>();
             vehicleTransform = vehicleRigidbody ? vehicleRigidbody.transform : transform;
-            vehicleId = vehicleTransform.gameObject.GetInstanceID();
+            vehicleId = $"{Networking.LocalPlayer.playerId}:{vehicleTransform.gameObject.name}".GetHashCode();
 
             SetVerticalSpeed(null);
         }
@@ -82,14 +81,18 @@ namespace VirtualAviationJapan
 
             var colliders = Physics.OverlapSphere(vehicleTransform.position, 30 * NauticalMile, trafficLayerMask, QueryTriggerInteraction.Ignore);
             var currentState = STATE_CLEAR;
+
+            vehicleId = $"{Networking.GetOwner(vehicleTransform.gameObject).playerId}:{vehicleTransform.gameObject.name}".GetHashCode();
+
             foreach (var collider in colliders)
             {
                 if (!collider) continue;
 
                 var rigidbody = collider.attachedRigidbody;
-                if (!rigidbody) continue;
+                if (!rigidbody || rigidbody.isKinematic) continue;
 
-                var key = rigidbody.GetInstanceID();
+                var trafficObject = rigidbody.gameObject;
+                var key =  $"{Networking.GetOwner(trafficObject).playerId}:{trafficObject.name}".GetHashCode();
                 if (key == vehicleId) continue;
 
                 var trafficState = UpdateTraffic(key, time, vehiclePosition, groundAltitude, vehicleHeading, rigidbody.position);
@@ -179,6 +182,8 @@ namespace VirtualAviationJapan
                 var prevTrafficPosition = trafficPositions[index];
                 var deltaTime = time - trafficUpdatedTimes[index];
 
+                if (deltaTime < Time.fixedDeltaTime) return trafficState;
+
                 var relativePosition = trafficPosition - vehiclePosition;
                 var relativeFL = Mathf.CeilToInt(relativePosition.y * Feet / 100);
 
@@ -218,7 +223,7 @@ namespace VirtualAviationJapan
                 trafficIconAltitudeTexts[index].text = $"{relativeFL:+00;-00;}";
                 var trafficIconAltitudeTextTransform = trafficIconAltitudeTexts[index].transform;
                 var trafficIconAltitudeTextPosition = trafficIconAltitudeTextTransform.localPosition;
-                trafficIconAltitudeTextTransform.localPosition = Vector3.ProjectOnPlane(trafficIconAltitudeTextPosition, Vector3.up) + Vector3.up * Mathf.Abs(Vector3.Dot(trafficIconAltitudeTextPosition, Vector3.up)) * Mathf.Sign(relativeFL);
+                trafficIconAltitudeTextTransform.localPosition = Vector3.ProjectOnPlane(trafficIconAltitudeTextPosition, Vector3.up) + Vector3.up * Mathf.Abs(Vector3.Dot(trafficIconAltitudeTextPosition, Vector3.up)) * Mathf.Sign(-relativeFL);
 
                 var verticalDistance = Mathf.Abs(relativeFL * 100);
                 if (estimatedTime >= 0 && distance > minDistance && trafficVelocity.magnitude > minTrafficSpeed)
@@ -231,11 +236,10 @@ namespace VirtualAviationJapan
 
                 if (trafficState != trafficStatus[index])
                 {
-                    var trafficIconImage = trafficIconImages[index];
-                    if (trafficState >= STATE_RA) trafficIconImage.sprite = spriteImages[3];
-                    else if (trafficState >= STATE_TA) trafficIconImage.sprite = spriteImages[2];
-                    else if (trafficState == STATE_PROXIMIATE) trafficIconImage.sprite = spriteImages[1];
-                    else trafficIconImage.sprite = spriteImages[0];
+                    if (trafficState >= STATE_RA) SetTrafficIconSymbol(trafficIcon, "RA");
+                    else if (trafficState >= STATE_TA) SetTrafficIconSymbol(trafficIcon, "TA");
+                    else if (trafficState >= STATE_PROXIMIATE) SetTrafficIconSymbol(trafficIcon, "PROXIMIATE");
+                    else SetTrafficIconSymbol(trafficIcon, "OTHER");
                 }
 
                 trafficDistances[index] = distance;
@@ -247,6 +251,22 @@ namespace VirtualAviationJapan
             trafficUpdatedTimes[index] = time;
 
             return trafficState;
+        }
+
+        private readonly string[] TrafficIconSymbolNames = {
+            "RA",
+            "TA",
+            "PROXIMIATE",
+            "OTHER",
+        };
+        private void SetTrafficIconSymbol(Transform trafficIcon, string symbolName)
+        {
+            foreach (var n in TrafficIconSymbolNames)
+            {
+                var s = trafficIcon.Find(n);
+                if (!s) continue;
+                s.gameObject.SetActive(n == symbolName);
+            }
         }
 
         private void TableGC(int index, float time)
