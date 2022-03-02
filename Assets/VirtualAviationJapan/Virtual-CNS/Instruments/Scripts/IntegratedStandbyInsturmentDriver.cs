@@ -39,6 +39,13 @@ namespace MonacaAircrafts
         private int updateIntervalOffset;
         private UdonSharpBehaviour vehicle;
 
+        private void Start()
+        {
+#if UNITY_ANDROID
+            updateInterval *= 2;
+#endif
+        }
+
         private void OnEnable()
         {
             if (!origin)
