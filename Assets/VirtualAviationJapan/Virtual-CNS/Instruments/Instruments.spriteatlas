@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TCAS_Sprites
+  m_Name: Instruments
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -54,32 +54,44 @@ SpriteAtlas:
       enableTightPacking: 0
     variantMultiplier: 1
     packables:
-    - {fileID: 102900000, guid: f62c4901953af0d4db8c38371deeefb6, type: 3}
+    - {fileID: 102900000, guid: 24db2bfd248980e42abb3d23955d786c, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 91965c40681fe094b91a6fd32989efd0, type: 3}
-  - {fileID: 21300000, guid: e7e198c0654f2f141b98b62ffa58c47a, type: 3}
-  - {fileID: 21300000, guid: 4940029157a27604facf7f9940957006, type: 3}
-  - {fileID: 21300000, guid: 72de6702448872049810557acff3f16d, type: 3}
-  - {fileID: 21300000, guid: 4e1c78f427709724683760af36313e0b, type: 3}
-  - {fileID: 21300000, guid: feff93f859dc69c4e89b11fb287189ce, type: 3}
-  - {fileID: 21300000, guid: 57230f79ec8724a49af3fde023a95389, type: 3}
-  - {fileID: 21300000, guid: fb0f09fcd33be2442bad44280f877d7c, type: 3}
-  - {fileID: 21300000, guid: e5dfa09de16f7e443a84e7105c2f8d74, type: 3}
-  - {fileID: 21300000, guid: 118117ad54caadc43a9bb1733717f0f8, type: 3}
-  - {fileID: 21300000, guid: e66d72de6c9fd0645999a572ef6d5caf, type: 3}
+  - {fileID: 21300000, guid: 936125c007ab61a4baa22a9ddcf06031, type: 3}
+  - {fileID: 21300000, guid: 10bb55c07fcc7e94fa11612495cb0e12, type: 3}
+  - {fileID: 21300000, guid: 11a03611be3615f42a07089d60a1e2d8, type: 3}
+  - {fileID: 21300000, guid: 4db4ec820db399444a31233b953a9176, type: 3}
+  - {fileID: 21300000, guid: cf96e774dc953354aabd6e110b303454, type: 3}
+  - {fileID: 21300000, guid: d9df76d45a6969a42958332fe631ffc3, type: 3}
+  - {fileID: 21300000, guid: 875c64e4914f08d4183e6034bb3882c8, type: 3}
+  - {fileID: 21300000, guid: bff77106cbdb9d3409a733a0610cad98, type: 3}
+  - {fileID: 21300000, guid: 30e3a3b7b6c3e2640a34712b806fd6e3, type: 3}
+  - {fileID: 21300000, guid: c2129f68c9698534f8b5498930221cb5, type: 3}
+  - {fileID: 21300000, guid: 84241d88a83513a48ad95972590ed8c2, type: 3}
+  - {fileID: 21300000, guid: 883b2eba75f8afd478e71517b8254e0a, type: 3}
+  - {fileID: 21300000, guid: 188848dd58b953941b56cc3543fd2ad9, type: 3}
+  - {fileID: 21300000, guid: eb9730fdf5f7ab64c8a3f8180b87d54d, type: 3}
+  - {fileID: 21300000, guid: 59f19e9e22e4f66428a57f17c5d95f2c, type: 3}
+  - {fileID: 21300000, guid: e2df291f45855064ab1ab32ff073640e, type: 3}
+  - {fileID: 21300000, guid: 9ad2f9afcea40844ea0259a9ce1c8113, type: 3}
   m_PackedSpriteNamesToIndex:
-  - TCAS_VS_Circle
-  - TCAS_2NM_Circle
-  - TCAS_VS_Trend_Arrow
-  - TCAS_Frame
-  - TCAS_Intruder_RA
-  - TCAS_Intruder_Proximate
-  - TCAS_Intruder_TA
-  - IVSI
-  - TCAS_Center
-  - IVSI_Arrow
-  - TCAS_Intruder_Other
-  m_Tag: TCAS_Sprites
+  - ISI_Pitch
+  - ISI_Roll
+  - ND_Waypoint
+  - ISI_ASI
+  - ND_VOR
+  - ND_VORDME
+  - ISI_BG
+  - ISI_HDG
+  - Bearing_B_Head
+  - ISI_FG
+  - Bearing_B_Tail
+  - WindDirection
+  - ND_Aerodrome
+  - ISI_ALT
+  - Bearing_A_Tail
+  - Bearing_A_Head
+  - ND_Waypoint_RNAV
+  m_Tag: Instruments
   m_IsVariant: 0
