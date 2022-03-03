@@ -24,13 +24,13 @@ namespace MonacaAirfrafts
         public float uiRadius = 810.0f;
         [Tooltip("NM")] public float initialRange = 10.0f;
         public GameObject vorTemplate, vordmeTemplate, waypointTemplate, aerodromeTemplate, waypointRNAVTemplate;
-        public float updateInterval = 10;
+        public int updateInterval = 9;
 
         private Transform[] navaidMarkers, waypointMarkers;
         private NavaidDatabase database;
         private float scale;
 
-#region Unity Events
+        #region Unity Events
         private void Start()
         {
             gameObject.SetActive(false);
@@ -52,11 +52,21 @@ namespace MonacaAirfrafts
             if (navaidDatabaseObj) magneticDeclination = (float)((UdonBehaviour)navaidDatabaseObj.GetComponent(typeof(UdonBehaviour))).GetProgramVariable("magneticDeclination");
 
             Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized", gameObject);
+
+#if UNITY_ANDROID
+            updateInterval *= 2;
+#endif
+        }
+
+        private int updateIntervalOffset;
+        private void OnEnable()
+        {
+            updateIntervalOffset = UnityEngine.Random.Range(0, updateInterval);
         }
 
         private void Update()
         {
-            if (Time.frameCount % updateInterval != 0) return;
+            if ((Time.frameCount + updateIntervalOffset) % updateInterval != 0) return;
             UpdateTransform(scale);
         }
 
@@ -67,7 +77,7 @@ namespace MonacaAirfrafts
             InitializeMarkerPositions(waypointMarkers, database.waypointTransforms, scale);
             UpdateTransform(scale);
         }
-#endregion
+        #endregion
         private GameObject GetNavaidTemplate(uint capability)
         {
             if ((capability & NAVAID_ILS) != 0) return null;
