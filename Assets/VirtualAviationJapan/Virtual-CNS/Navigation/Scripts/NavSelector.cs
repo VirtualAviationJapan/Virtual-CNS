@@ -52,6 +52,7 @@ namespace VirtualAviationJapan
         public Transform GlideSlopeTransform => database.glideSlopeTransforms[Index];
         public Transform DMETransform => database.dmeTransforms[Index];
         public bool IsILS => database._IsILS(Index);
+        public bool IsVOR => database._IsVOR(Index);
         public bool HasDME => database._HasDME(Index);
 
         private void Start()
