@@ -42,32 +42,41 @@ namespace VirtualAviationJapan
 
         public LayerMask trafficLayerMask = 1 << 17;
         public LayerMask groundLayerMask = 1 << 0 | 1 << 4 | 1 << 11;
-        public int updateInterval = 9;
+        public float updateIntervalSeconds = 0.5f;
 
-        private int updateOffset;
         private int vehicleId;
         private Rigidbody vehicleRigidbody;
         private Transform vehicleTransform;
         private float lastAlertedTime;
         private byte prevState;
-        private void Start()
+        private bool initialized;
+        private void _Awake()
         {
-            updateOffset = UnityEngine.Random.Range(0, updateInterval);
             vehicleRigidbody = GetComponentInParent<Rigidbody>();
             vehicleTransform = vehicleRigidbody ? vehicleRigidbody.transform : transform;
             vehicleId = $"{Networking.LocalPlayer.playerId}:{vehicleTransform.gameObject.name}".GetHashCode();
 
             SetVerticalSpeed(null);
+
+            initialized = true;
         }
 
-        public override void PostLateUpdate()
+        private void OnEnable()
         {
-            var frameCount = Time.frameCount;
+            if (!initialized) _Awake();
+
+            SendCustomEventDelayedSeconds(nameof(_ThinLateUpdate), Random.Range(0, updateIntervalSeconds));
+        }
+
+        private int gcIndex;
+        public void _ThinLateUpdate()
+        {
+            if (!gameObject.activeInHierarchy) return;
+
             var time = Time.time;
 
-            TableGC(frameCount % TableSize, time);
-
-            if ((frameCount + updateOffset) % updateInterval != 0) return;
+            TableGC(gcIndex, time);
+            gcIndex = (gcIndex + 1) % TableSize;
 
             var vehicleHeading = Vector3.SignedAngle(Vector3.forward, vehicleTransform.forward, Vector3.up);
             var vehiclePosition = transform.position;
@@ -123,6 +132,8 @@ namespace VirtualAviationJapan
                 else SetVerticalSpeed(null);
             }
             prevState = currentState;
+
+            SendCustomEventDelayedSeconds(nameof(_ThinLateUpdate), updateIntervalSeconds);
         }
 
         private readonly float Log2Scaler = 1.0f / Mathf.Log(2, 2);
@@ -272,7 +283,7 @@ namespace VirtualAviationJapan
         private void TableGC(int index, float time)
         {
             if (trafficKeys[index] == -1) return;
-            if (time - trafficUpdatedTimes[index] > dataTimeoutFrames * updateInterval * Time.fixedDeltaTime)
+            if (time - trafficUpdatedTimes[index] > dataTimeoutFrames * updateIntervalSeconds * Time.fixedDeltaTime)
             {
                 trafficKeys[index] = -1;
                 var iconTransform = trafficIcons[index];
