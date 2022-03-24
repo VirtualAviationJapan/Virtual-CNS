@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9c7ea5104af768b478f74041e33137d5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - cdiRenderer: {instanceID: 0}
+  - cdiMaterial: {fileID: 2100000, guid: 77e21347104acff49ba00df705e1fa88, type: 2}
+  - dmeRenderer: {instanceID: 0}
+  - dmeMaterial: {fileID: 2100000, guid: 9fe4c5c979ac2ed4b840be0c34c427ed, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
