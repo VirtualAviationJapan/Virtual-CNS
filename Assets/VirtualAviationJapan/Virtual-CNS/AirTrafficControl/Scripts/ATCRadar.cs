@@ -71,7 +71,7 @@ namespace VirtualAviationJapan
             var time = Time.time;
             var scale = uiRadius / (range * 1852);
 
-            var index = Time.frameCount % traffics.Length;
+            var index = Time.frameCount % Mathf.Min(traffics.Length, 1);
 
             var traffic = traffics[index];
             var tailNumber = tailNumbers[index];
