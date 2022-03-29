@@ -4,13 +4,13 @@
   "version": "1.0.0",
   "private": true,
   "description": "Communication, Navigation, Surveillance on VRChat",
-  "homepage": "https://github.com/esnya/Virtual-CNS#readme",
+  "homepage": "https://github.com/VirtualAviationJapan/Virtual-CNS#readme",
   "bugs": {
-    "url": "https://github.com/esnya/Virtual-CNS/issues"
+    "url": "https://github.com/VirtualAviationJapan/Virtual-CNS/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/esnya/Virtual-CNS.git"
+    "url": "git+https://github.com/VirtualAviationJapan/Virtual-CNS.git"
   },
   "license": "UNLICENSED",
   "author": "esnya",
