@@ -1,7 +1,7 @@
 {
   "name": "jp.virtualaviation.virtual-cns",
   "displayName": "Virtual-CNS",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Communication, Navigation, Surveillance on VRChat",
   "homepage": "https://github.com/VirtualAviationJapan/Virtual-CNS#readme",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^8.0.2",
+    "@semantic-release/github": "^8.0.4",
     "@semantic-release/npm": "^9.0.1",
     "semantic-release": "^19.0.2",
     "semantic-release-gitmoji": "^1.4.4"
