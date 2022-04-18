@@ -63,7 +63,19 @@ namespace VirtualAviationJapan
             Index = defaultIndex;
             Course = defaultCourse;
 
-            Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Iniialized", gameObject);
+            // Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Iniialized", gameObject);
+            SendCustomEventDelayedSeconds(nameof(_PostStart), 1);
+        }
+
+        public void _PostStart()
+        {
+            foreach (var udon in GetComponentsInChildren(typeof(UdonBehaviour), true))
+            {
+                if (udon)
+                {
+                    ((UdonBehaviour)udon).SendCustomEvent("_NavReady");
+                }
+            }
         }
 
         public void _Subscribe(UdonSharpBehaviour subscriber)
