@@ -3,6 +3,7 @@ using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
+using VRC.Udon.Common.Enums;
 
 namespace VirtualAviationJapan
 {
@@ -12,7 +13,7 @@ namespace VirtualAviationJapan
         private const float NauticalMile  = 1852;
         private const float Feet = 3.28084f;
         private const float FPM = 196.85f;
-        private const float dataTimeoutFrames = 2;
+        private const float dataTimeout = 5;
         private const float minVerticalSpeed = 10; // feet/min;
         private const float alertInterval = 3; // s
         private const float minTrafficSpeed = 1; // m/s
@@ -42,15 +43,14 @@ namespace VirtualAviationJapan
 
         public LayerMask trafficLayerMask = 1 << 17;
         public LayerMask groundLayerMask = 1 << 0 | 1 << 4 | 1 << 11;
-        public float updateIntervalSeconds = 0.5f;
+        public int updateInterval = 33;
 
         private int vehicleId;
         private Rigidbody vehicleRigidbody;
         private Transform vehicleTransform;
         private float lastAlertedTime;
         private byte prevState;
-        private bool initialized;
-        private void _Awake()
+        private void Start()
         {
             vehicleRigidbody = GetComponentInParent<Rigidbody>();
             vehicleTransform = vehicleRigidbody ? vehicleRigidbody.transform : transform;
@@ -58,20 +58,19 @@ namespace VirtualAviationJapan
 
             SetVerticalSpeed(null);
 
-            initialized = true;
+            updateIntervalOffset = Random.Range(0, updateInterval);
         }
 
         private void OnEnable()
         {
-            if (!initialized) _Awake();
+            updateIntervalOffset = Random.Range(0, updateInterval);
 
-            SendCustomEventDelayedSeconds(nameof(_ThinLateUpdate), Random.Range(0, updateIntervalSeconds));
         }
 
         private int gcIndex;
-        public void _ThinLateUpdate()
+        private void LateUpdate()
         {
-            if (!gameObject.activeInHierarchy) return;
+            if ((Time.frameCount + updateIntervalOffset) % updateInterval != 0) return;
 
             var time = Time.time;
 
@@ -132,8 +131,6 @@ namespace VirtualAviationJapan
                 else SetVerticalSpeed(null);
             }
             prevState = currentState;
-
-            SendCustomEventDelayedSeconds(nameof(_ThinLateUpdate), updateIntervalSeconds);
         }
 
         private readonly float Log2Scaler = 1.0f / Mathf.Log(2, 2);
@@ -171,6 +168,8 @@ namespace VirtualAviationJapan
         private float[] trafficDistances = new float[TableSize];
         private TextMeshProUGUI[] trafficIconAltitudeTexts = new TextMeshProUGUI[TableSize];
         private byte[] trafficStatus = new byte[TableSize];
+        private int updateIntervalOffset;
+
         private int GetIndex(int key)
         {
             for (var i = Mathf.Abs(key) % TableSize; i < TableSize; i++)
@@ -283,7 +282,7 @@ namespace VirtualAviationJapan
         private void TableGC(int index, float time)
         {
             if (trafficKeys[index] == -1) return;
-            if (time - trafficUpdatedTimes[index] > dataTimeoutFrames * updateIntervalSeconds * Time.fixedDeltaTime)
+            if (time - trafficUpdatedTimes[index] > dataTimeout)
             {
                 trafficKeys[index] = -1;
                 var iconTransform = trafficIcons[index];
