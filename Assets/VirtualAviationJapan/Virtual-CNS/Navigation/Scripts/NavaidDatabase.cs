@@ -29,9 +29,11 @@ namespace MonacaAirfrafts
         public Transform[] transforms = { };
         public uint[] capabilities = { };
         public string[] identities = { };
+        public float[] frequencies = {};
         public Transform[] dmeTransforms = { };
         public Transform[] glideSlopeTransforms = { };
         public bool[] hideFromMaps = {};
+        public float frequencyStep = 0.05f;
 
         public Transform[] waypointTransforms = {};
         public string[] waypointIdentities = {};
@@ -63,6 +65,15 @@ namespace MonacaAirfrafts
             return -1;
         }
 
+        public int _FindIndexByFrequency(float frequency)
+        {
+            for (var i = 0; i < Count; i++)
+            {
+                if (Mathf.Abs(frequency - frequencies[i]) < frequencyStep) return i;
+            }
+            return -1;
+        }
+
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
@@ -86,6 +97,7 @@ namespace MonacaAirfrafts
             transforms = navaids.Select(n => n.transform).ToArray();
             capabilities = navaids.Select(n => (uint)n.capability).ToArray();
             identities = navaids.Select(n => n.identity).ToArray();
+            frequencies = navaids.Select(n => n.frequency).ToArray();
             dmeTransforms = navaids.Select(n => n.DmeTransform).ToArray();
             glideSlopeTransforms = navaids.Select(n => n.glideSlope).ToArray();
             hideFromMaps = navaids.Select(n => n.hideFromMap).ToArray();
@@ -174,7 +186,8 @@ namespace MonacaAirfrafts
         {
             serializedObject.Update();
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(NavaidDatabase.magneticDeclination)));
-            serializedObject.ApplyModifiedProperties();;
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(NavaidDatabase.frequencyStep)));
+            serializedObject.ApplyModifiedProperties();
 
             tabIndex = GUILayout.Toolbar(tabIndex, tabs);
             switch (tabIndex)

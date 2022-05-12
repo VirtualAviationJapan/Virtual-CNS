@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identity: VOR
+  frequency: 108
   capability: 2
   glideSlope: {fileID: 0}
   hideFromMap: 0

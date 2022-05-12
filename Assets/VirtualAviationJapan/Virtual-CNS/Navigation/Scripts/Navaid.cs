@@ -18,6 +18,7 @@ namespace MonacaAirfrafts
         }
 
         public string identity;
+        public float frequency = 108.00f;
         public NavaidCapability capability;
         public Transform glideSlope;
         public bool hideFromMap;
