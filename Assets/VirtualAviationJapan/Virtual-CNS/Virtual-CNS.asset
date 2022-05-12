@@ -569,6 +569,84 @@ MonoBehaviour:
       - symbolName: velocitySmoothing
         objectReference: {fileID: 0}
         value: 1
+  - prefabInstance: {fileID: 2790976821575944486, guid: e4dada80131d89e428c67c5fec7b6d97,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Instruments/IntegratedStandbyInstrument_Mil.prefab
+    udonVariables:
+    - udonInstance: {fileID: 8935301636963910356, guid: e4dada80131d89e428c67c5fec7b6d97,
+        type: 3}
+      gameObjectName: IntegratedStandbyInstrument_Mil
+      variables:
+      - symbolName: altMax
+        objectReference: {fileID: 0}
+        value: 64000
+      - symbolName: altMin
+        objectReference: {fileID: 0}
+        value: -500
+      - symbolName: altTape
+        objectReference: {fileID: 3528087621247265223, guid: e4dada80131d89e428c67c5fec7b6d97,
+          type: 3}
+        value: ALT_Tape (UnityEngine.RectTransform)
+      - symbolName: altTapeScale
+        objectReference: {fileID: 0}
+        value: 0.64
+      - symbolName: altText
+        objectReference: {fileID: 9090928492453494001, guid: e4dada80131d89e428c67c5fec7b6d97,
+          type: 3}
+        value: ALT (TMPro.TextMeshProUGUI)
+      - symbolName: asiMax
+        objectReference: {fileID: 0}
+        value: 500
+      - symbolName: asiMin
+        objectReference: {fileID: 0}
+        value: 30
+      - symbolName: asiScale
+        objectReference: {fileID: 0}
+        value: 6.4
+      - symbolName: asiTape
+        objectReference: {fileID: 2790976822263082407, guid: e4dada80131d89e428c67c5fec7b6d97,
+          type: 3}
+        value: ASI_Tape (UnityEngine.RectTransform)
+      - symbolName: asiTapeScale
+        objectReference: {fileID: 0}
+        value: 6.4
+      - symbolName: asiText
+        objectReference: {fileID: 996022940137488642, guid: e4dada80131d89e428c67c5fec7b6d97,
+          type: 3}
+        value: IAS (TMPro.TextMeshProUGUI)
+      - symbolName: heading
+        objectReference: {fileID: 2790976821180182286, guid: e4dada80131d89e428c67c5fec7b6d97,
+          type: 3}
+        value: HI_Heading (UnityEngine.RectTransform)
+      - symbolName: magneticDeclination
+        objectReference: {fileID: 0}
+        value: 0
+      - symbolName: pitch
+        objectReference: {fileID: 2790976820932357564, guid: e4dada80131d89e428c67c5fec7b6d97,
+          type: 3}
+        value: ADI_Pitch (UnityEngine.RectTransform)
+      - symbolName: pitchMax
+        objectReference: {fileID: 0}
+        value: 35
+      - symbolName: pitchScale
+        objectReference: {fileID: 0}
+        value: 12.8
+      - symbolName: roll
+        objectReference: {fileID: 2790976820663810207, guid: e4dada80131d89e428c67c5fec7b6d97,
+          type: 3}
+        value: ADI_Roll (UnityEngine.RectTransform)
+      - symbolName: seaLevel
+        objectReference: {fileID: 0}
+        value: 0
+      - symbolName: smoothing
+        objectReference: {fileID: 0}
+        value: 2
+      - symbolName: updateInterval
+        objectReference: {fileID: 0}
+        value: 3
+      - symbolName: velocitySmoothing
+        objectReference: {fileID: 0}
+        value: 1
   - prefabInstance: {fileID: 5468552486160625247, guid: bb4adc2c91e3ed04a959c0e2f2e5c0ee,
       type: 3}
     prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/Navigation/MarkerBeacon.prefab
