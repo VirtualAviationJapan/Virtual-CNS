@@ -62,9 +62,8 @@ namespace VirtualAviatioJapan
         public bool Com
         {
             private set {
-
                 if (receiver) receiver._SetActive(value);
-                if (transmitter) transmitter._SetActive(value);
+                if (!value) Mic = false;
                 _com = value;
             }
             get => _com;
