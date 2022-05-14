@@ -1,7 +1,7 @@
 {
   "name": "jp.virtualaviation.virtual-cns",
   "displayName": "Virtual-CNS",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "private": true,
   "description": "Communication, Navigation, Surveillance on VRChat",
   "homepage": "https://github.com/VirtualAviationJapan/Virtual-CNS#readme",
