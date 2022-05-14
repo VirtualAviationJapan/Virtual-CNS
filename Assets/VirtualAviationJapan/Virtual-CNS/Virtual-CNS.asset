@@ -644,9 +644,9 @@ MonoBehaviour:
         value: MenuSelect (UnityEngine.AudioClip)
         arrayItems: []
       - symbolName: audioSource
-        objectReference: {fileID: 4045288051231449604, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
           type: 3}
-        value: Audio Source (UnityEngine.AudioSource)
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
         arrayItems: []
       - symbolName: eventsPerSeconds
         objectReference: {fileID: 0}
@@ -671,6 +671,10 @@ MonoBehaviour:
         value: 1
         arrayItems: []
       - symbolName: keyCodes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: modes
         objectReference: {fileID: 0}
         value: System.Int32[]
         arrayItems: []
@@ -1180,9 +1184,9 @@ MonoBehaviour:
         value: MenuSelect (UnityEngine.AudioClip)
         arrayItems: []
       - symbolName: audioSource
-        objectReference: {fileID: 5739178508467877903, guid: 3e927a6a222edd84a96a7a8973eecbc2,
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
           type: 3}
-        value: Audio Source (UnityEngine.AudioSource)
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
         arrayItems: []
       - symbolName: eventsPerSeconds
         objectReference: {fileID: 0}
@@ -1207,6 +1211,10 @@ MonoBehaviour:
         value: 1
         arrayItems: []
       - symbolName: keyCodes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: modes
         objectReference: {fileID: 0}
         value: System.Int32[]
         arrayItems: []
@@ -1726,9 +1734,9 @@ MonoBehaviour:
         value: MenuSelect (UnityEngine.AudioClip)
         arrayItems: []
       - symbolName: audioSource
-        objectReference: {fileID: 6809173919807888933, guid: 75dd9956be075274a9d6b65d73622359,
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
           type: 3}
-        value: Audio Source (UnityEngine.AudioSource)
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
         arrayItems: []
       - symbolName: eventsPerSeconds
         objectReference: {fileID: 0}
@@ -1753,6 +1761,10 @@ MonoBehaviour:
         value: 1
         arrayItems: []
       - symbolName: keyCodes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: modes
         objectReference: {fileID: 0}
         value: System.Int32[]
         arrayItems: []
