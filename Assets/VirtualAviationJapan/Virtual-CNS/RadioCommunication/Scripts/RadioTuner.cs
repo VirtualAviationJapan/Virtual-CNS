@@ -1,10 +1,10 @@
 ﻿
+using TMPro;
+using UdonRadioCommunication;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
-using UdonRadioCommunication;
-using TMPro;
 
 namespace VirtualAviatioJapan
 {
@@ -27,7 +27,8 @@ namespace VirtualAviatioJapan
         [UdonSynced][FieldChangeCallback(nameof(ComFrequency))] private float _comFrequency = 118.0f;
         public float ComFrequency
         {
-            private set {
+            private set
+            {
                 var roundedValue = Mathf.Round(Mathf.Clamp(value, minFrequency, maxFrequency) / comFrequencyStep) * comFrequencyStep;
 
                 if (receiver) receiver._SetFrequency(roundedValue);
@@ -48,7 +49,8 @@ namespace VirtualAviatioJapan
 
         public float ComStandbyFrequency
         {
-            private set {
+            private set
+            {
                 var roundedValue = Mathf.Round(Mathf.Clamp(value, minFrequency, maxFrequency) / comFrequencyStep) * comFrequencyStep;
 
                 _comStandbyFrequency = roundedValue;
@@ -61,7 +63,8 @@ namespace VirtualAviatioJapan
         [UdonSynced][FieldChangeCallback(nameof(Com))] private bool _com;
         public bool Com
         {
-            private set {
+            private set
+            {
                 if (receiver) receiver._SetActive(value);
                 if (!value) Mic = false;
                 _com = value;
@@ -72,7 +75,8 @@ namespace VirtualAviatioJapan
         [UdonSynced][FieldChangeCallback(nameof(Mic))] private bool _mic;
         public bool Mic
         {
-            private set {
+            private set
+            {
                 if (transmitter && !value) transmitter._SetActive(value);
                 if (micIndicator) micIndicator.SetActive(value);
                 _mic = value;
@@ -81,6 +85,12 @@ namespace VirtualAviatioJapan
         }
 
         private string displayFormat;
+
+        private void OnEnable()
+        {
+            if (receiver) receiver._SetActive(Com);
+        }
+
         private void Start()
         {
             if (receiver)
@@ -97,8 +107,8 @@ namespace VirtualAviatioJapan
 
         private void OnDisable()
         {
-            Mic = false;
-            Com = false;
+            if (receiver) receiver._SetActive(false);
+            if (transmitter && Networking.IsOwner(transmitter.gameObject)) transmitter._SetActive(false);
         }
 
         private void UpdateDisplay()
