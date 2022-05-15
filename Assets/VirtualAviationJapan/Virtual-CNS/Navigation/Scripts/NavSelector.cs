@@ -104,6 +104,14 @@ namespace VirtualAviationJapan
             RequestSerialization();
         }
 
+        public void _SetFrequency(float frequency)
+        {
+            if (!database) return;
+            var index = database._FindIndexByFrequency(frequency);
+            if (index < 0) return;
+            _SetIndex(index);
+        }
+
         public void _IncrementIndex()
         {
             _TakeOwnership();
