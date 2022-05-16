@@ -47,7 +47,7 @@ namespace VirtualAviationJapan
             var wind = (Vector3)airVehicle.GetProgramVariable("Wind");
             var windSpeed = wind.magnitude;
             var xzWindDirection = Vector3.ProjectOnPlane(wind, Vector3.up).normalized;
-            var windAbsoluteAngle = (Vector3.SignedAngle(Vector3.forward, xzWindDirection, Vector3.up) + magneticDeclination + 360) % 360;
+            var windAbsoluteAngle = (Vector3.SignedAngle(Vector3.forward, xzWindDirection, Vector3.up) + magneticDeclination + 540) % 360;
             var windRelativeAngle = Vector3.SignedAngle(origin.forward, xzWindDirection, Vector3.up);
 
             if (windDirectionIndicator)
