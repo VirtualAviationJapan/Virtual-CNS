@@ -3,12 +3,16 @@ using MonacaAirfrafts;
 using TMPro;
 using UdonRadioCommunication;
 using UdonSharp;
+using UdonToolkit;
 using UnityEngine;
-using VirtualAviationJapan;
 using VRC.SDKBase;
-using VRC.Udon;
 
-namespace VirtualAviatioJapan
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+using UdonSharpEditor;
+using UnityEditor;
+#endif
+
+namespace VirtualAviationJapan
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class RadioTuner : UdonSharpBehaviour
@@ -16,84 +20,87 @@ namespace VirtualAviatioJapan
         public const byte SELECTOR_MODE_COM = 1;
         public const byte SELECTOR_MODE_NAV = 2;
 
-        public bool hasStandbyFrequency = true;
+        public bool navMode = false;
 
-        [Header("COM")]
-        public float defaultComFrequency = 118.0f;
-        public float minComFrequency = 118.0f;
-        public float maxComFrequency = 139.975f;
-        public float comFrequencyStep = 0.025f;
-
-        [Header("Nav")]
-        public float defaultNavFrequency = 108.00f;
-        public float minNavFrequency = 108.00f;
-        public float maxNavFrequency = 117.95f;
-        public float navFrequencyStep = 0.05f;
+        public float defaultFrequency = 118.0f;
+        public float minFrequency = 118.0f;
+        public float maxFrequency = 139.975f;
+        public float frequencyStep = 0.025f;
+        public string frequencyFormat = "000.000";
 
         [Header("References")]
-        public Receiver receiver;
-        public Transmitter transmitter;
-        public GameObject comMode;
-        public GameObject comIndicator, micIndicator;
-        public TextMeshPro comDisplay;
-        public NavSelector navSelector;
-        public IdentityPlayer identityPlayer;
-        public GameObject navMode;
-        public GameObject navIndicator;
-        public TextMeshPro navDisplay;
+        [HideIf("@navMode")] public Receiver receiver;
+        [HideIf("@navMode")] public Transmitter transmitter;
+        public GameObject listeningIndiator;
+        [HideIf("@navMode")] public GameObject micIndicator;
+        public TextMeshPro frequencyDisplay;
+        [HideIf("@!navMode")] public TextMeshPro identityDisplay;
+        [HideIf("@!navMode")] public NavSelector navSelector;
+        [HideIf("@!navMode")] public IdentityPlayer identityPlayer;
 
-        [UdonSynced][FieldChangeCallback(nameof(ComFrequency))] private float _comFrequency = 118.0f;
-        public float ComFrequency
+        public string Identity
         {
-            private set
+            get
             {
-                var roundedValue = RoundComFrequency(value);
+                if (!navaidDatabase) return null;
+                var index = navaidDatabase._FindIndexByFrequency(Frequency);
+                if (index < 0) return null;
+                return navaidDatabase.identities[index];
+            }
+        }
 
-                if (receiver) receiver._SetFrequency(roundedValue);
-                if (transmitter)
+        [UdonSynced][FieldChangeCallback(nameof(Frequency))] private float _frequency = 118.0f;
+        public float Frequency
+        {
+            set
+            {
+                var roundedValue = RoundFrequency(value);
+
+                if (navMode)
                 {
-                    if (transmitter.Active) transmitter._SetActive(false);
-                    transmitter._SetFrequency(roundedValue);
+                    if (navSelector) navSelector._SetFrequency(value);
+                }
+                else
+                {
+                    if (receiver) receiver._SetFrequency(roundedValue);
+                    if (transmitter)
+                    {
+                        if (transmitter.Active) transmitter._SetActive(false);
+                        transmitter._SetFrequency(roundedValue);
+                    }
                 }
 
-                _comFrequency = roundedValue;
+                _frequency = roundedValue;
 
-                UpdateComDisplay();
+                UpdateDisplay();
             }
-            get => _comFrequency;
+            get => _frequency;
         }
 
-        [UdonSynced][FieldChangeCallback(nameof(ComStandbyFrequency))] private float _comStandbyFrequency = 118.0f;
-
-        public float ComStandbyFrequency
+        [UdonSynced][FieldChangeCallback(nameof(Listen))] private bool _listen;
+        public bool Listen
         {
-            private set
+            set
             {
-                var roundedValue = RoundComFrequency(value);
+                if (navMode)
+                {
+                    if (identityPlayer) identityPlayer._PlayIdentity(Identity);
+                }
+                else
+                {
+                    if (receiver) receiver._SetActive(value);
+                }
 
-                _comStandbyFrequency = roundedValue;
-
-                UpdateComDisplay();
-            }
-            get => _comStandbyFrequency;
-        }
-
-        [UdonSynced][FieldChangeCallback(nameof(Com))] private bool _com;
-        public bool Com
-        {
-            private set
-            {
-                if (receiver) receiver._SetActive(value);
                 if (!value) Mic = false;
-                _com = value;
+                _listen = value;
             }
-            get => _com;
+            get => _listen;
         }
 
         [UdonSynced][FieldChangeCallback(nameof(Mic))] private bool _mic;
         public bool Mic
         {
-            private set
+            set
             {
                 if (transmitter && !value) transmitter._SetActive(value);
                 if (micIndicator) micIndicator.SetActive(value);
@@ -102,129 +109,66 @@ namespace VirtualAviatioJapan
             get => _mic;
         }
 
-        [UdonSynced][FieldChangeCallback(nameof(NavFrequency))] private float _navFrequency = 118.0f;
-        public float NavFrequency
-        {
-            private set
-            {
-                var roundedValue = RoundNavFrequency(value);
-
-                if (navSelector)
-                {
-                    navSelector._SetFrequency(roundedValue);
-                    if (identityPlayer) identityPlayer._SetIdentity(navSelector.Identity);
-                }
-
-                _navFrequency = roundedValue;
-
-                UpdateNavDisplay();
-            }
-            get => _navFrequency;
-        }
-
-        [UdonSynced][FieldChangeCallback(nameof(NavStandbyFrequency))] private float _navStandbyFrequency = 118.0f;
-
-        public float NavStandbyFrequency
-        {
-            private set
-            {
-                var roundedValue = RoundNavFrequency(value);
-
-                _navStandbyFrequency = roundedValue;
-
-                UpdateNavDisplay();
-            }
-            get => _navStandbyFrequency;
-        }
-
-        [UdonSynced][FieldChangeCallback(nameof(Nav))] private bool _nav;
-        public bool Nav
-        {
-            private set
-            {
-                if (navIndicator) navIndicator.SetActive(value);
-
-                if (identityPlayer && navSelector)
-                {
-                    if (value && navSelector) identityPlayer._PlayIdentity(navSelector.Identity);
-                    else identityPlayer._Stop();
-                }
-
-                _nav = value;
-            }
-            get => _nav;
-        }
-
-        [UdonSynced][FieldChangeCallback(nameof(SelectorMode))] private byte _selectorMode;
-        public byte SelectorMode
-        {
-            private set
-            {
-                if (comMode) comMode.SetActive(value == SELECTOR_MODE_COM);
-                if (navMode) navMode.SetActive(value == SELECTOR_MODE_NAV);
-                _selectorMode = value;
-            }
-            get => _selectorMode;
-        }
-
-        private string comDisplayFormat, navDisplayFormat;
         private NavaidDatabase navaidDatabase;
+        private int cursor = -1;
 
         private void OnEnable()
         {
-            if (receiver) receiver._SetActive(Com);
+            if (!navMode)
+            {
+                if (receiver) receiver._SetActive(Listen);
+            }
         }
 
         private void Start()
         {
-            if (receiver)
+            if (!navMode)
             {
-                receiver.sync = false;
-                receiver.indicator = comIndicator;
-                receiver.limitRange = false;
+                if (receiver)
+                {
+                    receiver.sync = false;
+                    receiver.indicator = listeningIndiator;
+                    receiver.limitRange = false;
+                }
             }
-
-            if (comDisplay) comDisplayFormat = comDisplay.text;
-            if (navDisplay) navDisplayFormat = navDisplay.text;
 
             var navaidObject = GameObject.Find(nameof(NavaidDatabase));
             if (navaidObject) navaidDatabase = navaidObject.GetComponent<NavaidDatabase>();
 
-            ComFrequency = ComStandbyFrequency = defaultComFrequency;
-            NavFrequency = NavStandbyFrequency = defaultNavFrequency;
-            SelectorMode = SELECTOR_MODE_COM;
-            Nav = false;
+            Frequency = defaultFrequency;
         }
 
         private void OnDisable()
         {
-            if (receiver) receiver._SetActive(false);
-            if (transmitter && Networking.IsOwner(transmitter.gameObject)) transmitter._SetActive(false);
+            if (!navMode)
+            {
+                if (receiver) receiver._SetActive(false);
+                if (transmitter && Networking.IsOwner(transmitter.gameObject)) transmitter._SetActive(false);
+            }
         }
 
-        private void UpdateComDisplay()
+        private string ToFrequencyString()
         {
-            comDisplay.text = string.Format(comDisplayFormat, ComFrequency, hasStandbyFrequency ? (object)ComStandbyFrequency : (object)"INOP");
+            var rawText = Frequency.ToString(frequencyFormat);
+            if (cursor < 0) return rawText;
+
+            var decimalPosition = frequencyFormat.IndexOf('.');
+
+            return $"{rawText.Substring(0, decimalPosition >= 0 && cursor < decimalPosition ? cursor : cursor + 1)}_";
         }
 
-        private void UpdateNavDisplay()
+        private void UpdateDisplay()
         {
-            navDisplay.text = string.Format(navDisplayFormat, NavFrequency, hasStandbyFrequency ? (object)NavStandbyFrequency : (object)"INOP", navSelector ? navSelector.Identity : "   ");
+            if (frequencyDisplay) frequencyDisplay.text = ToFrequencyString();
+            if (navMode)
+            {
+                if (identityDisplay) identityDisplay.text = Identity;
+            }
         }
 
-        private float RoundFrequency(float value, float min, float max, float step)
+        private float RoundFrequency(float value)
         {
-            return Mathf.Round(Mathf.Clamp(value, min, max) / step) * step;
-        }
-
-        private float RoundComFrequency(float value)
-        {
-            return RoundFrequency(value, minComFrequency, maxComFrequency, comFrequencyStep);
-        }
-
-        private float RoundNavFrequency(float value)
-        {
-            return RoundFrequency(value, minNavFrequency, maxNavFrequency, navFrequencyStep);
+            return Mathf.Round(Mathf.Clamp(value, minFrequency, maxFrequency) / frequencyStep) * frequencyStep;
         }
 
         public void _TakeOwnership()
@@ -233,10 +177,10 @@ namespace VirtualAviatioJapan
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
         }
 
-        public void _ToggleCom()
+        public void _ToggleListen()
         {
             _TakeOwnership();
-            Com = !Com;
+            Listen = !Listen;
             RequestSerialization();
         }
 
@@ -247,118 +191,97 @@ namespace VirtualAviatioJapan
             RequestSerialization();
         }
 
-        public void _ToggleComAndMic()
+        public void _ToggleListenAndMic()
         {
             _TakeOwnership();
-            Com = Mic = !Com;
+            Listen = Mic = !Listen;
             RequestSerialization();
         }
 
-        public void _SetComFrequency(float value)
-        {
-            _TakeOwnership();
-            if (hasStandbyFrequency) ComStandbyFrequency = value;
-            else ComFrequency = value;
-            RequestSerialization();
-        }
-        public void _SetNavFrequency(float value)
-        {
-            _TakeOwnership();
-            if (hasStandbyFrequency) NavStandbyFrequency = value;
-            else NavFrequency = value;
-            RequestSerialization();
-        }
         public void _SetFrequency(float value)
         {
-            switch (SelectorMode)
-            {
-                case SELECTOR_MODE_COM:
-                    _SetComFrequency(value); break;
-                case SELECTOR_MODE_NAV:
-                    _SetNavFrequency(value); break;
-            }
-        }
-        private float GetFrequency()
-        {
-            switch (SelectorMode)
-            {
-                case SELECTOR_MODE_COM:
-                    return hasStandbyFrequency ? ComStandbyFrequency : ComFrequency;
-                case SELECTOR_MODE_NAV:
-                    return hasStandbyFrequency ? NavStandbyFrequency : NavFrequency;
-            }
-            return 0;
+            _TakeOwnership();
+            Frequency = value;
+            RequestSerialization();
         }
         private void AddFrequency(float value)
         {
-            _SetFrequency(GetFrequency() + value);
+            _SetFrequency(Frequency + value);
         }
-        private float GetFrequencyStep()
-        {
-            switch (SelectorMode)
-            {
-                case SELECTOR_MODE_COM:
-                    return comFrequencyStep;
-                case SELECTOR_MODE_NAV:
-                    return navFrequencyStep;
-            }
-            return 0;
-        }
-        public void _IncrementFrequency() => AddFrequency(GetFrequencyStep());
-        public void _DecrementFrequency() => AddFrequency(-GetFrequencyStep());
+        public void _IncrementFrequency() => AddFrequency(frequencyStep);
+        public void _DecrementFrequency() => AddFrequency(-frequencyStep);
         public void _FastIncrementFrequency() => AddFrequency(1.0f);
         public void _FastDecrementFrequency() => AddFrequency(-1.0f);
-        public void _TransferComFrequency()
-        {
-            _TakeOwnership();
-            var tmp = ComFrequency;
-            ComFrequency = ComStandbyFrequency;
-            ComStandbyFrequency = tmp;
-            RequestSerialization();
-        }
-
-        public void _ToggleNav()
-        {
-            _TakeOwnership();
-            Nav = !Nav;
-            RequestSerialization();
-        }
-        public void _TransferNavFrequency()
-        {
-            _TakeOwnership();
-            var tmp = NavFrequency;
-            NavFrequency = NavStandbyFrequency;
-            NavStandbyFrequency = tmp;
-            RequestSerialization();
-        }
-        public void _TransferFrequency()
-        {
-            switch (SelectorMode)
-            {
-                case SELECTOR_MODE_COM:
-                    _TransferComFrequency(); break;
-                case SELECTOR_MODE_NAV:
-                    _TransferNavFrequency(); break;
-            }
-        }
 
         public void _StartPTT()
         {
-            if (transmitter) transmitter._SetActive(Mic);
+            if (!navMode && transmitter) transmitter._SetActive(Mic);
         }
         public void _EndPTT()
         {
-            if (transmitter) transmitter._SetActive(false);
+            if (!navMode && transmitter) transmitter._SetActive(false);
         }
 
-        public void _SetMode(byte mode)
+        public void _Keypad(int value)
         {
             _TakeOwnership();
-            SelectorMode = mode;
+
+            var decimalPosition = frequencyFormat.IndexOf('.');
+            var afterDecimal = decimalPosition < 0 ? 0 : frequencyFormat.Length - decimalPosition;
+
+            if (cursor < 0)
+            {
+                Frequency = 0;
+                cursor = 0;
+            }
+            Frequency += value * Mathf.Pow(10, cursor - afterDecimal);
+
+            if (cursor > 5)
+            {
+                cursor = -1;
+                UpdateDisplay();
+            }
+
             RequestSerialization();
         }
-        public void _ComMode() => _SetMode(SELECTOR_MODE_COM);
-        public void _NavMode() => _SetMode(SELECTOR_MODE_NAV);
-        public void _ToggleMode() => _SetMode(SelectorMode == SELECTOR_MODE_COM ? SELECTOR_MODE_NAV : SELECTOR_MODE_COM);
+        public void _Keypad1() => _Keypad(1);
+        public void _Keypad2() => _Keypad(2);
+        public void _Keypad3() => _Keypad(3);
+        public void _Keypad4() => _Keypad(4);
+        public void _Keypad5() => _Keypad(5);
+        public void _Keypad6() => _Keypad(6);
+        public void _Keypad7() => _Keypad(7);
+        public void _Keypad8() => _Keypad(8);
+        public void _Keypad9() => _Keypad(9);
+        public void _Keypad0() => _Keypad(0);
+        public void _KeypadClear()
+        {
+            cursor--;
+            UpdateDisplay();
+        }
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+        [Button("Preset Airband", true)]
+        public void PresetAirband()
+        {
+            navMode = false;
+            minFrequency = defaultFrequency = 118.0f;
+            maxFrequency = 139.975f;
+            frequencyStep = 0.025f;
+            frequencyFormat = "000.000";
+            this.ApplyProxyModifications();
+        }
+
+        [Button("Preset Navigation", true)]
+        public void PresetVOR()
+        {
+            navMode = true;
+            minFrequency = defaultFrequency = 108.00f;
+            maxFrequency = 117.95f;
+            frequencyStep = 0.05f;
+            frequencyFormat = "000.00";
+            this.ApplyProxyModifications();
+        }
+#endif
     }
 }

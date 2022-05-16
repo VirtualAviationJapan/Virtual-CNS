@@ -47,10 +47,10 @@ namespace VirtualAviationJapan
             get => _course;
         }
 
-        public string Identity => database.identities[Index];
-        public Transform NavaidTransform => database.transforms[Index];
-        public Transform GlideSlopeTransform => database.glideSlopeTransforms[Index];
-        public Transform DMETransform => database.dmeTransforms[Index];
+        public string Identity => database ? database.identities[Index] : null;
+        public Transform NavaidTransform => database ? database.transforms[Index] : null;
+        public Transform GlideSlopeTransform => database ? database.glideSlopeTransforms[Index] : null;
+        public Transform DMETransform => database ? database.dmeTransforms[Index] : null;
         public bool IsILS => database._IsILS(Index);
         public bool IsVOR => database._IsVOR(Index);
         public bool HasDME => database._HasDME(Index);
