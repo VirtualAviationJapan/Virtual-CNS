@@ -2988,14 +2988,6 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: False
         arrayItems: []
-      - symbolName: receiver
-        objectReference: {fileID: 0}
-        value: null
-        arrayItems: []
-      - symbolName: transmitter
-        objectReference: {fileID: 0}
-        value: null
-        arrayItems: []
     - udonInstance: {fileID: 2680879105286291422, guid: 13a7b82f10a704a4baf00a69fd6861f6,
         type: 3}
       gameObjectName: ComStandby

@@ -1359,7 +1359,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: cursor
+      Data: input
     - Name: $v
       Entry: 7
       Data: 86|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
@@ -1367,14 +1367,8 @@ MonoBehaviour:
       Entry: 7
       Data: 87|UdonSharp.Compiler.SymbolDefinition, UdonSharp.Editor
     - Name: internalType
-      Entry: 7
-      Data: 88|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: System.Int32, mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
+      Entry: 9
+      Data: 28
     - Name: declarationType
       Entry: 3
       Data: 2
@@ -1383,13 +1377,13 @@ MonoBehaviour:
       Data: 0
     - Name: symbolResolvedTypeName
       Entry: 1
-      Data: SystemInt32
+      Data: SystemString
     - Name: symbolOriginalName
       Entry: 1
-      Data: cursor
+      Data: input
     - Name: symbolUniqueName
       Entry: 1
-      Data: cursor
+      Data: input
     - Name: symbolDefaultValue
       Entry: 6
       Data: 
@@ -1398,7 +1392,7 @@ MonoBehaviour:
       Data: 
     - Name: fieldAttributes
       Entry: 7
-      Data: 89|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
+      Data: 88|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 0

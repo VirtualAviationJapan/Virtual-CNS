@@ -59,6 +59,7 @@ namespace VirtualAviationJapan
                 if (navMode)
                 {
                     if (navSelector) navSelector._SetFrequency(value);
+                    if (identityPlayer && Listen) identityPlayer._PlayIdentity(Identity);
                 }
                 else
                 {
@@ -84,12 +85,17 @@ namespace VirtualAviationJapan
             {
                 if (navMode)
                 {
-                    if (identityPlayer) identityPlayer._PlayIdentity(Identity);
+                    if (identityPlayer)
+                    {
+                        if (value) identityPlayer._PlayIdentity(Identity);
+                        else identityPlayer._Stop();
+                    }
                 }
                 else
                 {
                     if (receiver) receiver._SetActive(value);
                 }
+                if (listeningIndiator) listeningIndiator.SetActive(value);
 
                 if (!value) Mic = false;
                 _listen = value;
@@ -110,7 +116,7 @@ namespace VirtualAviationJapan
         }
 
         private NavaidDatabase navaidDatabase;
-        private int cursor = -1;
+        private string input = null;
 
         private void OnEnable()
         {
@@ -136,6 +142,8 @@ namespace VirtualAviationJapan
             if (navaidObject) navaidDatabase = navaidObject.GetComponent<NavaidDatabase>();
 
             Frequency = defaultFrequency;
+            Mic = false;
+            Listen = false;
         }
 
         private void OnDisable()
@@ -150,11 +158,9 @@ namespace VirtualAviationJapan
         private string ToFrequencyString()
         {
             var rawText = Frequency.ToString(frequencyFormat);
-            if (cursor < 0) return rawText;
+            if (input == null) return rawText;
 
-            var decimalPosition = frequencyFormat.IndexOf('.');
-
-            return $"{rawText.Substring(0, decimalPosition >= 0 && cursor < decimalPosition ? cursor : cursor + 1)}_";
+            return $"{input}_";
         }
 
         private void UpdateDisplay()
@@ -224,25 +230,30 @@ namespace VirtualAviationJapan
 
         public void _Keypad(int value)
         {
-            _TakeOwnership();
 
             var decimalPosition = frequencyFormat.IndexOf('.');
-            var afterDecimal = decimalPosition < 0 ? 0 : frequencyFormat.Length - decimalPosition;
 
-            if (cursor < 0)
+            if (input == null)
             {
-                Frequency = 0;
-                cursor = 0;
+                input = "";
             }
-            Frequency += value * Mathf.Pow(10, cursor - afterDecimal);
+            input += (char)('0' + value);
 
-            if (cursor > 5)
+            if (input.Length == decimalPosition) input += '.';
+
+            if (input.Length >= frequencyFormat.Length)
             {
-                cursor = -1;
-                UpdateDisplay();
+                _TakeOwnership();
+                float parsedValue;
+                if (float.TryParse(input, out parsedValue))
+                {
+                    Frequency = parsedValue;
+                }
+                input = null;
+                RequestSerialization();
             }
 
-            RequestSerialization();
+            UpdateDisplay();
         }
         public void _Keypad1() => _Keypad(1);
         public void _Keypad2() => _Keypad(2);
@@ -256,7 +267,9 @@ namespace VirtualAviationJapan
         public void _Keypad0() => _Keypad(0);
         public void _KeypadClear()
         {
-            cursor--;
+            if (input == null) return;
+            input = input.Substring(0, input.Length - 1);
+            if (input.EndsWith(".")) input = input.Substring(0, input.Length - 1);
             UpdateDisplay();
         }
 
