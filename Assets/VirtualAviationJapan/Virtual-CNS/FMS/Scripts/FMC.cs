@@ -1,6 +1,5 @@
 
 using System;
-using MonacaAirfrafts;
 using UdonRadioCommunication;
 using UdonSharp;
 using UnityEngine;

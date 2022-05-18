@@ -10,7 +10,7 @@ using UnityEditor.SceneManagement;
 using UdonSharpEditor;
 #endif
 
-namespace MonacaAirfrafts
+namespace VirtualAviationJapan
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class NavaidDatabase : UdonSharpBehaviour
@@ -69,7 +69,7 @@ namespace MonacaAirfrafts
         {
             for (var i = 0; i < Count; i++)
             {
-                if (Mathf.Abs(frequency - frequencies[i]) < frequencyStep) return i;
+                if (Mathf.Abs(frequency - frequencies[i]) < frequencyStep / 2.0f) return i;
             }
             return -1;
         }

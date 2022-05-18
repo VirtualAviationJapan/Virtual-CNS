@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Security.Permissions;
 using UdonSharp;
 using UdonToolkit;
 using UnityEngine;
@@ -119,7 +118,7 @@ namespace VirtualAviationJapan
                 windSpeed = windVector.magnitude * KNOTS;
                 windCalm = windSpeed < minWind;
 
-                windHeading = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.up) + magneticDeclination + 360 + 180) % 360;
+                windHeading = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.down) + magneticDeclination + 540) % 360;
 
                 var windString = windCalm ? "calm" : string.Format(windTemplate, new object[] { windSpeed, windHeading });
                 var runwayOperationIndex = windCalm ? 0 : IndexOfRunwayOperation(windHeading);
@@ -215,7 +214,11 @@ namespace VirtualAviationJapan
 
         private AudioClip GetDigitClip(int value)
         {
-            if (value >= 100) return null;
+            if (value > 90)
+            {
+                Debug.LogError("[Virtual-CNS][ATIS] Wrong Digit: {value}");
+                return null;
+            }
             if (value >= 20) return digits[value / 10 + 20];
             if (value >= 10) return digits[value];
             return digits[value];

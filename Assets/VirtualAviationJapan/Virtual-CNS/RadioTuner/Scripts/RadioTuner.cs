@@ -1,5 +1,4 @@
 ﻿
-using MonacaAirfrafts;
 using TMPro;
 using UdonRadioCommunication;
 using UdonSharp;
@@ -79,16 +78,18 @@ namespace VirtualAviationJapan
                         if (transmitter.Active) transmitter._SetActive(false);
                         transmitter._SetFrequency(roundedValue);
                     }
-                    if (airbandDatabase)
-                    {
-                        var index = airbandDatabase._FindIndexByFrequency(Frequency);
-                        ATISPlayer = index >= 0 ? airbandDatabase.atisPlayers[index] : null;
-                    }
                 }
 
                 _frequency = roundedValue;
 
+                if (!navMode && airbandDatabase)
+                {
+                    var index = airbandDatabase._FindIndexByFrequency(Frequency);
+                    ListeningATISPlayer = index >= 0 ? airbandDatabase.atisPlayers[index] : null;
+                }
+
                 UpdateDisplay();
+
             }
             get => _frequency;
         }
@@ -109,10 +110,10 @@ namespace VirtualAviationJapan
                 else
                 {
                     if (receiver) receiver._SetActive(value);
-                    if (ATISPlayer)
+                    if (ListeningATISPlayer)
                     {
-                        if (value) ATISPlayer._Play();
-                        else ATISPlayer._Stop();
+                        if (value) ListeningATISPlayer._Play();
+                        else ListeningATISPlayer._Stop();
                     }
                 }
                 if (listeningIndiator) listeningIndiator.SetActive(value);
@@ -135,18 +136,18 @@ namespace VirtualAviationJapan
             get => _mic;
         }
 
-        private ATISPlayer _atisPlayer;
-        private ATISPlayer ATISPlayer
+        private ATISPlayer _liteningATISPlayer;
+        private ATISPlayer ListeningATISPlayer
         {
             set
             {
                 if (navMode) return;
 
-                if (_atisPlayer) _atisPlayer._Stop();
+                if (_liteningATISPlayer) _liteningATISPlayer._Stop();
                 if (Listen && value) value._Play();
-                _atisPlayer = value;
+                _liteningATISPlayer = value;
             }
-            get => _atisPlayer;
+            get => _liteningATISPlayer;
         }
 
         private NavaidDatabase navaidDatabase;
@@ -205,10 +206,7 @@ namespace VirtualAviationJapan
         private void UpdateDisplay()
         {
             if (frequencyDisplay) frequencyDisplay.text = ToFrequencyString();
-            if (navMode)
-            {
-                if (identityDisplay) identityDisplay.text = Identity;
-            }
+            if (identityDisplay) identityDisplay.text = Identity;
         }
 
         private float RoundFrequency(float value)

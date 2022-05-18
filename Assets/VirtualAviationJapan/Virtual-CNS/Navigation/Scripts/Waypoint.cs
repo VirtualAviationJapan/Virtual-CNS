@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace MonacaAirfrafts
+namespace VirtualAviationJapan
 {
     public class Waypoint : MonoBehaviour
     {

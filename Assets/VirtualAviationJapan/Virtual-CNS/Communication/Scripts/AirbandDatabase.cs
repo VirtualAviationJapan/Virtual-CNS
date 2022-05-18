@@ -20,7 +20,7 @@ namespace VirtualAviationJapan
         {
             for (var i = 0; i < frequencies.Length; i++)
             {
-                if (Mathf.Abs(frequencies[i] - frequency) < frequencyStep) return i;
+                if (Mathf.Abs(frequencies[i] - frequency) < frequencyStep / 2.0f) return i;
             }
             return -1;
         }

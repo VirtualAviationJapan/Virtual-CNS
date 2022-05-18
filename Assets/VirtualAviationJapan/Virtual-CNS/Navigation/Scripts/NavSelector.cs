@@ -1,4 +1,3 @@
-using MonacaAirfrafts;
 using TMPro;
 using UdonSharp;
 using UnityEngine;

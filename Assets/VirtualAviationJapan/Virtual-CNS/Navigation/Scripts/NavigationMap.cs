@@ -5,7 +5,7 @@ using UnityEngine;
 using VRC.SDKBase;
 using VRC.Udon;
 
-namespace MonacaAirfrafts
+namespace VirtualAviationJapan
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     [DefaultExecutionOrder(1000)] // After NavaidDatabase

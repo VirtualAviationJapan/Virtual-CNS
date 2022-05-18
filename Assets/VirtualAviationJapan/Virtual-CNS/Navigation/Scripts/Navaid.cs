@@ -4,7 +4,7 @@ using System;
 using UnityEditor;
 #endif
 
-namespace MonacaAirfrafts
+namespace VirtualAviationJapan
 {
     public class Navaid : MonoBehaviour
     {

@@ -55,7 +55,6 @@ namespace VirtualAviationJapan
                 if (index < encoded.Length)
                 {
                     var c = encoded[index];
-                    Debug.Log(c);
                     switch (c)
                     {
                         case '.':

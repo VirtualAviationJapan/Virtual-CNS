@@ -1082,7 +1082,7 @@ MonoBehaviour:
       Data: 59|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: MonacaAirfrafts.NavaidDatabase, VirtualAviationJapan.Virtual-CNS
+      Data: VirtualAviationJapan.NavaidDatabase, VirtualAviationJapan.Virtual-CNS
     - Name: 
       Entry: 8
       Data: 
