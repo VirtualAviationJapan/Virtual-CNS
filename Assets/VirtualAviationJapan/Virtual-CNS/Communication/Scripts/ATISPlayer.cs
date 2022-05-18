@@ -16,14 +16,15 @@ namespace VirtualAviationJapan
         public const int STATE_PREFIX = 0;
         public const int STATE_PREFIX_PHONETIC = 1;
         public const int STATE_TIME = 2;
-        public const int STATE_RUNWAY = 3;
-        public const int STATE_WIND_WIND = 4;
-        public const int STATE_WIND_DIRECTION = 5;
-        public const int STATE_WIND_DEGREES = 6;
-        public const int STATE_WIND_SPEED = 7;
-        public const int STATE_WIND_KNOT = 8;
-        public const int STATE_SUFFIX = 9;
-        public const int STATE_SUFFIX_PHONETIC = 10;
+        public const int STATE_TIME_ZONE = 3;
+        public const int STATE_RUNWAY = 4;
+        public const int STATE_WIND_WIND = 5;
+        public const int STATE_WIND_DIRECTION = 6;
+        public const int STATE_WIND_DEGREES = 7;
+        public const int STATE_WIND_SPEED = 8;
+        public const int STATE_WIND_KNOT = 9;
+        public const int STATE_SUFFIX = 10;
+        public const int STATE_SUFFIX_PHONETIC = 11;
 
         public const int STATE_START = STATE_PREFIX;
         public const int STATE_END = STATE_SUFFIX_PHONETIC;
@@ -81,7 +82,7 @@ namespace VirtualAviationJapan
             if (!audioSource.isPlaying) OnClipEnd();
         }
 
-        private void Play()
+        public void _Play()
         {
             UpdateInformation();
             SetState(STATE_START);
@@ -166,7 +167,7 @@ namespace VirtualAviationJapan
         {
             if (value > STATE_END)
             {
-                Play();
+                _Play();
                 return;
             }
 
@@ -183,6 +184,9 @@ namespace VirtualAviationJapan
                     break;
                 case STATE_TIME:
                     PlayDigits(timestamp);
+                    break;
+                case STATE_TIME_ZONE:
+                    PlayPhonetic('Z');
                     break;
                 case STATE_RUNWAY:
                     PlayOneShot(runway);
@@ -215,6 +219,7 @@ namespace VirtualAviationJapan
         private void PlayOneShot(AudioClip clip)
         {
             if (!audioSource || !clip) return;
+            Debug.Log($"[Virtual-CNS][ATIS] Play: {clip}");
             audioSource.PlayOneShot(clip);
         }
 
@@ -225,7 +230,7 @@ namespace VirtualAviationJapan
 
         private void PlayDigits(string value)
         {
-            Debug.Log($"Digits: {value}");
+            Debug.Log($"[Virtual-CNS][ATIS] Digits: {value}");
             playingDigits = value.ToCharArray();
             subStateCount = playingDigits.Length;
             playMode = PLAY_MODE_DIGITS;
@@ -240,43 +245,45 @@ namespace VirtualAviationJapan
 
         private void PlayWindDirection()
         {
-            var direction = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.up) + magneticDeclination + 360) % 360;
+            var direction = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.up) + magneticDeclination + 360 + 180) % 360;
             PlayDigits(direction == 0 ? "360" : direction.ToString("000"));
         }
 
         private void PlayNumeric(int value)
         {
-            Debug.Log($"Numeric: {value}");
+            Debug.Log($"[Virtual-CNS][ATIS] Numeric: {value}");
             var buf = "";
             while (value > 0)
             {
                 if (value >= 1000)
                 {
-                    buf += value / 1000 + '.';
+                    buf += $"{value / 100}.";
                     value %= 1000;
                 }
                 else if (value >= 100)
                 {
-                    buf += value / 100 + ',';
+                    buf += $"{value / 100},";
                     value %= 100;
                 }
                 else if (value >= 20)
                 {
-                    buf += 'A' + value / 10;
+                    buf += (char)('A' + value / 10);
                     value %= 10;
                 }
                 else if (value >= 10)
                 {
-                    buf += 'a' + (value - 10);
+                    buf += (char)('a' + (value - 10));
                     value = -1;
                 }
                 else
                 {
-                    buf += value;
+                    buf += $"{value}";
                     value = -1;
                 }
             }
             playingNumber = buf.ToCharArray();
+            Debug.Log($"[Virtual-CNS][ATIS] Numeric: {buf}");
+
             subStateCount = playingNumber.Length;
             playMode = PLAY_MODE_NUMERIC;
 
