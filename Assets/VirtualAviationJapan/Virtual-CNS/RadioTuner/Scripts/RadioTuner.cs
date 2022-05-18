@@ -42,10 +42,20 @@ namespace VirtualAviationJapan
         {
             get
             {
-                if (!navaidDatabase) return null;
-                var index = navaidDatabase._FindIndexByFrequency(Frequency);
-                if (index < 0) return null;
-                return navaidDatabase.identities[index];
+                if (navMode)
+                {
+                    if (!navaidDatabase) return null;
+                    var index = navaidDatabase._FindIndexByFrequency(Frequency);
+                    if (index < 0) return null;
+                    return navaidDatabase.identities[index];
+                }
+                else
+                {
+                    if (!airbandDatabase) return null;
+                    var index = airbandDatabase._FindIndexByFrequency(Frequency);
+                    if (index < 0) return null;
+                    return airbandDatabase.identities[index];
+                }
             }
         }
 
@@ -68,6 +78,11 @@ namespace VirtualAviationJapan
                     {
                         if (transmitter.Active) transmitter._SetActive(false);
                         transmitter._SetFrequency(roundedValue);
+                    }
+                    if (airbandDatabase)
+                    {
+                        var index = airbandDatabase._FindIndexByFrequency(Frequency);
+                        ATISPlayer = index >= 0 ? airbandDatabase.atisPlayers[index] : null;
                     }
                 }
 
@@ -94,6 +109,11 @@ namespace VirtualAviationJapan
                 else
                 {
                     if (receiver) receiver._SetActive(value);
+                    if (ATISPlayer)
+                    {
+                        if (value) ATISPlayer._Play();
+                        else ATISPlayer._Stop();
+                    }
                 }
                 if (listeningIndiator) listeningIndiator.SetActive(value);
 
@@ -115,7 +135,22 @@ namespace VirtualAviationJapan
             get => _mic;
         }
 
+        private ATISPlayer _atisPlayer;
+        private ATISPlayer ATISPlayer
+        {
+            set
+            {
+                if (navMode) return;
+
+                if (_atisPlayer) _atisPlayer._Stop();
+                if (Listen && value) value._Play();
+                _atisPlayer = value;
+            }
+            get => _atisPlayer;
+        }
+
         private NavaidDatabase navaidDatabase;
+        private AirbandDatabase airbandDatabase;
         private char[] inputBuffer = null;
         private int inputCursor;
 
@@ -141,6 +176,9 @@ namespace VirtualAviationJapan
 
             var navaidObject = GameObject.Find(nameof(NavaidDatabase));
             if (navaidObject) navaidDatabase = navaidObject.GetComponent<NavaidDatabase>();
+
+            var airbandObject = GameObject.Find(nameof(AirbandDatabase));
+            if (airbandObject) airbandDatabase = airbandObject.GetComponent<AirbandDatabase>();
 
             Frequency = defaultFrequency;
             Mic = false;

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Security.Permissions;
 using UdonSharp;
 using UdonToolkit;
@@ -13,6 +14,7 @@ namespace VirtualAviationJapan
     [RequireComponent(typeof(AudioSource))]
     public class ATISPlayer : UdonSharpBehaviour
     {
+        public const int MAX_WORDS = 256;
         public const int STATE_PREFIX = 0;
         public const int STATE_PREFIX_PHONETIC = 1;
         public const int STATE_TIME = 2;
@@ -33,33 +35,33 @@ namespace VirtualAviationJapan
 
         public const float KNOTS = 1.944f;
 
-        [TextArea] public string template = "<airport> information {0}, [{1}] Z. {2} approach. using runway [{3}]. {4}. visibility 10 kilometers, sky clear. Temperture [25], dewpoint [20], QNH [29.90]. advise you have information {0}";
-        public string windTemplate = "wind [{0:000}] degrees {1} knots";
-        public string windCalmTemplate = "wind calm";
-        public string approach = "ILS [36]";
-        public string usingRunway = "36";
+        [TextArea] public string template = "AERODROME information [{0}] [{1}] [Z]. {2}. wind {3}. visibility 10 kilometers, sky clear. temperature [25], dewpoint [20], qnh [29] decimal [92]. advise you have information [{0}]";
+        [ListView("Runway Operations")] public float[] windHeadings = { 0.0f, 180.0f };
+        [ListView("Runway Operations")]
+        public string[] runwayTemplates = {
+            "ils runway [36] approach. using runway [36].",
+            "ils runway [18] approach. using runway [18].",
+        };
+        public string windTemplate = "[{0:000}] degrees {1:0} knots";
 
         public UdonSharpBehaviour windSource;
         [Popup("programVariable", "@windSource", "vector")] public string windVariableName = "Wind";
         [Tooltip("Knots")] public float minWind = 5;
 
         public AudioClip[] digits = { }, phonetics = { };
-        public AudioClip hundred, thousand;
-        public AudioClip prefix, runway, wind, degrees, knot, suffix, decimal_, calm;
-        [ListView("Words")] public string[] clipWords = { };
-        [ListView("Words")] public AudioClip[] clips = { };
+        public AudioClip periodInterval, repeatInterval;
+        [ListView("Vocabulary")] public string[] clipWords = { };
+        [ListView("Vocabulary")] public AudioClip[] clips = { };
+
         private AudioSource audioSource;
-        private int state;
-        private char[] playingNumber;
-        private int subState, subStateCount;
-        private int index;
-        private int playMode;
-        private char[] playingDigits;
         private Vector3 windVector;
+        private float windSpeed;
         private bool windCalm;
-        private string timestamp;
-        private string[] worlds;
+        private int windHeading;
         private float magneticDeclination;
+        private AudioClip[] words;
+        private int wordIndex;
+        private int informationIndex;
 
         private void Start()
         {
@@ -69,6 +71,12 @@ namespace VirtualAviationJapan
             if (navaidDatabaseObj) magneticDeclination = (float)((UdonBehaviour)navaidDatabaseObj.GetComponent(typeof(UdonBehaviour))).GetProgramVariable("magneticDeclination");
 
             UpdateInformation();
+            wordIndex = words == null ? -1 : Time.frameCount % words.Length;
+        }
+
+        private void OnEnable()
+        {
+            wordIndex = words == null ? -1 : Time.frameCount % words.Length;
         }
 
         private void OnDisable()
@@ -85,39 +93,156 @@ namespace VirtualAviationJapan
         public void _Play()
         {
             UpdateInformation();
-            SetState(STATE_START);
+            gameObject.SetActive(true);
         }
+
+        public void _Stop()
+        {
+            gameObject.SetActive(false);
+        }
+        readonly private char[] trimChars = new[] { '[', ']', ',', '.', ' ' };
 
         private void UpdateInformation()
         {
-            var prevWind = windVector;
-            windVector = windSource ? (Vector3)windSource.GetProgramVariable(windVariableName) : Vector3.zero;
-            if (Vector3.Distance(windVector, prevWind) > 0)
+            var now = DateTime.UtcNow;
+            var hour = now.Hour;
+            var minute = now.Minute / 30 * 30;
+
+            var prevInformationIndex = informationIndex;
+            informationIndex = (hour * 60 + minute) / 30 % ('Z' - 'A');
+
+            var timestamp = string.Format("{0:00}{1:00}", hour, minute);
+
+            if (prevInformationIndex != informationIndex || words == null)
             {
-                index = (index + 1) % ('A' - 'Z');
+                windVector = windSource ? (Vector3)windSource.GetProgramVariable(windVariableName) : Vector3.zero;
+                windSpeed = windVector.magnitude * KNOTS;
+                windCalm = windSpeed < minWind;
 
-                timestamp = DateTime.UtcNow.ToString("HHmm");
+                windHeading = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.up) + magneticDeclination + 360 + 180) % 360;
+
+                var windString = windCalm ? "calm" : string.Format(windTemplate, new object[] { windSpeed, windHeading });
+                var runwayOperationIndex = windCalm ? 0 : IndexOfRunwayOperation(windHeading);
+
+                var rawWords = string.Format(template, (char)('A' + informationIndex), timestamp, runwayTemplates[runwayOperationIndex], windString).Split(' ');
+                var wordsBuf = new AudioClip[MAX_WORDS];
+                var wordsBufIndex = 0;
+                var period = false;
+                foreach (var rawWord in rawWords)
+                {
+                    var word = rawWord.Trim(trimChars);
+                    var chars = word.ToCharArray();
+                    var firstChar = chars[0];
+
+                    if (period)
+                    {
+                        wordsBuf[wordsBufIndex++] = periodInterval;
+                    }
+                    period = rawWord.EndsWith(".");
+
+                    if (rawWord.StartsWith("["))
+                    {
+                        if (char.IsDigit(firstChar))
+                        {
+                            foreach (var c in chars)
+                            {
+                                wordsBuf[wordsBufIndex++] = GetDigitClip(c - '0');
+                            }
+                            continue;
+                        }
+
+                        if (char.IsUpper(firstChar))
+                        {
+                            wordsBuf[wordsBufIndex++] = GetPhoneticClip(firstChar);
+                            continue;
+                        }
+                    }
+
+                    if (char.IsDigit(firstChar))
+                    {
+                        int value;
+                        if (int.TryParse(word, out value))
+                        {
+                            while (value >= 0)
+                            {
+                                if (value >= 1000)
+                                {
+                                    wordsBuf[wordsBufIndex++] = GetDigitClip(value / 1000);
+                                    wordsBuf[wordsBufIndex++] = GetWordClip("thousand");
+                                    value %= 1000;
+                                }
+                                else if (value >= 100)
+                                {
+                                    wordsBuf[wordsBufIndex++] = GetDigitClip(value / 100);
+                                    wordsBuf[wordsBufIndex++] = GetWordClip("hundred");
+                                    value %= 100;
+                                }
+                                else if (value >= 20)
+                                {
+                                    wordsBuf[wordsBufIndex++] = GetDigitClip(value / 10 * 10);
+                                    value %= 10;
+                                }
+                                else if (value >= 10)
+                                {
+                                    wordsBuf[wordsBufIndex++] = GetDigitClip(value / 10 * 10);
+                                    value = -1;
+                                }
+                                else
+                                {
+                                    wordsBuf[wordsBufIndex++] = GetDigitClip(value);
+                                    value = -1;
+                                }
+                            }
+                        }
+                        continue;
+                    }
+
+                    var clip = GetWordClip(word);
+                    if (clip)
+                    {
+                        wordsBuf[wordsBufIndex++] = clip;
+                        continue;
+                    }
+
+                    Debug.LogWarning($"[Virtual-CNS][ATIS] Failed to find clip of word \"{rawWord}\" (\"{word}\").");
+                }
+                wordsBuf[wordsBufIndex++] = repeatInterval;
+
+                words = new AudioClip[wordsBufIndex];
+                Array.Copy(wordsBuf, words, words.Length);
             }
-            if (string.IsNullOrEmpty(timestamp)) timestamp = DateTime.UtcNow.ToString("HHmm");
-            var windSpeed = windVector.magnitude * KNOTS;
-            windCalm = windSpeed < minWind;
-
-            // var windString = windCalm ? windCalmTemplate : string.Format(windTemplate, new object[] { windSpeed, GetHeading(-windVector.normalized) });
-            // worlds = string.Format(template, 'A' + index, timestamp, approach, runway, windString).Split(' ');
         }
 
-        // private void PlayWord(string word)
-        // {
-        //     var characters = word.ToCharArray();
-        //     var firstCharacter = characters[0];
-        //     var lastCharacter = characters[characters.Length - 1];
+        private AudioClip GetDigitClip(int value)
+        {
+            if (value >= 100) return null;
+            if (value >= 20) return digits[value / 10 + 20];
+            if (value >= 10) return digits[value];
+            return digits[value];
+        }
 
-        //     if (lastCharacter == '.' || lastCharacter == ',') PlayWord(word.Substring(0, word.Length - 1));
-        //     else if (word.Length == 1 && char.IsUpper(characters[0])) PlayPhonetic(firstCharacter);
-        //     else if (firstCharacter == '[') PlayDigits(word.Substring(1, word.Length - 2));
-        //     else if (char.IsDigit(firstCharacter)) PlayNumber(word);
-        //     else PlayOneShot(GetWordClip(word));
-        // }
+        private AudioClip GetPhoneticClip(char c)
+        {
+            return phonetics[c - 'A'];
+        }
+
+        private int IndexOfRunwayOperation(float windHeading)
+        {
+            var minDifference = float.MaxValue;
+            var minIndex = 0;
+
+            for (var i = 0; i < windHeadings.Length; i++)
+            {
+                var difference = Mathf.Abs(Mathf.DeltaAngle(windHeading, windHeadings[i]));
+                if (difference < minDifference)
+                {
+                    minDifference = difference;
+                    minIndex = i;
+                }
+            }
+
+            return minIndex;
+        }
 
         private AudioClip GetWordClip(string word)
         {
@@ -130,90 +255,13 @@ namespace VirtualAviationJapan
 
         private void OnClipEnd()
         {
-            SetSubState(subState + 1);
-        }
-
-        private void SetSubState(int value)
-        {
-            subState = value;
-            if (value >= subStateCount)
+            wordIndex += 1;
+            if (wordIndex >= words.Length)
             {
-                SetState(state + 1);
-                return;
+                UpdateInformation();
+                wordIndex = 0;
             }
-
-            switch (playMode)
-            {
-                case PLAY_MODE_DIGITS:
-                    {
-                        var c = playingDigits[value];
-                        PlayOneShot(c == '.' ? decimal_ : digits[c - '0']);
-                        break;
-                    }
-                case PLAY_MODE_NUMERIC:
-                    {
-                        var c = playingNumber[value];
-                        if (char.IsDigit(c)) PlayOneShot(digits[c - '0']);
-                        else if (c == ',') PlayOneShot(hundred);
-                        else if (c == '.') PlayOneShot(thousand);
-                        else if (char.IsUpper(c)) PlayOneShot(digits[c - 'A' + 20]);
-                        else if (char.IsLower(c)) PlayOneShot(digits[c - 'a' + 10]);
-                        break;
-                    }
-            }
-        }
-
-        private void SetState(int value)
-        {
-            if (value > STATE_END)
-            {
-                _Play();
-                return;
-            }
-
-            state = value;
-            subStateCount = 1;
-
-            switch (state)
-            {
-                case STATE_PREFIX:
-                    PlayOneShot(prefix);
-                    break;
-                case STATE_PREFIX_PHONETIC:
-                    PlayPhonetic((char)(index + 'A'));
-                    break;
-                case STATE_TIME:
-                    PlayDigits(timestamp);
-                    break;
-                case STATE_TIME_ZONE:
-                    PlayPhonetic('Z');
-                    break;
-                case STATE_RUNWAY:
-                    PlayOneShot(runway);
-                    break;
-                case STATE_WIND_WIND:
-                    PlayOneShot(wind);
-                    break;
-                case STATE_WIND_DIRECTION:
-                    if (windCalm) PlayOneShot(calm);
-                    else PlayWindDirection();
-                    break;
-                case STATE_WIND_DEGREES:
-                    if (!windCalm) PlayOneShot(degrees);
-                    break;
-                case STATE_WIND_SPEED:
-                    if (!windCalm) PlayNumeric(Mathf.RoundToInt(windVector.magnitude * KNOTS));
-                    break;
-                case STATE_WIND_KNOT:
-                    if (!windCalm) PlayOneShot(knot);
-                    break;
-                case STATE_SUFFIX:
-                    PlayOneShot(suffix);
-                    break;
-                case STATE_SUFFIX_PHONETIC:
-                    PlayPhonetic((char)(index + 'A'));
-                    break;
-            }
+            PlayOneShot(words[wordIndex]);
         }
 
         private void PlayOneShot(AudioClip clip)
@@ -221,73 +269,6 @@ namespace VirtualAviationJapan
             if (!audioSource || !clip) return;
             Debug.Log($"[Virtual-CNS][ATIS] Play: {clip}");
             audioSource.PlayOneShot(clip);
-        }
-
-        private void PlayPhonetic(char value)
-        {
-            PlayOneShot(phonetics[value - 'A']);
-        }
-
-        private void PlayDigits(string value)
-        {
-            Debug.Log($"[Virtual-CNS][ATIS] Digits: {value}");
-            playingDigits = value.ToCharArray();
-            subStateCount = playingDigits.Length;
-            playMode = PLAY_MODE_DIGITS;
-            SetSubState(0);
-        }
-
-        private int GetHeading(Vector3 vector)
-        {
-            var heading = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(vector, Vector3.up), Vector3.up) + 360) % 360;
-            return heading == 0 ? 360 : heading;
-        }
-
-        private void PlayWindDirection()
-        {
-            var direction = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.up) + magneticDeclination + 360 + 180) % 360;
-            PlayDigits(direction == 0 ? "360" : direction.ToString("000"));
-        }
-
-        private void PlayNumeric(int value)
-        {
-            Debug.Log($"[Virtual-CNS][ATIS] Numeric: {value}");
-            var buf = "";
-            while (value > 0)
-            {
-                if (value >= 1000)
-                {
-                    buf += $"{value / 100}.";
-                    value %= 1000;
-                }
-                else if (value >= 100)
-                {
-                    buf += $"{value / 100},";
-                    value %= 100;
-                }
-                else if (value >= 20)
-                {
-                    buf += (char)('A' + value / 10);
-                    value %= 10;
-                }
-                else if (value >= 10)
-                {
-                    buf += (char)('a' + (value - 10));
-                    value = -1;
-                }
-                else
-                {
-                    buf += $"{value}";
-                    value = -1;
-                }
-            }
-            playingNumber = buf.ToCharArray();
-            Debug.Log($"[Virtual-CNS][ATIS] Numeric: {buf}");
-
-            subStateCount = playingNumber.Length;
-            playMode = PLAY_MODE_NUMERIC;
-
-            SetSubState(0);
         }
     }
 }

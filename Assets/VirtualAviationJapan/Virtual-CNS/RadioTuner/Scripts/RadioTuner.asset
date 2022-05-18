@@ -19,7 +19,11 @@ MonoBehaviour:
   sourceCsScript: {fileID: 11500000, guid: 9a3830eab3c29d744b7e4c4f52c2c085, type: 3}
   behaviourSyncMode: 4
   behaviourIDHeapVarName: __refl_const_intnl_udonTypeID
-  compileErrors: []
+  compileErrors:
+  - 
+  - '[<color=#FF00FF>UdonSharp</color>] Assets\Virtual-CNS\Assets\VirtualAviationJapan\Virtual-CNS\RadioTuner\Scripts\RadioTuner.cs(54,25):
+    System.Exception: The name ''airbandDatabase'' does not exist in the current
+    context'
   hasInteractEvent: 0
   serializationData:
     SerializedFormat: 2
