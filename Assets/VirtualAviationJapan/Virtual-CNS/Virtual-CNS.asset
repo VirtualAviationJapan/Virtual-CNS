@@ -2617,7 +2617,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 6754092245840505834, guid: 13a7b82f10a704a4baf00a69fd6861f6,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioCommunication/NavCom.prefab
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioTuner/RadioTuners.prefab
     udonVariables:
     - udonInstance: {fileID: 5282728373665344671, guid: 13a7b82f10a704a4baf00a69fd6861f6,
         type: 3}
@@ -2713,7 +2713,7 @@ MonoBehaviour:
       - symbolName: eventTarget
         objectReference: {fileID: 254560445972912342, guid: 13a7b82f10a704a4baf00a69fd6861f6,
           type: 3}
-        value: NavCom (VRC.Udon.UdonBehaviour)
+        value: RadioTuners (VRC.Udon.UdonBehaviour)
         arrayItems: []
       - symbolName: fingerMode
         objectReference: {fileID: 0}
@@ -2847,7 +2847,7 @@ MonoBehaviour:
       - symbolName: eventTarget
         objectReference: {fileID: 254560445972912342, guid: 13a7b82f10a704a4baf00a69fd6861f6,
           type: 3}
-        value: NavCom (VRC.Udon.UdonBehaviour)
+        value: RadioTuners (VRC.Udon.UdonBehaviour)
         arrayItems: []
       - symbolName: fingerMode
         objectReference: {fileID: 0}
@@ -3093,12 +3093,12 @@ MonoBehaviour:
         - Demultiplexer (VRC.Udon.UdonBehaviour)
         - Demultiplexer (VRC.Udon.UdonBehaviour)
         - Demultiplexer (VRC.Udon.UdonBehaviour)
-        - NavCom (VRC.Udon.UdonBehaviour)
+        - RadioTuners (VRC.Udon.UdonBehaviour)
         - Demultiplexer (VRC.Udon.UdonBehaviour)
         - Demultiplexer (VRC.Udon.UdonBehaviour)
         - Demultiplexer (VRC.Udon.UdonBehaviour)
         - Demultiplexer (VRC.Udon.UdonBehaviour)
-        - NavCom (VRC.Udon.UdonBehaviour)
+        - RadioTuners (VRC.Udon.UdonBehaviour)
         - NavSelector (VRC.Udon.UdonBehaviour)
       - symbolName: holdTime
         objectReference: {fileID: 0}
@@ -3167,7 +3167,7 @@ MonoBehaviour:
       - symbolName: eventTarget
         objectReference: {fileID: 254560445972912342, guid: 13a7b82f10a704a4baf00a69fd6861f6,
           type: 3}
-        value: NavCom (VRC.Udon.UdonBehaviour)
+        value: RadioTuners (VRC.Udon.UdonBehaviour)
         arrayItems: []
       - symbolName: fingerMode
         objectReference: {fileID: 0}
@@ -3314,20 +3314,6 @@ MonoBehaviour:
           type: 3}
         value: NavSelector (VRC.Udon.UdonBehaviour)
         arrayItems: []
-    - udonInstance: {fileID: 254560445972912342, guid: 13a7b82f10a704a4baf00a69fd6861f6,
-        type: 3}
-      gameObjectName: NavCom
-      variables:
-      - symbolName: comTuners
-        objectReference: {fileID: 0}
-        value: UnityEngine.Component[]
-        arrayItems:
-        - ComActive (VRC.Udon.UdonBehaviour)
-      - symbolName: navTuners
-        objectReference: {fileID: 0}
-        value: UnityEngine.Component[]
-        arrayItems:
-        - NavActive (VRC.Udon.UdonBehaviour)
     - udonInstance: {fileID: 8437969332190229966, guid: 13a7b82f10a704a4baf00a69fd6861f6,
         type: 3}
       gameObjectName: NavSelector
@@ -3381,6 +3367,20 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: True
         arrayItems: []
+    - udonInstance: {fileID: 254560445972912342, guid: 13a7b82f10a704a4baf00a69fd6861f6,
+        type: 3}
+      gameObjectName: RadioTuners
+      variables:
+      - symbolName: comTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - ComActive (VRC.Udon.UdonBehaviour)
+      - symbolName: navTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - NavActive (VRC.Udon.UdonBehaviour)
     - udonInstance: {fileID: 6941656488790690341, guid: 13a7b82f10a704a4baf00a69fd6861f6,
         type: 3}
       gameObjectName: TouchSwitch

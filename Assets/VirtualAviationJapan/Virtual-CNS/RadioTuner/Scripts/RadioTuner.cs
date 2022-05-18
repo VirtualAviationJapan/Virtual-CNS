@@ -116,7 +116,8 @@ namespace VirtualAviationJapan
         }
 
         private NavaidDatabase navaidDatabase;
-        private string input = null;
+        private char[] inputBuffer = null;
+        private int inputCursor;
 
         private void OnEnable()
         {
@@ -158,9 +159,9 @@ namespace VirtualAviationJapan
         private string ToFrequencyString()
         {
             var rawText = Frequency.ToString(frequencyFormat);
-            if (input == null) return rawText;
+            if (inputBuffer == null) return rawText;
 
-            return $"{input}_";
+            return $"{new string(inputBuffer, 0, inputCursor)}_";
         }
 
         private void UpdateDisplay()
@@ -228,48 +229,60 @@ namespace VirtualAviationJapan
             if (!navMode && transmitter) transmitter._SetActive(false);
         }
 
-        public void _Keypad(int value)
+        public void _Keypad(char value)
         {
-
             var decimalPosition = frequencyFormat.IndexOf('.');
+            var formatLength = frequencyFormat.Length;
 
-            if (input == null)
+            if (inputBuffer == null)
             {
-                input = "";
+                inputCursor = 0;
+                inputBuffer = frequencyFormat.ToCharArray();
+                if (decimalPosition >= 0) inputBuffer[decimalPosition] = '.';
             }
-            input += (char)('0' + value);
 
-            if (input.Length == decimalPosition) input += '.';
+            inputBuffer[inputCursor] = value;
 
-            if (input.Length >= frequencyFormat.Length)
+            do
+            {
+                inputCursor++;
+            }
+            while (inputCursor < formatLength && !char.IsDigit(inputBuffer[inputCursor]));
+
+            if (inputCursor >= formatLength)
             {
                 _TakeOwnership();
                 float parsedValue;
-                if (float.TryParse(input, out parsedValue))
+                if (float.TryParse(new string(inputBuffer), out parsedValue))
                 {
                     Frequency = parsedValue;
                 }
-                input = null;
+                inputBuffer = null;
                 RequestSerialization();
             }
 
             UpdateDisplay();
         }
-        public void _Keypad1() => _Keypad(1);
-        public void _Keypad2() => _Keypad(2);
-        public void _Keypad3() => _Keypad(3);
-        public void _Keypad4() => _Keypad(4);
-        public void _Keypad5() => _Keypad(5);
-        public void _Keypad6() => _Keypad(6);
-        public void _Keypad7() => _Keypad(7);
-        public void _Keypad8() => _Keypad(8);
-        public void _Keypad9() => _Keypad(9);
-        public void _Keypad0() => _Keypad(0);
+        public void _Keypad1() => _Keypad('1');
+        public void _Keypad2() => _Keypad('2');
+        public void _Keypad3() => _Keypad('3');
+        public void _Keypad4() => _Keypad('4');
+        public void _Keypad5() => _Keypad('5');
+        public void _Keypad6() => _Keypad('6');
+        public void _Keypad7() => _Keypad('7');
+        public void _Keypad8() => _Keypad('8');
+        public void _Keypad9() => _Keypad('9');
+        public void _Keypad0() => _Keypad('0');
         public void _KeypadClear()
         {
-            if (input == null) return;
-            input = input.Substring(0, input.Length - 1);
-            if (input.EndsWith(".")) input = input.Substring(0, input.Length - 1);
+            if (inputBuffer == null) return;
+            do
+            {
+                inputCursor--;
+            } while (inputCursor >= 0 && !char.IsDigit(inputBuffer[inputCursor]));
+
+            if (inputCursor < 0) inputBuffer = null;
+
             UpdateDisplay();
         }
 
