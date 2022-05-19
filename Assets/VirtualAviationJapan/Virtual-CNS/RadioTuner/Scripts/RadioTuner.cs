@@ -14,6 +14,7 @@ using UnityEditor;
 namespace VirtualAviationJapan
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
+    [DefaultExecutionOrder(100)] // After NavSelector
     public class RadioTuner : UdonSharpBehaviour
     {
         public const byte SELECTOR_MODE_COM = 1;
@@ -28,12 +29,12 @@ namespace VirtualAviationJapan
         public string frequencyFormat = "000.000";
 
         [Header("References")]
-        [HideIf("@navMode")] public Receiver receiver;
-        [HideIf("@navMode")] public Transmitter transmitter;
+        public TextMeshPro frequencyDisplay;
         public GameObject listeningIndiator;
         [HideIf("@navMode")] public GameObject micIndicator;
-        public TextMeshPro frequencyDisplay;
-        [HideIf("@!navMode")] public TextMeshPro identityDisplay;
+        public TextMeshPro identityDisplay;
+        [HideIf("@navMode")] public Receiver receiver;
+        [HideIf("@navMode")] public Transmitter transmitter;
         [HideIf("@!navMode")] public NavSelector navSelector;
         [HideIf("@!navMode")] public IdentityPlayer identityPlayer;
 
@@ -68,7 +69,6 @@ namespace VirtualAviationJapan
                 if (navMode)
                 {
                     if (navSelector) navSelector._SetFrequency(value);
-                    if (identityPlayer && Listen) identityPlayer._PlayIdentity(Identity);
                 }
                 else
                 {
@@ -82,10 +82,17 @@ namespace VirtualAviationJapan
 
                 _frequency = roundedValue;
 
-                if (!navMode && airbandDatabase)
+                if (navMode)
                 {
-                    var index = airbandDatabase._FindIndexByFrequency(Frequency);
-                    ListeningATISPlayer = index >= 0 ? airbandDatabase.atisPlayers[index] : null;
+                    if (identityPlayer && Listen) identityPlayer._PlayIdentity(Identity);
+                }
+                else
+                {
+                    if (airbandDatabase)
+                    {
+                        var index = airbandDatabase._FindIndexByFrequency(Frequency);
+                        ListeningATISPlayer = index >= 0 ? airbandDatabase.atisPlayers[index] : null;
+                    }
                 }
 
                 UpdateDisplay();
@@ -157,7 +164,12 @@ namespace VirtualAviationJapan
 
         private void OnEnable()
         {
-            if (!navMode)
+            if (navMode)
+            {
+                if (identityPlayer) identityPlayer._PlayIdentity(Identity);
+                if (ListeningATISPlayer && Listen) ListeningATISPlayer._Play();
+            }
+            else
             {
                 if (receiver) receiver._SetActive(Listen);
             }
@@ -172,6 +184,11 @@ namespace VirtualAviationJapan
                     receiver.sync = false;
                     receiver.indicator = listeningIndiator;
                     receiver.limitRange = false;
+                }
+
+                if (transmitter)
+                {
+                    transmitter.statusIndicator = micIndicator;
                 }
             }
 
@@ -188,7 +205,12 @@ namespace VirtualAviationJapan
 
         private void OnDisable()
         {
-            if (!navMode)
+            if (navMode)
+            {
+                if (identityPlayer) identityPlayer._Stop();
+                if (ListeningATISPlayer) ListeningATISPlayer._Stop();
+            }
+            else
             {
                 if (receiver) receiver._SetActive(false);
                 if (transmitter && Networking.IsOwner(transmitter.gameObject)) transmitter._SetActive(false);
@@ -320,6 +342,23 @@ namespace VirtualAviationJapan
             if (inputCursor < 0) inputBuffer = null;
 
             UpdateDisplay();
+        }
+
+        public void _IncrementCourse()
+        {
+            if (navMode && navSelector) navSelector._IncrementCourse();
+        }
+        public void _DecrementCourse()
+        {
+            if (navMode && navSelector) navSelector._DecrementCourse();
+        }
+        public void _FastIncrementCourse()
+        {
+            if (navMode && navSelector) navSelector._FastIncrementCourse();
+        }
+        public void _FastDecrementCourse()
+        {
+            if (navMode && navSelector) navSelector._FastDecrementCourse();
         }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR

@@ -2615,6 +2615,4390 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: 0
         arrayItems: []
+  - prefabInstance: {fileID: 4143688057211130558, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioTuner/EMA245.prefab
+    udonVariables:
+    - udonInstance: {fileID: 8775726812029740240, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+        type: 3}
+      gameObjectName: COM1
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleComListen1
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 3399839101939387000, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 6287907029288629622, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+        type: 3}
+      gameObjectName: COM1 Mic
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleMic1
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 3399839101939387000, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 9027724191537846176, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+        type: 3}
+      gameObjectName: COM2
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleComListen2
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 3399839101939387000, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 7223757370228751125, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+        type: 3}
+      gameObjectName: COM2 Mic
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleMic2
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 3399839101939387000, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 3399839101939387000, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+        type: 3}
+      gameObjectName: EMA245
+      variables:
+      - symbolName: comTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - null
+      - symbolName: navTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - null
+    - udonInstance: {fileID: 4062181383818168021, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+        type: 3}
+      gameObjectName: KeyboardInput
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: eventsPerSeconds
+        objectReference: {fileID: 0}
+        value: 4
+        arrayItems: []
+      - symbolName: eventTargets
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - EMA245 (VRC.Udon.UdonBehaviour)
+        - EMA245 (VRC.Udon.UdonBehaviour)
+        - EMA245 (VRC.Udon.UdonBehaviour)
+        - EMA245 (VRC.Udon.UdonBehaviour)
+      - symbolName: holdTime
+        objectReference: {fileID: 0}
+        value: 1
+        arrayItems: []
+      - symbolName: keyCodes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: modes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: onKeyDownEvents
+        objectReference: {fileID: 0}
+        value: System.String[]
+        arrayItems:
+        - _ToggleComListenAndMic1
+        - _StartPTT
+        - _EndPTT
+        - _ToggleNavListen1
+    - udonInstance: {fileID: 3621880129784654361, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+        type: 3}
+      gameObjectName: Nav1
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleNavListen1
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 3399839101939387000, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 6125976018349984242, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+        type: 3}
+      gameObjectName: Nav2
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleNavListen2
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 3399839101939387000, guid: da4bac2ff89a10a42a51b423a75e6e9b,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+  - prefabInstance: {fileID: 5236291185284149612, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioTuner/EMA245+ENC255.prefab
+    udonVariables:
+    - udonInstance: {fileID: 4808694093128288322, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: COM
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 8630342043339980862, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: COM Active (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 4785472260428788308, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: COM Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 8630342043339980862, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: COM Active
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 9086168003170743475, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: Active Frequency (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 6075131909521574771, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: Identity (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: listeningIndiator
+        objectReference: {fileID: 3119350592327803321, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: I_COM1 (UnityEngine.GameObject)
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: micIndicator
+        objectReference: {fileID: 864359410735210682, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: I_COM1_Mic (UnityEngine.GameObject)
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 4785472260428788308, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: COM Standby
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 6375076784625817825, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: Standby Frequency (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 33260960825598817, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: COM1
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleComListen1
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 6237810967981723081, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 3385771785603297991, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: COM1 Mic
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleMic1
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 6237810967981723081, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 357865690118672401, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: COM2
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleComListen2
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 6237810967981723081, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 2125838313567468708, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: COM2 Mic
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleMic2
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 6237810967981723081, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 6237810967981723081, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: EMA245
+      variables:
+      - symbolName: comTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - COM Active (VRC.Udon.UdonBehaviour)
+      - symbolName: navTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - NAV Active (VRC.Udon.UdonBehaviour)
+    - udonInstance: {fileID: 4746877376819708260, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: KeyboardInput
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: eventsPerSeconds
+        objectReference: {fileID: 0}
+        value: 4
+        arrayItems: []
+      - symbolName: eventTargets
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - EMA245 (VRC.Udon.UdonBehaviour)
+        - EMA245 (VRC.Udon.UdonBehaviour)
+        - EMA245 (VRC.Udon.UdonBehaviour)
+        - EMA245 (VRC.Udon.UdonBehaviour)
+      - symbolName: holdTime
+        objectReference: {fileID: 0}
+        value: 1
+        arrayItems: []
+      - symbolName: keyCodes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: modes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: onKeyDownEvents
+        objectReference: {fileID: 0}
+        value: System.String[]
+        arrayItems:
+        - _ToggleComListenAndMic1
+        - _StartPTT
+        - _EndPTT
+        - _ToggleNavListen1
+    - udonInstance: {fileID: 6937806611615271234, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: KeyboardInput
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: eventsPerSeconds
+        objectReference: {fileID: 0}
+        value: 4
+        arrayItems: []
+      - symbolName: eventTargets
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - null
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+      - symbolName: holdTime
+        objectReference: {fileID: 0}
+        value: 1
+        arrayItems: []
+      - symbolName: keyCodes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: modes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: onKeyDownEvents
+        objectReference: {fileID: 0}
+        value: System.String[]
+        arrayItems:
+        - _DecrementFrequency
+        - _FastDecrementFrequency
+        - _IncrementFrequency
+        - _FastIncrementCourse
+        - _FastIncrementCourse
+        - _TransferFrequency
+        - _IncrementIndex
+    - udonInstance: {fileID: 5832042876167594644, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: NAV
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 7318735909822229224, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: NAV Active (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 5781800032037017730, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: NAV Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 7318735909822229224, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: NAV Active
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 2870423473987956235, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: Active Frequency (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.00
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.05
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 3964659542740432073, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: Identity (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: identityPlayer
+        objectReference: {fileID: 7847413207451500011, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: NAV1 IdentityPlayer (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: listeningIndiator
+        objectReference: {fileID: 8399077644926551310, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: I_Nav1 (UnityEngine.GameObject)
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 117.95
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+    - udonInstance: {fileID: 5781800032037017730, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: NAV Standby
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 9126007384430561793, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: Standby Frequency (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.00
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.05
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 117.95
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+    - udonInstance: {fileID: 5475268191106018728, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: Nav1
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleNavListen1
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 6237810967981723081, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 7847413207451500011, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: NAV1 IdentityPlayer
+      variables:
+      - symbolName: characterInterval
+        objectReference: {fileID: 0}
+        value: 0.4
+        arrayItems: []
+      - symbolName: identity
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: longClip
+        objectReference: {fileID: 8300000, guid: fd65398ac9789bc418e79f18804fb9d1,
+          type: 3}
+        value: Morse_Long (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: shortClip
+        objectReference: {fileID: 8300000, guid: 6e08bc10f2a136149bfcf0ad6da5d05e,
+          type: 3}
+        value: Morse_Short (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: wordInterval
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+    - udonInstance: {fileID: 3223549408378523203, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: Nav2
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _ToggleNavListen2
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 6237810967981723081, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: EMA245 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.0075
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 7667004792271676627, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: SingeCN+Standby
+      variables:
+      - symbolName: standbyTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - COM Standby (VRC.Udon.UdonBehaviour)
+        - NAV Standby (VRC.Udon.UdonBehaviour)
+      - symbolName: toggledObjects
+        objectReference: {fileID: 0}
+        value: UnityEngine.GameObject[]
+        arrayItems:
+        - COM (UnityEngine.GameObject)
+        - NAV (UnityEngine.GameObject)
+      - symbolName: tuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - COM Active (VRC.Udon.UdonBehaviour)
+        - NAV Active (VRC.Udon.UdonBehaviour)
+    - udonInstance: {fileID: 1367981002859457322, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: TouchSwitch
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _IncrementIndex
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 7667004792271676627, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.01
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 2409578679826908875, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: TouchSwitch
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _TransferFrequency
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 7667004792271676627, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.01
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 6246051775674335798, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: TouchSwitch
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 7667004792271676627, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 5
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: _FastDecrementFrequency
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: _FastIncrementFrequency
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.012
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0
+        arrayItems: []
+    - udonInstance: {fileID: 5603222305486588447, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+        type: 3}
+      gameObjectName: TouchSwitch
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 7667004792271676627, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 5
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: _DecrementFrequency
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: _IncrementFrequency
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.012
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0
+        arrayItems: []
+  - prefabInstance: {fileID: 2593576843648466709, guid: 802b5a65fe09a074fad2be696a27c5d3,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioTuner/ENC255.prefab
+    udonVariables:
+    - udonInstance: {fileID: 62477160268200894, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: COM
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 3865000204152615874, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: COM Active (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 4352705403666856, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: COM Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 3865000204152615874, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: COM Active
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 4359082847516034895, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: Active Frequency (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 1596854965234481295, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: Identity (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 4352705403666856, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: COM Standby
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 1882168085188979485, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: Standby Frequency (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 2462929356274367166, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: KeyboardInput
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: eventsPerSeconds
+        objectReference: {fileID: 0}
+        value: 4
+        arrayItems: []
+      - symbolName: eventTargets
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - null
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+      - symbolName: holdTime
+        objectReference: {fileID: 0}
+        value: 1
+        arrayItems: []
+      - symbolName: keyCodes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: modes
+        objectReference: {fileID: 0}
+        value: System.Int32[]
+        arrayItems: []
+      - symbolName: onKeyDownEvents
+        objectReference: {fileID: 0}
+        value: System.String[]
+        arrayItems:
+        - _DecrementFrequency
+        - _FastDecrementFrequency
+        - _IncrementFrequency
+        - _FastIncrementCourse
+        - _FastIncrementCourse
+        - _TransferFrequency
+        - _IncrementIndex
+    - udonInstance: {fileID: 1335752082122281320, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: NAV
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 2879841822843820308, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: NAV Active (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 1322663110214593406, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: NAV Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 2879841822843820308, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: NAV Active
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 7328435870288879095, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: Active Frequency (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.00
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.05
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 8458696542966368053, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: Identity (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: identityPlayer
+        objectReference: {fileID: 3351104551777783319, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: NAV1 IdentityPlayer (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 117.95
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+    - udonInstance: {fileID: 1322663110214593406, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: NAV Standby
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 4377507861138340349, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: Standby Frequency (TMPro.TextMeshPro)
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.00
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.05
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 117.95
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+    - udonInstance: {fileID: 3351104551777783319, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: NAV1 IdentityPlayer
+      variables:
+      - symbolName: characterInterval
+        objectReference: {fileID: 0}
+        value: 0.4
+        arrayItems: []
+      - symbolName: identity
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: longClip
+        objectReference: {fileID: 8300000, guid: fd65398ac9789bc418e79f18804fb9d1,
+          type: 3}
+        value: Morse_Long (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: shortClip
+        objectReference: {fileID: 8300000, guid: 6e08bc10f2a136149bfcf0ad6da5d05e,
+          type: 3}
+        value: Morse_Short (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: wordInterval
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+    - udonInstance: {fileID: 2882500939315418927, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: SingeCN+Standby
+      variables:
+      - symbolName: standbyTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - COM Standby (VRC.Udon.UdonBehaviour)
+        - NAV Standby (VRC.Udon.UdonBehaviour)
+      - symbolName: toggledObjects
+        objectReference: {fileID: 0}
+        value: UnityEngine.GameObject[]
+        arrayItems:
+        - COM (UnityEngine.GameObject)
+        - NAV (UnityEngine.GameObject)
+      - symbolName: tuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - COM Active (VRC.Udon.UdonBehaviour)
+        - NAV Active (VRC.Udon.UdonBehaviour)
+    - udonInstance: {fileID: 5807976731635194070, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: TouchSwitch
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _IncrementIndex
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 2882500939315418927, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.01
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 7140057413562021175, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: TouchSwitch
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: _TransferFrequency
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 2882500939315418927, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.01
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+    - udonInstance: {fileID: 1497571767843451338, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: TouchSwitch
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 2882500939315418927, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 5
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: _FastDecrementFrequency
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: _FastIncrementFrequency
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.012
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0
+        arrayItems: []
+    - udonInstance: {fileID: 1127232060912630243, guid: 802b5a65fe09a074fad2be696a27c5d3,
+        type: 3}
+      gameObjectName: TouchSwitch
+      variables:
+      - symbolName: audioSource
+        objectReference: {fileID: 6451254477142381142, guid: 6727c8a374937cb4cb1b73a38f7a1426,
+          type: 3}
+        value: Sound_ToggleSwitch (UnityEngine.AudioSource)
+        arrayItems: []
+      - symbolName: desktopKey
+        objectReference: {fileID: 0}
+        value: None
+        arrayItems: []
+      - symbolName: directionalMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: directionalThreshold
+        objectReference: {fileID: 0}
+        value: 0.8
+        arrayItems: []
+      - symbolName: disableInteractInVR
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: enableDesktopKey
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: enableHaptics
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: eventName
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: eventTarget
+        objectReference: {fileID: 2882500939315418927, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: fingerMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: hapticAmplitude
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
+      - symbolName: hapticDuration
+        objectReference: {fileID: 0}
+        value: 0.2
+        arrayItems: []
+      - symbolName: hapticFrequency
+        objectReference: {fileID: 0}
+        value: 0.1
+        arrayItems: []
+      - symbolName: knobMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+      - symbolName: knobStep
+        objectReference: {fileID: 0}
+        value: 5
+        arrayItems: []
+      - symbolName: localRight
+        objectReference: {fileID: 0}
+        value: (1.0, 0.0, 0.0)
+        arrayItems: []
+      - symbolName: localUp
+        objectReference: {fileID: 0}
+        value: (0.0, 1.0, 0.0)
+        arrayItems: []
+      - symbolName: networked
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: networkEventTarget
+        objectReference: {fileID: 0}
+        value: All
+        arrayItems: []
+      - symbolName: onDown
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onKnobLeft
+        objectReference: {fileID: 0}
+        value: _DecrementFrequency
+        arrayItems: []
+      - symbolName: onKnobRight
+        objectReference: {fileID: 0}
+        value: _IncrementFrequency
+        arrayItems: []
+      - symbolName: onLeft
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onRight
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchEnd
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onTouchStart
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: onUp
+        objectReference: {fileID: 0}
+        value: 
+        arrayItems: []
+      - symbolName: ownerOnly
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: radius
+        objectReference: {fileID: 0}
+        value: 0.012
+        arrayItems: []
+      - symbolName: sentToOwner
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+      - symbolName: switchSound
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: throttlingDelay
+        objectReference: {fileID: 0}
+        value: 0
+        arrayItems: []
+  - prefabInstance: {fileID: 213391584890351372, guid: adfc1c7f184da7b40af164977b3c0500,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioTuner/Prefabs/DualCN+Standby.prefab
+    udonVariables:
+    - udonInstance: {fileID: 6431527509719131721, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: Active1
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 5766395338916345881, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: Active1
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.00
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.05
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: identityPlayer
+        objectReference: {fileID: 5783041067084852609, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: NAV1 IdentityPlayer (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 117.95
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+    - udonInstance: {fileID: 603993731044199741, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: Active2
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 83012211862557549, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: Active2
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.00
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.05
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: identityPlayer
+        objectReference: {fileID: 1797704743721889955, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: NAV2 IdentityPlayer (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 117.95
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+    - udonInstance: {fileID: 1107563067477701535, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: COM
+      variables:
+      - symbolName: standbyTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - Standby1 (VRC.Udon.UdonBehaviour)
+        - Standby2 (VRC.Udon.UdonBehaviour)
+      - symbolName: toggledObjects
+        objectReference: {fileID: 0}
+        value: UnityEngine.GameObject[]
+        arrayItems:
+        - null
+        - null
+      - symbolName: tuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - Active1 (VRC.Udon.UdonBehaviour)
+        - Active2 (VRC.Udon.UdonBehaviour)
+    - udonInstance: {fileID: 7800141791683833397, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: COM1
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 6431527509719131721, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: Active1 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 7848977862257792035, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: Standby1 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 4404268136715224385, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: COM2
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 603993731044199741, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: Active2 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 4453385959358218071, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: Standby2 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 439629341051858383, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: NAV
+      variables:
+      - symbolName: standbyTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - Standby1 (VRC.Udon.UdonBehaviour)
+        - Standby2 (VRC.Udon.UdonBehaviour)
+      - symbolName: toggledObjects
+        objectReference: {fileID: 0}
+        value: UnityEngine.GameObject[]
+        arrayItems:
+        - null
+        - null
+      - symbolName: tuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - Active1 (VRC.Udon.UdonBehaviour)
+        - Active2 (VRC.Udon.UdonBehaviour)
+    - udonInstance: {fileID: 7311754052958416997, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: NAV1
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 5766395338916345881, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: Active1 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 7325687484088732275, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: Standby1 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 5783041067084852609, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: NAV1 IdentityPlayer
+      variables:
+      - symbolName: characterInterval
+        objectReference: {fileID: 0}
+        value: 0.4
+        arrayItems: []
+      - symbolName: identity
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: longClip
+        objectReference: {fileID: 8300000, guid: fd65398ac9789bc418e79f18804fb9d1,
+          type: 3}
+        value: Morse_Long (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: shortClip
+        objectReference: {fileID: 8300000, guid: 6e08bc10f2a136149bfcf0ad6da5d05e,
+          type: 3}
+        value: Morse_Short (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: wordInterval
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+    - udonInstance: {fileID: 3771800673459247889, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: NAV2
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 83012211862557549, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: Active2 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 3786015306903167239, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: Standby2 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 1797704743721889955, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: NAV2 IdentityPlayer
+      variables:
+      - symbolName: characterInterval
+        objectReference: {fileID: 0}
+        value: 0.4
+        arrayItems: []
+      - symbolName: identity
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: longClip
+        objectReference: {fileID: 8300000, guid: fd65398ac9789bc418e79f18804fb9d1,
+          type: 3}
+        value: Morse_Long (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: shortClip
+        objectReference: {fileID: 8300000, guid: 6e08bc10f2a136149bfcf0ad6da5d05e,
+          type: 3}
+        value: Morse_Short (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: wordInterval
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+    - udonInstance: {fileID: 7848977862257792035, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: Standby1
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 7325687484088732275, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: Standby1
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.00
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.05
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 117.95
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+    - udonInstance: {fileID: 4453385959358218071, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: Standby2
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 3786015306903167239, guid: adfc1c7f184da7b40af164977b3c0500,
+        type: 3}
+      gameObjectName: Standby2
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.00
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.05
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 117.95
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+  - prefabInstance: {fileID: 1529650186579414150, guid: 7518e61fc98a4904691fd1292f96ba0e,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioTuner/Prefabs/DualTuner+Standby.prefab
+    udonVariables:
+    - udonInstance: {fileID: 1885272132283864674, guid: 7518e61fc98a4904691fd1292f96ba0e,
+        type: 3}
+      gameObjectName: Active1
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 5406962971790081302, guid: 7518e61fc98a4904691fd1292f96ba0e,
+        type: 3}
+      gameObjectName: Active2
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 5491699426153366452, guid: 7518e61fc98a4904691fd1292f96ba0e,
+        type: 3}
+      gameObjectName: DualTuner+Standby
+      variables:
+      - symbolName: standbyTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - Standby1 (VRC.Udon.UdonBehaviour)
+        - Standby2 (VRC.Udon.UdonBehaviour)
+      - symbolName: toggledObjects
+        objectReference: {fileID: 0}
+        value: UnityEngine.GameObject[]
+        arrayItems:
+        - null
+        - null
+      - symbolName: tuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - Active1 (VRC.Udon.UdonBehaviour)
+        - Active2 (VRC.Udon.UdonBehaviour)
+    - udonInstance: {fileID: 3424317855909864456, guid: 7518e61fc98a4904691fd1292f96ba0e,
+        type: 3}
+      gameObjectName: Standby1
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 9125752835920433020, guid: 7518e61fc98a4904691fd1292f96ba0e,
+        type: 3}
+      gameObjectName: Standby2
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 3411228864644472350, guid: 7518e61fc98a4904691fd1292f96ba0e,
+        type: 3}
+      gameObjectName: Tuner1
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 1885272132283864674, guid: 7518e61fc98a4904691fd1292f96ba0e,
+          type: 3}
+        value: Active1 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 3424317855909864456, guid: 7518e61fc98a4904691fd1292f96ba0e,
+          type: 3}
+        value: Standby1 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 9112945596724196714, guid: 7518e61fc98a4904691fd1292f96ba0e,
+        type: 3}
+      gameObjectName: Tuner2
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 5406962971790081302, guid: 7518e61fc98a4904691fd1292f96ba0e,
+          type: 3}
+        value: Active2 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 9125752835920433020, guid: 7518e61fc98a4904691fd1292f96ba0e,
+          type: 3}
+        value: Standby2 (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+  - prefabInstance: {fileID: 6242781348084402529, guid: 91defe2d2e964ef4bb8789a7484ae316,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioTuner/Prefabs/RadioTuner.prefab
+    udonVariables:
+    - udonInstance: {fileID: 1504653156541694894, guid: 91defe2d2e964ef4bb8789a7484ae316,
+        type: 3}
+      gameObjectName: RadioTuner
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+  - prefabInstance: {fileID: 4951209425781891000, guid: 70f97793706c31849b795fdf52e72ea3,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioTuner/Prefabs/RadioTuner+Standby.prefab
+    udonVariables:
+    - udonInstance: {fileID: 6066856371605060507, guid: 70f97793706c31849b795fdf52e72ea3,
+        type: 3}
+      gameObjectName: Active
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 7011829921322234855, guid: 70f97793706c31849b795fdf52e72ea3,
+        type: 3}
+      gameObjectName: RadioTuner+Standby
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 6066856371605060507, guid: 70f97793706c31849b795fdf52e72ea3,
+          type: 3}
+        value: Active (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 7033925869146229233, guid: 70f97793706c31849b795fdf52e72ea3,
+          type: 3}
+        value: Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 7033925869146229233, guid: 70f97793706c31849b795fdf52e72ea3,
+        type: 3}
+      gameObjectName: Standby
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+  - prefabInstance: {fileID: 2625205257400831339, guid: 3873cfe590f851442bfcd8dd31226017,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioTuner/Prefabs/SingeCN+Standby.prefab
+    udonVariables:
+    - udonInstance: {fileID: 5043676950196792013, guid: 3873cfe590f851442bfcd8dd31226017,
+        type: 3}
+      gameObjectName: COM
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 8106610061683876529, guid: 3873cfe590f851442bfcd8dd31226017,
+          type: 3}
+        value: COM Active (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 4984426030572212443, guid: 3873cfe590f851442bfcd8dd31226017,
+          type: 3}
+        value: COM Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 8106610061683876529, guid: 3873cfe590f851442bfcd8dd31226017,
+        type: 3}
+      gameObjectName: COM Active
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 4984426030572212443, guid: 3873cfe590f851442bfcd8dd31226017,
+        type: 3}
+      gameObjectName: COM Standby
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.000
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.025
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 139.975
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 118
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
+    - udonInstance: {fileID: 6317073232729030683, guid: 3873cfe590f851442bfcd8dd31226017,
+        type: 3}
+      gameObjectName: NAV
+      variables:
+      - symbolName: active
+        objectReference: {fileID: 7121329224349714535, guid: 3873cfe590f851442bfcd8dd31226017,
+          type: 3}
+        value: NAV Active (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: standby
+        objectReference: {fileID: 6302858891407981069, guid: 3873cfe590f851442bfcd8dd31226017,
+          type: 3}
+        value: NAV Standby (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 7121329224349714535, guid: 3873cfe590f851442bfcd8dd31226017,
+        type: 3}
+      gameObjectName: NAV Active
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.00
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.05
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: identityPlayer
+        objectReference: {fileID: 7755981438527905636, guid: 3873cfe590f851442bfcd8dd31226017,
+          type: 3}
+        value: NAV1 IdentityPlayer (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 117.95
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+    - udonInstance: {fileID: 6302858891407981069, guid: 3873cfe590f851442bfcd8dd31226017,
+        type: 3}
+      gameObjectName: NAV Standby
+      variables:
+      - symbolName: defaultFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: frequencyDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: frequencyFormat
+        objectReference: {fileID: 0}
+        value: 000.00
+        arrayItems: []
+      - symbolName: frequencyStep
+        objectReference: {fileID: 0}
+        value: 0.05
+        arrayItems: []
+      - symbolName: identityDisplay
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: maxFrequency
+        objectReference: {fileID: 0}
+        value: 117.95
+        arrayItems: []
+      - symbolName: minFrequency
+        objectReference: {fileID: 0}
+        value: 108
+        arrayItems: []
+      - symbolName: navMode
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
+    - udonInstance: {fileID: 7755981438527905636, guid: 3873cfe590f851442bfcd8dd31226017,
+        type: 3}
+      gameObjectName: NAV1 IdentityPlayer
+      variables:
+      - symbolName: characterInterval
+        objectReference: {fileID: 0}
+        value: 0.4
+        arrayItems: []
+      - symbolName: identity
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: longClip
+        objectReference: {fileID: 8300000, guid: fd65398ac9789bc418e79f18804fb9d1,
+          type: 3}
+        value: Morse_Long (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: shortClip
+        objectReference: {fileID: 8300000, guid: 6e08bc10f2a136149bfcf0ad6da5d05e,
+          type: 3}
+        value: Morse_Short (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: wordInterval
+        objectReference: {fileID: 0}
+        value: 10
+        arrayItems: []
+    - udonInstance: {fileID: 7864402632129005148, guid: 3873cfe590f851442bfcd8dd31226017,
+        type: 3}
+      gameObjectName: SingeCN+Standby
+      variables:
+      - symbolName: standbyTuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - COM Standby (VRC.Udon.UdonBehaviour)
+        - NAV Standby (VRC.Udon.UdonBehaviour)
+      - symbolName: toggledObjects
+        objectReference: {fileID: 0}
+        value: UnityEngine.GameObject[]
+        arrayItems:
+        - null
+        - null
+      - symbolName: tuners
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - COM Active (VRC.Udon.UdonBehaviour)
+        - NAV Active (VRC.Udon.UdonBehaviour)
   - prefabInstance: {fileID: 6754092245840505834, guid: 13a7b82f10a704a4baf00a69fd6861f6,
       type: 3}
     prefabPath: Assets/Virtual-CNS/Assets/VirtualAviationJapan/Virtual-CNS/RadioTuner/RadioTuners.prefab

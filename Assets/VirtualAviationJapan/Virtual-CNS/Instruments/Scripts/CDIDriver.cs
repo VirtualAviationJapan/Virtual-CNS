@@ -20,6 +20,8 @@ namespace VirtualAviationJapan
         public float glideSlopeMaxScale = 128;
         public float updateInterval = 0.2f;
 
+        public TextMeshProUGUI toFromText;
+
         private Transform origin;
         private float selectedCourse;
         private Transform navaidTransform, glideSlopeTransform, dmeTransform;
@@ -130,6 +132,12 @@ namespace VirtualAviationJapan
                 var projected = Vector3.ProjectOnPlane(relative, Vector3.up).normalized;
                 var courseDiviation = Mathf.Rad2Deg * Mathf.Atan(Vector3.Dot(projected, courseCross));
                 courseDiviationIndiator.localPosition = Vector3.right * Mathf.Clamp(courseDiviation, -clamp, clamp) * scale;
+            }
+
+            if (toFromText)
+            {
+                if (hasCourse) toFromText.text = Vector3.Dot(relative, origin.forward) >= 0 ? "To" : "From";
+                else toFromText.text = null;
             }
         }
 

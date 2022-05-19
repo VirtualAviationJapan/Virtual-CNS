@@ -1,10 +1,17 @@
 using UdonSharp;
 using UnityEngine;
+using UdonToolkit;
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+using System.Linq;
+using UdonSharpEditor;
+using UnityEditor;
+#endif
 
 namespace VirtualAviationJapan
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+    [OnAfterEditor(nameof(AudioSelector.OnAfterEditor))]
     public class AudioSelector : UdonSharpBehaviour
     {
         public RadioTuner[] comTuners = { };
@@ -73,5 +80,23 @@ namespace VirtualAviationJapan
         public void _SelectNav1() => _SelectNav(0);
         public void _SelectNav2() => _SelectNav(1);
         public void _SelectNav3() => _SelectNav(2);
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+        public static void OnAfterEditor(SerializedObject serializedObject)
+        {
+            var audioSelector = serializedObject.targetObject as AudioSelector;
+            var coms = EditorGUILayout.ObjectField("Load COMs", null, typeof(RadioTunerDemultiplexer), true) as RadioTunerDemultiplexer;
+            if (coms) audioSelector.comTuners = coms.tuners.ToArray();
+
+            var navs = EditorGUILayout.ObjectField("Load NAVs", null, typeof(RadioTunerDemultiplexer), true) as RadioTunerDemultiplexer;
+            if (navs) audioSelector.navTuners = navs.tuners.ToArray();
+
+            if (coms || navs)
+            {
+                audioSelector.ApplyProxyModifications();
+                EditorUtility.SetDirty(UdonSharpEditorUtility.GetBackingUdonBehaviour(audioSelector));
+            }
+        }
+#endif
     }
 }

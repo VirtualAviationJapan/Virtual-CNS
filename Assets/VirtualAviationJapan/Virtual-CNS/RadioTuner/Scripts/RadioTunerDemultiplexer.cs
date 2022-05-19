@@ -1,12 +1,21 @@
 using UdonSharp;
 using UdonToolkit;
+using UnityEditor;
 using UnityEngine;
 using VRC.SDKBase;
+using TMPro;
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+using UnityEditor;
+using UdonSharpEditor;
+using System.Linq;
+#endif
 
 namespace VirtualAviationJapan
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
+    [OnAfterEditor(nameof(RadioTunerDemultiplexer.OnAfterEditor))]
     public class RadioTunerDemultiplexer : UdonSharpBehaviour
     {
         [ListView("Tuners")] public RadioTuner[] tuners = { };
@@ -62,36 +71,53 @@ namespace VirtualAviationJapan
         public void _DecrementFrequency() => FrequencyTargetTuner._DecrementFrequency();
         public void _FastIncrementFrequency() => FrequencyTargetTuner._FastIncrementFrequency();
         public void _FastDecrementFrequency() => FrequencyTargetTuner._FastDecrementFrequency();
+
+        public void _IncrementCourse() => SelectedTuner._IncrementCourse();
+        public void _DecrementCourse() => SelectedTuner._DecrementCourse();
+        public void _FastIncrementCourse() => SelectedTuner._FastIncrementCourse();
+        public void _FastDecrementCourse() => SelectedTuner._FastDecrementCourse();
+
         public void _StartPTT() => SelectedTuner._StartPTT();
         public void _EndPTT() => SelectedTuner._EndPTT();
-        public void _Keypad1() => SelectedTuner._Keypad1();
-        public void _Keypad2() => SelectedTuner._Keypad2();
-        public void _Keypad3() => SelectedTuner._Keypad3();
-        public void _Keypad4() => SelectedTuner._Keypad4();
-        public void _Keypad5() => SelectedTuner._Keypad5();
-        public void _Keypad6() => SelectedTuner._Keypad6();
-        public void _Keypad7() => SelectedTuner._Keypad7();
-        public void _Keypad8() => SelectedTuner._Keypad8();
-        public void _Keypad9() => SelectedTuner._Keypad9();
-        public void _Keypad0() => SelectedTuner._Keypad0();
-        public void _KeypadClear() => SelectedTuner._KeypadClear();
+        public void _Keypad1() => FrequencyTargetTuner._Keypad1();
+        public void _Keypad2() => FrequencyTargetTuner._Keypad2();
+        public void _Keypad3() => FrequencyTargetTuner._Keypad3();
+        public void _Keypad4() => FrequencyTargetTuner._Keypad4();
+        public void _Keypad5() => FrequencyTargetTuner._Keypad5();
+        public void _Keypad6() => FrequencyTargetTuner._Keypad6();
+        public void _Keypad7() => FrequencyTargetTuner._Keypad7();
+        public void _Keypad8() => FrequencyTargetTuner._Keypad8();
+        public void _Keypad9() => FrequencyTargetTuner._Keypad9();
+        public void _Keypad0() => FrequencyTargetTuner._Keypad0();
+        public void _KeypadClear() => FrequencyTargetTuner._KeypadClear();
 
         public void _TransferFrequency()
         {
-            for (var i = 0; i < tuners.Length; i++)
+            SelectedTuner._TakeOwnership();
+            StandbyTuner._TakeOwnership();
+
+            var tmp = SelectedTuner.Frequency;
+            SelectedTuner.Frequency = StandbyTuner.Frequency;
+            StandbyTuner.Frequency = tmp;
+
+            SelectedTuner.RequestSerialization();
+            StandbyTuner.RequestSerialization();
+        }
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+        public static void OnAfterEditor(SerializedObject serializedObject)
+        {
+            var demultiplexer = serializedObject.targetObject as RadioTunerDemultiplexer;
+            int i = 1;
+            foreach (var (active, standby) in demultiplexer.tuners.Zip(demultiplexer.standbyTuners, (active, standby) => (active, standby)))
             {
-                var active = tuners[i];
-                var standby = standbyTuners[i];
-                active._TakeOwnership();
-                standby._TakeOwnership();
-
-                var tmp = active.Frequency;
-                active.Frequency = standby.Frequency;
-                standby.Frequency = tmp;
-
-                active.RequestSerialization();
-                standby.RequestSerialization();
+                EditorGUILayout.LabelField($"Tuner {i++}");
+                using (new EditorGUI.IndentLevelScope())
+                {
+                    StandbyFrequencySwitcher.SetupHelperGUI(active, standby);
+                }
             }
         }
+#endif
     }
 }
