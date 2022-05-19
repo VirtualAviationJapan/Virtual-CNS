@@ -34,12 +34,12 @@ namespace VirtualAviationJapan
 
         public const float KNOTS = 1.944f;
 
-        [TextArea] public string template = "AERODROME information [{0}] [{1}] [Z]. {2}. wind {3}. visibility 10 kilometers, sky clear. temperature [25], dewpoint [20], qnh [29] decimal [92]. advise you have information [{0}]";
+        [TextArea] public string template = "AERODROME information [{0}] [{1}] [Z]. {2}. wind {3}. visibility 10 kilometers, sky clear. temperature [25], dewpoint [20], qnh [2992]. advise you have information [{0}]";
         [ListView("Runway Operations")] public float[] windHeadings = { 0.0f, 180.0f };
         [ListView("Runway Operations")]
         public string[] runwayTemplates = {
-            "ils runway [36] approach. using runway [36].",
-            "ils runway [18] approach. using runway [18].",
+            "ils runway [36] approach. using runway [36]",
+            "ils runway [18] approach. using runway [18]",
         };
         public string windTemplate = "[{0:000}] degrees {1:0} knots";
 
@@ -53,10 +53,6 @@ namespace VirtualAviationJapan
         [ListView("Vocabulary")] public AudioClip[] clips = { };
 
         private AudioSource audioSource;
-        private Vector3 windVector;
-        private float windSpeed;
-        private bool windCalm;
-        private int windHeading;
         private float magneticDeclination;
         private AudioClip[] words;
         private int wordIndex;
@@ -114,16 +110,18 @@ namespace VirtualAviationJapan
 
             if (prevInformationIndex != informationIndex || words == null)
             {
-                windVector = windSource ? (Vector3)windSource.GetProgramVariable(windVariableName) : Vector3.zero;
-                windSpeed = windVector.magnitude * KNOTS;
-                windCalm = windSpeed < minWind;
+                var windVector = windSource ? (Vector3)windSource.GetProgramVariable(windVariableName) : Vector3.zero;
 
-                windHeading = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.down) + magneticDeclination + 540) % 360;
+                var windSpeed = Mathf.RoundToInt(windVector.magnitude * KNOTS);
+                var windCalm = windSpeed < minWind;
+                var windHeading = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.down) + magneticDeclination + 540) % 360;
 
                 var windString = windCalm ? "calm" : string.Format(windTemplate, new object[] { windSpeed, windHeading });
                 var runwayOperationIndex = windCalm ? 0 : IndexOfRunwayOperation(windHeading);
 
-                var rawWords = string.Format(template, (char)('A' + informationIndex), timestamp, runwayTemplates[runwayOperationIndex], windString).Split(' ');
+                var rawText = string.Format(template, (char)('A' + informationIndex), timestamp, runwayTemplates[runwayOperationIndex], windString);
+                Debug.Log($"[Virtual-CNS][ATIS] Encoding: {rawText}");
+                var rawWords = rawText.Split(' ');
                 var wordsBuf = new AudioClip[MAX_WORDS];
                 var wordsBufIndex = 0;
                 var period = false;
@@ -214,12 +212,12 @@ namespace VirtualAviationJapan
 
         private AudioClip GetDigitClip(int value)
         {
-            if (value > 90)
+            if (value > 90 || value < 0)
             {
                 Debug.LogError("[Virtual-CNS][ATIS] Wrong Digit: {value}");
                 return null;
             }
-            if (value >= 20) return digits[value / 10 + 20];
+            if (value >= 20) return digits[value / 10 + 19];
             if (value >= 10) return digits[value];
             return digits[value];
         }
