@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4112778611114159732}
   m_Layer: 8
-  m_Name: DualNAVCOM+Standby
+  m_Name: DualCN+Standby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2570472542146854009
 Transform:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8486047187790090380
 Transform:
   m_ObjectHideFlags: 0
