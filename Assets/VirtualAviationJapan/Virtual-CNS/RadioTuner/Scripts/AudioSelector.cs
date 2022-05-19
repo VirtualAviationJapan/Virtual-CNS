@@ -11,7 +11,9 @@ namespace VirtualAviationJapan
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
     [OnAfterEditor(nameof(AudioSelector.OnAfterEditor))]
+#endif
     public class AudioSelector : UdonSharpBehaviour
     {
         public RadioTuner[] comTuners = { };

@@ -3500,6 +3500,10 @@ MonoBehaviour:
         type: 3}
       gameObjectName: COM Active
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
@@ -3522,6 +3526,10 @@ MonoBehaviour:
           type: 3}
         value: Identity (TMPro.TextMeshPro)
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: listen
+        arrayItems: []
       - symbolName: listeningIndiator
         objectReference: {fileID: 3119350592327803321, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
           type: 3}
@@ -3530,6 +3538,10 @@ MonoBehaviour:
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 139.975
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: mic
         arrayItems: []
       - symbolName: micIndicator
         objectReference: {fileID: 864359410735210682, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
@@ -4237,6 +4249,10 @@ MonoBehaviour:
         type: 3}
       gameObjectName: NAV Active
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 108
@@ -4264,6 +4280,10 @@ MonoBehaviour:
           type: 3}
         value: NAV1 IdentityPlayer (VRC.Udon.UdonBehaviour)
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: listen
+        arrayItems: []
       - symbolName: listeningIndiator
         objectReference: {fileID: 8399077644926551310, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
           type: 3}
@@ -4272,6 +4292,10 @@ MonoBehaviour:
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 117.95
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: mic
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}

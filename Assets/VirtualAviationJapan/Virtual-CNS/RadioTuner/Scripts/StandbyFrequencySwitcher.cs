@@ -14,7 +14,9 @@ namespace VirtualAviationJapan
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
     [OnAfterEditor(nameof(StandbyFrequencySwitcher.OnAfterEditor))]
+#endif
     public class StandbyFrequencySwitcher : UdonSharpBehaviour
     {
         public RadioTuner active, standby;

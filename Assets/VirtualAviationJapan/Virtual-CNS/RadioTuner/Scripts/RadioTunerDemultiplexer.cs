@@ -15,7 +15,9 @@ namespace VirtualAviationJapan
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
     [OnAfterEditor(nameof(RadioTunerDemultiplexer.OnAfterEditor))]
+    #endif
     public class RadioTunerDemultiplexer : UdonSharpBehaviour
     {
         [ListView("Tuners")] public RadioTuner[] tuners = { };
