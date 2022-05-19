@@ -93,6 +93,7 @@ namespace VirtualAviationJapan
 
         public void _Stop()
         {
+            if (audioSource) audioSource.Stop();
             gameObject.SetActive(false);
         }
         readonly private char[] trimChars = new[] { '[', ']', ',', '.', ' ' };
@@ -217,7 +218,7 @@ namespace VirtualAviationJapan
                 Debug.LogError("[Virtual-CNS][ATIS] Wrong Digit: {value}");
                 return null;
             }
-            if (value >= 20) return digits[value / 10 + 19];
+            if (value >= 20) return digits[value / 10 + 18];
             if (value >= 10) return digits[value];
             return digits[value];
         }

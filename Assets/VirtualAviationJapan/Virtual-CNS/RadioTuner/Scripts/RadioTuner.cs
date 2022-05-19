@@ -175,7 +175,7 @@ namespace VirtualAviationJapan
         {
             if (navMode)
             {
-                if (identityPlayer) identityPlayer._PlayIdentity(Identity);
+                if (identityPlayer && Listen) identityPlayer._PlayIdentity(Identity);
                 if (ListeningATISPlayer && Listen) ListeningATISPlayer._Play();
             }
             else
