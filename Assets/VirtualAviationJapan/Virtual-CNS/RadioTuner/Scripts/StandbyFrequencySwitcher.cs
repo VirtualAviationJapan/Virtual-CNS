@@ -75,6 +75,11 @@ namespace VirtualAviationJapan
                             active.transmitter = EditorGUILayout.ObjectField("Transmitter", active.transmitter, typeof(Transmitter), true) as Transmitter;
                         }
 
+
+                        active.animator = EditorGUILayout.ObjectField("Animator", active.animator, typeof(Animator), true) as Animator;
+                        active.listenBool = EditorGUILayout.TextField("Listen Bool", active.listenBool);
+                        active.micBool = EditorGUILayout.TextField("Listen Bool", active.micBool);
+
                         if (tunerChange.changed)
                         {
                             active.ApplyProxyModifications();

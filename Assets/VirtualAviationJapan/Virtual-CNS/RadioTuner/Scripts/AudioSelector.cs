@@ -33,11 +33,19 @@ namespace VirtualAviationJapan
         public void _ToggleComListen3() => _ToggleComListen(2);
         public void _ToggleComListenAndMic(int index)
         {
+            SelectedMic._SetMic(false);
             comTuners[index]._ToggleListenAndMic();
         }
         public void _ToggleComListenAndMic1() => _ToggleComListenAndMic(0);
         public void _ToggleComListenAndMic2() => _ToggleComListenAndMic(1);
         public void _ToggleComListenAndMic3() => _ToggleComListenAndMic(2);
+
+        public void _SetAllComListen(bool value)
+        {
+            foreach (var tuner in comTuners) tuner._SetListen(value);
+        }
+        public void _MuteAllCom() => _SetAllComListen(false);
+        public void _ListenAllCom() => _SetAllComListen(true);
 
         public void _SelectMic(int index)
         {
@@ -57,6 +65,31 @@ namespace VirtualAviationJapan
         public void _ToggleMic1() => _ToggleMic(0);
         public void _ToggleMic2() => _ToggleMic(1);
         public void _ToggleMic3() => _ToggleMic(2);
+
+        public void _ActivateMic(int index, bool value)
+        {
+            _SelectMic(index);
+            if (SelectedMic.Mic != value) SelectedMic._ToggleMic();
+        }
+        public void _ActivateMic1() => _ActivateMic(0, true);
+        public void _ActivateMic2() => _ActivateMic(1, true);
+        public void _ActivateMic3() => _ActivateMic(2, true);
+
+        public void _SelectCom(int index)
+        {
+            _ActivateMic(index, SelectedMic.Mic);
+        }
+        public void _SelectCom1() => _SelectCom(0);
+        public void _SelectCom2() => _SelectCom(1);
+        public void _SelectCom3() => _SelectCom(2);
+
+        public void _SetSelectedComListen(bool value)
+        {
+            SelectedMic._SetListen(value);
+        }
+        public void _ListenSelectedCom() => _SetSelectedComListen(true);
+        public void _MuteSelectedCom() => _SetSelectedComListen(false);
+
         public void _StartPTT() => SelectedMic._StartPTT();
         public void _EndPTT() => SelectedMic._EndPTT();
 
@@ -68,6 +101,17 @@ namespace VirtualAviationJapan
         public void _ToggleNavListen2() => _ToggleNavListen(1);
         public void _ToggleNavListen3() => _ToggleNavListen(2);
         public void _ToggleSelectedNavListen() => _ToggleNavListen(selectedNav);
+
+        public void _SetNavListen(int index, bool value)
+        {
+            if (value != navTuners[index].Listen) navTuners[index]._ToggleListen();
+        }
+        public void _ListenNav1() => _SetNavListen(0, true);
+        public void _ListenNav2() => _SetNavListen(1, true);
+        public void _ListenNav3() => _SetNavListen(2, true);
+        public void _MuteNav1() => _SetNavListen(0, false);
+        public void _MuteNav2() => _SetNavListen(1, false);
+        public void _MuteNav3() => _SetNavListen(2, false);
 
         public void _SelectNav(int index)
         {

@@ -37,6 +37,9 @@ namespace VirtualAviationJapan
         [HideIf("@navMode")] public Transmitter transmitter;
         [HideIf("@!navMode")] public NavSelector navSelector;
         [HideIf("@!navMode")] public IdentityPlayer identityPlayer;
+        public Animator animator;
+        [Popup("animatorBool", "@animator", "bool")] public string listenBool = "listen";
+        [HideIf("@navMode")][Popup("animatorBool", "@animator", "bool")] public string micBool = "mic";
 
         public string Identity
         {
@@ -126,6 +129,9 @@ namespace VirtualAviationJapan
                 if (listeningIndiator) listeningIndiator.SetActive(value);
 
                 if (!value) Mic = false;
+
+                if (animator) animator.SetBool(listenBool, value);
+
                 _listen = value;
             }
             get => _listen;
@@ -138,6 +144,9 @@ namespace VirtualAviationJapan
             {
                 if (transmitter && !value) transmitter._SetActive(value);
                 if (micIndicator) micIndicator.SetActive(value);
+
+                if (animator) animator.SetBool(micBool, value);
+
                 _mic = value;
             }
             get => _mic;
@@ -172,6 +181,12 @@ namespace VirtualAviationJapan
             else
             {
                 if (receiver) receiver._SetActive(Listen);
+            }
+
+            if (animator)
+            {
+                animator.SetBool(listenBool, Listen);
+                if (!navMode) animator.SetBool(micBool, Mic);
             }
         }
 
@@ -242,26 +257,36 @@ namespace VirtualAviationJapan
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
         }
 
-        public void _ToggleListen()
+        public void _SetListen(bool value)
         {
             _TakeOwnership();
-            Listen = !Listen;
+            Listen = value;
             RequestSerialization();
         }
+        public void _Listen() => _SetListen(true);
+        public void _Mute() => _SetListen(false);
+        public void _ToggleListen() => _SetListen(!Listen);
 
-        public void _ToggleMic()
+        public void _SetMic(bool value)
         {
             _TakeOwnership();
-            Mic = !Mic;
+            Mic = value;
             RequestSerialization();
         }
+        public void _MicOn() => _SetMic(true);
+        public void _MicMute() => _SetMic(false);
+        public void _ToggleMic() => _SetMic(!Mic);
 
-        public void _ToggleListenAndMic()
+
+        public void _SetListenAndMic(bool value)
         {
             _TakeOwnership();
-            Listen = Mic = !Listen;
+            Listen = Mic = value;
             RequestSerialization();
         }
+        public void _ListenAndMicOn() => _SetListenAndMic(true);
+        public void _MuteAll() => _SetListenAndMic(false);
+        public void _ToggleListenAndMic() => _SetListenAndMic(!Listen);
 
         public void _SetFrequency(float value)
         {
