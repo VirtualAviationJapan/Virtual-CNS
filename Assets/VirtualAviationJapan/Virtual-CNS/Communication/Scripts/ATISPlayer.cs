@@ -115,9 +115,9 @@ namespace VirtualAviationJapan
 
                 var windSpeed = Mathf.RoundToInt(windVector.magnitude * KNOTS);
                 var windCalm = windSpeed < minWind;
-                var windHeading = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.down) + magneticDeclination + 540) % 360;
+                var windHeading = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.up) + magneticDeclination + 540) % 360;
 
-                var windString = windCalm ? "calm" : string.Format(windTemplate, new object[] { windSpeed, windHeading });
+                var windString = windCalm ? "calm" : string.Format(windTemplate, new object[] { windHeading, windSpeed });
                 var runwayOperationIndex = windCalm ? 0 : IndexOfRunwayOperation(windHeading);
 
                 var rawText = string.Format(template, (char)('A' + informationIndex), timestamp, runwayTemplates[runwayOperationIndex], windString);
