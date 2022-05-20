@@ -18,6 +18,8 @@ namespace VirtualAviationJapan
     {
         public RadioTuner[] comTuners = { };
         public RadioTuner[] navTuners = { };
+        public MarkerReceiver markerReceiver;
+        public bool xmtrMode = false;
 
         public RadioTuner SelectedMic => comTuners[selectedMic];
         public bool Mic => SelectedMic.Mic;
@@ -25,6 +27,22 @@ namespace VirtualAviationJapan
         public bool NavListen => SelectedNavTuner.Listen;
 
         private int selectedMic, selectedNav;
+
+        private void OnEnable()
+        {
+            Initialize();
+        }
+        private void Start()
+        {
+            Initialize();
+        }
+        private void Initialize()
+        {
+            if (xmtrMode && _IsAllMicMuted())
+            {
+                SelectedMic._MicOn();
+            }
+        }
 
         public void _ToggleComListen(int index)
         {
@@ -91,6 +109,7 @@ namespace VirtualAviationJapan
         }
         public void _ListenSelectedCom() => _SetSelectedComListen(true);
         public void _MuteSelectedCom() => _SetSelectedComListen(false);
+        public void _ToggleSelectedComListen() => _SetSelectedComListen(!SelectedMic.Listen);
 
         public void _StartPTT() => SelectedMic._StartPTT();
         public void _EndPTT() => SelectedMic._EndPTT();
@@ -126,6 +145,71 @@ namespace VirtualAviationJapan
         public void _SelectNav1() => _SelectNav(0);
         public void _SelectNav2() => _SelectNav(1);
         public void _SelectNav3() => _SelectNav(2);
+
+        public bool MarkerListen => markerReceiver.gameObject.activeSelf;
+        public void _SetMarkerListen(bool value)
+        {
+            markerReceiver.gameObject.SetActive(value);
+        }
+        public void _ToggleMarker() => _SetMarkerListen(!MarkerListen);
+        public void _ListenMarker() => _SetMarkerListen(true);
+        public void _MuteMarker() => _SetMarkerListen(false);
+
+        #region C172 Style ACU
+        public bool _IsAllMicMuted()
+        {
+            foreach (var tuner in comTuners)
+            {
+                if (tuner.Mic) return false;
+            }
+            return true;
+        }
+
+        public bool _IsAuto()
+        {
+            if (!SelectedMic.Mic) return false;
+            for (var i = 0; i < comTuners.Length; i++)
+            {
+                if (i != selectedMic && comTuners[i].Listen) return false;
+            }
+            return true;
+        }
+        public void _SetAuto()
+        {
+            for (var i = 0; i < comTuners.Length; i++)
+            {
+                comTuners[i]._SetListen(i == selectedMic);
+            }
+        }
+
+        public bool _IsBoth()
+        {
+            foreach (var tuner in comTuners)
+            {
+                if (!tuner.Listen) return false;
+            }
+            return true;
+        }
+        public void _SetBoth()
+        {
+            _ListenAllCom();
+        }
+
+        public void _SelectXMTR(int index)
+        {
+            for (var i = 0; i < comTuners.Length; i++)
+            {
+                comTuners[i]._SetMic(i == index);
+            }
+
+            var isAuto = _IsAuto();
+           selectedMic = index;
+           if (isAuto) _SetAuto();
+        }
+        public void _SelectXMTR1() => _SelectXMTR(0);
+        public void _SelectXMTR2() => _SelectXMTR(1);
+        public void _SelectXMTR3() => _SelectXMTR(2);
+        #endregion
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
         public static void OnAfterEditor(SerializedObject serializedObject)
