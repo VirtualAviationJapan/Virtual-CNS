@@ -1,0 +1,30 @@
+{
+  "name": "jp.virtualaviation.virtual-cns",
+  "displayName": "Virtual-CNS",
+  "version": "3.7.0-alpha.1",
+  "private": true,
+  "description": "Communication, Navigation, Surveillance on VRChat Aviation",
+  "homepage": "https://github.com/VirtualAviationJapan/Virtual-CNS#readme",
+  "bugs": {
+    "url": "https://github.com/VirtualAviationJapan/Virtual-CNS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VirtualAviationJapan/Virtual-CNS.git"
+  },
+  "license": "UNLICENSED",
+  "author": {
+    "name": "esnya",
+    "url": "https://github.com/VirtualAviationJapan"
+  },
+  "legacyFolders": {
+    "Assets\\Virtual-CNS": ""
+  },
+  "gitDependencies": {
+    "com.vrchat.udonsharp": "https://github.com/vrchat-community/UdonSharp.git?path=/Packages/com.vrchat.UdonSharp#1.0.1",
+    "com.vrchat.worlds": "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.worlds#3.0.4",
+    "sh.orels.udontoolkit": "https://github.com/orels1/UdonToolkit#develop"
+  },
+  "unity": "2019.4",
+  "url": "https://github.com/VirtualAviationJapan/Virtual-CNS.git?path=/Packages/jp.virtualaviation.virtual-cns"
+}
