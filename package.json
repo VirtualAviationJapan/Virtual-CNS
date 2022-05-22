@@ -1,19 +1,6 @@
 {
-  "name": "jp.virtualaviation.virtual-cns",
-  "displayName": "Virtual-CNS",
-  "version": "3.7.0-alpha.1",
+  "name": "vcc-build",
   "private": true,
-  "description": "Communication, Navigation, Surveillance on VRChat",
-  "homepage": "https://github.com/VirtualAviationJapan/Virtual-CNS#readme",
-  "bugs": {
-    "url": "https://github.com/VirtualAviationJapan/Virtual-CNS/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VirtualAviationJapan/Virtual-CNS.git"
-  },
-  "license": "UNLICENSED",
-  "author": "esnya",
   "devDependencies": {
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
@@ -21,6 +8,5 @@
     "@semantic-release/npm": "^9.0.1",
     "semantic-release": "^19.0.2",
     "semantic-release-gitmoji": "^1.4.4"
-  },
-  "unity": "2019.4"
+  }
 }

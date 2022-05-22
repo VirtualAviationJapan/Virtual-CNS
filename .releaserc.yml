@@ -2,8 +2,10 @@ plugins:
   - semantic-release-gitmoji
   - - '@semantic-release/exec'
     - verifyReleaseCmd: ./.github/scripts/before-release.sh ${nextRelease.version}
+  - - "@semantic-release/npm"
+    - npmPublish: false
+    - pkgRoot: Packages/jp.virtualaviation.virtual-cns
   - - '@semantic-release/github'
     - assets:
       - path: dist/
-  - "@semantic-release/npm"
   - "@semantic-release/git"
