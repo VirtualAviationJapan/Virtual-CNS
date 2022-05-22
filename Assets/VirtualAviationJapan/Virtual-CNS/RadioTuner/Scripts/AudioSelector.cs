@@ -146,14 +146,9 @@ namespace VirtualAviationJapan
         public void _SelectNav2() => _SelectNav(1);
         public void _SelectNav3() => _SelectNav(2);
 
-        public bool MarkerListen => markerReceiver.gameObject.activeSelf;
-        public void _SetMarkerListen(bool value)
-        {
-            markerReceiver.gameObject.SetActive(value);
-        }
-        public void _ToggleMarker() => _SetMarkerListen(!MarkerListen);
-        public void _ListenMarker() => _SetMarkerListen(true);
-        public void _MuteMarker() => _SetMarkerListen(false);
+        public void _ToggleMarker() => markerReceiver.Mute = !markerReceiver.Mute;
+        public void _UnmuteMarker() => markerReceiver.Mute = false;
+        public void _MuteMarker() => markerReceiver.Mute = true;
 
         #region C172 Style ACU
         public bool _IsAllMicMuted()
