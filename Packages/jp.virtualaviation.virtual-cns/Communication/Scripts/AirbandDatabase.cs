@@ -10,7 +10,7 @@ namespace VirtualAviationJapan
         public float frequencyStep = 0.025f;
         [ListView("Stations")] public float[] frequencies = { };
         [ListView("Stations")] public string[] identities = { };
-        [ListView("Stations")] public ATISPlayer[] atisPlayers = { };
+        [ListView("Stations")] public ATISGenerator[] atis = { };
         private void Start()
         {
             gameObject.name = nameof(AirbandDatabase);
@@ -25,6 +25,6 @@ namespace VirtualAviationJapan
             return -1;
         }
 
-        public bool _IsATIS(int index) => atisPlayers[index] != null;
+        public bool _IsATIS(int index) => atis[index] != null;
     }
 }

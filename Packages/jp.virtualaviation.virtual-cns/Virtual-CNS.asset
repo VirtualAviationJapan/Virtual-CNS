@@ -3504,6 +3504,15 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: atisPlayer
+        objectReference: {fileID: 2527357781802648204, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
+          type: 3}
+        value: ATISPlayer (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
@@ -3560,6 +3569,14 @@ MonoBehaviour:
         type: 3}
       gameObjectName: COM Standby
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
@@ -3581,9 +3598,17 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: listen
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 139.975
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: mic
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}
@@ -4253,6 +4278,10 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 108
@@ -4309,6 +4338,14 @@ MonoBehaviour:
         type: 3}
       gameObjectName: NAV Standby
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 108
@@ -4330,9 +4367,17 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: listen
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 117.95
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: mic
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}
@@ -5216,6 +5261,19 @@ MonoBehaviour:
         type: 3}
       gameObjectName: COM Active
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: atisPlayer
+        objectReference: {fileID: 7022490515158905200, guid: 802b5a65fe09a074fad2be696a27c5d3,
+          type: 3}
+        value: ATISPlayer (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
@@ -5238,9 +5296,17 @@ MonoBehaviour:
           type: 3}
         value: Identity (TMPro.TextMeshPro)
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: no bools found
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 139.975
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: no bools found
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}
@@ -6020,6 +6086,19 @@ MonoBehaviour:
         type: 3}
       gameObjectName: Active1
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: atisPlayer
+        objectReference: {fileID: 6206391649762001278, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: ATISPlayer (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
@@ -6040,9 +6119,17 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: no bools found
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 139.975
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: no bools found
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}
@@ -6097,6 +6184,19 @@ MonoBehaviour:
         type: 3}
       gameObjectName: Active2
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: atisPlayer
+        objectReference: {fileID: 510977876853850559, guid: adfc1c7f184da7b40af164977b3c0500,
+          type: 3}
+        value: ATISPlayer (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
@@ -6117,9 +6217,17 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: no bools found
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 139.975
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: no bools found
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}
@@ -6326,6 +6434,14 @@ MonoBehaviour:
         type: 3}
       gameObjectName: Standby1
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
@@ -6346,9 +6462,17 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: listen
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 139.975
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: mic
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}
@@ -6398,6 +6522,14 @@ MonoBehaviour:
         type: 3}
       gameObjectName: Standby2
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
@@ -6418,9 +6550,17 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: listen
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 139.975
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: mic
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}
@@ -6816,6 +6956,19 @@ MonoBehaviour:
         type: 3}
       gameObjectName: COM Active
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: atisPlayer
+        objectReference: {fileID: 2618753270063751171, guid: 3873cfe590f851442bfcd8dd31226017,
+          type: 3}
+        value: ATISPlayer (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
@@ -6836,9 +6989,17 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: no bools found
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 139.975
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: no bools found
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}
@@ -6852,6 +7013,14 @@ MonoBehaviour:
         type: 3}
       gameObjectName: COM Standby
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
@@ -6872,9 +7041,17 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: listen
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 139.975
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: mic
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}
@@ -6902,6 +7079,14 @@ MonoBehaviour:
         type: 3}
       gameObjectName: NAV Active
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 108
@@ -6927,9 +7112,17 @@ MonoBehaviour:
           type: 3}
         value: NAV1 IdentityPlayer (VRC.Udon.UdonBehaviour)
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: listen
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 117.95
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: mic
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}
@@ -6943,6 +7136,14 @@ MonoBehaviour:
         type: 3}
       gameObjectName: NAV Standby
       variables:
+      - symbolName: animator
+        objectReference: {fileID: 0}
+        value: null
+        arrayItems: []
+      - symbolName: autoMuteMic
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 108
@@ -6963,9 +7164,17 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: null
         arrayItems: []
+      - symbolName: listenBool
+        objectReference: {fileID: 0}
+        value: listen
+        arrayItems: []
       - symbolName: maxFrequency
         objectReference: {fileID: 0}
         value: 117.95
+        arrayItems: []
+      - symbolName: micBool
+        objectReference: {fileID: 0}
+        value: mic
         arrayItems: []
       - symbolName: minFrequency
         objectReference: {fileID: 0}

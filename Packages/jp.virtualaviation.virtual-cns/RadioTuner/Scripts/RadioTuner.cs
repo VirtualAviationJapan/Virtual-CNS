@@ -38,6 +38,7 @@ namespace VirtualAviationJapan
         [HideIf("@navMode")] public Transmitter transmitter;
         [HideIf("@!navMode")] public NavSelector navSelector;
         [HideIf("@!navMode")] public IdentityPlayer identityPlayer;
+        [HideIf("@navMode")] public ATISPlayer atisPlayer;
         public Animator animator;
         [Popup("animatorBool", "@animator", "bool")] public string listenBool = "listen";
         [HideIf("@navMode")][Popup("animatorBool", "@animator", "bool")] public string micBool = "mic";
@@ -95,7 +96,7 @@ namespace VirtualAviationJapan
                     if (airbandDatabase)
                     {
                         var index = airbandDatabase._FindIndexByFrequency(Frequency);
-                        ListeningATISPlayer = index >= 0 ? airbandDatabase.atisPlayers[index] : null;
+                        ATIS = index >= 0 ? airbandDatabase.atis[index] : null;
                     }
                 }
 
@@ -121,10 +122,10 @@ namespace VirtualAviationJapan
                 else
                 {
                     if (receiver) receiver._SetActive(value);
-                    if (ListeningATISPlayer)
+                    if (ATIS && atisPlayer)
                     {
-                        if (value) ListeningATISPlayer._Play();
-                        else ListeningATISPlayer._Stop();
+                        if (value) atisPlayer._Play(ATIS);
+                        else atisPlayer._Stop();
                     }
                 }
                 if (listeningIndiator) listeningIndiator.SetActive(value);
@@ -154,18 +155,18 @@ namespace VirtualAviationJapan
             get => _mic;
         }
 
-        private ATISPlayer _liteningATISPlayer;
-        private ATISPlayer ListeningATISPlayer
+        private ATISGenerator _atis;
+        private ATISGenerator ATIS
         {
             set
             {
                 if (navMode) return;
 
-                if (_liteningATISPlayer) _liteningATISPlayer._Stop();
-                if (Listen && value) value._Play();
-                _liteningATISPlayer = value;
+                if (atisPlayer && _atis != value) atisPlayer._Stop();
+                if (Listen && value) atisPlayer._Play(value);
+                _atis = value;
             }
-            get => _liteningATISPlayer;
+            get => _atis;
         }
 
         private NavaidDatabase navaidDatabase;
@@ -181,7 +182,7 @@ namespace VirtualAviationJapan
             if (navMode)
             {
                 if (identityPlayer && Listen) identityPlayer._PlayIdentity(Identity);
-                if (ListeningATISPlayer && Listen) ListeningATISPlayer._Play();
+                if (ATIS && Listen) atisPlayer._Play(ATIS);
             }
             else
             {
@@ -233,7 +234,7 @@ namespace VirtualAviationJapan
             if (navMode)
             {
                 if (identityPlayer) identityPlayer._Stop();
-                if (ListeningATISPlayer) ListeningATISPlayer._Stop();
+                if (ATIS) atisPlayer._Stop();
             }
             else
             {

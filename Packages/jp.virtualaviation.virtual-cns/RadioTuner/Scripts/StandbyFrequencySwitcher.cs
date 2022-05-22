@@ -75,6 +75,7 @@ namespace VirtualAviationJapan
                         {
                             active.receiver = EditorGUILayout.ObjectField("Receiver", active.receiver, typeof(Receiver), true) as Receiver;
                             active.transmitter = EditorGUILayout.ObjectField("Transmitter", active.transmitter, typeof(Transmitter), true) as Transmitter;
+                            active.atisPlayer = EditorGUILayout.ObjectField("ATIS Player", active.atisPlayer, typeof(ATISPlayer), true) as ATISPlayer;
                         }
 
 

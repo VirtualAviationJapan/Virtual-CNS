@@ -25,7 +25,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11500000, guid: 0e236d8e31ac0f54b94cba18a1f14228, type: 3}
+    - {fileID: 11500000, guid: b2fb539244a22414ca259368a24a3b21, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -269,7 +269,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: atisPlayers
+      Data: atis
     - Name: $v
       Entry: 7
       Data: 16|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
@@ -281,7 +281,7 @@ MonoBehaviour:
       Data: 18|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: VirtualAviationJapan.ATISPlayer[], VirtualAviationJapan.Virtual-CNS
+      Data: VirtualAviationJapan.ATISGenerator[], VirtualAviationJapan.Virtual-CNS
     - Name: 
       Entry: 8
       Data: 
@@ -296,10 +296,10 @@ MonoBehaviour:
       Data: UnityEngineComponentArray
     - Name: symbolOriginalName
       Entry: 1
-      Data: atisPlayers
+      Data: atis
     - Name: symbolUniqueName
       Entry: 1
-      Data: atisPlayers
+      Data: atis
     - Name: symbolDefaultValue
       Entry: 6
       Data: 
