@@ -42,7 +42,7 @@ namespace VirtualAviationJapan
                 return;
             }
 
-            if (wordIndex > words.Length)
+            if (wordIndex >= words.Length)
             {
                 words = Generator._Generate();
                 wordIndex = 0;
