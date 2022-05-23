@@ -28,22 +28,6 @@ namespace VirtualAviationJapan
 
         private int selectedMic, selectedNav;
 
-        private void OnEnable()
-        {
-            Initialize();
-        }
-        private void Start()
-        {
-            Initialize();
-        }
-        private void Initialize()
-        {
-            if (xmtrMode && _IsAllMicMuted())
-            {
-                SelectedMic._MicOn();
-            }
-        }
-
         public void _ToggleComListen(int index)
         {
             comTuners[index]._ToggleListen();
@@ -56,7 +40,6 @@ namespace VirtualAviationJapan
             SelectedMic._SetMic(false);
             comTuners[index]._ToggleListenAndMic();
         }
-        public void _ToggleComListenAndMic1() => _ToggleComListenAndMic(0);
         public void _ToggleComListenAndMic2() => _ToggleComListenAndMic(1);
         public void _ToggleComListenAndMic3() => _ToggleComListenAndMic(2);
 
@@ -146,9 +129,15 @@ namespace VirtualAviationJapan
         public void _SelectNav2() => _SelectNav(1);
         public void _SelectNav3() => _SelectNav(2);
 
-        public void _ToggleMarker() => markerReceiver.Mute = !markerReceiver.Mute;
-        public void _UnmuteMarker() => markerReceiver.Mute = false;
-        public void _MuteMarker() => markerReceiver.Mute = true;
+        private void SetMarkerMute(bool value)
+        {
+            if (!markerReceiver) return;
+            markerReceiver._SetMute(value);
+        }
+        private bool GetMarkerMute() => markerReceiver ? markerReceiver.Mute : false;
+        public void _ToggleMarkerMute() => SetMarkerMute(!GetMarkerMute());
+        public void _UnmuteMarker() => SetMarkerMute(false);
+        public void _MuteMarker() => SetMarkerMute(true);
 
         #region C172 Style ACU
         public bool _IsAllMicMuted()

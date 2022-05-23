@@ -28,6 +28,7 @@ namespace VirtualAviationJapan
         public float frequencyStep = 0.025f;
         public string frequencyFormat = "000.000";
         public bool autoMuteMic = true;
+        public bool defaultMicMute = true;
 
         [Header("References")]
         public TextMeshPro frequencyDisplay;
@@ -178,7 +179,7 @@ namespace VirtualAviationJapan
         {
             if (!initialized) return;
 
-            Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Enabled");
+            // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Enabled");
             if (navMode)
             {
                 if (identityPlayer && Listen) identityPlayer._PlayIdentity(Identity);
@@ -198,7 +199,7 @@ namespace VirtualAviationJapan
 
         private void Start()
         {
-            Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Initializing");
+            // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Initializing");
             if (!navMode)
             {
                 if (receiver)
@@ -221,16 +222,16 @@ namespace VirtualAviationJapan
             if (airbandObject) airbandDatabase = airbandObject.GetComponent<AirbandDatabase>();
 
             Frequency = defaultFrequency;
-            Mic = false;
+            Mic = !defaultMicMute;
             Listen = false;
 
             initialized = true;
-            Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Initialized");
+            // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Initialized");
         }
 
         private void OnDisable()
         {
-            Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Disabled");
+            // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Disabled");
             if (navMode)
             {
                 if (identityPlayer) identityPlayer._Stop();
