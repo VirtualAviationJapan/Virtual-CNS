@@ -50,9 +50,9 @@ namespace VirtualAviationJapan
         public Transform NavaidTransform => database ? database.transforms[Index] : null;
         public Transform GlideSlopeTransform => database ? database.glideSlopeTransforms[Index] : null;
         public Transform DMETransform => database ? database.dmeTransforms[Index] : null;
-        public bool IsILS => database._IsILS(Index);
-        public bool IsVOR => database._IsVOR(Index);
-        public bool HasDME => database._HasDME(Index);
+        public bool IsILS => database ? database._IsILS(Index) : false;
+        public bool IsVOR => database ? database._IsVOR(Index) : false;
+        public bool HasDME => database ? database._HasDME(Index) : false;
 
         private void Start()
         {
