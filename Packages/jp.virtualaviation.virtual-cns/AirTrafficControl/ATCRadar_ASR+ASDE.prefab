@@ -918,12 +918,6 @@ PrefabInstance:
       propertyPath: _syncMethod
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6248562568862202769, guid: 10dd66d3d5648d54796e74e07adee4c8,
-        type: 3}
-      propertyPath: serializedProgramAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: c72023936aa48d84bb5622cb499a51a0,
-        type: 2}
     - target: {fileID: 6277239484927506944, guid: 10dd66d3d5648d54796e74e07adee4c8,
         type: 3}
       propertyPath: m_Name
