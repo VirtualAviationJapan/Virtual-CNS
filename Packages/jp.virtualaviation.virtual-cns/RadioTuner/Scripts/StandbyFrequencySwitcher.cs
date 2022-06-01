@@ -2,7 +2,7 @@ using UdonSharp;
 using UnityEngine;
 using UdonToolkit;
 using TMPro;
-using UdonRadioCommunication;
+using URC;
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using UnityEditor;
@@ -75,9 +75,7 @@ namespace VirtualAviationJapan
                         {
                             active.receiver = EditorGUILayout.ObjectField("Receiver", active.receiver, typeof(Receiver), true) as Receiver;
                             active.transmitter = EditorGUILayout.ObjectField("Transmitter", active.transmitter, typeof(Transmitter), true) as Transmitter;
-                            active.atisPlayer = EditorGUILayout.ObjectField("ATIS Player", active.atisPlayer, typeof(ATISPlayer), true) as ATISPlayer;
                         }
-
 
                         active.animator = EditorGUILayout.ObjectField("Animator", active.animator, typeof(Animator), true) as Animator;
                         active.listenBool = EditorGUILayout.TextField("Listen Bool", active.listenBool);

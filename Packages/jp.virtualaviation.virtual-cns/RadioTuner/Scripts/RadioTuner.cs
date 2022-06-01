@@ -1,6 +1,6 @@
 ﻿
 using TMPro;
-using UdonRadioCommunication;
+using URC;
 using UdonSharp;
 using UdonToolkit;
 using UnityEngine;
@@ -39,7 +39,6 @@ namespace VirtualAviationJapan
         [HideIf("@navMode")] public Transmitter transmitter;
         [HideIf("@!navMode")] public NavSelector navSelector;
         [HideIf("@!navMode")] public IdentityPlayer identityPlayer;
-        [HideIf("@navMode")] public ATISPlayer atisPlayer;
         public Animator animator;
         [Popup("animatorBool", "@animator", "bool")] public string listenBool = "listen";
         [HideIf("@navMode")][Popup("animatorBool", "@animator", "bool")] public string micBool = "mic";
@@ -78,7 +77,7 @@ namespace VirtualAviationJapan
                 }
                 else
                 {
-                    if (receiver) receiver._SetFrequency(roundedValue);
+                    if (receiver) receiver.Frequency = roundedValue;
                     if (transmitter)
                     {
                         if (transmitter.Active) transmitter._SetActive(false);
@@ -91,14 +90,6 @@ namespace VirtualAviationJapan
                 if (navMode)
                 {
                     if (identityPlayer && Listen) identityPlayer._PlayIdentity(Identity);
-                }
-                else
-                {
-                    if (airbandDatabase)
-                    {
-                        var index = airbandDatabase._FindIndexByFrequency(Frequency);
-                        ATIS = index >= 0 ? airbandDatabase.atis[index] : null;
-                    }
                 }
 
                 UpdateDisplay();
@@ -122,12 +113,7 @@ namespace VirtualAviationJapan
                 }
                 else
                 {
-                    if (receiver) receiver._SetActive(value);
-                    if (ATIS && atisPlayer)
-                    {
-                        if (value) atisPlayer._Play(ATIS);
-                        else atisPlayer._Stop();
-                    }
+                    if (receiver) receiver.Active = value;
                 }
                 if (listeningIndiator) listeningIndiator.SetActive(value);
 
@@ -156,20 +142,6 @@ namespace VirtualAviationJapan
             get => _mic;
         }
 
-        private ATISGenerator _atis;
-        private ATISGenerator ATIS
-        {
-            set
-            {
-                if (navMode) return;
-
-                if (atisPlayer && _atis != value) atisPlayer._Stop();
-                if (Listen && value) atisPlayer._Play(value);
-                _atis = value;
-            }
-            get => _atis;
-        }
-
         private NavaidDatabase navaidDatabase;
         private AirbandDatabase airbandDatabase;
         private char[] inputBuffer = null;
@@ -183,11 +155,10 @@ namespace VirtualAviationJapan
             if (navMode)
             {
                 if (identityPlayer && Listen) identityPlayer._PlayIdentity(Identity);
-                if (ATIS && Listen) atisPlayer._Play(ATIS);
             }
             else
             {
-                if (receiver) receiver._SetActive(Listen);
+                if (receiver) receiver.Active = Listen;
             }
 
             if (animator)
@@ -235,11 +206,10 @@ namespace VirtualAviationJapan
             if (navMode)
             {
                 if (identityPlayer) identityPlayer._Stop();
-                if (ATIS) atisPlayer._Stop();
             }
             else
             {
-                if (receiver) receiver._SetActive(false);
+                if (receiver) receiver.Active = false;
                 if (transmitter && Networking.IsOwner(transmitter.gameObject)) transmitter._SetActive(false);
             }
         }

@@ -387,6 +387,396 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: 512
         arrayItems: []
+  - prefabInstance: {fileID: 671989779421916301, guid: c1f666065645ce643acbf24596cb086a,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/ATIS/ATIS
+      Generator.prefab
+    udonVariables:
+    - udonInstance: {fileID: 1779565439974410313, guid: c1f666065645ce643acbf24596cb086a,
+        type: 3}
+      gameObjectName: ATIS Generator
+      variables:
+      - symbolName: clips
+        objectReference: {fileID: 0}
+        value: UnityEngine.AudioClip[]
+        arrayItems:
+        - null
+        - advice (UnityEngine.AudioClip)
+        - and (UnityEngine.AudioClip)
+        - approach (UnityEngine.AudioClip)
+        - calm (UnityEngine.AudioClip)
+        - center (UnityEngine.AudioClip)
+        - clear (UnityEngine.AudioClip)
+        - decimal (UnityEngine.AudioClip)
+        - degrees (UnityEngine.AudioClip)
+        - departure (UnityEngine.AudioClip)
+        - dewpoint (UnityEngine.AudioClip)
+        - have (UnityEngine.AudioClip)
+        - ils (UnityEngine.AudioClip)
+        - inches (UnityEngine.AudioClip)
+        - information (UnityEngine.AudioClip)
+        - kilometers (UnityEngine.AudioClip)
+        - knots (UnityEngine.AudioClip)
+        - left (UnityEngine.AudioClip)
+        - meters (UnityEngine.AudioClip)
+        - qnh (UnityEngine.AudioClip)
+        - right (UnityEngine.AudioClip)
+        - rnav (UnityEngine.AudioClip)
+        - runway (UnityEngine.AudioClip)
+        - sky (UnityEngine.AudioClip)
+        - temperature (UnityEngine.AudioClip)
+        - using (UnityEngine.AudioClip)
+        - visibility (UnityEngine.AudioClip)
+        - visual (UnityEngine.AudioClip)
+        - wind (UnityEngine.AudioClip)
+        - you (UnityEngine.AudioClip)
+      - symbolName: clipWords
+        objectReference: {fileID: 0}
+        value: System.String[]
+        arrayItems:
+        - AERODROME
+        - advice
+        - and
+        - approach
+        - calm
+        - center
+        - clear
+        - decimal
+        - degrees
+        - departure
+        - dewpoint
+        - have
+        - ils
+        - inches
+        - information
+        - kilometers
+        - knots
+        - left
+        - meters
+        - qnh
+        - right
+        - rnav
+        - runway
+        - sky
+        - temperature
+        - using
+        - visibility
+        - visual
+        - wind
+        - you
+      - symbolName: digits
+        objectReference: {fileID: 0}
+        value: UnityEngine.AudioClip[]
+        arrayItems:
+        - 0 (UnityEngine.AudioClip)
+        - 1 (UnityEngine.AudioClip)
+        - 2 (UnityEngine.AudioClip)
+        - 3 (UnityEngine.AudioClip)
+        - 4 (UnityEngine.AudioClip)
+        - 5 (UnityEngine.AudioClip)
+        - 6 (UnityEngine.AudioClip)
+        - 7 (UnityEngine.AudioClip)
+        - 8 (UnityEngine.AudioClip)
+        - 9 (UnityEngine.AudioClip)
+        - 10 (UnityEngine.AudioClip)
+        - 11 (UnityEngine.AudioClip)
+        - 12 (UnityEngine.AudioClip)
+        - 13 (UnityEngine.AudioClip)
+        - 14 (UnityEngine.AudioClip)
+        - 15 (UnityEngine.AudioClip)
+        - 16 (UnityEngine.AudioClip)
+        - 17 (UnityEngine.AudioClip)
+        - 18 (UnityEngine.AudioClip)
+        - 19 (UnityEngine.AudioClip)
+        - 20 (UnityEngine.AudioClip)
+        - 30 (UnityEngine.AudioClip)
+        - 40 (UnityEngine.AudioClip)
+        - 50 (UnityEngine.AudioClip)
+        - 60 (UnityEngine.AudioClip)
+        - 70 (UnityEngine.AudioClip)
+        - 80 (UnityEngine.AudioClip)
+        - 90 (UnityEngine.AudioClip)
+        - 100 (UnityEngine.AudioClip)
+        - 1000 (UnityEngine.AudioClip)
+      - symbolName: minWind
+        objectReference: {fileID: 0}
+        value: 5
+        arrayItems: []
+      - symbolName: periodInterval
+        objectReference: {fileID: 8300000, guid: 1c6b68fd81c07304cb84d8700084e842,
+          type: 3}
+        value: interval_period (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: phonetics
+        objectReference: {fileID: 0}
+        value: UnityEngine.AudioClip[]
+        arrayItems:
+        - a (UnityEngine.AudioClip)
+        - b (UnityEngine.AudioClip)
+        - c (UnityEngine.AudioClip)
+        - d (UnityEngine.AudioClip)
+        - e (UnityEngine.AudioClip)
+        - f (UnityEngine.AudioClip)
+        - g (UnityEngine.AudioClip)
+        - h (UnityEngine.AudioClip)
+        - i (UnityEngine.AudioClip)
+        - j (UnityEngine.AudioClip)
+        - k (UnityEngine.AudioClip)
+        - l (UnityEngine.AudioClip)
+        - m (UnityEngine.AudioClip)
+        - n (UnityEngine.AudioClip)
+        - o (UnityEngine.AudioClip)
+        - p (UnityEngine.AudioClip)
+        - q (UnityEngine.AudioClip)
+        - r (UnityEngine.AudioClip)
+        - s (UnityEngine.AudioClip)
+        - t (UnityEngine.AudioClip)
+        - u (UnityEngine.AudioClip)
+        - v (UnityEngine.AudioClip)
+        - w (UnityEngine.AudioClip)
+        - x (UnityEngine.AudioClip)
+        - y (UnityEngine.AudioClip)
+        - z (UnityEngine.AudioClip)
+      - symbolName: repeatInterval
+        objectReference: {fileID: 8300000, guid: 553edf1fa15608d45820f193815a4e78,
+          type: 3}
+        value: interval_repeat (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: template
+        objectReference: {fileID: 0}
+        value: AERODROME information [{0}] [{1}] [Z]. {2}. wind {3}. visibility 10
+          kilometers, sky clear. temperature [25], dewpoint [20], qnh [2992]. advise
+          you have information [{0}]
+        arrayItems: []
+      - symbolName: windTemplate
+        objectReference: {fileID: 0}
+        value: '[{0:000}] degrees {1:0} knots'
+        arrayItems: []
+      - symbolName: windVariableName
+        objectReference: {fileID: 0}
+        value: no variables found
+        arrayItems: []
+  - prefabInstance: {fileID: 2996548034650709607, guid: a2533999f6f0e2f45b6973b128827f6c,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Communication/AirbandDatabase.prefab
+    udonVariables:
+    - udonInstance: {fileID: 1351389154702200415, guid: a2533999f6f0e2f45b6973b128827f6c,
+        type: 3}
+      gameObjectName: AirbandDatabase
+      variables:
+      - symbolName: atis
+        objectReference: {fileID: 0}
+        value: UnityEngine.Component[]
+        arrayItems:
+        - null
+        - null
+        - null
+        - null
+        - ATIS Generator (VRC.Udon.UdonBehaviour)
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+        - null
+      - symbolName: frequencies
+        objectReference: {fileID: 0}
+        value: System.Single[]
+        arrayItems: []
+      - symbolName: identities
+        objectReference: {fileID: 0}
+        value: System.String[]
+        arrayItems:
+        - Tokyo Approach
+        - Tokyo Approach
+        - Tokyo Departure
+        - Tokyo Departure
+        - Tokyo ATIS
+        - Tokyo Clearance Delivery
+        - Tokyo Ground
+        - Tokyo Ground
+        - Tokyo Ground
+        - Tokyo Ground
+        - Tokyo Ground
+        - Tokyo TCA
+        - Tokyo Tower
+        - Tokyo Tower
+        - Tokyo Tower
+        - Tokyo Tower
+      - symbolName: playerTemplate
+        objectReference: {fileID: 4674046454566494015, guid: a2533999f6f0e2f45b6973b128827f6c,
+          type: 3}
+        value: ATIS Player (VRC.Udon.UdonBehaviour)
+        arrayItems: []
+    - udonInstance: {fileID: 1701299949713874517, guid: a2533999f6f0e2f45b6973b128827f6c,
+        type: 3}
+      gameObjectName: ATIS Generator
+      variables:
+      - symbolName: clips
+        objectReference: {fileID: 0}
+        value: UnityEngine.AudioClip[]
+        arrayItems:
+        - null
+        - advice (UnityEngine.AudioClip)
+        - and (UnityEngine.AudioClip)
+        - approach (UnityEngine.AudioClip)
+        - calm (UnityEngine.AudioClip)
+        - center (UnityEngine.AudioClip)
+        - clear (UnityEngine.AudioClip)
+        - decimal (UnityEngine.AudioClip)
+        - degrees (UnityEngine.AudioClip)
+        - departure (UnityEngine.AudioClip)
+        - dewpoint (UnityEngine.AudioClip)
+        - have (UnityEngine.AudioClip)
+        - ils (UnityEngine.AudioClip)
+        - inches (UnityEngine.AudioClip)
+        - information (UnityEngine.AudioClip)
+        - kilometers (UnityEngine.AudioClip)
+        - knots (UnityEngine.AudioClip)
+        - left (UnityEngine.AudioClip)
+        - meters (UnityEngine.AudioClip)
+        - qnh (UnityEngine.AudioClip)
+        - right (UnityEngine.AudioClip)
+        - rnav (UnityEngine.AudioClip)
+        - runway (UnityEngine.AudioClip)
+        - sky (UnityEngine.AudioClip)
+        - temperature (UnityEngine.AudioClip)
+        - using (UnityEngine.AudioClip)
+        - visibility (UnityEngine.AudioClip)
+        - visual (UnityEngine.AudioClip)
+        - wind (UnityEngine.AudioClip)
+        - you (UnityEngine.AudioClip)
+      - symbolName: clipWords
+        objectReference: {fileID: 0}
+        value: System.String[]
+        arrayItems:
+        - AERODROME
+        - advice
+        - and
+        - approach
+        - calm
+        - center
+        - clear
+        - decimal
+        - degrees
+        - departure
+        - dewpoint
+        - have
+        - ils
+        - inches
+        - information
+        - kilometers
+        - knots
+        - left
+        - meters
+        - qnh
+        - right
+        - rnav
+        - runway
+        - sky
+        - temperature
+        - using
+        - visibility
+        - visual
+        - wind
+        - you
+      - symbolName: digits
+        objectReference: {fileID: 0}
+        value: UnityEngine.AudioClip[]
+        arrayItems:
+        - 0 (UnityEngine.AudioClip)
+        - 1 (UnityEngine.AudioClip)
+        - 2 (UnityEngine.AudioClip)
+        - 3 (UnityEngine.AudioClip)
+        - 4 (UnityEngine.AudioClip)
+        - 5 (UnityEngine.AudioClip)
+        - 6 (UnityEngine.AudioClip)
+        - 7 (UnityEngine.AudioClip)
+        - 8 (UnityEngine.AudioClip)
+        - 9 (UnityEngine.AudioClip)
+        - 10 (UnityEngine.AudioClip)
+        - 11 (UnityEngine.AudioClip)
+        - 12 (UnityEngine.AudioClip)
+        - 13 (UnityEngine.AudioClip)
+        - 14 (UnityEngine.AudioClip)
+        - 15 (UnityEngine.AudioClip)
+        - 16 (UnityEngine.AudioClip)
+        - 17 (UnityEngine.AudioClip)
+        - 18 (UnityEngine.AudioClip)
+        - 19 (UnityEngine.AudioClip)
+        - 20 (UnityEngine.AudioClip)
+        - 30 (UnityEngine.AudioClip)
+        - 40 (UnityEngine.AudioClip)
+        - 50 (UnityEngine.AudioClip)
+        - 60 (UnityEngine.AudioClip)
+        - 70 (UnityEngine.AudioClip)
+        - 80 (UnityEngine.AudioClip)
+        - 90 (UnityEngine.AudioClip)
+        - 100 (UnityEngine.AudioClip)
+        - 1000 (UnityEngine.AudioClip)
+      - symbolName: minWind
+        objectReference: {fileID: 0}
+        value: 5
+        arrayItems: []
+      - symbolName: periodInterval
+        objectReference: {fileID: 8300000, guid: 1c6b68fd81c07304cb84d8700084e842,
+          type: 3}
+        value: interval_period (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: phonetics
+        objectReference: {fileID: 0}
+        value: UnityEngine.AudioClip[]
+        arrayItems:
+        - a (UnityEngine.AudioClip)
+        - b (UnityEngine.AudioClip)
+        - c (UnityEngine.AudioClip)
+        - d (UnityEngine.AudioClip)
+        - e (UnityEngine.AudioClip)
+        - f (UnityEngine.AudioClip)
+        - g (UnityEngine.AudioClip)
+        - h (UnityEngine.AudioClip)
+        - i (UnityEngine.AudioClip)
+        - j (UnityEngine.AudioClip)
+        - k (UnityEngine.AudioClip)
+        - l (UnityEngine.AudioClip)
+        - m (UnityEngine.AudioClip)
+        - n (UnityEngine.AudioClip)
+        - o (UnityEngine.AudioClip)
+        - p (UnityEngine.AudioClip)
+        - q (UnityEngine.AudioClip)
+        - r (UnityEngine.AudioClip)
+        - s (UnityEngine.AudioClip)
+        - t (UnityEngine.AudioClip)
+        - u (UnityEngine.AudioClip)
+        - v (UnityEngine.AudioClip)
+        - w (UnityEngine.AudioClip)
+        - x (UnityEngine.AudioClip)
+        - y (UnityEngine.AudioClip)
+        - z (UnityEngine.AudioClip)
+      - symbolName: repeatInterval
+        objectReference: {fileID: 8300000, guid: 553edf1fa15608d45820f193815a4e78,
+          type: 3}
+        value: interval_repeat (UnityEngine.AudioClip)
+        arrayItems: []
+      - symbolName: template
+        objectReference: {fileID: 0}
+        value: AERODROME information [{0}] [{1}] [Z]. {2}. wind {3}. visibility 10
+          kilometers, sky clear. temperature [25], dewpoint [20], qnh [2992]. advise
+          you have information [{0}]
+        arrayItems: []
+      - symbolName: windTemplate
+        objectReference: {fileID: 0}
+        value: '[{0:000}] degrees {1:0} knots'
+        arrayItems: []
+      - symbolName: windVariableName
+        objectReference: {fileID: 0}
+        value: no variables found
+        arrayItems: []
   - prefabInstance: {fileID: 8860283968945522380, guid: bf3f9e72315f6574cbc57d5af7a927b9,
       type: 3}
     prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Communication/COM.prefab
@@ -3505,9 +3895,8 @@ MonoBehaviour:
         value: null
         arrayItems: []
       - symbolName: atisPlayer
-        objectReference: {fileID: 2527357781802648204, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
-          type: 3}
-        value: ATISPlayer (VRC.Udon.UdonBehaviour)
+        objectReference: {fileID: 0}
+        value: null
         arrayItems: []
       - symbolName: autoMuteMic
         objectReference: {fileID: 0}
@@ -5266,9 +5655,8 @@ MonoBehaviour:
         value: null
         arrayItems: []
       - symbolName: atisPlayer
-        objectReference: {fileID: 7022490515158905200, guid: 802b5a65fe09a074fad2be696a27c5d3,
-          type: 3}
-        value: ATISPlayer (VRC.Udon.UdonBehaviour)
+        objectReference: {fileID: 0}
+        value: null
         arrayItems: []
       - symbolName: autoMuteMic
         objectReference: {fileID: 0}
@@ -6091,9 +6479,8 @@ MonoBehaviour:
         value: null
         arrayItems: []
       - symbolName: atisPlayer
-        objectReference: {fileID: 6206391649762001278, guid: adfc1c7f184da7b40af164977b3c0500,
-          type: 3}
-        value: ATISPlayer (VRC.Udon.UdonBehaviour)
+        objectReference: {fileID: 0}
+        value: null
         arrayItems: []
       - symbolName: autoMuteMic
         objectReference: {fileID: 0}
@@ -6189,9 +6576,8 @@ MonoBehaviour:
         value: null
         arrayItems: []
       - symbolName: atisPlayer
-        objectReference: {fileID: 510977876853850559, guid: adfc1c7f184da7b40af164977b3c0500,
-          type: 3}
-        value: ATISPlayer (VRC.Udon.UdonBehaviour)
+        objectReference: {fileID: 0}
+        value: null
         arrayItems: []
       - symbolName: autoMuteMic
         objectReference: {fileID: 0}
@@ -6961,9 +7347,8 @@ MonoBehaviour:
         value: null
         arrayItems: []
       - symbolName: atisPlayer
-        objectReference: {fileID: 2618753270063751171, guid: 3873cfe590f851442bfcd8dd31226017,
-          type: 3}
-        value: ATISPlayer (VRC.Udon.UdonBehaviour)
+        objectReference: {fileID: 0}
+        value: null
         arrayItems: []
       - symbolName: autoMuteMic
         objectReference: {fileID: 0}
@@ -6972,6 +7357,10 @@ MonoBehaviour:
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
+        arrayItems: []
+      - symbolName: defaultMicMute
+        objectReference: {fileID: 0}
+        value: True
         arrayItems: []
       - symbolName: frequencyDisplay
         objectReference: {fileID: 0}
@@ -7024,6 +7413,10 @@ MonoBehaviour:
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
+        arrayItems: []
+      - symbolName: defaultMicMute
+        objectReference: {fileID: 0}
+        value: True
         arrayItems: []
       - symbolName: frequencyDisplay
         objectReference: {fileID: 0}
@@ -7091,6 +7484,10 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: 108
         arrayItems: []
+      - symbolName: defaultMicMute
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: frequencyDisplay
         objectReference: {fileID: 0}
         value: null
@@ -7147,6 +7544,10 @@ MonoBehaviour:
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 108
+        arrayItems: []
+      - symbolName: defaultMicMute
+        objectReference: {fileID: 0}
+        value: True
         arrayItems: []
       - symbolName: frequencyDisplay
         objectReference: {fileID: 0}

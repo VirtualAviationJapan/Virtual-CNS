@@ -1,6 +1,4 @@
-
-using System;
-using UdonRadioCommunication;
+using URC;
 using UdonSharp;
 using UnityEngine;
 
@@ -55,7 +53,7 @@ namespace VirtualAviationJapan
         }
         public float _GetComFrequency(int index)
         {
-            return transceivers[index].frequency;
+            return transceivers[index].Frequency;
         }
         public void _SetComFrequency(int index, float value)
         {

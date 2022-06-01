@@ -12,11 +12,9 @@ namespace VirtualAviationJapan
         private int wordIndex;
         private AudioSource audioSource;
 
-        private ATISGenerator _generator;
+        [SerializeField] private ATISGenerator _generator;
         public ATISGenerator Generator {
-            private set {
-                gameObject.SetActive(value);
-
+            set {
                 if (value && value != _generator)
                 {
                     words = value._Generate();
@@ -31,7 +29,6 @@ namespace VirtualAviationJapan
         private void Start()
         {
             audioSource = GetComponent<AudioSource>();
-            Generator = null;
         }
 
         private void Update()
@@ -53,16 +50,6 @@ namespace VirtualAviationJapan
                 audioSource.PlayOneShot(words[wordIndex]);
                 wordIndex += 1;
             }
-        }
-
-        public void _Play(ATISGenerator generator)
-        {
-            Generator = generator;
-        }
-
-        public void _Stop()
-        {
-            Generator = null;
         }
     }
 }
