@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3044281843317805768}
   - component: {fileID: 1530120663727962394}
   - component: {fileID: 5882310169002956352}
+  - component: {fileID: 8649136112545460447}
   m_Layer: 18
   m_Name: MarkerReceiver
   m_TagString: Untagged
@@ -65,7 +66,7 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -172,3 +173,21 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c21a1bec21ebeb24ba98c01e26bb73a6, type: 3}
   - {fileID: 8300000, guid: c7b4cd98fa45123418453a1e8951bea3, type: 3}
   publicVariablesSerializationDataFormat: 0
+--- !u!114 &8649136112545460447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639365265884741348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -617992517, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Gain: 100
+  Far: 40
+  Near: 0
+  VolumetricRadius: 0
+  EnableSpatialization: 1
+  UseAudioSourceVolumeCurve: 0
