@@ -418,6 +418,7 @@ MonoBehaviour:
         - kilometers (UnityEngine.AudioClip)
         - knots (UnityEngine.AudioClip)
         - left (UnityEngine.AudioClip)
+        - maximum (UnityEngine.AudioClip)
         - meters (UnityEngine.AudioClip)
         - qnh (UnityEngine.AudioClip)
         - right (UnityEngine.AudioClip)
@@ -452,6 +453,7 @@ MonoBehaviour:
         - kilometers
         - knots
         - left
+        - maximum
         - meters
         - qnh
         - right
@@ -548,6 +550,10 @@ MonoBehaviour:
           kilometers, sky clear. temperature [25], dewpoint [20], qnh [2992]. advise
           you have information [{0}]
         arrayItems: []
+      - symbolName: windGustVariableName
+        objectReference: {fileID: 0}
+        value: no variables found
+        arrayItems: []
       - symbolName: windTemplate
         objectReference: {fileID: 0}
         value: '[{0:000}] degrees {1:0} knots'
@@ -555,6 +561,10 @@ MonoBehaviour:
       - symbolName: windVariableName
         objectReference: {fileID: 0}
         value: no variables found
+        arrayItems: []
+      - symbolName: windWithGustTemplate
+        objectReference: {fileID: 0}
+        value: '[{0:000}] degrees {1:0} knots, maximum {2:0} knots'
         arrayItems: []
   - prefabInstance: {fileID: 2996548034650709607, guid: a2533999f6f0e2f45b6973b128827f6c,
       type: 3}
@@ -639,6 +649,7 @@ MonoBehaviour:
         - kilometers (UnityEngine.AudioClip)
         - knots (UnityEngine.AudioClip)
         - left (UnityEngine.AudioClip)
+        - maximum (UnityEngine.AudioClip)
         - meters (UnityEngine.AudioClip)
         - qnh (UnityEngine.AudioClip)
         - right (UnityEngine.AudioClip)
@@ -673,6 +684,7 @@ MonoBehaviour:
         - kilometers
         - knots
         - left
+        - maximum
         - meters
         - qnh
         - right
@@ -769,6 +781,10 @@ MonoBehaviour:
           kilometers, sky clear. temperature [25], dewpoint [20], qnh [2992]. advise
           you have information [{0}]
         arrayItems: []
+      - symbolName: windGustVariableName
+        objectReference: {fileID: 0}
+        value: no variables found
+        arrayItems: []
       - symbolName: windTemplate
         objectReference: {fileID: 0}
         value: '[{0:000}] degrees {1:0} knots'
@@ -776,6 +792,10 @@ MonoBehaviour:
       - symbolName: windVariableName
         objectReference: {fileID: 0}
         value: no variables found
+        arrayItems: []
+      - symbolName: windWithGustTemplate
+        objectReference: {fileID: 0}
+        value: '[{0:000}] degrees {1:0} knots, maximum {2:0} knots'
         arrayItems: []
   - prefabInstance: {fileID: 8860283968945522380, guid: bf3f9e72315f6574cbc57d5af7a927b9,
       type: 3}

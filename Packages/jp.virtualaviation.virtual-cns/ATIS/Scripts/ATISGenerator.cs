@@ -22,10 +22,12 @@ namespace VirtualAviationJapan
             "ils runway [18] approach. using runway [18]",
         };
         public string windTemplate = "[{0:000}] degrees {1:0} knots";
+        public string windWithGustTemplate = "[{0:000}] degrees {1:0} knots, maximum {2:0} knots";
 
         public UdonSharpBehaviour windSource;
         [Popup("programVariable", "@windSource", "vector")] public string windVariableName = "Wind";
-        [Tooltip("Knots")] public float minWind = 5;
+        [Popup("programVariable", "@windSource", "float")] public string windGustVariableName = "WindGustStrength";
+        [Tooltip("Knots")] public float minWind = 0.5f;
 
         public AudioClip[] digits = { }, phonetics = { };
         public AudioClip periodInterval, repeatInterval;
@@ -55,12 +57,15 @@ namespace VirtualAviationJapan
             var timestamp = string.Format("{0:00}{1:00}", hour, minute);
 
             var windVector = windSource ? (Vector3)windSource.GetProgramVariable(windVariableName) : Vector3.zero;
+            var windGustStrength = windSource ? (float)windSource.GetProgramVariable(windGustVariableName) : 0.0f;
 
             var windSpeed = Mathf.RoundToInt(windVector.magnitude * KNOTS);
             var windCalm = windSpeed < minWind;
             var windHeading = Mathf.RoundToInt(Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(windVector, Vector3.up), Vector3.up) + magneticDeclination + 540) % 360;
+            var gusty = windGustStrength > minWind;
+            var maxWindSpeed = windSpeed + Mathf.RoundToInt(windGustStrength * KNOTS);
 
-            var windString = windCalm ? "calm" : string.Format(windTemplate, new object[] { windHeading, windSpeed });
+            var windString = windCalm ? "calm" : string.Format(gusty ? windWithGustTemplate : windTemplate, new object[] { windHeading, windSpeed, maxWindSpeed });
             var runwayOperationIndex = windCalm ? 0 : IndexOfRunwayOperation(windHeading);
 
             var rawText = string.Format(template, (char)('A' + informationIndex), timestamp, runwayTemplates[runwayOperationIndex], windString);
