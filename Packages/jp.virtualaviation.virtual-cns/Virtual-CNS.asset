@@ -387,6 +387,58 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: 512
         arrayItems: []
+  - prefabInstance: {fileID: 5497883980022343782, guid: eca41282a24f49b409ff355688b615f0,
+      type: 3}
+    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/AirTrafficControl/Prefabs/GroundWindIndicator.prefab
+    udonVariables:
+    - udonInstance: {fileID: 5497883980022343776, guid: eca41282a24f49b409ff355688b615f0,
+        type: 3}
+      gameObjectName: GroundWindIndicator
+      variables:
+      - symbolName: currentDirectionIndicator
+        objectReference: {fileID: 5243596097828176703, guid: eca41282a24f49b409ff355688b615f0,
+          type: 3}
+        value: CurrentDirection (UnityEngine.RectTransform)
+        arrayItems: []
+      - symbolName: currentSpeedText
+        objectReference: {fileID: 5497883980114073077, guid: eca41282a24f49b409ff355688b615f0,
+          type: 3}
+        value: now (TMPro.TextMeshProUGUI)
+        arrayItems: []
+      - symbolName: directionIndicator
+        objectReference: {fileID: 5497883979801510369, guid: eca41282a24f49b409ff355688b615f0,
+          type: 3}
+        value: Direction (UnityEngine.RectTransform)
+        arrayItems: []
+      - symbolName: directionRangeImage
+        objectReference: {fileID: 5497883980345977958, guid: eca41282a24f49b409ff355688b615f0,
+          type: 3}
+        value: DirectionRange (UnityEngine.UI.Image)
+        arrayItems: []
+      - symbolName: directionText
+        objectReference: {fileID: 5497883979938134218, guid: eca41282a24f49b409ff355688b615f0,
+          type: 3}
+        value: DirectionText (TMPro.TextMeshProUGUI)
+        arrayItems: []
+      - symbolName: maxSpeedText
+        objectReference: {fileID: 5497883980447916284, guid: eca41282a24f49b409ff355688b615f0,
+          type: 3}
+        value: max (TMPro.TextMeshProUGUI)
+        arrayItems: []
+      - symbolName: minSpeedText
+        objectReference: {fileID: 5497883978835528485, guid: eca41282a24f49b409ff355688b615f0,
+          type: 3}
+        value: min (TMPro.TextMeshProUGUI)
+        arrayItems: []
+      - symbolName: speedText
+        objectReference: {fileID: 5497883979834471889, guid: eca41282a24f49b409ff355688b615f0,
+          type: 3}
+        value: 10min (TMPro.TextMeshProUGUI)
+        arrayItems: []
+      - symbolName: updateIntervalFrames
+        objectReference: {fileID: 0}
+        value: 6
+        arrayItems: []
   - prefabInstance: {fileID: 671989779421916301, guid: c1f666065645ce643acbf24596cb086a,
       type: 3}
     prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/ATIS/ATIS
@@ -4639,9 +4691,13 @@ MonoBehaviour:
         - SingeCN+Standby (VRC.Udon.UdonBehaviour)
         - SingeCN+Standby (VRC.Udon.UdonBehaviour)
         - SingeCN+Standby (VRC.Udon.UdonBehaviour)
-        - null
         - SingeCN+Standby (VRC.Udon.UdonBehaviour)
         - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+      - symbolName: holdInterval
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
       - symbolName: holdTime
         objectReference: {fileID: 0}
         value: 1
@@ -4661,7 +4717,7 @@ MonoBehaviour:
         - _DecrementFrequency
         - _FastDecrementFrequency
         - _IncrementFrequency
-        - _FastIncrementCourse
+        - _FastIncrementFrequency
         - _FastIncrementCourse
         - _TransferFrequency
         - _IncrementIndex
@@ -5782,9 +5838,13 @@ MonoBehaviour:
         - SingeCN+Standby (VRC.Udon.UdonBehaviour)
         - SingeCN+Standby (VRC.Udon.UdonBehaviour)
         - SingeCN+Standby (VRC.Udon.UdonBehaviour)
-        - null
         - SingeCN+Standby (VRC.Udon.UdonBehaviour)
         - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+        - SingeCN+Standby (VRC.Udon.UdonBehaviour)
+      - symbolName: holdInterval
+        objectReference: {fileID: 0}
+        value: 0.5
+        arrayItems: []
       - symbolName: holdTime
         objectReference: {fileID: 0}
         value: 1
@@ -5804,7 +5864,7 @@ MonoBehaviour:
         - _DecrementFrequency
         - _FastDecrementFrequency
         - _IncrementFrequency
-        - _FastIncrementCourse
+        - _FastIncrementFrequency
         - _FastIncrementCourse
         - _TransferFrequency
         - _IncrementIndex
