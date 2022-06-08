@@ -9,7 +9,7 @@ namespace VirtualAviationJapan
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class NavSelector : UdonSharpBehaviour
     {
-        public int defaultIndex = 0;
+        public int defaultIndex = -1;
         public float defaultCourse = 0;
         public float courseStep = 10;
         [HideInInspector] public NavaidDatabase database;
@@ -46,13 +46,13 @@ namespace VirtualAviationJapan
             get => _course;
         }
 
-        public string Identity => database ? database.identities[Index] : null;
-        public Transform NavaidTransform => database ? database.transforms[Index] : null;
-        public Transform GlideSlopeTransform => database ? database.glideSlopeTransforms[Index] : null;
-        public Transform DMETransform => database ? database.dmeTransforms[Index] : null;
-        public bool IsILS => database ? database._IsILS(Index) : false;
-        public bool IsVOR => database ? database._IsVOR(Index) : false;
-        public bool HasDME => database ? database._HasDME(Index) : false;
+        public string Identity => database && Index >= 0 ? database.identities[Index] : null;
+        public Transform NavaidTransform => database && Index >= 0 ? database.transforms[Index] : null;
+        public Transform GlideSlopeTransform => database && Index >= 0 ? database.glideSlopeTransforms[Index] : null;
+        public Transform DMETransform => database && Index >= 0 ? database.dmeTransforms[Index] : null;
+        public bool IsILS => database && Index >= 0 && database._IsILS(Index);
+        public bool IsVOR => database && Index >= 0 && database._IsVOR(Index);
+        public bool HasDME => database && Index >= 0 && database._HasDME(Index);
 
         private void Start()
         {
@@ -107,7 +107,6 @@ namespace VirtualAviationJapan
         {
             if (!database) return;
             var index = database._FindIndexByFrequency(frequency);
-            if (index < 0) return;
             _SetIndex(index);
         }
 
