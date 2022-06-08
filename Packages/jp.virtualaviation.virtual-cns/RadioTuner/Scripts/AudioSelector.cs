@@ -40,7 +40,7 @@ namespace VirtualAviationJapan
             SelectedMic._SetMic(false);
             comTuners[index]._ToggleListenAndMic();
         }
-        public void _ToggleComListenAndMic1() => _ToggleComListenAndMic(1);
+        public void _ToggleComListenAndMic1() => _ToggleComListenAndMic(0);
         public void _ToggleComListenAndMic2() => _ToggleComListenAndMic(1);
         public void _ToggleComListenAndMic3() => _ToggleComListenAndMic(2);
 
