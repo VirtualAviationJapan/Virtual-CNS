@@ -15,7 +15,7 @@ MonoBehaviour:
   udonVariables:
   - prefabInstance: {fileID: 569492682127777669, guid: 237c12deddddb1e45b3a58948dd433a3,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/AirTrafficControl/ATCRadar.prefab
+    prefabPath: AirTrafficControl/ATCRadar.prefab
     udonVariables:
     - udonInstance: {fileID: 8189051253713307260, guid: 237c12deddddb1e45b3a58948dd433a3,
         type: 3}
@@ -137,7 +137,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 9188513304304757168, guid: 5b09fcaee5957164983595889fdf67ef,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/AirTrafficControl/ATCRadar_ASR+ASDE.prefab
+    prefabPath: AirTrafficControl/ATCRadar_ASR+ASDE.prefab
     udonVariables:
     - udonInstance: {fileID: 9092291196905367585, guid: 5b09fcaee5957164983595889fdf67ef,
         type: 3}
@@ -389,7 +389,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 5497883980022343782, guid: eca41282a24f49b409ff355688b615f0,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/AirTrafficControl/Prefabs/GroundWindIndicator.prefab
+    prefabPath: AirTrafficControl/Prefabs/GroundWindIndicator.prefab
     udonVariables:
     - udonInstance: {fileID: 5497883980022343776, guid: eca41282a24f49b409ff355688b615f0,
         type: 3}
@@ -441,8 +441,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 671989779421916301, guid: c1f666065645ce643acbf24596cb086a,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/ATIS/ATIS
-      Generator.prefab
+    prefabPath: ATIS/ATIS Generator.prefab
     udonVariables:
     - udonInstance: {fileID: 1779565439974410313, guid: c1f666065645ce643acbf24596cb086a,
         type: 3}
@@ -620,7 +619,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 2996548034650709607, guid: a2533999f6f0e2f45b6973b128827f6c,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Communication/AirbandDatabase.prefab
+    prefabPath: Communication/AirbandDatabase.prefab
     udonVariables:
     - udonInstance: {fileID: 1351389154702200415, guid: a2533999f6f0e2f45b6973b128827f6c,
         type: 3}
@@ -851,7 +850,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 8860283968945522380, guid: bf3f9e72315f6574cbc57d5af7a927b9,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Communication/COM.prefab
+    prefabPath: Communication/COM.prefab
     udonVariables:
     - udonInstance: {fileID: 5469812941369223539, guid: bf3f9e72315f6574cbc57d5af7a927b9,
         type: 3}
@@ -1391,7 +1390,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 968385167625739463, guid: 3e927a6a222edd84a96a7a8973eecbc2,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Communication/COM+ENC.prefab
+    prefabPath: Communication/COM+ENC.prefab
     udonVariables:
     - udonInstance: {fileID: 4354635169393898360, guid: 3e927a6a222edd84a96a7a8973eecbc2,
         type: 3}
@@ -1941,7 +1940,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 2065681929752984301, guid: 75dd9956be075274a9d6b65d73622359,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Communication/COM+GMA.prefab
+    prefabPath: Communication/COM+GMA.prefab
     udonVariables:
     - udonInstance: {fileID: 3293369884337837394, guid: 75dd9956be075274a9d6b65d73622359,
         type: 3}
@@ -2487,7 +2486,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 5009934276922750548, guid: f5c0895af418b1e48bbbfac000f8b10f,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Instruments/IntegratedStandbyInstrument.prefab
+    prefabPath: Instruments/IntegratedStandbyInstrument.prefab
     udonVariables:
     - udonInstance: {fileID: 2251174676738473382, guid: f5c0895af418b1e48bbbfac000f8b10f,
         type: 3}
@@ -2582,7 +2581,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 2790976821575944486, guid: e4dada80131d89e428c67c5fec7b6d97,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Instruments/IntegratedStandbyInstrument_Mil.prefab
+    prefabPath: Instruments/IntegratedStandbyInstrument_Mil.prefab
     udonVariables:
     - udonInstance: {fileID: 8935301636963910356, guid: e4dada80131d89e428c67c5fec7b6d97,
         type: 3}
@@ -2681,7 +2680,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 5468552486160625247, guid: bb4adc2c91e3ed04a959c0e2f2e5c0ee,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Navigation/MarkerBeacon.prefab
+    prefabPath: Navigation/MarkerBeacon.prefab
     udonVariables:
     - udonInstance: {fileID: 4912852581688657447, guid: bb4adc2c91e3ed04a959c0e2f2e5c0ee,
         type: 3}
@@ -2693,7 +2692,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 639365265884741348, guid: 578939c098d5e4c4996a5e731cc9646e,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Navigation/MarkerReceiver.prefab
+    prefabPath: Navigation/MarkerReceiver.prefab
     udonVariables:
     - udonInstance: {fileID: 5882310169002956352, guid: 578939c098d5e4c4996a5e731cc9646e,
         type: 3}
@@ -2721,7 +2720,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 3529275777104368382, guid: 0ea916e95f1dbb1499d552671054563c,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Navigation/NavaidDatabase.prefab
+    prefabPath: Navigation/NavaidDatabase.prefab
     udonVariables:
     - udonInstance: {fileID: 7163797180875894949, guid: 0ea916e95f1dbb1499d552671054563c,
         type: 3}
@@ -2749,7 +2748,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 7390337853901919145, guid: 43f8d530a693b5740b8aeebf3072a084,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Navigation/NaviagionMap.prefab
+    prefabPath: Navigation/NaviagionMap.prefab
     udonVariables:
     - udonInstance: {fileID: 683264133058764181, guid: 43f8d530a693b5740b8aeebf3072a084,
         type: 3}
@@ -2798,7 +2797,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 5473186176520402743, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/Navigation/NavSelector.prefab
+    prefabPath: Navigation/NavSelector.prefab
     udonVariables:
     - udonInstance: {fileID: 4511030736683079602, guid: 507a3e7dee6e1724aa7ee9a6b6a7a407,
         type: 3}
@@ -3079,7 +3078,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 4143688057211130558, guid: da4bac2ff89a10a42a51b423a75e6e9b,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/RadioTuner/EMA245.prefab
+    prefabPath: RadioTuner/EMA245.prefab
     udonVariables:
     - udonInstance: {fileID: 8775726812029740240, guid: da4bac2ff89a10a42a51b423a75e6e9b,
         type: 3}
@@ -3942,7 +3941,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 5236291185284149612, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/RadioTuner/EMA245+ENC255.prefab
+    prefabPath: RadioTuner/EMA245+ENC255.prefab
     udonVariables:
     - udonInstance: {fileID: 4808694093128288322, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
         type: 3}
@@ -5706,7 +5705,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 2593576843648466709, guid: 802b5a65fe09a074fad2be696a27c5d3,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/RadioTuner/ENC255.prefab
+    prefabPath: RadioTuner/ENC255.prefab
     udonVariables:
     - udonInstance: {fileID: 62477160268200894, guid: 802b5a65fe09a074fad2be696a27c5d3,
         type: 3}
@@ -6548,7 +6547,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 213391584890351372, guid: adfc1c7f184da7b40af164977b3c0500,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/RadioTuner/Prefabs/DualCN+Standby.prefab
+    prefabPath: RadioTuner/Prefabs/DualCN+Standby.prefab
     udonVariables:
     - udonInstance: {fileID: 6431527509719131721, guid: adfc1c7f184da7b40af164977b3c0500,
         type: 3}
@@ -7074,7 +7073,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 1529650186579414150, guid: 7518e61fc98a4904691fd1292f96ba0e,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/RadioTuner/Prefabs/DualTuner+Standby.prefab
+    prefabPath: RadioTuner/Prefabs/DualTuner+Standby.prefab
     udonVariables:
     - udonInstance: {fileID: 1885272132283864674, guid: 7518e61fc98a4904691fd1292f96ba0e,
         type: 3}
@@ -7272,7 +7271,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 6242781348084402529, guid: 91defe2d2e964ef4bb8789a7484ae316,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/RadioTuner/Prefabs/RadioTuner.prefab
+    prefabPath: RadioTuner/Prefabs/RadioTuner.prefab
     udonVariables:
     - udonInstance: {fileID: 1504653156541694894, guid: 91defe2d2e964ef4bb8789a7484ae316,
         type: 3}
@@ -7312,7 +7311,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 4951209425781891000, guid: 70f97793706c31849b795fdf52e72ea3,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/RadioTuner/Prefabs/RadioTuner+Standby.prefab
+    prefabPath: RadioTuner/Prefabs/RadioTuner+Standby.prefab
     udonVariables:
     - udonInstance: {fileID: 6066856371605060507, guid: 70f97793706c31849b795fdf52e72ea3,
         type: 3}
@@ -7402,7 +7401,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 2625205257400831339, guid: 3873cfe590f851442bfcd8dd31226017,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/RadioTuner/Prefabs/SingeCN+Standby.prefab
+    prefabPath: RadioTuner/Prefabs/SingeCN+Standby.prefab
     udonVariables:
     - udonInstance: {fileID: 5043676950196792013, guid: 3873cfe590f851442bfcd8dd31226017,
         type: 3}
@@ -7715,7 +7714,7 @@ MonoBehaviour:
         - NAV Active (VRC.Udon.UdonBehaviour)
   - prefabInstance: {fileID: 6754092245840505834, guid: 13a7b82f10a704a4baf00a69fd6861f6,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/RadioTuner/RadioTuners.prefab
+    prefabPath: RadioTuner/RadioTuners.prefab
     udonVariables:
     - udonInstance: {fileID: 5282728373665344671, guid: 13a7b82f10a704a4baf00a69fd6861f6,
         type: 3}
@@ -9017,7 +9016,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 4443017957089848565, guid: 3fc509cd29c1ba7438eb58adad057312,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/TCAS/IVSI.prefab
+    prefabPath: TCAS/IVSI.prefab
     udonVariables:
     - udonInstance: {fileID: 4443017957089848331, guid: 3fc509cd29c1ba7438eb58adad057312,
         type: 3}
@@ -9046,7 +9045,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 6937220872643601985, guid: 4b21d036316e5a54cacfa6884a914a08,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/TCAS/TCAS.prefab
+    prefabPath: TCAS/TCAS.prefab
     udonVariables:
     - udonInstance: {fileID: 6937220872643601987, guid: 4b21d036316e5a54cacfa6884a914a08,
         type: 3}
@@ -9143,7 +9142,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 3546440120090630439, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/TCAS/TCAS_IVSI.prefab
+    prefabPath: TCAS/TCAS_IVSI.prefab
     udonVariables:
     - udonInstance: {fileID: 9111187524343723008, guid: 164fafa5982cbfa48b5bf6fa06a3fffa,
         type: 3}
@@ -9285,7 +9284,7 @@ MonoBehaviour:
         arrayItems: []
   - prefabInstance: {fileID: 6185517923078998787, guid: 0798d65dec87c6348968f5a44ac6bd82,
       type: 3}
-    prefabPath: Assets/Virtual-CNS/Packages/jp.virtualaviation.virtual-cns/TCAS/TCAS_IVSI+Body.prefab
+    prefabPath: TCAS/TCAS_IVSI+Body.prefab
     udonVariables:
     - udonInstance: {fileID: 7015844962892972801, guid: 0798d65dec87c6348968f5a44ac6bd82,
         type: 3}
