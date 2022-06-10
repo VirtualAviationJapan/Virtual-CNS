@@ -104,11 +104,6 @@ PrefabInstance:
       objectReference: {fileID: 7249113624601892123}
     - target: {fileID: 3887386536588464514, guid: bf3f9e72315f6574cbc57d5af7a927b9,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3887386536588464514, guid: bf3f9e72315f6574cbc57d5af7a927b9,
-        type: 3}
       propertyPath: m_Sources.Array.data[0].sourceTransform
       value: 
       objectReference: {fileID: 7684075031708998231}
@@ -121,11 +116,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.012
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665865061661111427, guid: bf3f9e72315f6574cbc57d5af7a927b9,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5170157790456946066, guid: bf3f9e72315f6574cbc57d5af7a927b9,
         type: 3}
@@ -142,11 +132,6 @@ PrefabInstance:
       propertyPath: publicVariablesUnityEngineObjects.Array.data[0]
       value: 
       objectReference: {fileID: 4859357806225191941}
-    - target: {fileID: 5469812941369223539, guid: bf3f9e72315f6574cbc57d5af7a927b9,
-        type: 3}
-      propertyPath: _syncMethod
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8585407703875015937, guid: bf3f9e72315f6574cbc57d5af7a927b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -156,11 +141,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: 8585407703875015937, guid: bf3f9e72315f6574cbc57d5af7a927b9,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8860283968945522380, guid: bf3f9e72315f6574cbc57d5af7a927b9,
         type: 3}
