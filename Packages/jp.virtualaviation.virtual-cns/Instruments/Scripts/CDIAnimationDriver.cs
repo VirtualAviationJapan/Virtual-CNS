@@ -19,6 +19,8 @@ namespace VirtualAviationJapan
         [Popup("animatorFloat", "@cdiAnimator")] public string glideSlopeDeviationFloatParameter;
         [Popup("animatorFloat", "@cdiAnimator")] public string toFromFloatParameeter;
         [Popup("animatorBool", "@cdiAnimator")] public string glideSlopeBoolParameter;
+        [Range(-1.0f, 1.0f)] public float cdOff = 0.0f;
+        [Range(-1.0f, 1.0f)] public float gsOff = 0.0f;
         public int navaidUpdateInterval = 10;
         public float dampTime = 0.1f;
         private float magneticDeclination;
@@ -61,28 +63,28 @@ namespace VirtualAviationJapan
             var course = navaidSelector.Course;
             var relativePosition = navaidPosition - position;
 
-            cdiAnimator.SetFloat(courseFloatParameter, course / 360.0f, dampTime, deltaTime);
+            cdiAnimator.SetFloat(courseFloatParameter, course / 360.0f);
 
             if (isVOR)
             {
-                var toFrom = GetVORToFrom(GetCourseVector(course), relativePosition);
+                var courceVector = GetVORCourseVector(course);
+                var toFrom = GetVORToFrom(courceVector, relativePosition);
                 cdiAnimator.SetFloat(toFromFloatParameeter, Remap11to01(toFrom), dampTime, deltaTime);
                 cdiAnimator.SetFloat(
                     courseDeviationFloatParameter,
-                    Mathf.Approximately(toFrom, 0.0f)
-                        ? 0.5f
-                        : Remap11to01(GetCourseDeviation(relativePosition, course) / 10.0f),
+                    Remap11to01(Mathf.Approximately(toFrom, 0.0f) ? cdOff : GetCourseDeviation(relativePosition, courceVector) / 10.0f),
                     dampTime,
                     deltaTime
                 );
 
                 cdiAnimator.SetBool(glideSlopeBoolParameter, false);
-                cdiAnimator.SetFloat(glideSlopeDeviationFloatParameter, 0.0f, dampTime, deltaTime);
+                cdiAnimator.SetFloat(glideSlopeDeviationFloatParameter, Remap11to01(gsOff), dampTime, deltaTime);
             }
             else if (isILS)
             {
+                var courceVector = -navaidForward;
                 var isBackCourse = IsLocalizerBackCourse(relativePosition);
-                var courseDeviation = GetCourseDeviation(relativePosition, course);
+                var courseDeviation = GetCourseDeviation(relativePosition, courceVector);
                 var maxRange = isBackCourse ? localizerMaxBackRange : localizerMaxWideRange;
                 var distance = relativePosition.magnitude;
                 var localizerCaptured = distance < maxRange && Mathf.Abs(courseDeviation) < (isBackCourse || distance > localizerMaxWideRange ? 10.0f : 35.0f);
@@ -90,9 +92,7 @@ namespace VirtualAviationJapan
                 cdiAnimator.SetFloat(toFromFloatParameeter, localizerCaptured ? 1.0f : 0.5f, dampTime, deltaTime);
                 cdiAnimator.SetFloat(
                     courseDeviationFloatParameter,
-                    localizerCaptured
-                        ? Remap11to01(GetCourseDeviation(relativePosition, course) / 3.0f)
-                        : 0.5f,
+                    Remap11to01(localizerCaptured ? courseDeviation / 3.0f : cdOff),
                     dampTime,
                     deltaTime
                 );
@@ -102,9 +102,7 @@ namespace VirtualAviationJapan
                 cdiAnimator.SetBool(glideSlopeBoolParameter, glideSlopeCaptured);
                 cdiAnimator.SetFloat(
                     glideSlopeDeviationFloatParameter,
-                    glideSlopeCaptured
-                        ? Remap11to01(glideSlopeDeviation / 0.7f)
-                        : 0.0f,
+                    Remap11to01(glideSlopeCaptured ? glideSlopeDeviation / 0.7f : gsOff),
                     dampTime,
                     deltaTime
                 );
@@ -112,9 +110,9 @@ namespace VirtualAviationJapan
             else
             {
                 cdiAnimator.SetFloat(toFromFloatParameeter, 0.5f, dampTime, deltaTime);
-                cdiAnimator.SetFloat(courseDeviationFloatParameter, 0.0f, dampTime, deltaTime);
+                cdiAnimator.SetFloat(courseDeviationFloatParameter, Remap11to01(cdOff), dampTime, deltaTime);
                 cdiAnimator.SetBool(glideSlopeBoolParameter, false);
-                cdiAnimator.SetFloat(glideSlopeDeviationFloatParameter, 0.0f, dampTime, deltaTime);
+                cdiAnimator.SetFloat(glideSlopeDeviationFloatParameter, Remap11to01(gsOff), dampTime, deltaTime);
             }
         }
 
@@ -123,9 +121,8 @@ namespace VirtualAviationJapan
             return Lerp3(35.0f, 10.0f, -10.0f, 10.0f, 18.0f, 24.0f, distance / 1852.0f);
         }
 
-        private float GetCourseDeviation(Vector3 relativePosition, float course)
+        private float GetCourseDeviation(Vector3 relativePosition, Vector3 courseVector)
         {
-            var courseVector = isILS ? -navaidForward : Quaternion.AngleAxis(course, Vector3.up) * Vector3.forward;
             var courseCross = Vector3.Cross(Vector3.up, courseVector).normalized;
             var projected = Vector3.ProjectOnPlane(relativePosition, Vector3.up).normalized;
             return Mathf.Rad2Deg * Mathf.Atan(Vector3.Dot(projected, courseCross));
@@ -171,9 +168,9 @@ namespace VirtualAviationJapan
             return t < t1 ? Mathf.Lerp(v0, v1, Remap01(t, t0, t1)) : Mathf.Lerp(v1, v2, Remap01(t, t1, t2));
         }
 
-        private Vector3 GetCourseVector(float course)
+        private Vector3 GetVORCourseVector(float course)
         {
-            return isILS ? -navaidForward : Quaternion.AngleAxis(course, Vector3.up) * Vector3.forward;
+            return Quaternion.AngleAxis(course - magneticDeclination, Vector3.up) * Vector3.forward;
         }
 
         private bool IsBetween(float value, float min, float max)
@@ -183,8 +180,8 @@ namespace VirtualAviationJapan
 
         private float GetVORToFrom(Vector3 courseVector, Vector3 relativePosition)
         {
-            if (!IsBetween(Vector3.Angle(Vector3.up, relativePosition), 45, 90)) return 0.0f;
-            return -Mathf.Sign(Vector3.Dot(courseVector, relativePosition));
+            if (Vector3.Angle(Vector3.up, relativePosition) < 45) return 0.0f;
+            return Mathf.Sign(Vector3.Dot(courseVector, relativePosition));
         }
 
         private bool InLocalizerRange(Vector3 relativePosition)
@@ -220,16 +217,16 @@ namespace VirtualAviationJapan
             var course = navaidSelector.Course;
             var position = transform.position;
             var relativePosition = position - navaidPosition;
-            var courseVector = GetCourseVector(course);
 
             if (isVOR)
             {
+                var courseVector = GetVORCourseVector(course);
                 var toFrom = GetVORToFrom(courseVector, relativePosition);
                 Gizmos.color = Mathf.Approximately(toFrom, 0.0f) ? Color.red : toFrom > 0 ? Color.green : Color.blue;
                 Gizmos.DrawRay(navaidPosition, courseVector * vorMaxRange);
                 Gizmos.DrawRay(navaidPosition, -courseVector * vorMaxRange);
 
-                var courseDeviation = GetCourseDeviation(relativePosition, course);
+                var courseDeviation = GetCourseDeviation(relativePosition, courseVector);
                 var clampedCourseDeviation = Mathf.Clamp(courseDeviation, -10.0f, 10.0f);
 
                 Gizmos.color = Color.blue;
@@ -240,12 +237,13 @@ namespace VirtualAviationJapan
 
             if (isILS)
             {
+                var courseVector = -navaidForward;
                 var localizerGizmoOrigin = navaidPosition + Vector3.Project(relativePosition, Vector3.up);
                 Gizmos.color = Color.white;
 
-            var distance = relativePosition.magnitude;
+                var distance = relativePosition.magnitude;
                 var isBackCourse = IsLocalizerBackCourse(relativePosition);
-                var courseDeviation = GetCourseDeviation(relativePosition, course);
+                var courseDeviation = GetCourseDeviation(relativePosition, -navaidForward);
                 var maxRange = isBackCourse ? localizerMaxBackRange : localizerMaxWideRange;
                 var localizerCaptured = distance < maxRange && Mathf.Abs(courseDeviation) < (isBackCourse || distance > localizerMaxWideRange ? 10.0f : 35.0f);
 
