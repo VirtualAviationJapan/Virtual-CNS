@@ -97,8 +97,8 @@ namespace VirtualAviationJapan
                     deltaTime
                 );
 
-                var glideSlopeDeviation = GetGlideSlopeDeviation(relativePosition);
-                var glideSlopeCaptured = IsBetween(glideSlopeDeviation, glideSlopeMinDeviation, glideSlopeMaxDeviation);
+                var glideSlopeDeviation = GetGlideSlopeDeviation(glideSlopePosition - position);
+                var glideSlopeCaptured = Mathf.Abs(courseDeviation) < 8.0f && IsBetween(glideSlopeDeviation, glideSlopeMinDeviation, glideSlopeMaxDeviation);
                 cdiAnimator.SetBool(glideSlopeBoolParameter, glideSlopeCaptured);
                 cdiAnimator.SetFloat(
                     glideSlopeDeviationFloatParameter,
@@ -196,7 +196,7 @@ namespace VirtualAviationJapan
 
         private float GetGlideSlopeDeviation(Vector3 relativePosition)
         {
-            return Vector3.SignedAngle(Vector3.ProjectOnPlane(relativePosition, glideSlopeRight), glideSlopeForward, glideSlopeRight);
+            return Vector3.SignedAngle(-glideSlopeForward, Vector3.ProjectOnPlane(relativePosition, glideSlopeRight), glideSlopeRight);
         }
 
         private const float vorMaxRange = 200 * 1852.0f;
@@ -233,12 +233,14 @@ namespace VirtualAviationJapan
                 Gizmos.DrawRay(navaidPosition, Quaternion.AngleAxis(clampedCourseDeviation, Vector3.up) * courseVector * vorMaxRange);
                 Gizmos.color = Color.green;
                 Gizmos.DrawRay(navaidPosition, Quaternion.AngleAxis(-clampedCourseDeviation, Vector3.up) * courseVector * -vorMaxRange);
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawRay(navaidPosition, Quaternion.AngleAxis(Vector3.Angle(Vector3.up, relativePosition), Vector3.Cross(relativePosition, Vector3.up).normalized) * Vector3.up);
             }
 
             if (isILS)
             {
                 var courseVector = -navaidForward;
-                var localizerGizmoOrigin = navaidPosition + Vector3.Project(relativePosition, Vector3.up);
+                var localizerGizmoOrigin = navaidPosition;
                 Gizmos.color = Color.white;
 
                 var distance = relativePosition.magnitude;
@@ -261,19 +263,22 @@ namespace VirtualAviationJapan
                     Gizmos.DrawRay(localizerGizmoOrigin, Quaternion.AngleAxis(-clampedCourseDeviation, Vector3.up) * courseVector * -localizerMaxRange);
                 }
 
-                var glideSlopeGizmoOrigin = glideSlopePosition + Vector3.Project(relativePosition, glideSlopeRight);
+                var glideSlopeGizmoOrigin = glideSlopePosition;
 
-                var glideSlopeDeviation = GetGlideSlopeDeviation(relativePosition);
-                var glideSlopeCaptured = IsBetween(glideSlopeDeviation, glideSlopeMinDeviation, glideSlopeMaxDeviation);
-                var clampedGlideSlopeDeviation = Mathf.Clamp(glideSlopeDeviation, -0.7f, 0.7f);
+                var glideSlopeDeviation = GetGlideSlopeDeviation(glideSlopePosition - position);
+                var glideSlopeCaptured = Mathf.Abs(courseDeviation) < 8.0f && IsBetween(glideSlopeDeviation, glideSlopeMinDeviation, glideSlopeMaxDeviation);
+                var clampedGlideSlopeDeviation = glideSlopeDeviation; //Mathf.Clamp(glideSlopeDeviation, -0.7f, 0.7f);
 
                 Gizmos.color = glideSlopeCaptured ? Color.white : Color.red;
                 Gizmos.DrawRay(glideSlopeGizmoOrigin, glideSlopeForward * 10 * 1852.0f);
-                if (glideSlopeCaptured)
-                {
+                // if (glideSlopeCaptured)
+                // {
                     Gizmos.color = Color.green;
                     Gizmos.DrawRay(glideSlopeGizmoOrigin, Quaternion.AngleAxis(clampedGlideSlopeDeviation, glideSlopeRight) * glideSlopeForward * glideSlopeMaxRange);
-                }
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawRay(glideSlopeGizmoOrigin, Quaternion.AngleAxis(glideSlopeMinDeviation, glideSlopeRight) * glideSlopeForward * glideSlopeMaxRange);
+                    Gizmos.DrawRay(glideSlopeGizmoOrigin, Quaternion.AngleAxis(glideSlopeMaxDeviation, glideSlopeRight) * glideSlopeForward * glideSlopeMaxRange);
+                // }
             }
         }
 #endif
