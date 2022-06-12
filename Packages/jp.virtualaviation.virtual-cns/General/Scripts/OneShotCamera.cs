@@ -2,6 +2,7 @@
 using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
+using VRC.Udon.Common.Enums;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using UnityEditor;
 using UdonSharpEditor;
@@ -13,7 +14,6 @@ namespace VirtualAviationJapan
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class OneShotCamera : UdonSharpBehaviour
     {
-        public RawImage overrideRawImage;
         private new Camera camera;
 
         private void Start()
@@ -24,17 +24,12 @@ namespace VirtualAviationJapan
 
         private void OnPostRender()
         {
-            SendCustomEventDelayedFrames(nameof(_LatePostRender), 1);
+            SendCustomEventDelayedSeconds(nameof(_LatePostRender), 1, EventTiming.LateUpdate);
         }
 
         public void _LatePostRender()
         {
             gameObject.SetActive(false);
-
-            if (overrideRawImage != null)
-            {
-                overrideRawImage.texture = camera.targetTexture;
-            }
         }
     }
 }

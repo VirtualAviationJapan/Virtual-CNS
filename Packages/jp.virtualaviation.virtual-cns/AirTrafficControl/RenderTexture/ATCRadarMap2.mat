@@ -10,10 +10,10 @@ Material:
   m_Name: ATCRadarMap2
   m_Shader: {fileID: 4800000, guid: 16a4c1b7e21a5f74b940d341504c21f0, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 2
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 8400000, guid: a2fde9c19a7057347aaa69c725979c19, type: 2}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -66,6 +66,7 @@ Material:
     m_Floats:
     - _Brightness: 0.25
     - _BumpScale: 1
+    - _ColorMask: 15
     - _Contrast: 4
     - _Cutoff: 0.5
     - _DepthContrast: 0.44
@@ -84,7 +85,15 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComparison: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOperation: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _UVSec: 0
+    - _UseAlphaClip: 0
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
