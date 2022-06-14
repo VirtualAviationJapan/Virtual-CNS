@@ -21,6 +21,7 @@ namespace VirtualAviationJapan
         public float updateInterval = 0.2f;
 
         public TextMeshProUGUI toFromText;
+        public Transform toFromIndicator;
 
         private Transform origin;
         private float selectedCourse;
@@ -136,8 +137,15 @@ namespace VirtualAviationJapan
 
             if (toFromText)
             {
-                if (hasCourse) toFromText.text = Vector3.Dot(relative, origin.forward) >= 0 ? "To" : "From";
+                if (hasCourse) toFromText.text = Vector3.Dot(relative, courseVector) >= 0 ? "To" : "From";
                 else toFromText.text = null;
+            }
+
+            if (toFromIndicator)
+            {
+                toFromIndicator.localScale = hasCourse
+                    ? Vector3.one + Vector3.up * (Mathf.Sign(Vector3.Dot(relative, courseVector)) - 1.0f)
+                    : Vector3.zero;
             }
         }
 
