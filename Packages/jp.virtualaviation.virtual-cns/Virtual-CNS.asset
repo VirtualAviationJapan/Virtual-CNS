@@ -3977,6 +3977,10 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: 118
         arrayItems: []
+      - symbolName: defaultMicMute
+        objectReference: {fileID: 0}
+        value: True
+        arrayItems: []
       - symbolName: frequencyDisplay
         objectReference: {fileID: 9086168003170743475, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
           type: 3}
@@ -4040,6 +4044,10 @@ MonoBehaviour:
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 118
+        arrayItems: []
+      - symbolName: defaultMicMute
+        objectReference: {fileID: 0}
+        value: True
         arrayItems: []
       - symbolName: frequencyDisplay
         objectReference: {fileID: 6375076784625817825, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
@@ -4628,6 +4636,10 @@ MonoBehaviour:
         value: UnityEngine.Component[]
         arrayItems:
         - NAV Active (VRC.Udon.UdonBehaviour)
+      - symbolName: xmtrMode
+        objectReference: {fileID: 0}
+        value: False
+        arrayItems: []
     - udonInstance: {fileID: 4746877376819708260, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
         type: 3}
       gameObjectName: KeyboardInput
@@ -4749,6 +4761,10 @@ MonoBehaviour:
       - symbolName: defaultFrequency
         objectReference: {fileID: 0}
         value: 108
+        arrayItems: []
+      - symbolName: defaultMicMute
+        objectReference: {fileID: 0}
+        value: True
         arrayItems: []
       - symbolName: frequencyDisplay
         objectReference: {fileID: 2870423473987956235, guid: fb75b5f2ffcd16848898eaaa2f0575d9,
