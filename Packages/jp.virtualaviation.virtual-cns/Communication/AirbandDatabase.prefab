@@ -214,6 +214,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ATIS Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6240395461071900296, guid: 353f509c56d38bb4a80a0b72863128d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8029258695581298007, guid: 353f509c56d38bb4a80a0b72863128d2,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
