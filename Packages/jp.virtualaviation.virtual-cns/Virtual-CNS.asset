@@ -848,6 +848,15 @@ MonoBehaviour:
         objectReference: {fileID: 0}
         value: '[{0:000}] degrees {1:0} knots, maximum {2:0} knots'
         arrayItems: []
+    - udonInstance: {fileID: 4674046454566494015, guid: a2533999f6f0e2f45b6973b128827f6c,
+        type: 3}
+      gameObjectName: ATIS Player
+      variables:
+      - symbolName: _generator
+        objectReference: {fileID: 1701299949713874517, guid: a2533999f6f0e2f45b6973b128827f6c,
+          type: 3}
+        value: ATIS Generator (VRC.Udon.UdonBehaviour)
+        arrayItems: []
   - prefabInstance: {fileID: 8860283968945522380, guid: bf3f9e72315f6574cbc57d5af7a927b9,
       type: 3}
     prefabPath: Communication/COM.prefab
