@@ -29,15 +29,15 @@ namespace VirtualAviationJapan
         public Transform[] transforms = { };
         public uint[] capabilities = { };
         public string[] identities = { };
-        public float[] frequencies = {};
+        public float[] frequencies = { };
         public Transform[] dmeTransforms = { };
         public Transform[] glideSlopeTransforms = { };
-        public bool[] hideFromMaps = {};
+        public bool[] hideFromMaps = { };
         public float frequencyStep = 0.05f;
 
-        public Transform[] waypointTransforms = {};
-        public string[] waypointIdentities = {};
-        public uint[] waypointTypes = {};
+        public Transform[] waypointTransforms = { };
+        public string[] waypointIdentities = { };
+        public uint[] waypointTypes = { };
 
         public int Count => transforms.Length;
         public bool _HasCapability(int navaidIndex, uint capability) => (capabilities[navaidIndex] & capability) != 0;
@@ -118,7 +118,7 @@ namespace VirtualAviationJapan
         public int tabIndex;
         public int navaidIndex;
         public int waypointIndex;
-
+        private NavaidEditor.FrequencyMode frequencyMode;
         private readonly string[] tabs = {
             "Navaids",
             "Waypoints",
@@ -126,31 +126,40 @@ namespace VirtualAviationJapan
 
         private void NavaidGUI()
         {
-            var db = target as NavaidDatabase;
+            if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll();
 
-            using (new EditorGUILayout.HorizontalScope())
+            var transformsProperty = serializedObject.FindProperty(nameof(NavaidDatabase.transforms));
+            var navaidCount = transformsProperty.arraySize;
+            foreach (var i in Enumerable.Range(0, navaidCount))
             {
-                navaidIndex = EditorGUILayout.Popup(navaidIndex, db.identities.ToArray());
+                var navaid = (transformsProperty.GetArrayElementAtIndex(i).objectReferenceValue as Transform).GetComponent<Navaid>();
+                if (!navaid) continue;
 
-                if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll();
-            }
-
-            var navaid = db.transforms[navaidIndex].GetComponent<Navaid>();
-
-            EditorGUILayout.ObjectField("Navaid", navaid, navaid.GetType(), true);
-
-            var serializedNavaid = new SerializedObject(navaid);
-            var property = serializedNavaid.GetIterator();
-            property.NextVisible(true);
-            while (property.NextVisible(false))
-            {
-                var disabled = property.name == nameof(Navaid.glideSlope) && !navaid.IsILS;
-                using (new EditorGUI.DisabledGroupScope(disabled))
+                using (new EditorGUILayout.HorizontalScope())
                 {
-                    EditorGUILayout.PropertyField(property, true);
+                    EditorGUILayout.ObjectField(navaid, typeof(Navaid), true);
+                    using (var change = new EditorGUI.ChangeCheckScope())
+                    {
+                        var serializedNavaid = new SerializedObject(navaid);
+                        var property = serializedNavaid.GetIterator();
+                        property.NextVisible(true);
+                        while (property.NextVisible(false))
+                        {
+                            switch (property.propertyPath)
+                            {
+                                case nameof(Navaid.frequency):
+                                    frequencyMode = NavaidEditor.FrequencyField(property, frequencyMode, true);
+                                    break;
+                                default:
+                                    EditorGUILayout.PropertyField(property, GUIContent.none);
+                                    break;
+                            }
+                        }
+                        if (change.changed) serializedNavaid.ApplyModifiedProperties();
+                    }
                 }
             }
-            serializedNavaid.ApplyModifiedProperties();
+
         }
 
         private void WaypointGUI()
