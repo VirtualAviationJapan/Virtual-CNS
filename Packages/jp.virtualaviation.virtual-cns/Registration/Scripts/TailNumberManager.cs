@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
+using System;
 
 #if UNITY_EDITOR
 using UdonSharpEditor;
@@ -55,7 +56,7 @@ namespace VirtualAviationJapan
                 .GroupBy(t => t.tailNumber)
                 .SelectMany(group =>
                 {
-                    return group.Select((manager, i) => (manager, numbers.Replace(group.Key, match => $"{int.Parse(match.Value) + i}", 1))).Skip(1);
+                    return group.Select((manager, i) => (manager, numbers.Replace(group.Key, match => (int.Parse(match.Value) + i).ToString(new string (Enumerable.Repeat('0', match.Value.Length).ToArray())), 1))).Skip(1);
                 });
             foreach (var (manager, tailNumber) in replacements)
             {
