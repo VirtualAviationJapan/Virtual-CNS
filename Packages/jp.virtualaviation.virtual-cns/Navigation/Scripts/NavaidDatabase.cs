@@ -2,6 +2,7 @@
 using UnityEngine;
 using VRC.Udon;
 using System;
+using UnityEngine.SceneManagement;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
@@ -81,9 +82,10 @@ namespace VirtualAviationJapan
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, Quaternion.AngleAxis(-magneticDeclination, Vector3.up) * Vector3.forward * 10 + transform.position);
         }
-        public static IEnumerable<T> GetUdonSharpComponentsInScene<T>() where T : UdonSharpBehaviour
+        public static IEnumerable<T> GetUdonSharpComponentsInScene<T>(Scene scene) where T : UdonSharpBehaviour
         {
-            return FindObjectsOfType<UdonBehaviour>()
+            return scene.GetRootGameObjects()
+                .SelectMany(o => o.GetComponentsInChildren<UdonBehaviour>(true))
                 .Where(UdonSharpEditorUtility.IsUdonSharpBehaviour)
                 .Select(UdonSharpEditorUtility.GetProxyBehaviour)
                 .Select(u => u as T)
@@ -126,7 +128,7 @@ namespace VirtualAviationJapan
 
         private void NavaidGUI()
         {
-            if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll();
+            if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll((target as NavaidDatabase).gameObject.scene);
 
             var transformsProperty = serializedObject.FindProperty(nameof(NavaidDatabase.transforms));
             var navaidCount = transformsProperty.arraySize;
@@ -170,7 +172,7 @@ namespace VirtualAviationJapan
             {
                 waypointIndex = EditorGUILayout.Popup(waypointIndex, db.waypointIdentities.ToArray());
 
-                if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll();
+                if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll(db.gameObject.scene);
             }
 
             var waypoint = db.waypointTransforms[waypointIndex].GetComponent<Waypoint>();
@@ -214,12 +216,12 @@ namespace VirtualAviationJapan
         [InitializeOnLoadMethod]
         static public void RegisterCallback()
         {
-            EditorSceneManager.sceneSaving += (_, __) => SetupAll();
+            EditorSceneManager.sceneSaving += (scene, __) => SetupAll(scene);
         }
 
-        private static void SetupAll()
+        private static void SetupAll(Scene scene)
         {
-            foreach (var db in NavaidDatabase.GetUdonSharpComponentsInScene<NavaidDatabase>())
+            foreach (var db in NavaidDatabase.GetUdonSharpComponentsInScene<NavaidDatabase>(scene))
             {
                 db.Setup();
                 db.ApplyProxyModifications();
