@@ -7,6 +7,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9039783132094488692, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: -9039783132094488692, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+    - target: {fileID: -8494847891871157656, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: indicator
+      value: 
+      objectReference: {fileID: 4859357806225191941}
+    - target: {fileID: -8494847891871157656, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: -8494847891871157656, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+    - target: {fileID: -1231843107586564622, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: -1231843107586564622, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+    - target: {fileID: -743702613722079329, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: -743702613722079329, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+    - target: {fileID: 86829313317395801, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 86829313317395801, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+    - target: {fileID: 1122962943743423624, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: _syncMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1926705422281935057, guid: bf3f9e72315f6574cbc57d5af7a927b9,
         type: 3}
       propertyPath: m_RootOrder
@@ -62,6 +102,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2587581580532229006, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2587581580532229006, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
     - target: {fileID: 2860909332150631414, guid: bf3f9e72315f6574cbc57d5af7a927b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -117,6 +163,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.012
       objectReference: {fileID: 0}
+    - target: {fileID: 5093797108955478267, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: indicator
+      value: 
+      objectReference: {fileID: 7249113624601892123}
+    - target: {fileID: 5093797108955478267, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5093797108955478267, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
     - target: {fileID: 5170157790456946066, guid: bf3f9e72315f6574cbc57d5af7a927b9,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
@@ -132,6 +189,18 @@ PrefabInstance:
       propertyPath: publicVariablesUnityEngineObjects.Array.data[0]
       value: 
       objectReference: {fileID: 4859357806225191941}
+    - target: {fileID: 5239648863691058977, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5239648863691058977, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+    - target: {fileID: 5729717010773383612, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 5729717010773383612, guid: bf3f9e72315f6574cbc57d5af7a927b9,
+        type: 3}
     - target: {fileID: 8585407703875015937, guid: bf3f9e72315f6574cbc57d5af7a927b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -145,7 +214,7 @@ PrefabInstance:
     - target: {fileID: 8860283968945522380, guid: bf3f9e72315f6574cbc57d5af7a927b9,
         type: 3}
       propertyPath: m_Name
-      value: COM+GMC
+      value: COM+GMA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3f9e72315f6574cbc57d5af7a927b9, type: 3}

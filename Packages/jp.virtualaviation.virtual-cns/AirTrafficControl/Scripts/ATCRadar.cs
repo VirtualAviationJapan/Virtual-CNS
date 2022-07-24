@@ -2,11 +2,9 @@ using TMPro;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using VRC.SDK3.Components;
 using UdonToolkit;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -28,15 +26,15 @@ namespace VirtualAviationJapan
         [Range(-360.0f, 360.0f)] public float headingOffset = 0.0f;
         public Camera terrainCamera;
 
-        [Disabled][ListView("Traffics")] public Transform[] traffics = {};
-        [Disabled][ListView("Traffics")] public string[] tailNumbers = {};
-        [Disabled][ListView("Traffics")] public string[] callsigns = {};
-        [Disabled][ListView("Traffics")] public GameObject[] ownerDetectors = {};
+        [Disabled][ListView("Traffics")] public Transform[] traffics = { };
+        [Disabled][ListView("Traffics")] public string[] tailNumbers = { };
+        [Disabled][ListView("Traffics")] public string[] callsigns = { };
+        [Disabled][ListView("Traffics")] public GameObject[] ownerDetectors = { };
 
-        private Transform[] symbols = {};
-        private TextMeshProUGUI[] symbolTexts = {};
-        private Vector3[] previousPositions = {};
-        private float[] previousTimes = {};
+        private Transform[] symbols = { };
+        private TextMeshProUGUI[] symbolTexts = { };
+        private Vector3[] previousPositions = { };
+        private float[] previousTimes = { };
 
         private void Start()
         {
@@ -125,6 +123,8 @@ namespace VirtualAviationJapan
             tailNumbers = trafficSources.Select(s => s.tailNumber).ToArray();
             callsigns = trafficSources.Select(s => s.callsign).ToArray();
             ownerDetectors = trafficSources.Select(s => s.gameObject.GetUdonSharpComponentsInChildren<UdonSharpBehaviour>().FirstOrDefault(u => u.GetType().Name == "EngineController" || u.GetType().Name == "SaccAirVehicle")?.gameObject ?? s.gameObject).ToArray();
+
+            EditorUtility.SetDirty(this);
         }
 
         [InitializeOnLoadMethod]

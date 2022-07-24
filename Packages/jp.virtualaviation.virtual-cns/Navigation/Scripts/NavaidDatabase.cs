@@ -225,7 +225,7 @@ namespace VirtualAviationJapan
             {
                 db.Setup();
                 db.ApplyProxyModifications();
-                EditorUtility.SetDirty(UdonSharpEditorUtility.GetBackingUdonBehaviour(db));
+                EditorUtility.SetDirty(db);
             }
         }
     }

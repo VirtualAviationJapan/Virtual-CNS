@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6150090238831041400}
   - component: {fileID: 6910089654868366294}
+  - component: {fileID: 8940162773886314935}
   - component: {fileID: 3399839101939387000}
   m_Layer: 0
   m_Name: EMA245
@@ -66,6 +67,34 @@ ParentConstraint:
   m_Sources:
   - sourceTransform: {fileID: 0}
     weight: 1
+--- !u!114 &8940162773886314935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4143688057211130558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97102e08942d3be408dacefdd720627e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _udonSharpBackingUdonBehaviour: {fileID: 3399839101939387000}
+  comTuners:
+  - {fileID: 0}
+  navTuners:
+  - {fileID: 0}
+  markerReceiver: {fileID: 0}
+  xmtrMode: 0
 --- !u!114 &3399839101939387000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,9 +115,10 @@ MonoBehaviour:
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0
   _syncMethod: 0
-  serializedProgramAsset: {fileID: 0}
+  serializedProgramAsset: {fileID: 11400000, guid: 4cbd4aecd3f2ff14197612e9bbdc6011,
+    type: 2}
   programSource: {fileID: 11400000, guid: 5e4889125170152488354f5ad6812c5a, type: 2}
-  serializedPublicVariablesBytesString: Ai8AAAAAATIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAFQAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAAAAAAYBAAAAAAAAACcBBAAAAHQAeQBwAGUAAWgAAABTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEcAZQBuAGUAcgBpAGMALgBMAGkAcwB0AGAAMQBbAFsAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4ALgBJAG4AdABlAHIAZgBhAGMAZQBzAC4ASQBVAGQAbwBuAFYAYQByAGkAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AXQBdACwAIABtAHMAYwBvAHIAbABpAGIAAQEJAAAAVgBhAHIAaQBhAGIAbABlAHMALwEAAAABaAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAEkAbgB0AGUAcgBmAGEAYwBlAHMALgBJAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlACwAIABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgBdAF0ALAAgAG0AcwBjAG8AcgBsAGkAYgABAAAABgIAAAAAAAAAAi8CAAAAAWIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAGAAMQBbAFsAVQBuAGkAdAB5AEUAbgBnAGkAbgBlAC4AQwBvAG0AcABvAG4AZQBuAHQAWwBdACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAF0AXQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAgAAAAYCAAAAAAAAACcBBAAAAHQAeQBwAGUAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAJwEKAAAAUwB5AG0AYgBvAGwATgBhAG0AZQABCQAAAG4AYQB2AFQAdQBuAGUAcgBzACcBBAAAAHQAeQBwAGUAAS8AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AbQBwAG8AbgBlAG4AdABbAF0ALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEMAbwByAGUATQBvAGQAdQBsAGUAAQEFAAAAVgBhAGwAdQBlAC8DAAAAAS8AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AbQBwAG8AbgBlAG4AdABbAF0ALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEMAbwByAGUATQBvAGQAdQBsAGUAAwAAAAYBAAAAAAAAAC4HBQcFAjACAAAABAAAAAYCAAAAAAAAACcBBAAAAHQAeQBwAGUAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAJwEKAAAAUwB5AG0AYgBvAGwATgBhAG0AZQABCQAAAGMAbwBtAFQAdQBuAGUAcgBzACcBBAAAAHQAeQBwAGUAAS8AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AbQBwAG8AbgBlAG4AdABbAF0ALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEMAbwByAGUATQBvAGQAdQBsAGUAAQEFAAAAVgBhAGwAdQBlADADAAAABQAAAAYBAAAAAAAAAC4HBQcFBwUHBQ==
+  serializedPublicVariablesBytesString: Ai8AAAAAATIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAFQAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAAAAAAYBAAAAAAAAACcBBAAAAHQAeQBwAGUAAWgAAABTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEcAZQBuAGUAcgBpAGMALgBMAGkAcwB0AGAAMQBbAFsAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4ALgBJAG4AdABlAHIAZgBhAGMAZQBzAC4ASQBVAGQAbwBuAFYAYQByAGkAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AXQBdACwAIABtAHMAYwBvAHIAbABpAGIAAQEJAAAAVgBhAHIAaQBhAGIAbABlAHMALwEAAAABaAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAEkAbgB0AGUAcgBmAGEAYwBlAHMALgBJAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlACwAIABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgBdAF0ALAAgAG0AcwBjAG8AcgBsAGkAYgABAAAABgQAAAAAAAAAAi8CAAAAAWIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAGAAMQBbAFsAVQBuAGkAdAB5AEUAbgBnAGkAbgBlAC4AQwBvAG0AcABvAG4AZQBuAHQAWwBdACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAF0AXQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAgAAAAYCAAAAAAAAACcBBAAAAHQAeQBwAGUAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAJwEKAAAAUwB5AG0AYgBvAGwATgBhAG0AZQABCQAAAG4AYQB2AFQAdQBuAGUAcgBzACcBBAAAAHQAeQBwAGUAAS8AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AbQBwAG8AbgBlAG4AdABbAF0ALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEMAbwByAGUATQBvAGQAdQBsAGUAAQEFAAAAVgBhAGwAdQBlAC8DAAAAAS8AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AbQBwAG8AbgBlAG4AdABbAF0ALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEMAbwByAGUATQBvAGQAdQBsAGUAAwAAAAYBAAAAAAAAAC4HBQcFAjACAAAABAAAAAYCAAAAAAAAACcBBAAAAHQAeQBwAGUAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAJwEKAAAAUwB5AG0AYgBvAGwATgBhAG0AZQABCQAAAGMAbwBtAFQAdQBuAGUAcgBzACcBBAAAAHQAeQBwAGUAAS8AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AbQBwAG8AbgBlAG4AdABbAF0ALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEMAbwByAGUATQBvAGQAdQBsAGUAAQEFAAAAVgBhAGwAdQBlADADAAAABQAAAAYBAAAAAAAAAC4HBQcFAi8EAAAAAUkAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAGAAMQBbAFsAUwB5AHMAdABlAG0ALgBJAG4AdAAzADIALAAgAG0AcwBjAG8AcgBsAGkAYgBdAF0ALAAgAFYAUgBDAC4AVQBkAG8AbgAuAEMAbwBtAG0AbwBuAAYAAAAGAgAAAAAAAAAnAQQAAAB0AHkAcABlAAEXAAAAUwB5AHMAdABlAG0ALgBTAHQAcgBpAG4AZwAsACAAbQBzAGMAbwByAGwAaQBiACcBCgAAAFMAeQBtAGIAbwBsAE4AYQBtAGUAAR8AAABfAF8AXwBVAGQAbwBuAFMAaABhAHIAcABCAGUAaABhAHYAaQBvAHUAcgBWAGUAcgBzAGkAbwBuAF8AXwBfACcBBAAAAHQAeQBwAGUAARYAAABTAHkAcwB0AGUAbQAuAEkAbgB0ADMAMgAsACAAbQBzAGMAbwByAGwAaQBiABcBBQAAAFYAYQBsAHUAZQACAAAABwUCLwUAAAABSwAAAFYAUgBDAC4AVQBkAG8AbgAuAEMAbwBtAG0AbwBuAC4AVQBkAG8AbgBWAGEAcgBpAGEAYgBsAGUAYAAxAFsAWwBTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgBdAF0ALAAgAFYAUgBDAC4AVQBkAG8AbgAuAEMAbwBtAG0AbwBuAAcAAAAGAgAAAAAAAAAnAQQAAAB0AHkAcABlAAEXAAAAUwB5AHMAdABlAG0ALgBTAHQAcgBpAG4AZwAsACAAbQBzAGMAbwByAGwAaQBiACcBCgAAAFMAeQBtAGIAbwBsAE4AYQBtAGUAAS4AAABfAF8AXwBVAGQAbwBuAFMAaABhAHIAcABCAGUAaABhAHYAaQBvAHUAcgBQAGUAcgBzAGkAcwB0AEQAYQB0AGEARgByAG8AbQBVAHAAZwByAGEAZABlAF8AXwBfACcBBAAAAHQAeQBwAGUAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgArAQUAAABWAGEAbAB1AGUAAQcFBwUHBQ==
   publicVariablesUnityEngineObjects: []
   publicVariablesSerializationDataFormat: 0
 --- !u!1001 &8999056357714425
@@ -158,6 +188,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: knobStep
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventName
+      value: _ToggleMic1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventTarget
+      value: 
+      objectReference: {fileID: 8940162773886314935}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
     - target: {fileID: 6295146866336980111, guid: 34696ffc6d5760a42bdfc47bc914c230,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
@@ -248,6 +299,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: knobStep
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventName
+      value: _ToggleNavListen2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventTarget
+      value: 
+      objectReference: {fileID: 8940162773886314935}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
     - target: {fileID: 6295146866336980111, guid: 34696ffc6d5760a42bdfc47bc914c230,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
@@ -348,6 +420,97 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: modes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: keyCodes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: modes.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: keyCodes.Array.data[0]
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: keyCodes.Array.data[1]
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: keyCodes.Array.data[2]
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: keyCodes.Array.data[3]
+      value: 105
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: eventTargets.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: eventTargets.Array.data[0]
+      value: 
+      objectReference: {fileID: 8940162773886314935}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: eventTargets.Array.data[1]
+      value: 
+      objectReference: {fileID: 8940162773886314935}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: eventTargets.Array.data[2]
+      value: 
+      objectReference: {fileID: 8940162773886314935}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: eventTargets.Array.data[3]
+      value: 
+      objectReference: {fileID: 8940162773886314935}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: onKeyDownEvents.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: onKeyDownEvents.Array.data[0]
+      value: _ToggleComListenAndMic1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: onKeyDownEvents.Array.data[1]
+      value: _StartPTT
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: onKeyDownEvents.Array.data[2]
+      value: _EndPTT
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512670486284036163, guid: 27d6ce055a1e27444ba522b9d695d597,
+        type: 3}
+      propertyPath: onKeyDownEvents.Array.data[3]
+      value: _ToggleNavListen1
+      objectReference: {fileID: 0}
     - target: {fileID: 8549301819794777363, guid: 27d6ce055a1e27444ba522b9d695d597,
         type: 3}
       propertyPath: m_Name
@@ -428,6 +591,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: knobStep
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventName
+      value: _ToggleComListen2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventTarget
+      value: 
+      objectReference: {fileID: 8940162773886314935}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
     - target: {fileID: 6295146866336980111, guid: 34696ffc6d5760a42bdfc47bc914c230,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
@@ -518,6 +702,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: knobStep
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventName
+      value: _ToggleComListen1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventTarget
+      value: 
+      objectReference: {fileID: 8940162773886314935}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
     - target: {fileID: 6295146866336980111, guid: 34696ffc6d5760a42bdfc47bc914c230,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
@@ -608,6 +813,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: knobStep
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventName
+      value: _ToggleMic2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventTarget
+      value: 
+      objectReference: {fileID: 8940162773886314935}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
     - target: {fileID: 6295146866336980111, guid: 34696ffc6d5760a42bdfc47bc914c230,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
@@ -698,6 +924,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: knobStep
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventName
+      value: _ToggleNavListen1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: eventTarget
+      value: 
+      objectReference: {fileID: 8940162773886314935}
+    - target: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4541059575539644439, guid: 34696ffc6d5760a42bdfc47bc914c230,
+        type: 3}
     - target: {fileID: 6295146866336980111, guid: 34696ffc6d5760a42bdfc47bc914c230,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
