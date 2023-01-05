@@ -91,7 +91,23 @@ MonoBehaviour:
   - Tokyo Tower
   - Tokyo Tower
   - Tokyo Tower
-  atisPlayers: []
+  atisPlayers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2395365441080102323}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1351389154702200415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,7 +788,8 @@ PrefabInstance:
         type: 3}
       propertyPath: serializedProgramAsset
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 95d3157d8d3e3854aac723afc0afa822,
+        type: 2}
     - target: {fileID: 1779565439974410313, guid: c1f666065645ce643acbf24596cb086a,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
@@ -952,7 +969,8 @@ PrefabInstance:
         type: 3}
       propertyPath: serializedProgramAsset
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 1521f649813aa5f4f8790c490513a6fc,
+        type: 2}
     - target: {fileID: 8029258695581298007, guid: 353f509c56d38bb4a80a0b72863128d2,
         type: 3}
       propertyPath: serializedPublicVariablesBytesString
@@ -976,6 +994,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3436286383110156904}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2395365441080102323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8174551815533527077, guid: 353f509c56d38bb4a80a0b72863128d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3436286383110156904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e236d8e31ac0f54b94cba18a1f14228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4674046454566494015 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8029258695581298007, guid: 353f509c56d38bb4a80a0b72863128d2,

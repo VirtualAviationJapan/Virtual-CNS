@@ -1,12 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &755239391763792616
+--- !u!1001 &991176406479414463
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 2840334900402444672}
     m_Modifications:
+    - target: {fileID: -7273581210981341798, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: -7273581210981341798, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+    - target: {fileID: -6864967919613211614, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: -6864967919613211614, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
     - target: {fileID: 504760550430970843, guid: 237c12deddddb1e45b3a58948dd433a3,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,13 +66,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 237c12deddddb1e45b3a58948dd433a3, type: 3}
---- !u!1001 &991176406479414463
+--- !u!1001 &2256752176664622040
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 2840334900402444672}
     m_Modifications:
+    - target: {fileID: -7273581210981341798, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: -7273581210981341798, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+    - target: {fileID: -6864967919613211614, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: -6864967919613211614, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
     - target: {fileID: 504760550430970843, guid: 237c12deddddb1e45b3a58948dd433a3,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -376,11 +400,23 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6242280586158889434, guid: 10dd66d3d5648d54796e74e07adee4c8,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 6242280586158889434, guid: 10dd66d3d5648d54796e74e07adee4c8,
+        type: 3}
     - target: {fileID: 6248562568862202769, guid: 10dd66d3d5648d54796e74e07adee4c8,
         type: 3}
       propertyPath: _syncMethod
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6248562568862202769, guid: 10dd66d3d5648d54796e74e07adee4c8,
+        type: 3}
+      propertyPath: serializedProgramAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 21b1c6a25b2243b40872ff63fc6283c0,
+        type: 2}
     - target: {fileID: 6277239484927506944, guid: 10dd66d3d5648d54796e74e07adee4c8,
         type: 3}
       propertyPath: m_Name

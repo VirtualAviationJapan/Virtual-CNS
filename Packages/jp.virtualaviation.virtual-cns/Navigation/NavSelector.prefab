@@ -186,7 +186,6 @@ MonoBehaviour:
   maxPlayerDistance: 5
   awakeCheckInterval: 5
   ownerOnly: 0
-  sentToOwner: 0
   networked: 0
   networkEventTarget: 0
   eventTarget: {fileID: 5045400310856967631}
@@ -307,7 +306,6 @@ MonoBehaviour:
   maxPlayerDistance: 5
   awakeCheckInterval: 5
   ownerOnly: 0
-  sentToOwner: 0
   networked: 0
   networkEventTarget: 0
   eventTarget: {fileID: 5045400310856967631}
@@ -429,7 +427,6 @@ MonoBehaviour:
   maxPlayerDistance: 5
   awakeCheckInterval: 5
   ownerOnly: 0
-  sentToOwner: 0
   networked: 0
   networkEventTarget: 0
   eventTarget: {fileID: 5045400310856967631}
