@@ -9,6 +9,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UdonSharpEditor;
+using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
 namespace VirtualAviationJapan
@@ -78,7 +79,6 @@ namespace VirtualAviationJapan
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
-            this.UpdateProxy();
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, Quaternion.AngleAxis(-magneticDeclination, Vector3.up) * Vector3.forward * 10 + transform.position);
         }
@@ -213,19 +213,31 @@ namespace VirtualAviationJapan
 
         }
 
-        [InitializeOnLoadMethod]
-        static public void RegisterCallback()
-        {
-            EditorSceneManager.sceneSaving += (scene, __) => SetupAll(scene);
-        }
-
         private static void SetupAll(Scene scene)
         {
             foreach (var db in NavaidDatabase.GetUdonSharpComponentsInScene<NavaidDatabase>(scene))
             {
                 db.Setup();
-                db.ApplyProxyModifications();
-                EditorUtility.SetDirty(db);
+            }
+        }
+
+        [InitializeOnLoadMethod]
+        public static void InitializeOnLoad()
+        {
+            EditorApplication.playModeStateChanged += (PlayModeStateChange e) =>
+            {
+                if (e == PlayModeStateChange.EnteredPlayMode) SetupAll(SceneManager.GetActiveScene());
+            };
+        }
+
+        public class BuildCallback : IVRCSDKBuildRequestedCallback
+        {
+            public int callbackOrder => 10;
+
+            public bool OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType)
+            {
+                SetupAll(SceneManager.GetActiveScene());
+                return true;
             }
         }
     }

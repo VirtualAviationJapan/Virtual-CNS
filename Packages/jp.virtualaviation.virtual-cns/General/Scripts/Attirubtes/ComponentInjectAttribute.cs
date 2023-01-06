@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Reflection;
 using UdonToolkit;
+
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-using UnityEditor.SceneManagement;
 using UnityEditor;
+using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
 namespace VirtualAviationJapan
@@ -67,11 +68,25 @@ namespace VirtualAviationJapan
             }
         }
 
+
         [InitializeOnLoadMethod]
         public static void InitializeOnLoad()
         {
-            EditorSceneManager.sceneSaving += (scene, _) => AutoSetup(scene);
-            SceneManager.activeSceneChanged += (_, next) => AutoSetup(next);
+            EditorApplication.playModeStateChanged += (PlayModeStateChange e) =>
+            {
+                if (e == PlayModeStateChange.EnteredPlayMode) AutoSetup(SceneManager.GetActiveScene());
+            };
+        }
+
+        public class BuildCallback : Editor, IVRCSDKBuildRequestedCallback
+        {
+            public int callbackOrder => 10;
+
+            public bool OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType)
+            {
+                AutoSetup(SceneManager.GetActiveScene());
+                return true;
+            }
         }
 #endif
     }

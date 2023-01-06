@@ -29,6 +29,7 @@ namespace VirtualAviationJapan
             var entity = (UdonBehaviour)vehicleRigidbody.GetComponent(typeof(UdonBehaviour));
             foreach (var ext in (UdonSharpBehaviour[])entity.GetProgramVariable("ExtensionUdonBehaviours"))
             {
+                Debug.Log(ext.GetUdonTypeName(), ext);
                 if (ext.GetUdonTypeName() == "SaccAirVehicle")
                 {
                     airVehicle = ext;

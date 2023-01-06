@@ -3,12 +3,14 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 using UdonToolkit;
+
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-using UnityEngine.SceneManagement;
 using System.Linq;
+using UdonSharpEditor;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using UdonSharpEditor;
+using UnityEngine.SceneManagement;
+using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
 namespace VirtualAviationJapan
@@ -49,7 +51,7 @@ namespace VirtualAviationJapan
 
             for (var i = 0; i < traffics.Length; i++)
             {
-                var obj = VRCInstantiate(symbolTemplate);
+                var obj = Instantiate(symbolTemplate);
                 obj.SetActive(false);
                 obj.name = obj.name.Replace("(Clone)", $"_{tailNumbers[i]}");
                 var symbol = obj.transform;
@@ -122,25 +124,34 @@ namespace VirtualAviationJapan
             traffics = trafficSources.Select(s => s.transform).ToArray();
             tailNumbers = trafficSources.Select(s => s.tailNumber).ToArray();
             callsigns = trafficSources.Select(s => s.callsign).ToArray();
-            ownerDetectors = trafficSources.Select(s => s.gameObject.GetUdonSharpComponentsInChildren<UdonSharpBehaviour>().FirstOrDefault(u => u.GetType().Name == "EngineController" || u.GetType().Name == "SaccAirVehicle")?.gameObject ?? s.gameObject).ToArray();
-
-            EditorUtility.SetDirty(this);
-        }
-
-        [InitializeOnLoadMethod]
-        static public void RegisterCallback()
-        {
-            SceneManager.sceneLoaded += (scene, __) => SetupAll(scene);
-            EditorSceneManager.sceneSaving += (scene, __) => SetupAll(scene);
+            ownerDetectors = trafficSources.Select(s => s.gameObject.GetComponentsInChildren<UdonSharpBehaviour>().FirstOrDefault(u => u.GetType().Name == "EngineController" || u.GetType().Name == "SaccAirVehicle")?.gameObject ?? s.gameObject).ToArray();
         }
 
         private static void SetupAll(Scene scene)
         {
-            foreach (var rader in scene.GetRootGameObjects().SelectMany(o => o.GetUdonSharpComponentsInChildren<ATCRadar>(true)))
+            foreach (var rader in scene.GetRootGameObjects().SelectMany(o => o.GetComponentsInChildren<ATCRadar>(true)))
             {
                 rader.Setup();
-                rader.ApplyProxyModifications();
-                EditorUtility.SetDirty(UdonSharpEditorUtility.GetBackingUdonBehaviour(rader));
+            }
+        }
+
+
+        [InitializeOnLoadMethod]
+        public static void InitializeOnLoad()
+        {
+            EditorApplication.playModeStateChanged += (PlayModeStateChange e) => {
+                if (e == PlayModeStateChange.EnteredPlayMode) SetupAll(SceneManager.GetActiveScene());
+            };
+        }
+
+        public class ESFASceneSetupCallback : Editor, IVRCSDKBuildRequestedCallback
+        {
+            public int callbackOrder => 11;
+
+            public bool OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType)
+            {
+                SetupAll(SceneManager.GetActiveScene());
+                return true;
             }
         }
 #endif

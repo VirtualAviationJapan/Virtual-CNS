@@ -67,28 +67,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: MarkerTypes
-      Entry: 7
-      Data: 0|System.String[], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 1
-      Data: Inner
-    - Name: 
-      Entry: 1
-      Data: Middle
-    - Name: 
-      Entry: 1
-      Data: Outer
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 4912852581688657447}
   type: 0
 --- !u!114 &4912852581688657447
