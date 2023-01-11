@@ -208,7 +208,6 @@ namespace VirtualAviationJapan
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
-            this.UpdateProxy();
             if (!tuned) return;
 
             Gizmos.color = Color.white;

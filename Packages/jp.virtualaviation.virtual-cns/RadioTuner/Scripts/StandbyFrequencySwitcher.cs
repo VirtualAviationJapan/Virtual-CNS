@@ -80,12 +80,6 @@ namespace VirtualAviationJapan
                         active.animator = EditorGUILayout.ObjectField("Animator", active.animator, typeof(Animator), true) as Animator;
                         active.listenBool = EditorGUILayout.TextField("Listen Bool", active.listenBool);
                         active.micBool = EditorGUILayout.TextField("Listen Bool", active.micBool);
-
-                        if (tunerChange.changed)
-                        {
-                            active.ApplyProxyModifications();
-                            EditorUtility.SetDirty(UdonSharpEditorUtility.GetBackingUdonBehaviour(active));
-                        }
                     }
                 }
             }
@@ -98,11 +92,6 @@ namespace VirtualAviationJapan
                     using (var tunerChange = new EditorGUI.ChangeCheckScope())
                     {
                         standby.frequencyDisplay = EditorGUILayout.ObjectField("Frequency Display", standby.frequencyDisplay, typeof(TextMeshPro), true) as TextMeshPro;
-                        if (tunerChange.changed)
-                        {
-                            standby.ApplyProxyModifications();
-                            EditorUtility.SetDirty(UdonSharpEditorUtility.GetBackingUdonBehaviour(standby));
-                        }
                     }
                 }
             }
