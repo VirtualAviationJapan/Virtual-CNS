@@ -218,6 +218,7 @@ namespace VirtualAviationJapan
             foreach (var db in NavaidDatabase.GetUdonSharpComponentsInScene<NavaidDatabase>(scene))
             {
                 db.Setup();
+                UdonSharpEditorUtiliry.CopyProxyToUdon(db);
             }
         }
 
