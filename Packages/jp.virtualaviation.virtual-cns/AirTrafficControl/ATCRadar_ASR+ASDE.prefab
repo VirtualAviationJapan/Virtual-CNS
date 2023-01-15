@@ -68,6 +68,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 504760550430970843, guid: 237c12deddddb1e45b3a58948dd433a3,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 504760550430970843, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 504760550430970843, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9659258
       objectReference: {fileID: 0}
