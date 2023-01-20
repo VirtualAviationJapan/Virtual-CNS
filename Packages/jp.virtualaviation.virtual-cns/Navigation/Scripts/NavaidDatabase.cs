@@ -128,15 +128,10 @@ namespace VirtualAviationJapan
 
         private void NavaidGUI()
         {
-            if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll((target as NavaidDatabase).gameObject.scene);
-
-            var transformsProperty = serializedObject.FindProperty(nameof(NavaidDatabase.transforms));
-            var navaidCount = transformsProperty.arraySize;
-            foreach (var i in Enumerable.Range(0, navaidCount))
+            var rootObjects = (target as NavaidDatabase).gameObject.scene.GetRootGameObjects();
+            var transforms = rootObjects.SelectMany(o => o.GetComponentsInChildren<Navaid>());
+            foreach (var navaid in transforms)
             {
-                var navaid = (transformsProperty.GetArrayElementAtIndex(i).objectReferenceValue as Transform).GetComponent<Navaid>();
-                if (!navaid) continue;
-
                 using (new EditorGUILayout.HorizontalScope())
                 {
                     EditorGUILayout.ObjectField(navaid, typeof(Navaid), true);
@@ -171,8 +166,6 @@ namespace VirtualAviationJapan
             using (new EditorGUILayout.HorizontalScope())
             {
                 waypointIndex = EditorGUILayout.Popup(waypointIndex, db.waypointIdentities.ToArray());
-
-                if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll(db.gameObject.scene);
             }
 
             var waypoint = db.waypointTransforms[waypointIndex].GetComponent<Waypoint>();
