@@ -650,62 +650,10 @@ MonoBehaviour:
   uiRadius: 512
   headingOffset: 0
   terrainCamera: {fileID: 7142938738102189551}
-  traffics:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  tailNumbers:
-  - 19-8101
-  - 19-8101
-  - JV601C
-  - JV301M
-  - JV301M
-  - JV8401
-  - JV8401
-  - JV841V
-  - JV008G
-  - JV2059
-  - JV31ES
-  - JV31ES
-  - JV31ES
-  callsigns:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - MA101
-  - MA101
-  - 
-  - CHKSTR08
-  - 
-  - 
-  - 
-  - 
-  ownerDetectors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  traffics: []
+  tailNumbers: []
+  callsigns: []
+  ownerDetectors: []
 --- !u!114 &8189051253713307260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,7 +946,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
