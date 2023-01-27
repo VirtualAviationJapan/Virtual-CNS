@@ -124,7 +124,7 @@ namespace VirtualAviationJapan
             traffics = trafficSources.Select(s => s.transform).ToArray();
             tailNumbers = trafficSources.Select(s => s.tailNumber).ToArray();
             callsigns = trafficSources.Select(s => s.callsign).ToArray();
-            ownerDetectors = trafficSources.Select(s => s.gameObject.GetComponentsInChildren<UdonSharpBehaviour>().FirstOrDefault(u => u.GetType().Name == "EngineController" || u.GetType().Name == "SaccAirVehicle")?.gameObject ?? s.gameObject).ToArray();
+            ownerDetectors = trafficSources.Select(s => s.gameObject.GetComponentsInChildren<UdonSharpBehaviour>().FirstOrDefault(u => u.GetType().Name == "EngineController" || u.GetType().Name == "SaccFlightAndVehicles.SaccAirVehicle")?.gameObject ?? s.gameObject).ToArray();
         }
 
         private static void SetupAll(Scene scene)

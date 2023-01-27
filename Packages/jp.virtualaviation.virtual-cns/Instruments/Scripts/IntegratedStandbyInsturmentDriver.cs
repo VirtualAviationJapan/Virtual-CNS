@@ -62,7 +62,7 @@ namespace MonacaAircrafts
                 foreach (var udon in origin.GetComponentsInChildren(typeof(UdonBehaviour)))
                 {
                     var udonSharp = (UdonSharpBehaviour)udon;
-                    if (udonSharp.GetUdonTypeName() == "SaccAirVehicle")
+                    if (udonSharp.GetUdonTypeName() == "SaccFlightAndVehicles.SaccAirVehicle")
                     {
                         vehicle = udonSharp;
                         seaLevel = (float)vehicle.GetProgramVariable("SeaLevel");
