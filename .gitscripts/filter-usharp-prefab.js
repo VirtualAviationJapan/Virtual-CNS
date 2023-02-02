@@ -10,6 +10,8 @@ const pattern = new RegExp(
     "|",
     `  serializedProgramAsset: ${guidPattern}\n`,
     "|",
+    `  serializedProgramBytesString: .*\n?`,
+    "|",
     "    SerializedFormat: [02]\n",
   ].join(""),
   "mg"
