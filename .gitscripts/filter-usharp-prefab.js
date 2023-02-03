@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const guidPattern = '\\{fileID: .*(\n     *type: [0-9]+)?\\}';
+const guidPattern = '\\{fileID: .*(\n    *type: [0-9]+)?\\}';
 const pattern = new RegExp(
   [
     `    - target: ${guidPattern}\n`,
@@ -8,7 +8,7 @@ const pattern = new RegExp(
     "      value:.*\n",
     `      objectReference: ${guidPattern}\n`,
     "|",
-    `  serializedProgramAsset: ${guidPattern}\n`,
+    `  serialized(Udon)?ProgramAsset: ${guidPattern}\n`,
     "|",
     `  serializedProgramBytesString: .*\n?`,
     "|",
