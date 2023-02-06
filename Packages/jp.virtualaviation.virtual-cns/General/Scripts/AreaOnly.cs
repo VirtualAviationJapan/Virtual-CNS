@@ -1,10 +1,8 @@
 ﻿
 using UdonSharp;
-using UnityEngine;
 using VRC.SDKBase;
-using VRC.Udon;
 
-namespace MonacaAircrafts
+namespace VirtualAviationJapan
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class AreaOnly : UdonSharpBehaviour

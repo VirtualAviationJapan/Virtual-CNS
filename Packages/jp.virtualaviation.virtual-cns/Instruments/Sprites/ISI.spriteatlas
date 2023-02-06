@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Instruments
+  m_Name: ISI
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -33,65 +33,33 @@ SpriteAtlas:
       m_Overridden: 0
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
-    - serializedVersion: 3
-      m_BuildTarget: Android
-      m_MaxTextureSize: 4096
-      m_ResizeAlgorithm: 0
-      m_TextureFormat: 53
-      m_TextureCompression: 1
-      m_CompressionQuality: 50
-      m_CrunchedCompression: 1
-      m_AllowsAlphaSplitting: 0
-      m_Overridden: 1
-      m_AndroidETC2FallbackOverride: 0
-      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
-      padding: 8
+      padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 0
+      enableRotation: 1
       enableTightPacking: 0
     variantMultiplier: 1
     packables:
-    - {fileID: 102900000, guid: 24db2bfd248980e42abb3d23955d786c, type: 3}
+    - {fileID: 102900000, guid: 9f72601cab6a05947b0dfc8875328876, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 936125c007ab61a4baa22a9ddcf06031, type: 3}
   - {fileID: 21300000, guid: 10bb55c07fcc7e94fa11612495cb0e12, type: 3}
-  - {fileID: 21300000, guid: 11a03611be3615f42a07089d60a1e2d8, type: 3}
   - {fileID: 21300000, guid: 4db4ec820db399444a31233b953a9176, type: 3}
-  - {fileID: 21300000, guid: cf96e774dc953354aabd6e110b303454, type: 3}
-  - {fileID: 21300000, guid: d9df76d45a6969a42958332fe631ffc3, type: 3}
   - {fileID: 21300000, guid: 875c64e4914f08d4183e6034bb3882c8, type: 3}
   - {fileID: 21300000, guid: bff77106cbdb9d3409a733a0610cad98, type: 3}
-  - {fileID: 21300000, guid: 30e3a3b7b6c3e2640a34712b806fd6e3, type: 3}
   - {fileID: 21300000, guid: c2129f68c9698534f8b5498930221cb5, type: 3}
-  - {fileID: 21300000, guid: 84241d88a83513a48ad95972590ed8c2, type: 3}
-  - {fileID: 21300000, guid: 883b2eba75f8afd478e71517b8254e0a, type: 3}
-  - {fileID: 21300000, guid: 188848dd58b953941b56cc3543fd2ad9, type: 3}
   - {fileID: 21300000, guid: eb9730fdf5f7ab64c8a3f8180b87d54d, type: 3}
-  - {fileID: 21300000, guid: 59f19e9e22e4f66428a57f17c5d95f2c, type: 3}
-  - {fileID: 21300000, guid: e2df291f45855064ab1ab32ff073640e, type: 3}
-  - {fileID: 21300000, guid: 9ad2f9afcea40844ea0259a9ce1c8113, type: 3}
   m_PackedSpriteNamesToIndex:
   - ISI_Pitch
   - ISI_Roll
-  - ND_Waypoint
   - ISI_ASI
-  - ND_VOR
-  - ND_VORDME
   - ISI_BG
   - ISI_HDG
-  - Bearing_B_Head
   - ISI_FG
-  - Bearing_B_Tail
-  - WindDirection
-  - ND_Aerodrome
   - ISI_ALT
-  - Bearing_A_Tail
-  - Bearing_A_Head
-  - ND_Waypoint_RNAV
-  m_Tag: Instruments
+  m_Tag: ISI
   m_IsVariant: 0

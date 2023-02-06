@@ -69,12 +69,10 @@ namespace VirtualAviationJapan
             }
         }
 
-        [InitializeOnLoadMethod]
-        public static void RegisterCallbacks()
+        [InitializeOnEnterPlayMode]
+        public static void OnEnterPlayMode()
         {
-            EditorApplication.playModeStateChanged += (PlayModeStateChange e) => {
-                if (e == PlayModeStateChange.EnteredPlayMode) AutoSetup(EditorSceneManager.GetActiveScene());
-            };
+            AutoSetup(SceneManager.GetActiveScene());
         }
 
         public class BuildCallback : Editor, IVRCSDKBuildRequestedCallback
@@ -83,7 +81,7 @@ namespace VirtualAviationJapan
 
             public bool OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType)
             {
-                AutoSetup(EditorSceneManager.GetActiveScene());
+                AutoSetup(SceneManager.GetActiveScene());
                 return true;
             }
         }

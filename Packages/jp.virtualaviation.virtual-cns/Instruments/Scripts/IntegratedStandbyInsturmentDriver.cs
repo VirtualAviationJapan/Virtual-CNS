@@ -4,7 +4,7 @@ using UdonSharp;
 using UnityEngine;
 using VRC.Udon;
 
-namespace MonacaAircrafts
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class IntegratedStandbyInsturmentDriver : UdonSharpBehaviour

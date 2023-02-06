@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HSI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 1
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: be9609cd1339ee04b81333a9b47d5afa, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 11a03611be3615f42a07089d60a1e2d8, type: 3}
+  - {fileID: 21300000, guid: 214bbfd13ba10db4c8eb432d532c8849, type: 3}
+  - {fileID: 21300000, guid: d536b792a3fa90744b65573697802ed4, type: 3}
+  - {fileID: 21300000, guid: b5063da2e492cc04fab351ec1349aad8, type: 3}
+  - {fileID: 21300000, guid: c3dd8413e21700947b415b631013b885, type: 3}
+  - {fileID: 21300000, guid: cf96e774dc953354aabd6e110b303454, type: 3}
+  - {fileID: 21300000, guid: d9df76d45a6969a42958332fe631ffc3, type: 3}
+  - {fileID: 21300000, guid: af588c1640d73c74c8cf55937901f136, type: 3}
+  - {fileID: 21300000, guid: 38abd27716f84754e9b6ca6ed8d7da6c, type: 3}
+  - {fileID: 21300000, guid: 30e3a3b7b6c3e2640a34712b806fd6e3, type: 3}
+  - {fileID: 21300000, guid: 84241d88a83513a48ad95972590ed8c2, type: 3}
+  - {fileID: 21300000, guid: 4b68b77a8524de645a83adbd1244a6d5, type: 3}
+  - {fileID: 21300000, guid: 883b2eba75f8afd478e71517b8254e0a, type: 3}
+  - {fileID: 21300000, guid: 09e8b6da4b2fcd0478a1e57114a3f09a, type: 3}
+  - {fileID: 21300000, guid: b186472b140f7f34f99c47d3d66ec94f, type: 3}
+  - {fileID: 21300000, guid: 381e982d528d45c479af2898872afead, type: 3}
+  - {fileID: 21300000, guid: 188848dd58b953941b56cc3543fd2ad9, type: 3}
+  - {fileID: 21300000, guid: 59f19e9e22e4f66428a57f17c5d95f2c, type: 3}
+  - {fileID: 21300000, guid: 6e717cfe951656a4b9736a2b3abd2d3f, type: 3}
+  - {fileID: 21300000, guid: e2df291f45855064ab1ab32ff073640e, type: 3}
+  - {fileID: 21300000, guid: 9ad2f9afcea40844ea0259a9ce1c8113, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ND_Waypoint
+  - ND_Compass
+  - ND_CDI
+  - SEL_HDG_BUG
+  - ND_BG
+  - ND_VOR
+  - ND_VORDME
+  - HSI_Heading
+  - ND_Course
+  - Bearing_B_Head
+  - Bearing_B_Tail
+  - CDI
+  - WindDirection
+  - HSI_Heading_Mask
+  - ND_Front
+  - HSI_Fixed
+  - ND_Aerodrome
+  - Bearing_A_Tail
+  - SEL_HDG
+  - Bearing_A_Head
+  - ND_Waypoint_RNAV
+  m_Tag: HSI
+  m_IsVariant: 0
