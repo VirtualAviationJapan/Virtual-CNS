@@ -121,6 +121,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 5599339446110034285, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8400000, guid: 34c6beea14dbae74a8d19363fb69106e, type: 2}
     - target: {fileID: 6573399095788493222, guid: 237c12deddddb1e45b3a58948dd433a3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -146,6 +151,11 @@ PrefabInstance:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 34c6beea14dbae74a8d19363fb69106e, type: 2}
+    - target: {fileID: 7142938738102189551, guid: 237c12deddddb1e45b3a58948dd433a3,
+        type: 3}
+      propertyPath: orthographic size
+      value: 1852
+      objectReference: {fileID: 0}
     - target: {fileID: 9131443994452592907, guid: 237c12deddddb1e45b3a58948dd433a3,
         type: 3}
       propertyPath: m_RootOrder
