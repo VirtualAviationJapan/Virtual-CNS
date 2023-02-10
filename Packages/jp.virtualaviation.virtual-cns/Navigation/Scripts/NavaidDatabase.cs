@@ -62,7 +62,11 @@ namespace VirtualAviationJapan
 
         private void Start()
         {
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+            Setup();
+#endif
             Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized", gameObject);
+
         }
 
         private void Reset()
@@ -94,20 +98,12 @@ namespace VirtualAviationJapan
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, Quaternion.AngleAxis(-magneticDeclination, Vector3.up) * Vector3.forward * 10 + transform.position);
         }
-        public static IEnumerable<T> GetUdonSharpComponentsInScene<T>(Scene scene) where T : UdonSharpBehaviour
-        {
-            return scene.GetRootGameObjects()
-                .SelectMany(o => o.GetComponentsInChildren<UdonBehaviour>(true))
-                .Where(UdonSharpEditorUtility.IsUdonSharpBehaviour)
-                .Select(UdonSharpEditorUtility.GetProxyBehaviour)
-                .Select(u => u as T)
-                .Where(u => u != null);
-        }
 
         public void Setup()
         {
             var rootObjects = gameObject.scene.GetRootGameObjects();
-            var navaids = rootObjects.SelectMany(o => o.GetComponentsInChildren<Navaid>()).ToArray();
+
+            var navaids = rootObjects.SelectMany(o => o.GetComponentsInChildren<Navaid>(true)).ToArray();
             transforms = navaids.Select(n => n.transform).ToArray();
             capabilities = navaids.Select(n => (uint)n.capability).ToArray();
             identities = navaids.Select(n => n.identity).ToArray();
@@ -116,10 +112,15 @@ namespace VirtualAviationJapan
             glideSlopeTransforms = navaids.Select(n => n.glideSlope).ToArray();
             hideFromMaps = navaids.Select(n => n.hideFromMap).ToArray();
 
-            var waypoints = rootObjects.SelectMany(o => o.GetComponentsInChildren<Waypoint>());
+            var waypoints = rootObjects.SelectMany(o => o.GetComponentsInChildren<Waypoint>(true)).ToArray();
             waypointTransforms = waypoints.Select(w => w.transform).ToArray();
             waypointIdentities = waypoints.Select(w => w.identity).ToArray();
             waypointTypes = waypoints.Select(w => (uint)w.type).ToArray();
+
+            Debug.Log($"[NavaidDatabase] {navaids.Length} navaids and {waypoints.Length} waypoints found.");
+
+            // UdonSharpEditorUtility.CopyProxyToUdon(this);
+            EditorUtility.SetDirty(this);
         }
 #endif
     }
@@ -220,25 +221,15 @@ namespace VirtualAviationJapan
 
         private static void SetupAll(Scene scene)
         {
-            foreach (var db in NavaidDatabase.GetUdonSharpComponentsInScene<NavaidDatabase>(scene))
+            foreach (var db in scene.GetRootGameObjects().SelectMany(o => o.GetComponentsInChildren<NavaidDatabase>(true)))
             {
                 db.Setup();
-                UdonSharpEditorUtility.CopyProxyToUdon(db);
             }
-        }
-
-        [InitializeOnLoadMethod]
-        public static void InitializeOnLoad()
-        {
-            EditorApplication.playModeStateChanged += (PlayModeStateChange e) =>
-            {
-                if (e == PlayModeStateChange.EnteredPlayMode) SetupAll(SceneManager.GetActiveScene());
-            };
         }
 
         public class BuildCallback : IVRCSDKBuildRequestedCallback
         {
-            public int callbackOrder => 10;
+            public int callbackOrder => 11;
 
             public bool OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType)
             {

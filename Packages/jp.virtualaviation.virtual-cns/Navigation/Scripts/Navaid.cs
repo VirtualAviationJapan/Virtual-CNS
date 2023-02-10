@@ -1,26 +1,16 @@
 using UnityEngine;
 using System;
 using System.Linq;
+using UdonSharp;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 namespace VirtualAviationJapan
 {
-    public class Navaid : MonoBehaviour
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
+    public class Navaid : UdonSharpBehaviour
     {
-        [Flags]
-        public enum NavaidCapability
-        {
-            NDB = 1,
-            VOR = 2,
-            DME = 4,
-            ILS = 8,
-            VORDME = VOR | DME,
-            ILSDME = ILS | DME,
-            TACAN = 16 | DME,
-            VORTAC = TACAN | VOR,
-        }
 
         public string identity;
         public float frequency = 108.00f;
@@ -28,12 +18,12 @@ namespace VirtualAviationJapan
         public Transform glideSlope;
         public bool hideFromMap;
 
-        public bool IsNDB => (capability & NavaidCapability.NDB) != 0;
-        public bool IsVOR => (capability & NavaidCapability.VOR) != 0;
-        public bool IsILS => (capability & NavaidCapability.ILS) != 0;
-        public bool HasDME => (capability & NavaidCapability.DME) != 0;
-        public bool IsTACAN => (capability & NavaidCapability.TACAN) != 0;
-        public bool IsVORTAC => (capability & NavaidCapability.VORTAC) != 0;
+        public bool IsNDB => ((int)capability & (int)NavaidCapability.NDB) != 0;
+        public bool IsVOR => ((int)capability & (int)NavaidCapability.VOR) != 0;
+        public bool IsILS => ((int)capability & (int)NavaidCapability.ILS) != 0;
+        public bool HasDME => ((int)capability & (int)NavaidCapability.DME) != 0;
+        public bool IsTACAN => ((int)capability & (int)NavaidCapability.TACAN) != 0;
+        public bool IsVORTAC => ((int)capability & (int)NavaidCapability.VORTAC) != 0;
 
         public Transform DmeTransform
         {
@@ -45,16 +35,25 @@ namespace VirtualAviationJapan
             }
         }
 
-        private void Reset()
-        {
-            hideFlags = HideFlags.DontSaveInBuild;
-        }
-
         private void OnValidate()
         {
             gameObject.name = identity;
         }
     }
+
+    [Flags]
+    public enum NavaidCapability
+    {
+        NDB = 1,
+        VOR = 2,
+        DME = 4,
+        ILS = 8,
+        VORDME = VOR | DME,
+        ILSDME = ILS | DME,
+        TACAN = 16 | DME,
+        VORTAC = TACAN | VOR,
+    }
+
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
     [CustomEditor(typeof(NavaidEditor))]
