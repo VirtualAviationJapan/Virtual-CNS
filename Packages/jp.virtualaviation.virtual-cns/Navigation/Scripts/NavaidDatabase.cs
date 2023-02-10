@@ -17,6 +17,18 @@ namespace VirtualAviationJapan
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class NavaidDatabase : UdonSharpBehaviour
     {
+        public static NavaidDatabase GetInstance()
+        {
+            var o = GameObject.Find("NavaidDatabase");
+            return o ? o.GetComponent<NavaidDatabase>() : null;
+        }
+
+        public static float GetMagneticDeclination()
+        {
+            var db = GetInstance();
+            return db ? db.magneticDeclination : 0;
+        }
+
         public const uint NAVAID_NDB = 1;
         public const uint NAVAID_VOR = 2;
         public const uint NAVAID_DME = 4;
