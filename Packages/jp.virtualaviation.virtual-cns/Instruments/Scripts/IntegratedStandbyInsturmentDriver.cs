@@ -4,7 +4,7 @@ using UdonSharp;
 using UnityEngine;
 using VRC.Udon;
 
-namespace MonacaAircrafts
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class IntegratedStandbyInsturmentDriver : UdonSharpBehaviour
@@ -62,7 +62,7 @@ namespace MonacaAircrafts
                 foreach (var udon in origin.GetComponentsInChildren(typeof(UdonBehaviour)))
                 {
                     var udonSharp = (UdonSharpBehaviour)udon;
-                    if (udonSharp.GetUdonTypeName() == "SaccAirVehicle")
+                    if (udonSharp.GetUdonTypeName() == "SaccFlightAndVehicles.SaccAirVehicle")
                     {
                         vehicle = udonSharp;
                         seaLevel = (float)vehicle.GetProgramVariable("SeaLevel");

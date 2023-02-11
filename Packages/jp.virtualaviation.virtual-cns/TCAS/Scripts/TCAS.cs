@@ -205,7 +205,7 @@ namespace VirtualAviationJapan
 
                 if (!trafficIcons[index])
                 {
-                    var iconObject = VRCInstantiate(trafficIconTemplate);
+                    var iconObject = Instantiate(trafficIconTemplate);
                     iconObject.name = $"Traffic ({index + 1})";
 
                     var iconTransform = iconObject.transform;

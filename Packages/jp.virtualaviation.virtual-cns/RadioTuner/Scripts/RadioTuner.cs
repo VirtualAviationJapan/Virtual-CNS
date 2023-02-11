@@ -377,7 +377,6 @@ namespace VirtualAviationJapan
             maxFrequency = 139.975f;
             frequencyStep = 0.025f;
             frequencyFormat = "000.000";
-            this.ApplyProxyModifications();
         }
 
         [Button("Preset Navigation", true)]
@@ -388,7 +387,6 @@ namespace VirtualAviationJapan
             maxFrequency = 117.95f;
             frequencyStep = 0.05f;
             frequencyFormat = "000.00";
-            this.ApplyProxyModifications();
         }
 #endif
     }

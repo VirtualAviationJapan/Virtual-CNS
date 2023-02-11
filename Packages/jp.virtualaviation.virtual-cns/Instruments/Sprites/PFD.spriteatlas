@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PFD
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 1
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 66393b90825e6754ab9d66aabbd78cde, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: ef43012163a8d5c4f938c146337bb12e, type: 3}
+  - {fileID: 21300000, guid: a46a5621017b0d24992f3720783b517a, type: 3}
+  - {fileID: 21300000, guid: ae35cbb19c40d9045b8106024b0c898a, type: 3}
+  - {fileID: 21300000, guid: 7d2cfb2320c8d78448256a60f449af12, type: 3}
+  - {fileID: 21300000, guid: 172cfbc391748a24fbe13b37e4e101c4, type: 3}
+  - {fileID: 21300000, guid: d62b46c45328efb478687e0fe9a4264b, type: 3}
+  - {fileID: 21300000, guid: 4f2911d465e6b2d49885ed7d028da79f, type: 3}
+  - {fileID: 21300000, guid: 53ed2255668346c41aec5a227e426a82, type: 3}
+  - {fileID: 21300000, guid: 1d3b66d5995781849b29b731dcf59a26, type: 3}
+  - {fileID: 21300000, guid: 9544c946c974fb54093277825e9257da, type: 3}
+  - {fileID: 21300000, guid: f3c71b57080ac4948a933396d5ba2e84, type: 3}
+  - {fileID: 21300000, guid: f40eced7b009923478a0058913f0ef53, type: 3}
+  - {fileID: 21300000, guid: eb3457f7a10565e4d81725c68260bf90, type: 3}
+  - {fileID: 21300000, guid: 1bb9ab88883993246835f3bd745118c2, type: 3}
+  - {fileID: 21300000, guid: aa8c9fc81832be0469259328b325749d, type: 3}
+  - {fileID: 21300000, guid: 561c6939f9eceda41ba5615b9d1be76d, type: 3}
+  - {fileID: 21300000, guid: 75ea4e3aad6fcd34cbe5e2622b5a5cab, type: 3}
+  - {fileID: 21300000, guid: 3ebad2fb60dec6549b505ad5a655c0be, type: 3}
+  - {fileID: 21300000, guid: e322259c91164b947826df401306e1b1, type: 3}
+  - {fileID: 21300000, guid: 6fe62eacdd83d7d42bde756c16d07306, type: 3}
+  - {fileID: 21300000, guid: f530dcbcbd961d04abb6cc911ca81d04, type: 3}
+  - {fileID: 21300000, guid: 7132a3fcee2e86d40b4e2257b38c038a, type: 3}
+  - {fileID: 21300000, guid: a1d09bfc84fccec4cb3bb13a6a1b5fda, type: 3}
+  - {fileID: 21300000, guid: d4990dfc91c805240842412b06f3acb9, type: 3}
+  - {fileID: 21300000, guid: c7ed100eed983074da147621c60d3855, type: 3}
+  - {fileID: 21300000, guid: 0792dd3e4ca00b0419cb3b7d2fabb139, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ASI_OverSpeed
+  - EIS_Indicator_L
+  - ADI_TS
+  - Circle
+  - ADI_Pitch
+  - EIS_FLAPS
+  - CircularGauge
+  - BUGS_VR
+  - FilledCircle
+  - ALT_Meter
+  - EIS_Indicator_R
+  - PFD_Fixed
+  - ALT_BG
+  - CDI_Marker
+  - N1_Ref
+  - ASI_BG
+  - Frame_Rounded
+  - Digits_BG
+  - CircularGaugeDigits
+  - ASI_Digits
+  - ADI_Roll
+  - ASI_Meter
+  - ALT_Digits
+  - Frame
+  - VSI
+  - VSI_BG
+  m_Tag: PFD
+  m_IsVariant: 0

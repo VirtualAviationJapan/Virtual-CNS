@@ -9,6 +9,7 @@ using UdonToolkit;
 using UnityEditor.SceneManagement;
 using UnityEditor;
 using UdonSharpEditor;
+using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
 namespace VirtualAviationJapan
@@ -35,7 +36,7 @@ namespace VirtualAviationJapan
         {
             var rootGameObjects = scene.GetRootGameObjects();
             var usharpComponents = rootGameObjects
-                .SelectMany(o => o.GetUdonSharpComponentsInChildren<UdonSharpBehaviour>())
+                .SelectMany(o => o.GetComponentsInChildren<UdonSharpBehaviour>())
                 .GroupBy(udon => udon.GetType())
                 .SelectMany(group =>
                 {
@@ -54,7 +55,7 @@ namespace VirtualAviationJapan
                 if (isArray)
                 {
                     var components = isUdonSharpBehaviour
-                        ? rootGameObjects.SelectMany(o => o.GetUdonSharpComponentsInChildren(valueType)).ToArray()
+                        ? rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).ToArray()
                         : rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).ToArray();
                     var value = field.FieldType.GetConstructor(new[] { typeof(int) }).Invoke(new object[] { components.Length });
                     Array.Copy(components, value as Array, components.Length);
@@ -62,20 +63,27 @@ namespace VirtualAviationJapan
                 }
                 else
                 {
-                    if (isUdonSharpBehaviour) field.SetValue(udon, rootGameObjects.SelectMany(o => o.GetUdonSharpComponentsInChildren(valueType)).FirstOrDefault());
+                    if (isUdonSharpBehaviour) field.SetValue(udon, rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).FirstOrDefault());
                     else field.SetValue(udon, rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).FirstOrDefault());
                 }
-
-                udon.ApplyProxyModifications();
-                EditorUtility.SetDirty(UdonSharpEditorUtility.GetBackingUdonBehaviour(udon));
             }
         }
 
-        [InitializeOnLoadMethod]
-        public static void InitializeOnLoad()
+        [InitializeOnEnterPlayMode]
+        public static void OnEnterPlayMode()
         {
-            EditorSceneManager.sceneSaving += (scene, _) => AutoSetup(scene);
-            SceneManager.activeSceneChanged += (_, next) => AutoSetup(next);
+            AutoSetup(SceneManager.GetActiveScene());
+        }
+
+        public class BuildCallback : Editor, IVRCSDKBuildRequestedCallback
+        {
+            public int callbackOrder => 10;
+
+            public bool OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType)
+            {
+                AutoSetup(SceneManager.GetActiveScene());
+                return true;
+            }
         }
 #endif
     }

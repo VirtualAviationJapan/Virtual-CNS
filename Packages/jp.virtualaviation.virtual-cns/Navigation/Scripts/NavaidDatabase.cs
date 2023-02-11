@@ -9,6 +9,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UdonSharpEditor;
+using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
 namespace VirtualAviationJapan
@@ -16,6 +17,18 @@ namespace VirtualAviationJapan
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class NavaidDatabase : UdonSharpBehaviour
     {
+        public static NavaidDatabase GetInstance()
+        {
+            var o = GameObject.Find("NavaidDatabase");
+            return o ? o.GetComponent<NavaidDatabase>() : null;
+        }
+
+        public static float GetMagneticDeclination()
+        {
+            var db = GetInstance();
+            return db ? db.magneticDeclination : 0;
+        }
+
         public const uint NAVAID_NDB = 1;
         public const uint NAVAID_VOR = 2;
         public const uint NAVAID_DME = 4;
@@ -49,7 +62,11 @@ namespace VirtualAviationJapan
 
         private void Start()
         {
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+            Setup();
+#endif
             Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized", gameObject);
+
         }
 
         private void Reset()
@@ -78,24 +95,15 @@ namespace VirtualAviationJapan
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
-            this.UpdateProxy();
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, Quaternion.AngleAxis(-magneticDeclination, Vector3.up) * Vector3.forward * 10 + transform.position);
-        }
-        public static IEnumerable<T> GetUdonSharpComponentsInScene<T>(Scene scene) where T : UdonSharpBehaviour
-        {
-            return scene.GetRootGameObjects()
-                .SelectMany(o => o.GetComponentsInChildren<UdonBehaviour>(true))
-                .Where(UdonSharpEditorUtility.IsUdonSharpBehaviour)
-                .Select(UdonSharpEditorUtility.GetProxyBehaviour)
-                .Select(u => u as T)
-                .Where(u => u != null);
         }
 
         public void Setup()
         {
             var rootObjects = gameObject.scene.GetRootGameObjects();
-            var navaids = rootObjects.SelectMany(o => o.GetComponentsInChildren<Navaid>()).ToArray();
+
+            var navaids = rootObjects.SelectMany(o => o.GetComponentsInChildren<Navaid>(true)).ToArray();
             transforms = navaids.Select(n => n.transform).ToArray();
             capabilities = navaids.Select(n => (uint)n.capability).ToArray();
             identities = navaids.Select(n => n.identity).ToArray();
@@ -104,10 +112,14 @@ namespace VirtualAviationJapan
             glideSlopeTransforms = navaids.Select(n => n.glideSlope).ToArray();
             hideFromMaps = navaids.Select(n => n.hideFromMap).ToArray();
 
-            var waypoints = rootObjects.SelectMany(o => o.GetComponentsInChildren<Waypoint>());
+            var waypoints = rootObjects.SelectMany(o => o.GetComponentsInChildren<Waypoint>(true)).ToArray();
             waypointTransforms = waypoints.Select(w => w.transform).ToArray();
             waypointIdentities = waypoints.Select(w => w.identity).ToArray();
             waypointTypes = waypoints.Select(w => (uint)w.type).ToArray();
+
+            Debug.Log($"[NavaidDatabase] {navaids.Length} navaids and {waypoints.Length} waypoints found.");
+
+            EditorUtility.SetDirty(this);
         }
 #endif
     }
@@ -128,15 +140,10 @@ namespace VirtualAviationJapan
 
         private void NavaidGUI()
         {
-            if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll((target as NavaidDatabase).gameObject.scene);
-
-            var transformsProperty = serializedObject.FindProperty(nameof(NavaidDatabase.transforms));
-            var navaidCount = transformsProperty.arraySize;
-            foreach (var i in Enumerable.Range(0, navaidCount))
+            var rootObjects = (target as NavaidDatabase).gameObject.scene.GetRootGameObjects();
+            var transforms = rootObjects.SelectMany(o => o.GetComponentsInChildren<Navaid>());
+            foreach (var navaid in transforms)
             {
-                var navaid = (transformsProperty.GetArrayElementAtIndex(i).objectReferenceValue as Transform).GetComponent<Navaid>();
-                if (!navaid) continue;
-
                 using (new EditorGUILayout.HorizontalScope())
                 {
                     EditorGUILayout.ObjectField(navaid, typeof(Navaid), true);
@@ -171,8 +178,6 @@ namespace VirtualAviationJapan
             using (new EditorGUILayout.HorizontalScope())
             {
                 waypointIndex = EditorGUILayout.Popup(waypointIndex, db.waypointIdentities.ToArray());
-
-                if (GUILayout.Button("Force Refresh", EditorStyles.miniButton, GUILayout.ExpandWidth(false))) SetupAll(db.gameObject.scene);
             }
 
             var waypoint = db.waypointTransforms[waypointIndex].GetComponent<Waypoint>();
@@ -213,19 +218,22 @@ namespace VirtualAviationJapan
 
         }
 
-        [InitializeOnLoadMethod]
-        static public void RegisterCallback()
-        {
-            EditorSceneManager.sceneSaving += (scene, __) => SetupAll(scene);
-        }
-
         private static void SetupAll(Scene scene)
         {
-            foreach (var db in NavaidDatabase.GetUdonSharpComponentsInScene<NavaidDatabase>(scene))
+            foreach (var db in scene.GetRootGameObjects().SelectMany(o => o.GetComponentsInChildren<NavaidDatabase>(true)))
             {
                 db.Setup();
-                db.ApplyProxyModifications();
-                EditorUtility.SetDirty(db);
+            }
+        }
+
+        public class BuildCallback : IVRCSDKBuildRequestedCallback
+        {
+            public int callbackOrder => 11;
+
+            public bool OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType)
+            {
+                SetupAll(SceneManager.GetActiveScene());
+                return true;
             }
         }
     }

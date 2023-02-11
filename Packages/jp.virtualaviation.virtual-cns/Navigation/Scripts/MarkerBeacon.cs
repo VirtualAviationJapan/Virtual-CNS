@@ -1,19 +1,21 @@
 using UdonSharp;
-using UnityEngine;
 using UdonToolkit;
+using UnityEngine;
 
 namespace VirtualAviationJapan
 {
+    public enum MarkerBeaconType
+    {
+        Inner,
+        Middle,
+        Outer,
+    }
+
     [UdonBehaviourSyncMode(BehaviourSyncMode.NoVariableSync)]
     [RequireComponent(typeof(Collider))]
     public class MarkerBeacon : UdonSharpBehaviour
     {
-        public readonly string[] MarkerTypes = new[] { "Inner", "Middle", "Outer" };
-
-        public const int INNER_MARKER = 0;
-        public const int MIDDLE_MARKER = 1;
-        public const int OUTER_MARKER = 2;
-        [Popup("@MarkerTypes")] public int type = 0;
+        public MarkerBeaconType type;
 
         private void Reset()
         {
@@ -30,13 +32,13 @@ namespace VirtualAviationJapan
             {
                 switch (type)
                 {
-                    case INNER_MARKER:
+                    case MarkerBeaconType.Inner:
                         receiver._InnerMarker();
                         break;
-                    case MIDDLE_MARKER:
+                    case MarkerBeaconType.Middle:
                         receiver._MiddleMarker();
                         break;
-                    case OUTER_MARKER:
+                    case MarkerBeaconType.Outer:
                         receiver._OuterMarker();
                         break;
                 }

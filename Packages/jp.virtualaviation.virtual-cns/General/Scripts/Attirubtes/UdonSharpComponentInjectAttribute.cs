@@ -39,7 +39,7 @@ namespace VirtualAviationJapan
         {
             var rootGameObjects = scene.GetRootGameObjects();
             var usharpComponents = rootGameObjects
-                .SelectMany(o => o.GetUdonSharpComponentsInChildren<UdonSharpBehaviour>(true))
+                .SelectMany(o => o.GetComponentsInChildren<UdonSharpBehaviour>(true))
                 .Where(c => c != null)
                 .GroupBy(component => component.GetType())
                 .SelectMany(group =>
@@ -59,16 +59,16 @@ namespace VirtualAviationJapan
                 if (isArray)
                 {
                     var components = isComponent
-                        ? rootGameObjects.SelectMany(o => o.GetUdonSharpComponentsInChildren(valueType)).ToArray()
-                        : rootGameObjects.SelectMany(o => o.GetUdonSharpComponentsInChildren(valueType)).ToArray();
+                        ? rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).ToArray()
+                        : rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).ToArray();
                     var value = field.FieldType.GetConstructor(new[] { typeof(int) }).Invoke(new object[] { components.Length });
                     Array.Copy(components, value as Array, components.Length);
                     field.SetValue(component, value);
                 }
                 else
                 {
-                    if (isComponent) field.SetValue(component, rootGameObjects.SelectMany(o => o.GetUdonSharpComponentsInChildren(valueType)).FirstOrDefault());
-                    else field.SetValue(component, rootGameObjects.SelectMany(o => o.GetUdonSharpComponentsInChildren(valueType)).FirstOrDefault());
+                    if (isComponent) field.SetValue(component, rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).FirstOrDefault());
+                    else field.SetValue(component, rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).FirstOrDefault());
                 }
             }
         }

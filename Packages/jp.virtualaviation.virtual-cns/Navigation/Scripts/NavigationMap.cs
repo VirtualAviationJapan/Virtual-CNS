@@ -120,7 +120,7 @@ namespace VirtualAviationJapan
 
         private Transform InstantiateMarker(GameObject template, string identity)
         {
-            var marker = VRCInstantiate(template).transform;
+            var marker = Instantiate(template).transform;
             marker.gameObject.name = marker.gameObject.name.Replace("(Clone)", $" {identity}");
             marker.SetParent(transform, false);
             marker.GetComponentInChildren<TextMeshProUGUI>().text = identity;

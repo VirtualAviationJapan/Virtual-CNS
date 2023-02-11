@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 975549807079047111, guid: fc582d389ec718641afa884b4d030886,
         type: 3}
       propertyPath: m_Name
-      value: ND_Marker_Aerodrome
+      value: Nav_Marker_Aerodrome
       objectReference: {fileID: 0}
     - target: {fileID: 2721312814316174181, guid: fc582d389ec718641afa884b4d030886,
         type: 3}

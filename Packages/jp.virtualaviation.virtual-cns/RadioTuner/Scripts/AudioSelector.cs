@@ -205,12 +205,6 @@ namespace VirtualAviationJapan
 
             var navs = EditorGUILayout.ObjectField("Load NAVs", null, typeof(RadioTunerDemultiplexer), true) as RadioTunerDemultiplexer;
             if (navs) audioSelector.navTuners = navs.tuners.ToArray();
-
-            if (coms || navs)
-            {
-                audioSelector.ApplyProxyModifications();
-                EditorUtility.SetDirty(UdonSharpEditorUtility.GetBackingUdonBehaviour(audioSelector));
-            }
         }
 #endif
     }
