@@ -119,7 +119,6 @@ namespace VirtualAviationJapan
 
             Debug.Log($"[NavaidDatabase] {navaids.Length} navaids and {waypoints.Length} waypoints found.");
 
-            // UdonSharpEditorUtility.CopyProxyToUdon(this);
             EditorUtility.SetDirty(this);
         }
 #endif

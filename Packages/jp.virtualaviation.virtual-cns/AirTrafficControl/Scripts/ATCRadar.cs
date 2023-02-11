@@ -132,7 +132,7 @@ namespace VirtualAviationJapan
             foreach (var rader in scene.GetRootGameObjects().SelectMany(o => o.GetComponentsInChildren<ATCRadar>(true)))
             {
                 rader.Setup();
-                UdonSharpEditorUtility.CopyProxyToUdon(rader);
+                EditorUtility.SetDirty(rader);
             }
         }
 
