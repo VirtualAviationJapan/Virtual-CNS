@@ -1,7 +1,6 @@
 ﻿using UdonSharp;
 using UnityEngine;
 using TMPro;
-using UdonSharpEditor;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using UnityEngine.SceneManagement;
 using System.Linq;
