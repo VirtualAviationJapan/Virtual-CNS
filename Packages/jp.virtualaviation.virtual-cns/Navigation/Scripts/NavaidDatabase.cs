@@ -1,14 +1,10 @@
 ﻿using UdonSharp;
 using UnityEngine;
-using VRC.Udon;
-using System;
-using UnityEngine.SceneManagement;
+using TMPro;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.SceneManagement;
-using UdonSharpEditor;
 using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
@@ -39,19 +35,20 @@ namespace VirtualAviationJapan
         public const uint WAYPOINT_RNAV = 2;
 
         public float magneticDeclination = 0.0f;
-
-        public Transform[] transforms = { };
-        public uint[] capabilities = { };
-        public string[] identities = { };
-        public float[] frequencies = { };
-        public Transform[] dmeTransforms = { };
-        public Transform[] glideSlopeTransforms = { };
-        public bool[] hideFromMaps = { };
         public float frequencyStep = 0.05f;
+        public TextMeshProUGUI debugText;
 
-        public Transform[] waypointTransforms = { };
-        public string[] waypointIdentities = { };
-        public uint[] waypointTypes = { };
+        [HideInInspector] public Transform[] transforms = { };
+        [HideInInspector] public uint[] capabilities = { };
+        [HideInInspector] public string[] identities = { };
+        [HideInInspector] public float[] frequencies = { };
+        [HideInInspector] public Transform[] dmeTransforms = { };
+        [HideInInspector] public Transform[] glideSlopeTransforms = { };
+        [HideInInspector] public bool[] hideFromMaps = { };
+
+        [HideInInspector] public Transform[] waypointTransforms = { };
+        [HideInInspector] public string[] waypointIdentities = { };
+        [HideInInspector] public uint[] waypointTypes = { };
 
         public int Count => transforms.Length;
         public bool _HasCapability(int navaidIndex, uint capability) => (capabilities[navaidIndex] & capability) != 0;
@@ -60,13 +57,26 @@ namespace VirtualAviationJapan
         public bool _IsILS(int navaidIndex) => _HasCapability(navaidIndex, NAVAID_ILS);
         public bool _HasDME(int navaidIndex) => _HasCapability(navaidIndex, NAVAID_DME);
 
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+        private void Awake()
+        {
+            Setup();
+        }
+#endif
+
         private void Start()
         {
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-            Setup();
-#endif
-            Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized", gameObject);
+                Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized with {Count} navaids", gameObject);
 
+            if (debugText)
+            {
+                var text = "NavaidDatbase";
+                for (var i = 0; i < Count; i++)
+                {
+                    text += $"\n{transforms[i]}\t{identities[i]}\t{frequencies[i]:0.00}";
+                }
+                debugText.text = text;
+            }
         }
 
         private void Reset()
@@ -200,10 +210,7 @@ namespace VirtualAviationJapan
 
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(NavaidDatabase.magneticDeclination)));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(NavaidDatabase.frequencyStep)));
-            serializedObject.ApplyModifiedProperties();
+            base.OnInspectorGUI();
 
             tabIndex = GUILayout.Toolbar(tabIndex, tabs);
             switch (tabIndex)
