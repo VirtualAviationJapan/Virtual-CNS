@@ -26,7 +26,7 @@ namespace VirtualAviationJapan
 
                 foreach (var subscriber in subscribers)
                 {
-                    if (subscriber != null) subscriber.SendCustomEvent("_NavChanged");
+                    if (subscriber) subscriber.SendCustomEvent("_NavChanged");
                 }
             }
             get => _index;
@@ -108,6 +108,12 @@ namespace VirtualAviationJapan
             if (!database) return;
             var index = database._FindIndexByFrequency(frequency);
             _SetIndex(index);
+        }
+
+        public void _SetChannel(int channel, bool y)
+        {
+            if (!database) return;
+            _SetIndex(database._FindIndexByChannel(channel, y));
         }
 
         public void _IncrementIndex()

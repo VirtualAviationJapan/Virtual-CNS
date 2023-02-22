@@ -102,6 +102,26 @@ namespace VirtualAviationJapan
             return -1;
         }
 
+        public static float ChannelToFrequency(int channel, bool y)
+        {
+            return (channel - (channel < 60 ? 17 : 16)) * 0.1f + 108.0f + (y ? 0.05f : 0);
+        }
+
+        public static int FrequencyToChannel(float frequency)
+        {
+            return Mathf.FloorToInt((frequency - 108.0f) * 10.0f + (frequency < 112.3f ? 17 : 27));
+        }
+
+        public static bool IsY(float frequency)
+        {
+            return Mathf.Approximately(frequency % 0.1f, 0.05f);
+        }
+
+        public int _FindIndexByChannel(int channel, bool y)
+        {
+            return _FindIndexByFrequency(ChannelToFrequency(channel, y));
+        }
+
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
