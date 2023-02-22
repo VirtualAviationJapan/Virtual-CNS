@@ -8,7 +8,7 @@ namespace VirtualAviationJapan.FlightDataBus
     {
         protected override void OnStart()
         {
-            _WriteFloatValue(FlightDataFloatValueId.MagneticDeclination, NavaidDatabase.GetMagneticDeclination());
+            _Write(FlightDataFloatValueId.MagneticDeclination, NavaidDatabase.GetMagneticDeclination());
         }
     }
 }

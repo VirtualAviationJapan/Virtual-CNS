@@ -21,9 +21,9 @@ namespace VirtualAviationJapan.FlightDataBus
             var position = transform.position;
             var deltaTime = Time.deltaTime;
 
-            _WriteFloatValue(FlightDataFloatValueId.TAS, Mathf.Max(Vector3.Dot((position - previousPosition) * deltaTime - _ReadVector3Value(FlightDataVector3ValueId.Wind), transform.forward), minIAS));
-            _WriteFloatValue(FlightDataFloatValueId.Altitude, position.y - _ReadFloatValue(FlightDataFloatValueId.SeaLevel));
-            _WriteFloatValue(FlightDataFloatValueId.VerticalSpeed, (position.y - previousPosition.y) * deltaTime);
+            _Write(FlightDataFloatValueId.TAS, Mathf.Max(Vector3.Dot((position - previousPosition) * deltaTime - _Read(FlightDataVector3ValueId.Wind), transform.forward), minIAS));
+            _Write(FlightDataFloatValueId.Altitude, position.y - _Read(FlightDataFloatValueId.SeaLevel));
+            _Write(FlightDataFloatValueId.VerticalSpeed, (position.y - previousPosition.y) * deltaTime);
 
             previousPosition = position;
         }

@@ -8,7 +8,7 @@ namespace VirtualAviationJapan.FlightDataBus
     {
         private void Update()
         {
-            _WriteFloatValue(FlightDataFloatValueId.MagneticHeading, (transform.rotation.eulerAngles.y + _ReadFloatValue(FlightDataFloatValueId.MagneticDeclination) + 360) % 360);
+            _Write(FlightDataFloatValueId.MagneticHeading, (transform.rotation.eulerAngles.y + _Read(FlightDataFloatValueId.MagneticDeclination) + 360) % 360);
         }
     }
 }

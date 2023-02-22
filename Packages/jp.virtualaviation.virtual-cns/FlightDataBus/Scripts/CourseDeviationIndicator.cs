@@ -12,15 +12,25 @@ namespace VirtualAviationJapan.FlightDataBus
         public float maxAngle = 10;
 
         private FlightDataFloatValueId courseDeviationId;
+        private FlightDataBoolValueId tunedId;
 
         protected override void OnStart()
         {
-            courseDeviationId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, id - 1);
+            var offset = id - 1;
+            courseDeviationId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, offset);
+            tunedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
+            _Sbuscribe(tunedId);
+        }
+
+        public override void _OnBoolValueChanged()
+        {
+            var tuned = _Read(tunedId);
+            if (gameObject.activeSelf != tuned) gameObject.SetActive(tuned);
         }
 
         private void Update()
         {
-            var courseDeviation = _ReadFloatValue(courseDeviationId);
+            var courseDeviation = _Read(courseDeviationId);
             switch (type)
             {
                 case IndicatorType.Slide:

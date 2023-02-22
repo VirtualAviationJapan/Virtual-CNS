@@ -12,12 +12,12 @@ namespace VirtualAviationJapan.FlightDataBus
         protected override void OnStart()
         {
             courseId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Course, id - 1);
-            _SubscribeFloatValue(courseId);
+            _Sbuscribe(courseId);
         }
 
         public override void _OnFloatValueChanged()
         {
-            transform.localRotation = Quaternion.AngleAxis(_ReadFloatValue(courseId), axis);
+            transform.localRotation = Quaternion.AngleAxis(_Read(courseId), axis);
         }
     }
 }

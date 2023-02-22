@@ -16,8 +16,8 @@ namespace VirtualAviationJapan.FlightDataBus
 
         private void Update()
         {
-            rollIndicator.localRotation = Quaternion.AngleAxis(Mathf.Clamp(-_ReadFloatValue(FlightDataFloatValueId.Roll), -maxRoll, maxRoll), rollIndicatorAxis);
-            pitchIndicator.localPosition = Mathf.Clamp(-_ReadFloatValue(FlightDataFloatValueId.Pitch)  / maxPitch, -1, 1) * pitchIndicatorAxis;
+            rollIndicator.localRotation = Quaternion.AngleAxis(Mathf.Clamp(-_Read(FlightDataFloatValueId.Roll), -maxRoll, maxRoll), rollIndicatorAxis);
+            pitchIndicator.localPosition = Mathf.Clamp(-_Read(FlightDataFloatValueId.Pitch)  / maxPitch, -1, 1) * pitchIndicatorAxis;
         }
     }
 }

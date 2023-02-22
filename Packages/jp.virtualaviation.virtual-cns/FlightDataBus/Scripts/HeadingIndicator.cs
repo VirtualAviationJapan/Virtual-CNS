@@ -14,7 +14,7 @@ namespace VirtualAviationJapan.FlightDataBus
 
         private void Update()
         {
-            transform.localRotation = Quaternion.AngleAxis(_ReadFloatValue(type == HeadingIndicatorType.Gyro ? FlightDataFloatValueId.Heading : FlightDataFloatValueId.MagneticHeading), axis);
+            transform.localRotation = Quaternion.AngleAxis(_Read(type == HeadingIndicatorType.Gyro ? FlightDataFloatValueId.Heading : FlightDataFloatValueId.MagneticHeading), axis);
         }
     }
 

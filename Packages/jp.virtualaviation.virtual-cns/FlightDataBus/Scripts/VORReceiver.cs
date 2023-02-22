@@ -23,12 +23,12 @@ namespace VirtualAviationJapan.FlightDataBus
 
         private float Radial
         {
-            set => _WriteFloatValue(radialId, value);
+            set => _Write(radialId, value);
         }
-        private float Course => _ReadFloatValue(courseId);
+        private float Course => _Read(courseId);
         private float CourceDeviation
         {
-            set => _WriteFloatValue(courceDeviationId, value);
+            set => _Write(courceDeviationId, value);
         }
 
         protected override void OnStart()
@@ -43,15 +43,15 @@ namespace VirtualAviationJapan.FlightDataBus
             tunedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
             backId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Back, offset);
 
-            _SubscribeFloatValue(frequencyId);
-            _SubscribeFloatValue(courseId);
+            _Sbuscribe(frequencyId);
+            _Sbuscribe(courseId);
         }
 
         public override void _OnFloatValueChanged()
         {
-            var index = navaidDatabase._FindIndexByFrequency(_ReadFloatValue(frequencyId));
+            var index = navaidDatabase._FindIndexByFrequency(_Read(frequencyId));
 
-            var tuned = index < 0;
+            var tuned = index >= 0;
             if (tuned)
             {
                 vorTransform = navaidDatabase.transforms[index];
@@ -65,7 +65,7 @@ namespace VirtualAviationJapan.FlightDataBus
                 Radial = 0;
                 CourceDeviation = 0;
             }
-            _WriteBoolValueAndNotify(tunedId, tuned);
+            _WriteAndNotify(tunedId, tuned);
         }
 
         private void Update()
@@ -76,7 +76,7 @@ namespace VirtualAviationJapan.FlightDataBus
             Radial = (Vector3.SignedAngle(Vector3.forward, r, Vector3.up) + 360) % 360;
 
             var dot = Vector3.Dot(courceDirection, r.normalized);
-            _WriteBoolValue(backId, dot < 0);
+            _Write(backId, dot < 0);
             var rawCoruceDeviation = Mathf.Asin(dot) * Mathf.Rad2Deg;
             CourceDeviation = Mathf.Clamp(rawCoruceDeviation / fullCourseDeviationScale, -1.0f, 1.0f);
         }

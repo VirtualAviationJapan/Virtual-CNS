@@ -10,9 +10,9 @@ namespace VirtualAviationJapan.FlightDataBus
         private void Update()
         {
             var eularAngles = transform.rotation.eulerAngles;
-            _WriteFloatValue(FlightDataFloatValueId.Pitch, Mathf.Atan(transform.forward.y) * Mathf.Rad2Deg);
-            _WriteFloatValue(FlightDataFloatValueId.Roll, eularAngles.z);
-            _WriteFloatValue(FlightDataFloatValueId.Heading, (eularAngles.y + _ReadFloatValue(FlightDataFloatValueId.MagneticDeclination) + 360) % 360);
+            _Write(FlightDataFloatValueId.Pitch, Mathf.Atan(transform.forward.y) * Mathf.Rad2Deg);
+            _Write(FlightDataFloatValueId.Roll, eularAngles.z);
+            _Write(FlightDataFloatValueId.Heading, (eularAngles.y + _Read(FlightDataFloatValueId.MagneticDeclination) + 360) % 360);
         }
     }
 }

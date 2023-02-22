@@ -17,7 +17,7 @@ namespace VirtualAviationJapan.FlightDataBus
             get;
         }
         private int maxSubscriberCount;
-        private int subscriptionIndex = -1;
+
         private UdonSharpBehaviour[] subscribers;
         private uint[] boolSubscriptionMaskList;
         private uint[] floatSubscriptionMaskList;
@@ -25,6 +25,23 @@ namespace VirtualAviationJapan.FlightDataBus
         private bool[] bools;
         private float[] floats;
         private Vector3[] vector3s;
+
+
+        private int _subscriptionIndex = -1;
+        private int SubscriptionIndex
+        {
+            get
+            {
+
+                if (_subscriptionIndex >= 0) return _subscriptionIndex;
+
+                var i = Array.IndexOf(subscribers, null);
+                if (i >= 0) subscribers[i] = this;
+                _subscriptionIndex = i;
+
+                return i;
+            }
+        }
 
         private void Start()
         {
@@ -45,30 +62,20 @@ namespace VirtualAviationJapan.FlightDataBus
 
         protected virtual void OnStart() { }
 
-        private int GetSubscriptionIndex()
+        public void _Sbuscribe(FlightDataBoolValueId id)
         {
-            if (subscriptionIndex >= 0) return subscriptionIndex;
-
-            var i = Array.IndexOf(subscribers, null);
-            if (i >= 0) subscribers[i] = this;
-            subscriptionIndex = i;
-
-            return i;
+            boolSubscriptionMaskList[SubscriptionIndex] |= GetMask((int)id);
+            _OnBoolValueChanged();
         }
-
-        public void _SubscribeBoolValue(FlightDataBoolValueId id)
+        public void _Sbuscribe(FlightDataFloatValueId id)
         {
-            boolSubscriptionMaskList[GetSubscriptionIndex()] |= GetMask((int)id);
+            floatSubscriptionMaskList[SubscriptionIndex] |= GetMask((int)id);
+            _OnFloatValueChanged();
         }
-        public void _SubscribeFloatValue(FlightDataFloatValueId id)
+        public void _Sbuscribe(FlightDataVector3ValueId id)
         {
-            var i = GetSubscriptionIndex();
-            floatSubscriptionMaskList[i] |= GetMask((int)id);
-        }
-        public void _SubscribeVector3Value(FlightDataVector3ValueId id)
-        {
-            var i = GetSubscriptionIndex();
-            vector3SubscriptionMaskList[i] |= GetMask((int)id);
+            vector3SubscriptionMaskList[SubscriptionIndex] |= GetMask((int)id);
+            _OnVector3ValueChanged();
         }
 
         private void SendNotify(int id, uint[] maskList, string eventName)
@@ -84,52 +91,31 @@ namespace VirtualAviationJapan.FlightDataBus
             }
         }
 
-        public bool _ReadBoolValue(FlightDataBoolValueId id)
+        public bool _Read(FlightDataBoolValueId id) => bools[(int)id];
+        public void _Write(FlightDataBoolValueId id, bool value) => bools[(int)id] = value;
+        public void _WriteAndNotify(FlightDataBoolValueId id, bool value)
         {
-            return bools[(int)id];
-        }
-        public void _WriteBoolValue(FlightDataBoolValueId id, bool value)
-        {
-            bools[(int)id] = value;
-        }
-        public void _WriteBoolValueAndNotify(FlightDataBoolValueId id, bool value)
-        {
-            _WriteBoolValue(id, value);
+            _Write(id, value);
             SendNotify((int)id, floatSubscriptionMaskList, nameof(_OnBoolValueChanged));
         }
         public virtual void _OnBoolValueChanged() { }
 
-        public float _ReadFloatValue(FlightDataFloatValueId id)
+        public float _Read(FlightDataFloatValueId id) => floats[(int)id];
+        public void _Write(FlightDataFloatValueId id, float value) => floats[(int)id] = value;
+        public void _WriteAndNotify(FlightDataFloatValueId id, float value)
         {
-            return floats[(int)id];
-        }
-        public void _WriteFloatValue(FlightDataFloatValueId id, float value)
-        {
-            floats[(int)id] = value;
-        }
-        public void _WriteFloatValueAndNotify(FlightDataFloatValueId id, float value)
-        {
-            _WriteFloatValue(id, value);
+            _Write(id, value);
             SendNotify((int)id, floatSubscriptionMaskList, nameof(_OnFloatValueChanged));
         }
         public virtual void _OnFloatValueChanged() { }
 
-        public Vector3 _ReadVector3Value(FlightDataVector3ValueId id)
+        public Vector3 _Read(FlightDataVector3ValueId id) => vector3s[(int)id];
+        public void _Write(FlightDataVector3ValueId id, Vector3 value) => vector3s[(int)id] = value;
+        public void _WriteAndNotify(FlightDataVector3ValueId id, Vector3 value)
         {
-            return vector3s[(int)id];
-        }
-
-        public void _WriteVector3Value(FlightDataVector3ValueId id, Vector3 value)
-        {
-            vector3s[(int)id] = value;
-        }
-
-        public void _WriteVector3ValueAndNotify(FlightDataVector3ValueId id, Vector3 value)
-        {
-            _WriteVector3Value(id, value);
+            _Write(id, value);
             SendNotify((int)id, floatSubscriptionMaskList, nameof(_OnVector3ValueChanged));
         }
-
         public virtual void _OnVector3ValueChanged() { }
     }
 }

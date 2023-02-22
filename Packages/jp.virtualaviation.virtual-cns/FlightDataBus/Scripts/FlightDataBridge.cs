@@ -19,10 +19,10 @@ namespace VirtualAviationJapan.FlightDataBus
             switch (dataType)
             {
                 case FlightDataType.Float:
-                    _WriteFloatValue((FlightDataFloatValueId)destinationVariableId, (float)value);
+                    _Write((FlightDataFloatValueId)destinationVariableId, (float)value);
                     break;
                 case FlightDataType.Vector3:
-                    _WriteVector3Value((FlightDataVector3ValueId)destinationVariableId, (Vector3)value);
+                    _Write((FlightDataVector3ValueId)destinationVariableId, (Vector3)value);
                     break;
             }
         }
