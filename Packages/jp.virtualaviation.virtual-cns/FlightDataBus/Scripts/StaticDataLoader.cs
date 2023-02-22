@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace VirtualAviationJapan.FlightDataBus
 {
-
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class StaticDataLoader : FlightDataBusClient
     {
