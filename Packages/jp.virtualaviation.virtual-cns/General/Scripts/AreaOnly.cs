@@ -2,7 +2,7 @@
 using UdonSharp;
 using VRC.SDKBase;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class AreaOnly : UdonSharpBehaviour

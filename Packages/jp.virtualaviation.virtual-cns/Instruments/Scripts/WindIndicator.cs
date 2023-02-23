@@ -3,7 +3,7 @@ using UdonSharp;
 using UnityEngine;
 using VRC.Udon;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class WindIndicator : UdonSharpBehaviour

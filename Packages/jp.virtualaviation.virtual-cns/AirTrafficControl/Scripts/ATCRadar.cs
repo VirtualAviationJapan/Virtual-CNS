@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     [DefaultExecutionOrder(-100)] // Before OneShotCamera

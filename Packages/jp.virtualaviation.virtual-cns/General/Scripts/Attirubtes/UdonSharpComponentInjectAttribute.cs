@@ -11,7 +11,7 @@ using UnityEditor;
 using UdonSharpEditor;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
 #if UNITY_EDITOR

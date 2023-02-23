@@ -2,7 +2,7 @@
 using UdonSharp;
 using UnityEngine;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [RequireComponent(typeof(Camera))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]

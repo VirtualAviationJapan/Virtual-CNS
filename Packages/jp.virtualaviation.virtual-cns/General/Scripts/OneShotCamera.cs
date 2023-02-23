@@ -8,7 +8,7 @@ using UnityEditor;
 using UdonSharpEditor;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [RequireComponent(typeof(Camera))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]

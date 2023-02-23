@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [RequireComponent(typeof(TMP_Text))]
     public class Callsign : MonoBehaviour

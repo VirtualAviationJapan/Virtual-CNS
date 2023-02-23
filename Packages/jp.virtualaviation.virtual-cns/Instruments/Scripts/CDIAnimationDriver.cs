@@ -6,7 +6,7 @@ using UnityEngine;
 using UdonSharpEditor;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]

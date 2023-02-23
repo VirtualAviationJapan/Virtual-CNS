@@ -3,7 +3,7 @@ using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class UniversalTextDriver : UdonSharpBehaviour

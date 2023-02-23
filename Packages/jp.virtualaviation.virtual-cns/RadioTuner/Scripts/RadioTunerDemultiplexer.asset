@@ -19,7 +19,7 @@ MonoBehaviour:
   compiledVersion: 2
   behaviourSyncMode: 4
   hasInteractEvent: 0
-  scriptID: 1703286049413706636
+  scriptID: 8035428359581081474
   serializationData:
     SerializedBytes: 
     ReferencedUnityObjects: []
@@ -59,7 +59,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: VirtualAviationJapan.RadioTuner[], VirtualAviationJapan.Virtual-CNS
+      Data: VirtualCNS.RadioTuner[], VirtualAviationJapan.Virtual-CNS
     - Name: 
       Entry: 8
       Data: 

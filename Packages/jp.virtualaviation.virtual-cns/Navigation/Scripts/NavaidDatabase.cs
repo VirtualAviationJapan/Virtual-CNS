@@ -8,7 +8,7 @@ using UnityEditor;
 using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class NavaidDatabase : UdonSharpBehaviour
