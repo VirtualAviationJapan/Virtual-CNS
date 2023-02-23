@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace VirtualFlightDataBus
 {
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class CourseIndicator : FlightDataBusClient
     {
         public int id = 1;

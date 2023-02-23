@@ -12,7 +12,7 @@ namespace VirtualFlightDataBus
         public string sourceVariableName;
         public int destinationVariableId;
 
-        public void Update()
+        private void Update()
         {
             var value = sourceBehaviour.GetProgramVariable(sourceVariableName);
 

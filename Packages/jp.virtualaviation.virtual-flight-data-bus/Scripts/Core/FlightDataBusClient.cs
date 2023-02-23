@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using UdonSharp;
 using UnityEngine;
 
@@ -22,17 +23,15 @@ namespace VirtualFlightDataBus
         private uint[] boolSubscriptionMaskList;
         private uint[] floatSubscriptionMaskList;
         private uint[] vector3SubscriptionMaskList;
-        private bool[] bools;
-        private float[] floats;
-        private Vector3[] vector3s;
-
+        protected bool[] bools;
+        protected float[] floats;
+        protected Vector3[] vector3s;
 
         private int _subscriptionIndex = -1;
         private int SubscriptionIndex
         {
             get
             {
-
                 if (_subscriptionIndex >= 0) return _subscriptionIndex;
 
                 var i = Array.IndexOf(subscribers, null);
@@ -100,8 +99,11 @@ namespace VirtualFlightDataBus
         }
         public virtual void _OnBoolValueChanged() { }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float _Read(FlightDataFloatValueId id) => floats[(int)id];
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void _Write(FlightDataFloatValueId id, float value) => floats[(int)id] = value;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void _WriteAndNotify(FlightDataFloatValueId id, float value)
         {
             _Write(id, value);
@@ -109,8 +111,11 @@ namespace VirtualFlightDataBus
         }
         public virtual void _OnFloatValueChanged() { }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Vector3 _Read(FlightDataVector3ValueId id) => vector3s[(int)id];
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void _Write(FlightDataVector3ValueId id, Vector3 value) => vector3s[(int)id] = value;
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void _WriteAndNotify(FlightDataVector3ValueId id, Vector3 value)
         {
             _Write(id, value);
