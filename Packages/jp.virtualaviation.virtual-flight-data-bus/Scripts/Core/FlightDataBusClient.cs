@@ -61,17 +61,17 @@ namespace VirtualFlightDataBus
 
         protected virtual void OnStart() { }
 
-        public void _Sbuscribe(FlightDataBoolValueId id)
+        public void _Subscribe(FlightDataBoolValueId id)
         {
             boolSubscriptionMaskList[SubscriptionIndex] |= GetMask((int)id);
             _OnBoolValueChanged();
         }
-        public void _Sbuscribe(FlightDataFloatValueId id)
+        public void _Subscribe(FlightDataFloatValueId id)
         {
             floatSubscriptionMaskList[SubscriptionIndex] |= GetMask((int)id);
             _OnFloatValueChanged();
         }
-        public void _Sbuscribe(FlightDataVector3ValueId id)
+        public void _Subscribe(FlightDataVector3ValueId id)
         {
             vector3SubscriptionMaskList[SubscriptionIndex] |= GetMask((int)id);
             _OnVector3ValueChanged();

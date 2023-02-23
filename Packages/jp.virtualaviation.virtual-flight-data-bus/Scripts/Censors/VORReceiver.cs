@@ -1,3 +1,4 @@
+using PlasticGui;
 using UdonSharp;
 using UnityEngine;
 using VirtualCNS;
@@ -6,90 +7,121 @@ namespace VirtualFlightDataBus
 {
     [DefaultExecutionOrder(10)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class VORReceiver : FlightDataBusClient
+    public class VORReceiver : NavigationRadioReceiver
     {
-        public int id = 1;
+        public override uint _RequiredCapability => (uint)NavaidCapability.VOR;
 
-        private NavaidDatabase navaidDatabase;
-        private FlightDataFloatValueId frequencyId;
-        private FlightDataFloatValueId radialId;
+        private FlightDataFloatValueId bearingId;
         private FlightDataFloatValueId courseId;
         private FlightDataFloatValueId courceDeviationId;
         private FlightDataBoolValueId tunedId;
         private FlightDataBoolValueId backId;
-        private FlightDataBoolValueId localizerId;
-        private Transform vorTransform;
-        private Vector3 courseRight;
-        private float fullCourseDeviationScale;
+        private FlightDataBoolValueId isILSId;
 
-        private bool _isLocalizer;
-        private bool IsLocalizer
+        private bool IsILS
         {
-            set {
-                _isLocalizer = value;
-                _WriteAndNotify(localizerId, value);
+            get => _Read(isILSId);
+            set
+            {
+                _Write(isILSId, value);
             }
-            get => _isLocalizer;
         }
-        private float Radial
+
+        private bool _tuned;
+        private bool Tuned
         {
-            set => _Write(radialId, value);
+            get => _tuned;
+            set
+            {
+                if (value == _tuned) return;
+                _tuned = value;
+                _WriteAndNotify(tunedId, value);
+            }
         }
+
         private float Course => _Read(courseId);
-        private float CourceDeviation
+
+        private float Bearing
+        {
+            get => _Read(bearingId);
+            set
+            {
+                _Write(bearingId, value);
+            }
+        }
+
+        private bool _back;
+        private bool Back
+        {
+            get => _back;
+            set
+            {
+                _back = value;
+                _Write(backId, value);
+            }
+        }
+        private float CourseDeviation
         {
             set => _Write(courceDeviationId, value);
         }
 
         protected override void OnStart()
         {
-            navaidDatabase = NavaidDatabase.GetInstance();
+            base.OnStart();
 
             var offset = Mathf.Max(id - 1, 0);
-            frequencyId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Frequency, offset);
-            radialId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Radial, offset);
+
+            bearingId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Bearing, offset);
             courseId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Course, offset);
             courceDeviationId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, offset);
             tunedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
             backId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Back, offset);
-            localizerId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Localizer, offset);
-
-            _Sbuscribe(frequencyId);
-            _Sbuscribe(courseId);
+            isILSId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1ILS, offset);
         }
 
-        public override void _OnFloatValueChanged()
+        protected override void OnTuned()
         {
-            var index = navaidDatabase._FindIndexByFrequency(_Read(frequencyId));
+            IsILS = NavaidDatabase.IsILS(navaidCapability);
+            Back = false;
+        }
 
-            var tuned = index >= 0;
-            if (tuned)
-            {
-                vorTransform = navaidDatabase.transforms[index];
-                IsLocalizer = navaidDatabase._IsILS(index);
-                courseRight = IsLocalizer ? vorTransform.forward : Quaternion.AngleAxis(Course, Vector3.up) * vorTransform.right;
-                fullCourseDeviationScale = Mathf.Sin((IsLocalizer ? 10.0f : 1.4f) * Mathf.Deg2Rad);
-            }
-            else
-            {
-                vorTransform = null;
-                Radial = 0;
-                CourceDeviation = 0;
-            }
-            _WriteAndNotify(tunedId, tuned);
+        private void OnDisable()
+        {
+            Tuned = false;
         }
 
         private void Update()
         {
-            if (!vorTransform) return;
+            if (!navaidTransform)
+            {
+                enabled = false;
+                return;
+            }
 
-            var r = transform.position - vorTransform.position;
-            Radial = IsLocalizer ? 0 : (Vector3.SignedAngle(Vector3.forward, r, Vector3.up) + 360) % 360;
+            var relativePosition = transform.position - navaidTransform.position;
+            var direction = relativePosition.normalized;
+            var distance = relativePosition.magnitude;
 
-            var dot = Vector3.Dot(courseRight, r.normalized);
-            _Write(backId, dot < 0);
-            var rawCoruceDeviation = dot;
-            CourceDeviation = Mathf.Clamp(rawCoruceDeviation / fullCourseDeviationScale, -1.0f, 1.0f);
+            if (IsILS)
+            {
+                var isBehind = NavigationMath.IsBehind(navaidTransform.forward, relativePosition);
+                var rawDeviation = NavigationMath.GetLocalizerRawDeviation(navaidTransform.right, direction);
+                Tuned = NavigationMath.IsLocalizerAvailable(rawDeviation, distance, isBehind);
+                if (Tuned)
+                {
+                    CourseDeviation = NavigationMath.ClampLocalizerDeviation(rawDeviation);
+                }
+            }
+            else
+            {
+                Tuned = NavigationMath.IsVORAvailable(direction, distance);
+                if (Tuned)
+                {
+                    Bearing = NavigationMath.GetBearing(relativePosition) - magneticDeclination;
+                    Back = NavigationMath.IsBehind(Bearing, Course);
+                    CourseDeviation = NavigationMath.GetVORDeviation(Bearing, Course, Back);
+                }
+            }
         }
     }
 }

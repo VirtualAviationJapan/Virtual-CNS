@@ -19,7 +19,7 @@ namespace VirtualFlightDataBus
             var offset = id - 1;
             courseDeviationId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, offset);
             tunedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
-            _Sbuscribe(tunedId);
+            _Subscribe(tunedId);
         }
 
         public override void _OnBoolValueChanged()

@@ -10,6 +10,8 @@ namespace VirtualFlightDataBus
     public class FlightDataBus : UdonSharpBehaviour
     {
         public const float Knots = 1.944f;
+        public const float NM = 1852;
+
         public int maxSubscriberCount = 64;
 
         [NonSerialized] public bool[] bools = new bool[(int)FlightDataBoolValueId.__MAX__];
@@ -60,8 +62,10 @@ namespace VirtualFlightDataBus
         Nav2Tuned,
         Nav1Back,
         Nav2Back,
-        Nav1Localizer,
-        Nav2Localizer,
+        Nav1ILS,
+        Nav2LocalizerCaptured,
+        Nav1GlideslopeCaptured,
+        Nav2GlideslopeCaptured,
         __MAX__,
     }
 
@@ -83,10 +87,14 @@ namespace VirtualFlightDataBus
         Nav2Frequency,
         Nav1Course,
         Nav2Course,
-        Nav1Radial,
-        Nav2Radial,
+        Nav1Bearing,
+        Nav2Bearing,
         Nav1CourseDeviation,
         Nav2CourseDeviation,
+        Nav1Distance,
+        Nav2Distance,
+        Nav1VerticalDeviation,
+        Nav2VerticalDeviation,
         __MAX__,
     }
 

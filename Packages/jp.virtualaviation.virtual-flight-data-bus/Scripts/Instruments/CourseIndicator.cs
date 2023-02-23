@@ -13,7 +13,7 @@ namespace VirtualFlightDataBus
         protected override void OnStart()
         {
             courseId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Course, id - 1);
-            _Sbuscribe(courseId);
+            _Subscribe(courseId);
         }
 
         public override void _OnFloatValueChanged()

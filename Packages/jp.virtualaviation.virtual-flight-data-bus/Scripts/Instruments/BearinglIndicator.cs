@@ -10,29 +10,29 @@ namespace VirtualFlightDataBus
     {
         public int id = 1;
         public Vector3 axis = Vector3.back;
-        private FlightDataFloatValueId radialId;
+        private FlightDataFloatValueId bearingId;
         private FlightDataBoolValueId tunedId;
         private FlightDataBoolValueId localizerId;
 
         protected override void OnStart()
         {
             var offset = id - 1;
-            radialId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Radial, offset);
+            bearingId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Bearing, offset);
             tunedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
-            localizerId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Localizer, offset);
-            _Sbuscribe(tunedId);
-            _Sbuscribe(localizerId);
+            localizerId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1ILS, offset);
+            _Subscribe(tunedId);
+            _Subscribe(localizerId);
         }
 
         public override void _OnBoolValueChanged()
         {
-            var hasRadial = _Read(tunedId) && !_Read(localizerId);
-            if (gameObject.activeSelf != hasRadial) gameObject.SetActive(hasRadial);
+            var hasBearing = _Read(tunedId) && !_Read(localizerId);
+            if (gameObject.activeSelf != hasBearing) gameObject.SetActive(hasBearing);
         }
 
         private void Update()
         {
-            transform.localRotation = Quaternion.AngleAxis(_Read(radialId) + 180, axis);
+            transform.localRotation = Quaternion.AngleAxis(_Read(bearingId), axis);
         }
     }
 }
