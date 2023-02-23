@@ -57,16 +57,9 @@ namespace VirtualAviationJapan
         public bool _IsILS(int navaidIndex) => _HasCapability(navaidIndex, NAVAID_ILS);
         public bool _HasDME(int navaidIndex) => _HasCapability(navaidIndex, NAVAID_DME);
 
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-        private void Awake()
-        {
-            Setup();
-        }
-#endif
-
         private void Start()
         {
-                Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized with {Count} navaids", gameObject);
+            Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized with {Count} navaids", gameObject);
 
             if (debugText)
             {
@@ -104,7 +97,7 @@ namespace VirtualAviationJapan
 
         public static float ChannelToFrequency(int channel, bool y)
         {
-            return (channel - (channel < 60 ? 17 : 16)) * 0.1f + 108.0f + (y ? 0.05f : 0);
+            return Mathf.Floor(((channel - (channel < 60 ? 17 : 16)) * 0.1f + 108.0f + ((byte)(y ? 0.05f : 0))) / 0.05f) * 0.05f;
         }
 
         public static int FrequencyToChannel(float frequency)
@@ -123,6 +116,11 @@ namespace VirtualAviationJapan
         }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
+        private void Awake()
+        {
+            Setup();
+        }
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;

@@ -6,7 +6,7 @@ namespace VirtualAviationJapan.FlightDataBus
     public class CourseIndicator : FlightDataBusClient
     {
         public int id = 1;
-        public Vector3 axis = Vector3.forward;
+        public Vector3 axis = Vector3.back;
         private FlightDataFloatValueId courseId;
 
         protected override void OnStart()

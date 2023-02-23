@@ -17,10 +17,20 @@ namespace VirtualAviationJapan.FlightDataBus
         private FlightDataFloatValueId courceDeviationId;
         private FlightDataBoolValueId tunedId;
         private FlightDataBoolValueId backId;
+        private FlightDataBoolValueId localizerId;
         private Transform vorTransform;
-        private Vector3 courceDirection;
+        private Vector3 courseRight;
         private float fullCourseDeviationScale;
 
+        private bool _isLocalizer;
+        private bool IsLocalizer
+        {
+            set {
+                _isLocalizer = value;
+                _WriteAndNotify(localizerId, value);
+            }
+            get => _isLocalizer;
+        }
         private float Radial
         {
             set => _Write(radialId, value);
@@ -42,6 +52,7 @@ namespace VirtualAviationJapan.FlightDataBus
             courceDeviationId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, offset);
             tunedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
             backId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Back, offset);
+            localizerId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Localizer, offset);
 
             _Sbuscribe(frequencyId);
             _Sbuscribe(courseId);
@@ -55,9 +66,9 @@ namespace VirtualAviationJapan.FlightDataBus
             if (tuned)
             {
                 vorTransform = navaidDatabase.transforms[index];
-                var isLocalizer = navaidDatabase._IsILS(index);
-                courceDirection = isLocalizer ? vorTransform.forward : Quaternion.AngleAxis(Course, Vector3.up) * vorTransform.forward;
-                fullCourseDeviationScale = isLocalizer ? 10.0f : 1.4f;
+                IsLocalizer = navaidDatabase._IsILS(index);
+                courseRight = IsLocalizer ? vorTransform.forward : Quaternion.AngleAxis(Course, Vector3.up) * vorTransform.right;
+                fullCourseDeviationScale = Mathf.Sin((IsLocalizer ? 10.0f : 1.4f) * Mathf.Deg2Rad);
             }
             else
             {
@@ -73,11 +84,11 @@ namespace VirtualAviationJapan.FlightDataBus
             if (!vorTransform) return;
 
             var r = transform.position - vorTransform.position;
-            Radial = (Vector3.SignedAngle(Vector3.forward, r, Vector3.up) + 360) % 360;
+            Radial = IsLocalizer ? 0 : (Vector3.SignedAngle(Vector3.forward, r, Vector3.up) + 360) % 360;
 
-            var dot = Vector3.Dot(courceDirection, r.normalized);
+            var dot = Vector3.Dot(courseRight, r.normalized);
             _Write(backId, dot < 0);
-            var rawCoruceDeviation = Mathf.Asin(dot) * Mathf.Rad2Deg;
+            var rawCoruceDeviation = dot;
             CourceDeviation = Mathf.Clamp(rawCoruceDeviation / fullCourseDeviationScale, -1.0f, 1.0f);
         }
     }

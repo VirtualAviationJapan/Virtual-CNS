@@ -57,6 +57,8 @@ namespace VirtualAviationJapan.FlightDataBus
         Nav2Tuned,
         Nav1Back,
         Nav2Back,
+        Nav1Localizer,
+        Nav2Localizer,
         __MAX__,
     }
 
