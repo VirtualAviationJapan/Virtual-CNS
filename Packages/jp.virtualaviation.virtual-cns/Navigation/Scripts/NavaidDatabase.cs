@@ -25,6 +25,11 @@ namespace VirtualCNS
             return db ? db.magneticDeclination : 0;
         }
 
+        public static bool IsNDB(uint capability) => (capability & NAVAID_NDB) != 0;
+        public static bool IsVOR(uint capability) => (capability & NAVAID_VOR) != 0;
+        public static bool IsILS(uint capability) => (capability & NAVAID_ILS) != 0;
+        public static bool HasDME(uint capability) => (capability & NAVAID_DME) != 0;
+
         public const uint NAVAID_NDB = 1;
         public const uint NAVAID_VOR = 2;
         public const uint NAVAID_DME = 4;
