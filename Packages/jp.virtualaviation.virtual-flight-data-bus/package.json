@@ -1,0 +1,22 @@
+{
+  "name": "jp.virtualaviation.virtual-flight-data-bus",
+  "displayName": "Virtual Flight Data Bus",
+  "version": "3.7.0-alpha.1",
+  "private": true,
+  "description": "Integrated Common Data Bus for VRChat Aviation",
+  "homepage": "https://github.com/VirtualAviationJapan/Virtual-CNS#readme",
+  "bugs": {
+    "url": "https://github.com/VirtualAviationJapan/Virtual-CNS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VirtualAviationJapan/Virtual-CNS.git"
+  },
+  "license": "UNLICENSED",
+  "author": {
+    "name": "esnya",
+    "url": "https://github.com/VirtualAviationJapan"
+  },
+  "unity": "2019.4",
+  "url": "https://github.com/VirtualAviationJapan/Virtual-CNS.git?path=/Packages/jp.virtualaviation.virtual-flight-data-bus"
+}
