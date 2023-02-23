@@ -9,10 +9,10 @@ namespace VirtualFlightDataBus
     {
         private void Update()
         {
-            var eularAngles = transform.rotation.eulerAngles;
-            _Write(FlightDataFloatValueId.Pitch, Mathf.Atan(transform.forward.y) * Mathf.Rad2Deg);
-            _Write(FlightDataFloatValueId.Roll, eularAngles.z);
-            _Write(FlightDataFloatValueId.Heading, (eularAngles.y + _Read(FlightDataFloatValueId.MagneticDeclination) + 360) % 360);
+            var forward = transform.forward;
+            _Write(FlightDataFloatValueId.Pitch, Mathf.Atan(forward.y) * Mathf.Rad2Deg);
+            _Write(FlightDataFloatValueId.Roll, Vector3.SignedAngle(transform.up, Vector3.ProjectOnPlane(Vector3.up, forward).normalized, forward));
+            _Write(FlightDataFloatValueId.Heading, (transform.rotation.eulerAngles.y + _Read(FlightDataFloatValueId.MagneticDeclination) + 360) % 360);
         }
     }
 }
