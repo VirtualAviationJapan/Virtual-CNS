@@ -8,7 +8,7 @@ namespace VirtualAviationJapan.FlightDataBus
     {
         private static uint GetMask(int n)
         {
-            return 1u >> n;
+            return 1u << n;
         }
 
         protected FlightDataBus Bus
@@ -96,7 +96,7 @@ namespace VirtualAviationJapan.FlightDataBus
         public void _WriteAndNotify(FlightDataBoolValueId id, bool value)
         {
             _Write(id, value);
-            SendNotify((int)id, floatSubscriptionMaskList, nameof(_OnBoolValueChanged));
+            SendNotify((int)id, boolSubscriptionMaskList, nameof(_OnBoolValueChanged));
         }
         public virtual void _OnBoolValueChanged() { }
 
