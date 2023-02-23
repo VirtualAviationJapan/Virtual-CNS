@@ -17,8 +17,6 @@ namespace VirtualFlightDataBus
         protected uint navaidCapability;
         protected Transform glideslopeTransform;
 
-        public virtual uint _RequiredCapability => 0;
-
         protected override void OnStart()
         {
             navaidDatabase = NavaidDatabase.GetInstance();
@@ -30,12 +28,13 @@ namespace VirtualFlightDataBus
             _Subscribe(frequencyId);
         }
 
+
+        protected virtual bool CheckCapability(uint capability) => true;
         public override void _OnFloatValueChanged()
         {
             navaidIndex = navaidDatabase._FindIndexByFrequency(_Read(frequencyId));
 
-            var requiredCapablity = _RequiredCapability;
-            var tuned = navaidIndex >= 0 && (requiredCapablity == 0 || (requiredCapablity & navaidDatabase.capabilities[navaidIndex]) != 0);
+            var tuned = navaidIndex >= 0 && CheckCapability(navaidDatabase.capabilities[navaidIndex]);
             if (tuned)
             {
                 navaidTransform = navaidDatabase.transforms[navaidIndex];

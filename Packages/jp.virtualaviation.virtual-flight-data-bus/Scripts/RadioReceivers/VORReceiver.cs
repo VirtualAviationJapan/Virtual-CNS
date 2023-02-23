@@ -9,8 +9,6 @@ namespace VirtualFlightDataBus
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class VORReceiver : NavigationRadioReceiver
     {
-        public override uint _RequiredCapability => (uint)NavaidCapability.VOR;
-
         private FlightDataFloatValueId bearingId;
         private FlightDataFloatValueId courseId;
         private FlightDataFloatValueId courceDeviationId;
@@ -23,7 +21,7 @@ namespace VirtualFlightDataBus
             get => _Read(isILSId);
             set
             {
-                _Write(isILSId, value);
+                _WriteAndNotify(isILSId, value);
             }
         }
 
@@ -77,6 +75,11 @@ namespace VirtualFlightDataBus
             tunedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
             backId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Back, offset);
             isILSId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1ILS, offset);
+        }
+
+        protected override bool CheckCapability(uint capability)
+        {
+            return NavaidDatabase.IsVOR(capability) || NavaidDatabase.IsILS(capability);
         }
 
         protected override void OnTuned()

@@ -1,15 +1,15 @@
 
 
+using UdonSharp;
 using UnityEngine;
 using VirtualCNS;
 
 namespace VirtualFlightDataBus
 {
     [DefaultExecutionOrder(10)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class GlideslopeReceiver : NavigationRadioReceiver
     {
-        private readonly float MaxCourseDeviation = Mathf.Sin(8.0f * Mathf.Deg2Rad);
-        private FlightDataBoolValueId isILSId;
         private FlightDataBoolValueId capturedId;
         private FlightDataFloatValueId deviationId;
 
@@ -38,7 +38,6 @@ namespace VirtualFlightDataBus
             base.OnStart();
 
             var offset = id - 1;
-            isILSId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1ILS, offset);
             capturedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1GlideslopeCaptured, offset);
             deviationId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1VerticalDeviation, offset);
         }
@@ -48,12 +47,9 @@ namespace VirtualFlightDataBus
             Captured = false;
         }
 
-        protected override void OnTuned()
+        protected override bool CheckCapability(uint capability)
         {
-            if (!NavaidDatabase.IsILS(navaidCapability))
-            {
-                glideslopeTransform = null;
-            }
+            return NavaidDatabase.IsILS(capability);
         }
 
         private void Update()

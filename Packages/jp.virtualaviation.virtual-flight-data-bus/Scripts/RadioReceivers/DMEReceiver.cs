@@ -8,10 +8,7 @@ namespace VirtualFlightDataBus
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class DMEReceiver : NavigationRadioReceiver
     {
-        public override uint _RequiredCapability => (uint)NavaidCapability.DME;
-
         private FlightDataFloatValueId dmeId;
-
 
         protected override void OnStart()
         {
@@ -20,6 +17,10 @@ namespace VirtualFlightDataBus
             dmeId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Distance, id - 1);
         }
 
+        protected override bool CheckCapability(uint capability)
+        {
+            return NavaidDatabase.HasDME(capability);
+        }
 
         private void Update()
         {

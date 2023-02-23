@@ -63,7 +63,7 @@ namespace VirtualFlightDataBus
         Nav1Back,
         Nav2Back,
         Nav1ILS,
-        Nav2LocalizerCaptured,
+        Nav2ILS,
         Nav1GlideslopeCaptured,
         Nav2GlideslopeCaptured,
         __MAX__,

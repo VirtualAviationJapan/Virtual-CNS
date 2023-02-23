@@ -1,5 +1,10 @@
+using UdonSharp;
+using UnityEngine;
+
 namespace VirtualFlightDataBus
 {
+    [DefaultExecutionOrder(100)]
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class BoolObjectToggle : FlightDataBusClient
     {
         public FlightDataBoolValueId valueId;

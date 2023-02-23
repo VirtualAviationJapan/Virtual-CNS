@@ -12,6 +12,7 @@ namespace VirtualFlightDataBus
         public FlightDataFloatValueId valueId;
         public string format = "0.00";
         public float offset;
+        public float multiplier = 1.0f;
         public bool update;
 
         private TextMeshProUGUI text;
@@ -26,7 +27,7 @@ namespace VirtualFlightDataBus
 
         public override void _OnFloatValueChanged()
         {
-            text.text = (_Read(valueId) + offset).ToString(format);
+            text.text = (_Read(valueId) * multiplier + offset).ToString(format);
         }
 
         private void Update() => _OnFloatValueChanged();
