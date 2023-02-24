@@ -4,7 +4,7 @@ using UnityEngine;
 namespace VirtualFlightDataBus
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class CourseIndicator : FlightDataBusClient
+    public class CourseIndicator : AbstractFlightDataBusClient
     {
         public int id = 1;
         public Vector3 axis = Vector3.back;
@@ -12,7 +12,7 @@ namespace VirtualFlightDataBus
 
         protected override void OnStart()
         {
-            courseId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Course, id - 1);
+            courseId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1Course, id - 1);
             _Subscribe(courseId);
         }
 

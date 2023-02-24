@@ -4,7 +4,7 @@ using UdonSharp;
 namespace VirtualFlightDataBus
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class CourseDeviationIndicator : FlightDataBusClient
+    public class CourseDeviationIndicator : AbstractFlightDataBusClient
     {
         public int id = 1;
         public IndicatorType type;
@@ -17,8 +17,8 @@ namespace VirtualFlightDataBus
         protected override void OnStart()
         {
             var offset = id - 1;
-            courseDeviationId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, offset);
-            tunedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
+            courseDeviationId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, offset);
+            tunedId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
             _Subscribe(tunedId);
         }
 

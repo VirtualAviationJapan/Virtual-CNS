@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace VirtualFlightDataBus
 {
-
+    [DefaultExecutionOrder(200)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class BusDebugger : FlightDataBusClient
+    public class BusDebugger : AbstractFlightDataBusClient
     {
         public bool[] debugBools;
         public float[] debugFloats;
-        public Vector3[] debugVector3s;
+        public string[] debugStrings;
         protected override void OnStart()
         {
             debugBools = Bus.bools;
             debugFloats = Bus.floats;
-            debugVector3s = Bus.vector3s;
+            debugStrings = Bus.strings;
         }
     }
 }

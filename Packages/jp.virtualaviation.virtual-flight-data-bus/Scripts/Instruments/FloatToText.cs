@@ -7,7 +7,7 @@ namespace VirtualFlightDataBus
     [RequireComponent(typeof(TextMeshProUGUI))]
     [DefaultExecutionOrder(100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class FloatToText : FlightDataBusClient
+    public class FloatToText : AbstractFlightDataBusClient
     {
         public FlightDataFloatValueId valueId;
         public string format = "0.00";

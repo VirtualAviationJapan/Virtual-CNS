@@ -4,7 +4,7 @@ using UnityEngine;
 namespace VirtualFlightDataBus
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class ShiftFloatValue : FlightDataBusClient
+    public class ShiftFloatValue : AbstractFlightDataBusClient
     {
         public FlightDataFloatValueId valueId;
         public float step;

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace VirtualFlightDataBus
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class MagneticCompass : FlightDataBusClient
+    public class MagneticCompass : AbstractFlightDataBusClient
     {
         private void Update()
         {

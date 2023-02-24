@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace VirtualFlightDataBus
 {
-
+    [DefaultExecutionOrder(0)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class AttitudeGyroCensor : FlightDataBusClient
+    public class AttitudeGyro : AbstractFlightDataBusClient
     {
         private void Update()
         {

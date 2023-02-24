@@ -5,7 +5,7 @@ using VirtualCNS;
 namespace VirtualFlightDataBus
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class NavaidDatabaseLoader : FlightDataBusClient
+    public class NavaidDatabaseLoader : AbstractFlightDataBusClient
     {
         protected override void OnStart()
         {

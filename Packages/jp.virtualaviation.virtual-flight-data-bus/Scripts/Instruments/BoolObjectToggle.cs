@@ -5,7 +5,7 @@ namespace VirtualFlightDataBus
 {
     [DefaultExecutionOrder(100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class BoolObjectToggle : FlightDataBusClient
+    public class BoolObjectToggle : AbstractFlightDataBusClient
     {
         public FlightDataBoolValueId valueId;
         public bool invert = false;

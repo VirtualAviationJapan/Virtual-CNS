@@ -5,7 +5,7 @@ namespace VirtualFlightDataBus
 {
     [DefaultExecutionOrder(100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class AttitudeIndicator : FlightDataBusClient
+    public class AttitudeIndicator : AbstractFlightDataBusClient
     {
         public Transform rollIndicator;
         public Vector3 rollIndicatorAxis = Vector3.forward;

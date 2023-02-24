@@ -1,31 +1,17 @@
 using System;
-using System.Runtime.CompilerServices;
 using UdonSharp;
 using UnityEngine;
 
 namespace VirtualFlightDataBus
 {
-    public class FlightDataBusClient : UdonSharpBehaviour
+    abstract public class AbstractFlightDataBusClient : AbstractFlightDataBus
     {
-        private static uint GetMask(int n)
-        {
-            return 1u << n;
-        }
-
         protected FlightDataBus Bus
         {
             private set;
             get;
         }
         private int maxSubscriberCount;
-
-        private UdonSharpBehaviour[] subscribers;
-        private uint[] boolSubscriptionMaskList;
-        private uint[] floatSubscriptionMaskList;
-        private uint[] vector3SubscriptionMaskList;
-        protected bool[] bools;
-        protected float[] floats;
-        protected Vector3[] vector3s;
 
         private int _subscriptionIndex = -1;
         private int SubscriptionIndex
@@ -48,43 +34,38 @@ namespace VirtualFlightDataBus
 
             bools = Bus.bools;
             floats = Bus.floats;
-            vector3s = Bus.vector3s;
+            strings = Bus.strings;
             maxSubscriberCount = Bus.maxSubscriberCount;
 
             subscribers = Bus.subscribers;
             boolSubscriptionMaskList = Bus.boolSubscriptionMaskList;
             floatSubscriptionMaskList = Bus.floatSubscriptionMaskList;
             vector3SubscriptionMaskList = Bus.vector3SubscriptionMaskList;
+            stringSubscriptionMaskList = Bus.stringSubscriptionMaskList;
 
             OnStart();
         }
 
         protected virtual void OnStart() { }
 
-        public void _Subscribe(FlightDataBoolValueId id)
+        private void Subscribe(int id, uint[] maskList, string eventName)
         {
-            boolSubscriptionMaskList[SubscriptionIndex] |= GetMask((int)id);
-            _OnBoolValueChanged();
+            maskList[SubscriptionIndex] |= FlightDataUtilities.GetMask(id);
+            SendCustomEvent(eventName);
         }
-        public void _Subscribe(FlightDataFloatValueId id)
-        {
-            floatSubscriptionMaskList[SubscriptionIndex] |= GetMask((int)id);
-            _OnFloatValueChanged();
-        }
-        public void _Subscribe(FlightDataVector3ValueId id)
-        {
-            vector3SubscriptionMaskList[SubscriptionIndex] |= GetMask((int)id);
-            _OnVector3ValueChanged();
-        }
+        public void _Subscribe(FlightDataBoolValueId id) => Subscribe((int)id, boolSubscriptionMaskList, nameof(_OnBoolValueChanged));
+        public void _Subscribe(FlightDataFloatValueId id) => Subscribe((int)id, floatSubscriptionMaskList, nameof(_OnFloatValueChanged));
+        public void _Subscribe(FlightDataVector3ValueId id) => Subscribe((int)id, vector3SubscriptionMaskList, nameof(_OnVector3ValueChanged));
+        public void _Subscribe(FlightDataStringValueId id) => Subscribe((int)id, stringSubscriptionMaskList, nameof(_OnStringValueChanged));
 
         private void SendNotify(int id, uint[] maskList, string eventName)
         {
-            var mask = GetMask(id);
+            var mask = FlightDataUtilities.GetMask(id);
             for (var i = 0; i < maxSubscriberCount; i++)
             {
                 var subscriber = subscribers[i];
                 if (!subscriber) return;
-                if ((maskList[i] & mask) == 0) continue;
+                if ((maskList[i] & mask) != 0) continue;
 
                 subscriber.SendCustomEvent(eventName);
             }
@@ -99,28 +80,40 @@ namespace VirtualFlightDataBus
         }
         public virtual void _OnBoolValueChanged() { }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float _Read(FlightDataFloatValueId id) => floats[(int)id];
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void _Write(FlightDataFloatValueId id, float value) => floats[(int)id] = value;
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void _WriteAndNotify(FlightDataFloatValueId id, float value)
         {
             _Write(id, value);
             SendNotify((int)id, floatSubscriptionMaskList, nameof(_OnFloatValueChanged));
+            SendNotify((int)id / 3, vector3SubscriptionMaskList, nameof(_OnVector3ValueChanged));
         }
         public virtual void _OnFloatValueChanged() { }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Vector3 _Read(FlightDataVector3ValueId id) => vector3s[(int)id];
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void _Write(FlightDataVector3ValueId id, Vector3 value) => vector3s[(int)id] = value;
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void _WriteAndNotify(FlightDataVector3ValueId id, Vector3 value)
+        public void _Read(FlightDataVector3ValueId id, ref Vector3 value) {
+            var i = (int)id;
+            value.Set(floats[i], floats[i + 1], floats[i + 2]);
+        }
+        public void _Write(FlightDataVector3ValueId id, in Vector3 value)
+        {
+            var i = (int)id;
+            floats[i] = value.x;
+            floats[i + 1] = value.y;
+            floats[i + 2] = value.z;
+        }
+        public void _WriteAndNotify(FlightDataVector3ValueId id, in Vector3 value)
         {
             _Write(id, value);
             SendNotify((int)id, floatSubscriptionMaskList, nameof(_OnVector3ValueChanged));
         }
         public virtual void _OnVector3ValueChanged() { }
+
+        public string _Read(FlightDataStringValueId id) => strings[(int)id];
+        public void _WriteAndNotify(FlightDataStringValueId id, string value)
+        {
+            strings[(int)id] = value;
+            SendNotify((int)id, stringSubscriptionMaskList, nameof(_OnStringValueChanged));
+        }
+        public virtual void _OnStringValueChanged() { }
     }
 }

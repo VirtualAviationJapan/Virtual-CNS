@@ -7,7 +7,7 @@ namespace VirtualFlightDataBus
 {
     [DefaultExecutionOrder(100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class HeadingIndicator : FlightDataBusClient
+    public class HeadingIndicator : AbstractFlightDataBusClient
     {
         public HeadingIndicatorType type;
         public Vector3 axis = Vector3.forward;

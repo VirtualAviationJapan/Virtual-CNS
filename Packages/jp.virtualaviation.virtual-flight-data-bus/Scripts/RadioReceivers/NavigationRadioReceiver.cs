@@ -4,7 +4,7 @@ using VirtualCNS;
 
 namespace VirtualFlightDataBus
 {
-    public class NavigationRadioReceiver : FlightDataBusClient
+    public class NavigationRadioReceiver : AbstractFlightDataBusClient
     {
         public FlightDataNavId id;
 
@@ -22,7 +22,7 @@ namespace VirtualFlightDataBus
             navaidDatabase = NavaidDatabase.GetInstance();
             magneticDeclination = navaidDatabase.magneticDeclination;
 
-            frequencyId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Frequency, (int)id);
+            frequencyId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1Frequency, (int)id);
 
             _Subscribe(frequencyId);
         }

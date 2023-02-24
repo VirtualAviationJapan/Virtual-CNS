@@ -6,7 +6,7 @@ namespace VirtualFlightDataBus
 
     [DefaultExecutionOrder(100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class BearinglIndicator : FlightDataBusClient
+    public class BearinglIndicator : AbstractFlightDataBusClient
     {
         public int id = 1;
         public Vector3 axis = Vector3.back;
@@ -17,9 +17,9 @@ namespace VirtualFlightDataBus
         protected override void OnStart()
         {
             var offset = id - 1;
-            bearingId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Bearing, offset);
-            tunedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
-            localizerId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1ILS, offset);
+            bearingId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1Bearing, offset);
+            tunedId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
+            localizerId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1ILS, offset);
             _Subscribe(tunedId);
             _Subscribe(localizerId);
         }

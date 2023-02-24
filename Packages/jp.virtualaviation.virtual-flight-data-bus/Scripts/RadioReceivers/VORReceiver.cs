@@ -69,12 +69,12 @@ namespace VirtualFlightDataBus
 
             var offset = (int)id;
 
-            bearingId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Bearing, offset);
-            courseId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Course, offset);
-            courceDeviationId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, offset);
-            tunedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
-            backId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1Back, offset);
-            isILSId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1ILS, offset);
+            bearingId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1Bearing, offset);
+            courseId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1Course, offset);
+            courceDeviationId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, offset);
+            tunedId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
+            backId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1Back, offset);
+            isILSId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1ILS, offset);
         }
 
         protected override bool CheckCapability(uint capability)

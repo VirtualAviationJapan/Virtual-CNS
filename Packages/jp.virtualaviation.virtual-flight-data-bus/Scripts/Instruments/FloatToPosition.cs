@@ -5,7 +5,7 @@ namespace VirtualFlightDataBus
 {
     [DefaultExecutionOrder(100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class FloatToPosition : FlightDataBusClient
+    public class FloatToPosition : AbstractFlightDataBusClient
     {
         public FlightDataFloatValueId valueId;
         public Vector3 axis = Vector3.right;
