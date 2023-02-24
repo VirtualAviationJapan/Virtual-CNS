@@ -103,4 +103,18 @@ namespace VirtualFlightDataBus
         Wind,
         __MAX__,
     }
+
+
+    public enum FlightDataComId
+    {
+        Com1,
+        Com2,
+        Com3,
+    }
+
+    public enum FlightDataNavId
+    {
+        Nav1,
+        Nav2,
+    }
 }

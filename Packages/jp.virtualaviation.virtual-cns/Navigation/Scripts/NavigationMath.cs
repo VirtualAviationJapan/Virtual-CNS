@@ -17,7 +17,7 @@ namespace VirtualCNS
         public const float LocalizerMaxBackRange = 10 * 1852.0f; // m
         public const float GlideslopeFullDeviation = 0.01222f; // sin(0.7deg)
         public const float GlideslopeMaxRange = 10 * 1852.0f; // m
-        public const float GlideslopeMaxLaterialDeviation = 0.1392f; // sin(8deg)
+        public const float GlideslopeMaxLaterialLimit = 0.9903f; // cos(8deg)
         public const float GlideslopeMinDeviation = -0.02879f; // sin(-1.65deg) / -55%
         public const float GlideslopeMaxDeviation = 0.03926f; // sin(2.25deg) / +75%
 
@@ -125,7 +125,7 @@ namespace VirtualCNS
 
         public static float GetGlideslopeRawDeviation(Vector3 glideslopeUp, Vector3 direction)
         {
-            return Vector3.Dot(direction, glideslopeUp);
+            return Vector3.Dot(-direction, glideslopeUp);
         }
 
         public static bool IsGlideslopeAvailable(Vector3 glideslopeForward, Vector3 glideslopeRight, Vector3 direction, float distance, float rawDeviation)
@@ -133,8 +133,7 @@ namespace VirtualCNS
             return rawDeviation >= GlideslopeMinDeviation
                 && rawDeviation <= GlideslopeMaxDeviation
                 && distance <= GlideslopeMaxRange
-                && Vector3.Dot(glideslopeForward, direction) < 0
-                && Mathf.Abs(Vector3.Dot(direction, glideslopeRight)) < GlideslopeMaxLaterialDeviation;
+                && Vector3.Dot(direction, glideslopeForward) > GlideslopeMaxLaterialLimit;
         }
 
         public static float ClampGlideslopeDeviation(float rawDeviation)

@@ -37,9 +37,8 @@ namespace VirtualFlightDataBus
         {
             base.OnStart();
 
-            var offset = id - 1;
-            capturedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1GlideslopeCaptured, offset);
-            deviationId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1VerticalDeviation, offset);
+            capturedId = FlightDataBus.OffsetValueId(FlightDataBoolValueId.Nav1GlideslopeCaptured, (int)id);
+            deviationId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1VerticalDeviation, (int)id);
         }
 
         private void OnDisable()

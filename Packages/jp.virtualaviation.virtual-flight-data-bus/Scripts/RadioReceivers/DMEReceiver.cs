@@ -14,7 +14,7 @@ namespace VirtualFlightDataBus
         {
             base.OnStart();
 
-            dmeId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Distance, id - 1);
+            dmeId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Distance, (int)id);
         }
 
         protected override bool CheckCapability(uint capability)

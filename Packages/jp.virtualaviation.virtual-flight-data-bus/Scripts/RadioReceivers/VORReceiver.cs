@@ -67,7 +67,7 @@ namespace VirtualFlightDataBus
         {
             base.OnStart();
 
-            var offset = Mathf.Max(id - 1, 0);
+            var offset = (int)id;
 
             bearingId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Bearing, offset);
             courseId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Course, offset);

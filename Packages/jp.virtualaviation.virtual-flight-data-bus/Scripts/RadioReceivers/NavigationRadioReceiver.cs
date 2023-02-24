@@ -6,7 +6,7 @@ namespace VirtualFlightDataBus
 {
     public class NavigationRadioReceiver : FlightDataBusClient
     {
-        public int id = 1;
+        public FlightDataNavId id;
 
         private NavaidDatabase navaidDatabase;
         private FlightDataFloatValueId frequencyId;
@@ -22,8 +22,7 @@ namespace VirtualFlightDataBus
             navaidDatabase = NavaidDatabase.GetInstance();
             magneticDeclination = navaidDatabase.magneticDeclination;
 
-            var offset = Mathf.Max(id - 1, 0);
-            frequencyId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Frequency, offset);
+            frequencyId = FlightDataBus.OffsetValueId(FlightDataFloatValueId.Nav1Frequency, (int)id);
 
             _Subscribe(frequencyId);
         }
