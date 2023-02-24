@@ -3,30 +3,28 @@ using UnityEngine;
 
 namespace VirtualFlightDataBus
 {
-
     [DefaultExecutionOrder(100)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class BearinglIndicator : AbstractFlightDataBusClient
     {
-        public int id = 1;
+        public FlightDataNavId id;
         public Vector3 axis = Vector3.back;
         private FlightDataFloatValueId bearingId;
         private FlightDataBoolValueId tunedId;
-        private FlightDataBoolValueId localizerId;
+        private FlightDataBoolValueId ilsId;
 
         protected override void OnStart()
         {
-            var offset = id - 1;
-            bearingId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1Bearing, offset);
-            tunedId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
-            localizerId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1ILS, offset);
+            bearingId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1Bearing, (int)id);
+            tunedId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, (int)id);
+            ilsId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1ILS, (int)id);
             _Subscribe(tunedId);
-            _Subscribe(localizerId);
+            _Subscribe(ilsId);
         }
 
         public override void _OnBoolValueChanged()
         {
-            var hasBearing = _Read(tunedId) && !_Read(localizerId);
+            var hasBearing = _Read(tunedId) && !_Read(ilsId);
             if (gameObject.activeSelf != hasBearing) gameObject.SetActive(hasBearing);
         }
 

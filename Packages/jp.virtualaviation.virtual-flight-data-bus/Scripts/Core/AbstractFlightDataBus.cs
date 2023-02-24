@@ -12,9 +12,9 @@ namespace VirtualFlightDataBus
         [NonSerialized] public string[] strings = new string[(int)FlightDataFloatValueId.__MAX__];
 
         [NonSerialized] public UdonSharpBehaviour[] subscribers;
-        [NonSerialized] public uint[] boolSubscriptionMaskList;
-        [NonSerialized] public uint[] floatSubscriptionMaskList;
-        [NonSerialized] public uint[] vector3SubscriptionMaskList;
-        [NonSerialized] public uint[] stringSubscriptionMaskList;
+        [NonSerialized] public ulong[] boolSubscriptionMaskList;
+        [NonSerialized] public ulong[] floatSubscriptionMaskList;
+        [NonSerialized] public ulong[] vector3SubscriptionMaskList;
+        [NonSerialized] public ulong[] stringSubscriptionMaskList;
     }
 }

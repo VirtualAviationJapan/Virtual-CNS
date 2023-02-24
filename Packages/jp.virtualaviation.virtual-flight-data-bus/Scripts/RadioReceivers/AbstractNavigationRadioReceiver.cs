@@ -4,7 +4,7 @@ using VirtualCNS;
 
 namespace VirtualFlightDataBus
 {
-    public class NavigationRadioReceiver : AbstractFlightDataBusClient
+    abstract public class AbstractNavigationRadioReceiver : AbstractFlightDataBusClient
     {
         public FlightDataNavId id;
 
@@ -26,7 +26,6 @@ namespace VirtualFlightDataBus
 
             _Subscribe(frequencyId);
         }
-
 
         protected virtual bool CheckCapability(uint capability) => true;
         public override void _OnFloatValueChanged()

@@ -102,7 +102,7 @@ namespace VirtualCNS
 
         public static float ChannelToFrequency(int channel, bool y)
         {
-            return Mathf.Floor(((channel - (channel < 60 ? 17 : 16)) * 0.1f + 108.0f + ((byte)(y ? 0.05f : 0))) / 0.05f) * 0.05f;
+            return Mathf.Round(((channel - (channel < 60 ? 17 : 16)) * 0.1f + 108.0f + ((byte)(y ? 0.05f : 0))) / 0.05f) * 0.05f;
         }
 
         public static int FrequencyToChannel(float frequency)

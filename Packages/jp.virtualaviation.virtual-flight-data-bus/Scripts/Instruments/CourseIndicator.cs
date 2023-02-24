@@ -6,13 +6,13 @@ namespace VirtualFlightDataBus
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class CourseIndicator : AbstractFlightDataBusClient
     {
-        public int id = 1;
+        public FlightDataNavId id;
         public Vector3 axis = Vector3.back;
         private FlightDataFloatValueId courseId;
 
         protected override void OnStart()
         {
-            courseId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1Course, id - 1);
+            courseId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1Course, (int)id);
             _Subscribe(courseId);
         }
 

@@ -9,10 +9,9 @@ namespace VirtualFlightDataBus
     {
         public const float Knots = 1.944f;
         public const float NM = 1852;
-
-        public static uint GetMask(int n)
+        public static ulong GetMask(int n)
         {
-            return 1u << n;
+            return 1Lu << n;
         }
 
         public static FlightDataBoolValueId OffsetValueId(FlightDataBoolValueId baseId, int offset)
@@ -34,13 +33,6 @@ namespace VirtualFlightDataBus
         {
             return (FlightDataStringValueId)((int)baseId + offset);
         }
-    }
-
-    public enum FlightDataType
-    {
-        Bool,
-        Float,
-        Vector3,
     }
 
     public enum FlightDataBoolValueId

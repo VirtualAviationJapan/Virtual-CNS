@@ -6,7 +6,7 @@ namespace VirtualFlightDataBus
 {
     [DefaultExecutionOrder(10)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class DMEReceiver : NavigationRadioReceiver
+    public class DMEReceiver : AbstractNavigationRadioReceiver
     {
         private FlightDataFloatValueId dmeId;
 

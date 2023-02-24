@@ -6,7 +6,7 @@ namespace VirtualFlightDataBus
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class CourseDeviationIndicator : AbstractFlightDataBusClient
     {
-        public int id = 1;
+        public FlightDataNavId id;
         public IndicatorType type;
         public Vector3 axis = Vector3.right;
         public float maxAngle = 10;
@@ -16,9 +16,8 @@ namespace VirtualFlightDataBus
 
         protected override void OnStart()
         {
-            var offset = id - 1;
-            courseDeviationId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, offset);
-            tunedId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, offset);
+            courseDeviationId = FlightDataUtilities.OffsetValueId(FlightDataFloatValueId.Nav1CourseDeviation, (int)id);
+            tunedId = FlightDataUtilities.OffsetValueId(FlightDataBoolValueId.Nav1Tuned, (int)id);
             _Subscribe(tunedId);
         }
 

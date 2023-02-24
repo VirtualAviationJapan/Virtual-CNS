@@ -8,7 +8,7 @@ namespace VirtualFlightDataBus
 {
     [DefaultExecutionOrder(10)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class GlideslopeReceiver : NavigationRadioReceiver
+    public class GlideslopeReceiver : AbstractNavigationRadioReceiver
     {
         private FlightDataBoolValueId capturedId;
         private FlightDataFloatValueId deviationId;

@@ -12,10 +12,10 @@ namespace VirtualFlightDataBus
         private void Start()
         {
             subscribers = new UdonSharpBehaviour[maxSubscriberCount];
-            boolSubscriptionMaskList = new uint[maxSubscriberCount];
-            floatSubscriptionMaskList = new uint[maxSubscriberCount];
-            vector3SubscriptionMaskList = new uint[maxSubscriberCount];
-            stringSubscriptionMaskList = new uint[maxSubscriberCount];
+            boolSubscriptionMaskList = new ulong[maxSubscriberCount];
+            floatSubscriptionMaskList = new ulong[maxSubscriberCount];
+            vector3SubscriptionMaskList = new ulong[maxSubscriberCount];
+            stringSubscriptionMaskList = new ulong[maxSubscriberCount];
         }
     }
 }

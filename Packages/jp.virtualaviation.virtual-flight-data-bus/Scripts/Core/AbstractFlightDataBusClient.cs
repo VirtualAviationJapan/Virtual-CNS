@@ -48,7 +48,7 @@ namespace VirtualFlightDataBus
 
         protected virtual void OnStart() { }
 
-        private void Subscribe(int id, uint[] maskList, string eventName)
+        private void Subscribe(int id, ulong[] maskList, string eventName)
         {
             maskList[SubscriptionIndex] |= FlightDataUtilities.GetMask(id);
             SendCustomEvent(eventName);
@@ -58,15 +58,14 @@ namespace VirtualFlightDataBus
         public void _Subscribe(FlightDataVector3ValueId id) => Subscribe((int)id, vector3SubscriptionMaskList, nameof(_OnVector3ValueChanged));
         public void _Subscribe(FlightDataStringValueId id) => Subscribe((int)id, stringSubscriptionMaskList, nameof(_OnStringValueChanged));
 
-        private void SendNotify(int id, uint[] maskList, string eventName)
+        private void SendNotify(int id, ulong[] maskList, string eventName)
         {
             var mask = FlightDataUtilities.GetMask(id);
             for (var i = 0; i < maxSubscriberCount; i++)
             {
                 var subscriber = subscribers[i];
                 if (!subscriber) return;
-                if ((maskList[i] & mask) != 0) continue;
-
+                if ((maskList[i] & mask) == 0) continue;
                 subscriber.SendCustomEvent(eventName);
             }
         }

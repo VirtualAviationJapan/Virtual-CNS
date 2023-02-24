@@ -7,7 +7,7 @@ namespace VirtualFlightDataBus
 {
     [DefaultExecutionOrder(10)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-    public class VORReceiver : NavigationRadioReceiver
+    public class VORReceiver : AbstractNavigationRadioReceiver
     {
         private FlightDataFloatValueId bearingId;
         private FlightDataFloatValueId courseId;
