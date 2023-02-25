@@ -1,8 +1,3 @@
-using System;
-using UdonSharp;
-using UnityEngine;
-using VRC.Core;
-
 namespace VirtualFlightDataBus
 {
     public class FlightDataUtilities

@@ -1,7 +1,5 @@
-using System;
 using UdonSharp;
 using UnityEngine;
-
 
 namespace VirtualFlightDataBus
 {
