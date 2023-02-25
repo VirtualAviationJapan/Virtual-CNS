@@ -1,35 +1,79 @@
 namespace VirtualFlightDataBus
 {
+    /// <summary>
+    /// Provides utility methods for working with flight data values.
+    /// </summary>
     public class FlightDataUtilities
     {
+        /// <summary>
+        /// Converts knots to meters per second.
+        /// </summary>
         public const float Knots = 1.944f;
+        /// <summary>
+        /// Converts nautical miles to meters.
+        /// </summary>
         public const float NM = 1852;
+
+        /// <summary>
+        /// Returns a mask with the specified bit set to 1.
+        /// </summary>
+        /// <param name="n">The bit index to set.</param>
+        /// <returns>A mask with the specified bit set to 1.</returns>
         public static ulong GetMask(int n)
         {
             return 1Lu << n;
         }
 
+        /// <summary>
+        /// Returns the <see cref="FlightDataBoolValueId"/> with the specified offset from the given base ID.
+        /// </summary>
+        /// <param name="baseId">The base ID.</param>
+        /// <param name="offset">The offset.</param>
+        /// <returns>The <see cref="FlightDataBoolValueId"/> with the specified offset from the given base ID.</returns>
         public static FlightDataBoolValueId OffsetValueId(FlightDataBoolValueId baseId, int offset)
         {
             return (FlightDataBoolValueId)((int)baseId + offset);
         }
 
+
+        /// <summary>
+        /// Returns the <see cref="FlightDataFloatValueId"/> with the specified offset from the given base ID.
+        /// </summary>
+        /// <param name="baseId">The base ID.</param>
+        /// <param name="offset">The offset.</param>
+        /// <returns>The <see cref="FlightDataFloatValueId"/> with the specified offset from the given base ID.</returns>
         public static FlightDataFloatValueId OffsetValueId(FlightDataFloatValueId baseId, int offset)
         {
             return (FlightDataFloatValueId)((int)baseId + offset);
         }
 
+
+        /// <summary>
+        /// Returns the <see cref="FlightDataVector3ValueId"/> with the specified offset from the given base ID.
+        /// </summary>
+        /// <param name="baseId">The base ID.</param>
+        /// <param name="offset">The offset.</param>
+        /// <returns>The <see cref="FlightDataVector3ValueId"/> with the specified offset from the given base ID.</returns>
         public static FlightDataVector3ValueId OffsetValueId(FlightDataVector3ValueId baseId, int offset)
         {
             return (FlightDataVector3ValueId)((int)baseId + offset * 3);
         }
 
+        /// <summary>
+        /// Returns the <see cref="FlightDataStringValueId"/> with the specified offset from the given base ID.
+        /// </summary>
+        /// <param name="baseId">The base ID.</param>
+        /// <param name="offset">The offset.</param>
+        /// <returns>The <see cref="FlightDataStringValueId"/> with the specified offset from the given base ID.</returns>
         public static FlightDataStringValueId OffsetValueId(FlightDataStringValueId baseId, int offset)
         {
             return (FlightDataStringValueId)((int)baseId + offset);
         }
     }
 
+    /// <summary>
+    /// IDs for boolean flight data values.
+    /// </summary>
     public enum FlightDataBoolValueId
     {
         Com1Mic,
@@ -46,6 +90,9 @@ namespace VirtualFlightDataBus
         __MAX__,
     }
 
+    /// <summary>
+    /// IDs for float flight data values.
+    /// </summary>
     public enum FlightDataFloatValueId
     {
         WindX,
@@ -82,11 +129,17 @@ namespace VirtualFlightDataBus
         __MAX__,
     }
 
+    /// <summary>
+    /// IDs for vector3 flight data values.
+    /// </summary>
     public enum FlightDataVector3ValueId
     {
         Wind = FlightDataFloatValueId.WindX,
     }
 
+    /// <summary>
+    /// IDs for string flight data values.
+    /// </summary>
     public enum FlightDataStringValueId
     {
         Nav1Identity,
@@ -94,6 +147,9 @@ namespace VirtualFlightDataBus
         __MAX__,
     }
 
+    /// <summary>
+    /// Enumerates IDs for communication radios.
+    /// </summary>
     public enum FlightDataComId
     {
         Com1,
@@ -101,6 +157,9 @@ namespace VirtualFlightDataBus
         Com3,
     }
 
+    /// <summary>
+    /// Enumerates IDs for navigation radios.
+    /// </summary>
     public enum FlightDataNavId
     {
         Nav1,

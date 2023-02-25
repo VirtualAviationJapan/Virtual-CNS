@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace VirtualFlightDataBus
 {
+    /// <summary>
+    /// Calculates aircraft acceleration loads using position data.
+    /// </summary>
     [DefaultExecutionOrder(10)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class AccelerationGyro : AbstractFlightDataBusClient
