@@ -1,7 +1,7 @@
 {
   "name": "jp.virtualaviation.virtual-flight-data-bus",
   "displayName": "Virtual Flight Data Bus",
-  "version": "3.7.0-alpha.1",
+  "version": "6.1.0",
   "private": true,
   "description": "Integrated Common Data Bus for VRChat Aviation",
   "homepage": "https://github.com/VirtualAviationJapan/Virtual-CNS#readme",
@@ -17,6 +17,16 @@
     "name": "esnya",
     "url": "https://github.com/VirtualAviationJapan"
   },
+  "dependencies": {
+    "com.nekometer.esnya.udon-radio-communications": "5.0.0",
+    "com.unity.textmeshpro": "2.1.6",
+    "jp.virtualaviation.virtual-cns": "6.1.0",
+    "sh.orels.udontoolkit": "1.1.2"
+  },
   "unity": "2019.4",
-  "url": "https://github.com/VirtualAviationJapan/Virtual-CNS.git?path=/Packages/jp.virtualaviation.virtual-flight-data-bus"
+  "url": "https://github.com/VirtualAviationJapan/Virtual-CNS.git?path=/Packages/jp.virtualaviation.virtual-flight-data-bus",
+  "vpmDependencies": {
+    "com.vrchat.worlds": "3.1.1",
+    "com.vrchat.udonsharp": "1.1.7"
+  }
 }

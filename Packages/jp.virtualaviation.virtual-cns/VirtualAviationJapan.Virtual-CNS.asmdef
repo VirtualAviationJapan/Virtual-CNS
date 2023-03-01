@@ -16,7 +16,7 @@
     "precompiledReferences": [],
     "autoReferenced": false,
     "defineConstraints": [
-        "UDON"
+        "UDONSHARP"
     ],
     "versionDefines": [],
     "noEngineReferences": false
