@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class MaterialOfAttribute : PropertyAttribute

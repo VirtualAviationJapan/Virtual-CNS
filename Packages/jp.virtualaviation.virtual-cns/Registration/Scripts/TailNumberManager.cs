@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     public class TailNumberManager : MonoBehaviour
     {

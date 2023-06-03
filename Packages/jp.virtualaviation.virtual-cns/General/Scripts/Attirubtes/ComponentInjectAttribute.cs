@@ -10,7 +10,7 @@ using UnityEditor;
 using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
 #if !COMPILER_UDONSHARP && UNITY_EDITOR

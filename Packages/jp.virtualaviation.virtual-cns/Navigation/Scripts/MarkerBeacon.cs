@@ -2,7 +2,7 @@ using UdonSharp;
 using UdonToolkit;
 using UnityEngine;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     public enum MarkerBeaconType
     {

@@ -6,7 +6,7 @@ using UdonSharp;
 using UnityEditor;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Navaid : UdonSharpBehaviour

@@ -8,7 +8,7 @@ using UnityEditor;
 using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class NavaidDatabase : UdonSharpBehaviour
@@ -24,6 +24,11 @@ namespace VirtualAviationJapan
             var db = GetInstance();
             return db ? db.magneticDeclination : 0;
         }
+
+        public static bool IsNDB(uint capability) => (capability & NAVAID_NDB) != 0;
+        public static bool IsVOR(uint capability) => (capability & NAVAID_VOR) != 0;
+        public static bool IsILS(uint capability) => (capability & NAVAID_ILS) != 0;
+        public static bool HasDME(uint capability) => (capability & NAVAID_DME) != 0;
 
         public const uint NAVAID_NDB = 1;
         public const uint NAVAID_VOR = 2;
@@ -57,16 +62,9 @@ namespace VirtualAviationJapan
         public bool _IsILS(int navaidIndex) => _HasCapability(navaidIndex, NAVAID_ILS);
         public bool _HasDME(int navaidIndex) => _HasCapability(navaidIndex, NAVAID_DME);
 
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-        private void Awake()
-        {
-            Setup();
-        }
-#endif
-
         private void Start()
         {
-                Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized with {Count} navaids", gameObject);
+            Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Initialized with {Count} navaids", gameObject);
 
             if (debugText)
             {
@@ -102,7 +100,32 @@ namespace VirtualAviationJapan
             return -1;
         }
 
+        public static float ChannelToFrequency(int channel, bool y)
+        {
+            return Mathf.Round(((channel - (channel < 60 ? 17 : 16)) * 0.1f + 108.0f + ((byte)(y ? 0.05f : 0))) / 0.05f) * 0.05f;
+        }
+
+        public static int FrequencyToChannel(float frequency)
+        {
+            return Mathf.FloorToInt((frequency - 108.0f) * 10.0f + (frequency < 112.3f ? 17 : 27));
+        }
+
+        public static bool IsY(float frequency)
+        {
+            return Mathf.Approximately(frequency % 0.1f, 0.05f);
+        }
+
+        public int _FindIndexByChannel(int channel, bool y)
+        {
+            return _FindIndexByFrequency(ChannelToFrequency(channel, y));
+        }
+
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
+        private void Awake()
+        {
+            Setup();
+        }
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;

@@ -1,0 +1,19 @@
+{
+    "name": "jp.virtualaviation.virtual-flight-data-bus.connector-sf.runtime",
+    "references": [
+        "GUID:99835874ee819da44948776e0df4ff1d",
+        "GUID:823e7b1dbeb8b2a4c9d5014bf2a39093",
+        "GUID:b0e290046082bcb41ad68a1a5a9fe0ca"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UDONSHARP"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

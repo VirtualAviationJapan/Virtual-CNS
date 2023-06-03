@@ -1,0 +1,29 @@
+{
+  "name": "jp.virtualaviation.virtual-flight-data-bus.connector-sf",
+  "displayName": "Virtual Flight Data Bus Connector for SaccFlightAndVehicles",
+  "version": "6.1.0",
+  "private": true,
+  "description": "Integrated Common Data Bus for VRChat Aviation",
+  "homepage": "https://github.com/VirtualAviationJapan/Virtual-CNS#readme",
+  "bugs": {
+    "url": "https://github.com/VirtualAviationJapan/Virtual-CNS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VirtualAviationJapan/Virtual-CNS.git"
+  },
+  "license": "UNLICENSED",
+  "author": {
+    "name": "esnya",
+    "url": "https://github.com/VirtualAviationJapan"
+  },
+  "dependencies": {
+    "jp.virtualaviation.virtual-flight-data-bus": "6.1.0"
+  },
+  "unity": "2019.4",
+  "url": "https://github.com/VirtualAviationJapan/Virtual-CNS.git?path=/Packages/jp.virtualaviation.virtual-flight-data-bus.connector-sf",
+  "vpmDependencies": {
+    "com.vrchat.worlds": "3.1.1",
+    "com.vrchat.udonsharp": "1.1.7"
+  }
+}
