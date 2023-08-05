@@ -132,6 +132,7 @@ namespace VirtualAviationJapan
         {
             set
             {
+                // deactivate transmitter
                 if (transmitter && !value) transmitter._SetActive(value);
                 if (micIndicator) micIndicator.SetActive(value);
 
@@ -177,7 +178,7 @@ namespace VirtualAviationJapan
                 {
                     receiver.sync = false;
                     receiver.indicator = listeningIndiator;
-                    receiver.limitRange = false;
+                    //receiver.limitRange = false;
                 }
 
                 if (transmitter)
@@ -291,7 +292,7 @@ namespace VirtualAviationJapan
         }
         public void _EndPTT()
         {
-            if (!navMode && transmitter) transmitter._SetActive(false);
+            if (!navMode && transmitter) transmitter._Deactivate();
         }
 
         public void _Keypad(char value)

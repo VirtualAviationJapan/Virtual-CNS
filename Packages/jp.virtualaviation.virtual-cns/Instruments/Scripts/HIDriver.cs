@@ -62,7 +62,13 @@ namespace VirtualAviationJapan
             var headingAngle = Mathf.Atan2(forward.x, forward.z) * Mathf.Rad2Deg + magneticDeclination;
 
             if (heading != null) heading.localRotation = Quaternion.AngleAxis(headingAngle, Vector3.forward);
-            if (headingText != null) headingText.text = ((headingAngle % 360 + 360) % 360).ToString("000");
+            if (headingText != null) {
+                int roundedHeadingAngle = (Mathf.RoundToInt(headingAngle) % 360 + 360) % 360;
+
+                headingText.text = roundedHeadingAngle == 0 ? "360" : roundedHeadingAngle.ToString("000");
+            }
+
+            
 
             if (turnIndicator != null)
             {
