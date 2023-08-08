@@ -2,7 +2,7 @@ using System;
 using UdonSharp;
 using UnityEngine;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     [RequireComponent(typeof(AudioSource))]

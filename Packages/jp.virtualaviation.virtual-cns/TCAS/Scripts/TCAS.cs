@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon.Common.Enums;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class TCAS : UdonSharpBehaviour

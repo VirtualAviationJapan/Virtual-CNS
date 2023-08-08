@@ -11,7 +11,7 @@ using UdonSharpEditor;
 using UnityEditor;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     [DefaultExecutionOrder(100)] // After NavSelector

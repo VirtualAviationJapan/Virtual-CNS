@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 3669222803796583226}
   - component: {fileID: 8843556658552739927}
   m_Layer: 0
-  m_Name: NavKnob
+  m_Name: CourseKnob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,9 +302,9 @@ MonoBehaviour:
   networked: 0
   networkEventTarget: 0
   eventTarget: {fileID: 5045400310856967631}
-  eventName: _IncrementIndex
+  eventName: 
   disableInteractInVR: 1
-  throttlingDelay: 0.5
+  throttlingDelay: 0
   fingerMode: 1
   grip: 0
   onTouchStart: 
@@ -417,7 +417,7 @@ MonoBehaviour:
   networked: 0
   networkEventTarget: 0
   eventTarget: {fileID: 5045400310856967631}
-  eventName: _StepCourse
+  eventName: 
   disableInteractInVR: 1
   throttlingDelay: 0.5
   fingerMode: 1

@@ -1,4 +1,4 @@
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     using UdonSharp;
     using UnityEngine;

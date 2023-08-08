@@ -3,7 +3,7 @@ using TMPro;
 using UdonSharp;
 using UnityEngine;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class TimeDisplayDriver : UdonSharpBehaviour

@@ -19,7 +19,7 @@ MonoBehaviour:
   compiledVersion: 2
   behaviourSyncMode: 4
   hasInteractEvent: 0
-  scriptID: -3474895552485414898
+  scriptID: -8114702771098803913
   serializationData:
     SerializedBytes: 
     ReferencedUnityObjects: []
@@ -788,7 +788,7 @@ MonoBehaviour:
       Data: 40|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: VirtualAviationJapan.NavSelector, VirtualAviationJapan.Virtual-CNS
+      Data: VirtualCNS.NavSelector, VirtualAviationJapan.Virtual-CNS
     - Name: 
       Entry: 8
       Data: 
@@ -842,7 +842,7 @@ MonoBehaviour:
       Data: 43|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: VirtualAviationJapan.IdentityPlayer, VirtualAviationJapan.Virtual-CNS
+      Data: VirtualCNS.IdentityPlayer, VirtualAviationJapan.Virtual-CNS
     - Name: 
       Entry: 8
       Data: 
@@ -1274,7 +1274,7 @@ MonoBehaviour:
       Data: 67|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: VirtualAviationJapan.NavaidDatabase, VirtualAviationJapan.Virtual-CNS
+      Data: VirtualCNS.NavaidDatabase, VirtualAviationJapan.Virtual-CNS
     - Name: 
       Entry: 8
       Data: 
@@ -1328,7 +1328,7 @@ MonoBehaviour:
       Data: 70|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: VirtualAviationJapan.AirbandDatabase, VirtualAviationJapan.Virtual-CNS
+      Data: VirtualCNS.AirbandDatabase, VirtualAviationJapan.Virtual-CNS
     - Name: 
       Entry: 8
       Data: 

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VRC.Udon;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     [DefaultExecutionOrder(90)] // After Nav Selector, Before Instruments

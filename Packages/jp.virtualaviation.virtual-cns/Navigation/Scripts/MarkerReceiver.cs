@@ -3,7 +3,7 @@ using UdonToolkit;
 using UnityEngine;
 using VRC.SDKBase;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     [RequireComponent(typeof(SphereCollider))]

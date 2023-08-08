@@ -2,7 +2,7 @@ using URC;
 using UdonSharp;
 using UnityEngine;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]

@@ -8,7 +8,7 @@ using UnityEngine.UIElements.Experimental;
 using VRC.SDKBase;
 using VRC.Udon;
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     [DefaultExecutionOrder(1300)] // After FMC, CDUFunction

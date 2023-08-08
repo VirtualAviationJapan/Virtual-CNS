@@ -10,7 +10,7 @@ using UdonSharpEditor;
 using System.Linq;
 #endif
 
-namespace VirtualAviationJapan
+namespace VirtualCNS
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
