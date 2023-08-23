@@ -69,6 +69,7 @@ namespace VirtualCNS
             camera.transform.position = wroldTileCenter + Vector3.up * cameraAltitude;
             camera.transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
             camera.orthographicSize = TileSize;
+            camera.farClipPlane = cameraAltitude + 20.0f;
             camera.enabled = true;
 
             Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Rendering", gameObject);

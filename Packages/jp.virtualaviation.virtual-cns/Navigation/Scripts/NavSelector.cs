@@ -17,6 +17,7 @@ namespace VirtualCNS
         [UdonSynced, FieldChangeCallback(nameof(Index))] private int _index;
         public int Index {
             set {
+                if (database == null) return;
                 var count = database.Count;
                 if (value >= count) value = 0;
                 else if (value < 0) value = count - 1;
@@ -57,7 +58,20 @@ namespace VirtualCNS
         private void Start()
         {
             subscribers = new UdonSharpBehaviour[32];
+
+            _InitDatabase();
+        }
+
+        private void _InitDatabase()
+        {
             database = (NavaidDatabase)GameObject.Find(nameof(NavaidDatabase)).GetComponent(typeof(UdonBehaviour));
+
+            if (database == null)
+            {
+                // retry
+                SendCustomEventDelayedSeconds(nameof(_InitDatabase), 0.7f);
+                return;
+            }
 
             Index = defaultIndex;
             Course = defaultCourse;

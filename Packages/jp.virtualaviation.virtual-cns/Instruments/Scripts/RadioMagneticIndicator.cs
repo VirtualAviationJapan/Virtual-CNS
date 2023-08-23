@@ -52,8 +52,8 @@ namespace VirtualCNS
         private void Update()
         {
             if ((Time.frameCount + intervalOffset) % updateInterval != 0 || target == null) return;
-            var bearing = Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(origin.position - target.position, Vector3.up), Vector3.up) + magneticDeclination;
-            transform.localRotation = Quaternion.AngleAxis(bearing, Vector3.forward);
+            var bearing = Vector3.SignedAngle(Vector3.forward, Vector3.ProjectOnPlane(target.position - origin.position, Vector3.up), Vector3.up) + magneticDeclination;
+            transform.localRotation = Quaternion.AngleAxis(-bearing, Vector3.forward);
         }
 
         public void _SetTarget(Transform value, Color color)

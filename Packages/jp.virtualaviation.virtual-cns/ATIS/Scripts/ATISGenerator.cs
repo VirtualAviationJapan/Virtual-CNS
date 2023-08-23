@@ -21,6 +21,7 @@ namespace VirtualCNS
             "ils runway [36] approach. using runway [36]",
             "ils runway [18] approach. using runway [18]",
         };
+        public int defaultRunwayIndex = 0;
         public string windTemplate = "[{0:000}] degrees {1:0} knots";
         public string windWithGustTemplate = "[{0:000}] degrees {1:0} knots, maximum {2:0} knots";
 
@@ -66,7 +67,7 @@ namespace VirtualCNS
             var maxWindSpeed = windSpeed + Mathf.RoundToInt(windGustStrength * KNOTS);
 
             var windString = windCalm ? "calm" : string.Format(gusty ? windWithGustTemplate : windTemplate, new object[] { windHeading, windSpeed, maxWindSpeed });
-            var runwayOperationIndex = windCalm ? 0 : IndexOfRunwayOperation(windHeading);
+            var runwayOperationIndex = windCalm ? defaultRunwayIndex : IndexOfRunwayOperation(windHeading);
 
             var rawText = string.Format(template, (char)('A' + informationIndex), timestamp, runwayTemplates[runwayOperationIndex], windString);
             Debug.Log($"[Virtual-CNS][ATIS] Encoding: {rawText}");
