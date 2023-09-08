@@ -19,8 +19,7 @@ namespace VirtualCNS
             set {
                 if (database == null) return;
                 var count = database.Count;
-                if (value >= count) value = 0;
-                else if (value < 0) value = count - 1;
+                if (value >= count) return;
 
                 if (value == _index) return;
                 _index = value;
@@ -133,14 +132,20 @@ namespace VirtualCNS
         public void _IncrementIndex()
         {
             _TakeOwnership();
-            Index++;
+            var count = database.Count;
+            if (Index == count - 1) Index = 0;
+            else Index++;
+
             RequestSerialization();
         }
 
         public void _DecrementIndex()
         {
             _TakeOwnership();
-            Index--;
+            var count = database.Count;
+            if (Index == 0) Index = count - 1;
+            else Index--;
+
             RequestSerialization();
         }
 
