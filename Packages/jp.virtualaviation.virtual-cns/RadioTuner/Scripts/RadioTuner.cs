@@ -78,7 +78,7 @@ namespace VirtualCNS
                 else
                 {
                     if (receiver) receiver.Frequency = roundedValue;
-                    if (transmitter)
+                    if (transmitter && Networking.IsOwner(gameObject))
                     {
                         if (transmitter.Active) transmitter._SetActive(false);
                         transmitter._SetFrequency(roundedValue);
@@ -193,12 +193,28 @@ namespace VirtualCNS
             var airbandObject = GameObject.Find(nameof(AirbandDatabase));
             if (airbandObject) airbandDatabase = airbandObject.GetComponent<AirbandDatabase>();
 
-            Frequency = defaultFrequency;
-            Mic = !defaultMicMute;
-            Listen = false;
+            SendCustomEventDelayedSeconds(nameof(_Initialize), 1.0f);
+
+            // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Initialized");
+        }
+
+        private void _Initialize()
+        {
+            if (!Networking.IsNetworkSettled)
+            {
+                SendCustomEventDelayedSeconds(nameof(_Initialize), 1.0f);
+                return;
+            }
+
+            if (Networking.IsOwner(gameObject))
+            {
+                Frequency = defaultFrequency;
+                Mic = !defaultMicMute;
+                Listen = false;
+            }
 
             initialized = true;
-            // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Initialized");
+            OnEnable();
         }
 
         private void OnDisable()
