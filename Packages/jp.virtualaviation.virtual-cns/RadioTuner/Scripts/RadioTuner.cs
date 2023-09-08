@@ -193,9 +193,12 @@ namespace VirtualCNS
             var airbandObject = GameObject.Find(nameof(AirbandDatabase));
             if (airbandObject) airbandDatabase = airbandObject.GetComponent<AirbandDatabase>();
 
-            Frequency = defaultFrequency;
-            Mic = !defaultMicMute;
-            Listen = false;
+            if (Networking.IsOwner(gameObject))
+            {
+                Frequency = defaultFrequency;
+                Mic = !defaultMicMute;
+                Listen = false;
+            }
 
             initialized = true;
             // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Initialized");
