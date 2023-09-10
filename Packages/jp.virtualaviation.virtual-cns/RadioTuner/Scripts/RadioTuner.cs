@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using TMPro;
 using URC;
 using UdonSharp;
@@ -22,13 +22,62 @@ namespace VirtualCNS
 
         public bool navMode = false;
 
-        public float defaultFrequency = 118.0f;
         public float minFrequency = 118.0f;
         public float maxFrequency = 139.975f;
         public float frequencyStep = 0.025f;
         public string frequencyFormat = "000.000";
         public bool autoMuteMic = true;
-        public bool defaultMicMute = true;
+
+
+        [SerializeField][UdonSynced][FieldChangeCallback(nameof(Frequency))] private float _frequency = 118.0f;
+        public float Frequency
+        {
+            set
+            {
+                var roundedValue = RoundFrequency(value);
+
+                if (navMode)
+                {
+                    if (navSelector) navSelector._SetFrequency(value);
+                }
+                else
+                {
+                    if (receiver) receiver.Frequency = roundedValue;
+                    if (transmitter)
+                    {
+                        if (transmitter.Active) transmitter._SetActive(false);
+                        transmitter._SetFrequency(roundedValue);
+                    }
+                }
+
+                _frequency = roundedValue;
+
+                if (navMode)
+                {
+                    if (identityPlayer && Listen) identityPlayer._PlayIdentity(Identity);
+                }
+
+                UpdateDisplay();
+
+            }
+            get => _frequency;
+        }
+
+        [SerializeField][UdonSynced][FieldChangeCallback(nameof(Mic))] private bool _mic;
+        public bool Mic
+        {
+            set
+            {
+                // deactivate transmitter
+                if (transmitter && !value) transmitter._SetActive(value);
+                if (micIndicator) micIndicator.SetActive(value);
+
+                if (animator) animator.SetBool(micBool, value);
+
+                _mic = value;
+            }
+            get => _mic;
+        }
 
         [Header("References")]
         public TextMeshPro frequencyDisplay;
@@ -64,40 +113,6 @@ namespace VirtualCNS
             }
         }
 
-        [UdonSynced][FieldChangeCallback(nameof(Frequency))] private float _frequency = 118.0f;
-        public float Frequency
-        {
-            set
-            {
-                var roundedValue = RoundFrequency(value);
-
-                if (navMode)
-                {
-                    if (navSelector) navSelector._SetFrequency(value);
-                }
-                else
-                {
-                    if (receiver) receiver.Frequency = roundedValue;
-                    if (transmitter)
-                    {
-                        if (transmitter.Active) transmitter._SetActive(false);
-                        transmitter._SetFrequency(roundedValue);
-                    }
-                }
-
-                _frequency = roundedValue;
-
-                if (navMode)
-                {
-                    if (identityPlayer && Listen) identityPlayer._PlayIdentity(Identity);
-                }
-
-                UpdateDisplay();
-
-            }
-            get => _frequency;
-        }
-
         [UdonSynced][FieldChangeCallback(nameof(Listen))] private bool _listen;
         public bool Listen
         {
@@ -127,22 +142,6 @@ namespace VirtualCNS
         }
 
         private bool initialized;
-        [UdonSynced][FieldChangeCallback(nameof(Mic))] private bool _mic;
-        public bool Mic
-        {
-            set
-            {
-                // deactivate transmitter
-                if (transmitter && !value) transmitter._SetActive(value);
-                if (micIndicator) micIndicator.SetActive(value);
-
-                if (animator) animator.SetBool(micBool, value);
-
-                _mic = value;
-            }
-            get => _mic;
-        }
-
         private NavaidDatabase navaidDatabase;
         private AirbandDatabase airbandDatabase;
         private char[] inputBuffer = null;
@@ -193,20 +192,11 @@ namespace VirtualCNS
             var airbandObject = GameObject.Find(nameof(AirbandDatabase));
             if (airbandObject) airbandDatabase = airbandObject.GetComponent<AirbandDatabase>();
 
-            if (Networking.IsOwner(gameObject))
-            {
-                Frequency = defaultFrequency;
-                Mic = !defaultMicMute;
-                Listen = false;
-            }
-            else
-            {
-                if (micIndicator) micIndicator.SetActive(!defaultMicMute);
-                if (animator) animator.SetBool(micBool, !defaultMicMute);
+            if (micIndicator) micIndicator.SetActive(Mic);
+            if (animator) animator.SetBool(micBool, Mic);
 
-                if (listeningIndiator) listeningIndiator.SetActive(false);
-                if (animator) animator.SetBool(listenBool, false);
-            }
+            if (listeningIndiator) listeningIndiator.SetActive(false);
+            if (animator) animator.SetBool(listenBool, false);
 
             initialized = true;
             // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Initialized");
@@ -385,7 +375,7 @@ namespace VirtualCNS
         public void PresetAirband()
         {
             navMode = false;
-            minFrequency = defaultFrequency = 118.0f;
+            minFrequency = _frequency = 118.0f;
             maxFrequency = 139.975f;
             frequencyStep = 0.025f;
             frequencyFormat = "000.000";
@@ -395,7 +385,7 @@ namespace VirtualCNS
         public void PresetVOR()
         {
             navMode = true;
-            minFrequency = defaultFrequency = 108.00f;
+            minFrequency = _frequency = 108.00f;
             maxFrequency = 117.95f;
             frequencyStep = 0.05f;
             frequencyFormat = "000.00";
