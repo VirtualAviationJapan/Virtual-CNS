@@ -199,6 +199,14 @@ namespace VirtualCNS
                 Mic = !defaultMicMute;
                 Listen = false;
             }
+            else
+            {
+                if (micIndicator) micIndicator.SetActive(!defaultMicMute);
+                if (animator) animator.SetBool(micBool, !defaultMicMute);
+
+                if (listeningIndiator) listeningIndiator.SetActive(false);
+                if (animator) animator.SetBool(listenBool, false);
+            }
 
             initialized = true;
             // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Initialized");
