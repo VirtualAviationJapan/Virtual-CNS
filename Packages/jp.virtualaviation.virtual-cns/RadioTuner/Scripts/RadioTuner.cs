@@ -167,6 +167,10 @@ namespace VirtualCNS
                 animator.SetBool(listenBool, Listen);
                 if (!navMode) animator.SetBool(micBool, Mic);
             }
+            if (listeningIndiator) listeningIndiator.SetActive(Listen);
+            if (micIndicator) micIndicator.SetActive(Mic);
+
+            UpdateDisplay();
         }
 
         private void Start()
