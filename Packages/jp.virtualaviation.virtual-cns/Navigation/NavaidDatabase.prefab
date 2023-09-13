@@ -54,6 +54,8 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 7163797180875894949}
   magneticDeclination: 0
+  frequencyStep: 0.05
+  debugText: {fileID: 0}
   transforms: []
   capabilities: 
   identities: []
@@ -61,7 +63,6 @@ MonoBehaviour:
   dmeTransforms: []
   glideSlopeTransforms: []
   hideFromMaps: 
-  frequencyStep: 0.05
   waypointTransforms: []
   waypointIdentities: []
   waypointTypes: 

@@ -2,10 +2,10 @@
 using UnityEngine;
 using TMPro;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEditor;
-using VRC.SDKBase.Editor.BuildPipeline;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 #endif
 
 namespace VirtualCNS
@@ -125,6 +125,8 @@ namespace VirtualCNS
         {
             Setup();
         }
+
+
 
         private void OnDrawGizmosSelected()
         {
@@ -248,6 +250,13 @@ namespace VirtualCNS
 
         }
 
+        [InitializeOnLoadMethod]
+        private static void RegisterSceneCallbacks()
+        {
+            EditorSceneManager.sceneOpened += (scene, _) => SetupAll(scene);
+            EditorSceneManager.sceneSaving += (scene, _) => SetupAll(scene);
+        }
+
         private static void SetupAll(Scene scene)
         {
             foreach (var db in scene.GetRootGameObjects().SelectMany(o => o.GetComponentsInChildren<NavaidDatabase>(true)))
@@ -256,16 +265,6 @@ namespace VirtualCNS
             }
         }
 
-        public class BuildCallback : IVRCSDKBuildRequestedCallback
-        {
-            public int callbackOrder => 11;
-
-            public bool OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType)
-            {
-                SetupAll(SceneManager.GetActiveScene());
-                return true;
-            }
-        }
     }
 #endif
 }
