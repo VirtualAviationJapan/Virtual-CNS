@@ -126,7 +126,7 @@ namespace VirtualCNS
             get => _listen;
         }
 
-        private bool initialized;
+        private bool initialized = false;
         [UdonSynced][FieldChangeCallback(nameof(Mic))] private bool _mic;
         public bool Mic
         {
@@ -148,9 +148,13 @@ namespace VirtualCNS
         private char[] inputBuffer = null;
         private int inputCursor;
 
-        private void OnEnable()
+        public void OnEnable()
         {
-            if (!initialized) return;
+            if (!initialized)
+            {
+                SendCustomEventDelayedSeconds(nameof(OnEnable), 0.5f);
+                return;
+            }
 
             // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Enabled");
             if (navMode)
@@ -197,12 +201,12 @@ namespace VirtualCNS
             var airbandObject = GameObject.Find(nameof(AirbandDatabase));
             if (airbandObject) airbandDatabase = airbandObject.GetComponent<AirbandDatabase>();
 
-            SendCustomEventDelayedSeconds(nameof(_Initialize), 1.0f);
+            SendCustomEventDelayedSeconds(nameof(_Initialize), 10.0f);
 
             // Debug.Log($"[Virtual-CNS][RadioTuner][{gameObject.GetInstanceID()}] Initialized");
         }
 
-        private void _Initialize()
+        public void _Initialize()
         {
             if (!Networking.IsNetworkSettled)
             {
@@ -215,6 +219,7 @@ namespace VirtualCNS
                 Frequency = defaultFrequency;
                 Mic = !defaultMicMute;
                 Listen = false;
+                RequestSerialization();
             }
 
             initialized = true;
