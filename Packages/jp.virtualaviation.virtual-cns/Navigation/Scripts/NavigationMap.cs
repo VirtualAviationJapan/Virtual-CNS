@@ -24,6 +24,9 @@ namespace VirtualCNS
         public float uiRadius = 810.0f;
         [Tooltip("NM")] public float initialRange = 10.0f;
         public GameObject vorTemplate, vordmeTemplate, waypointTemplate, aerodromeTemplate, waypointRNAVTemplate;
+
+        public TerrainCamera terrainCamera;
+        public RectTransform terrainImage;
         public int updateInterval = 9;
 
         private Transform[] navaidMarkers, waypointMarkers;
@@ -162,6 +165,15 @@ namespace VirtualCNS
                 if (marker == null) continue;
                 marker.localRotation = rotation;
             }
+        }
+
+        public void _RenderedTileChanged()
+        {
+            if (!terrainCamera || !terrainImage) return;
+
+            var tileIndex = terrainCamera.RenderedTileIndex;
+            var imageRect = terrainImage.rect;
+            terrainImage.anchoredPosition = new Vector2(tileIndex.x * imageRect.width / 2.0f, tileIndex.y * imageRect.height / 2.0f);
         }
     }
 }

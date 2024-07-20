@@ -16,9 +16,11 @@ namespace VirtualCNS
         public int updateInterval = 10;
         public float cameraAltitude = 1000.0f;
 
+        public UdonSharpBehaviour[] Subscribers;
+
         private float updateIntervalOffset;
         private new Camera camera;
-        private Vector2Int renderedTileIndex;
+        public Vector2Int RenderedTileIndex { get; private set; }
         private float TileSize => range * NM;
         private Transform origin;
         private Transform initialParent;
@@ -50,11 +52,11 @@ namespace VirtualCNS
             var worldPosition = origin.position;
             var tileIndex = ToTileIndex(worldPosition);
 
-            if (tileIndex != renderedTileIndex) Render();
+            if (tileIndex != RenderedTileIndex) Render();
 
-            var positionInTile = ToPositionInTile(worldPosition, tileIndex);
-
-            transform.localPosition = Vector3.right * positionInTile.x + Vector3.up * positionInTile.y;
+            // For Debug
+            // positionInTile = ToPositionInTile(worldPosition, tileIndex);
+            // transform.localPosition = Vector3.right * positionInTile.x + Vector3.up * positionInTile.y;
         }
 
         private void Render()
@@ -77,11 +79,24 @@ namespace VirtualCNS
 
         private void OnPostRender()
         {
-            renderedTileIndex = ToTileIndex(transform.position);
+            RenderedTileIndex = ToTileIndex(transform.position);
             transform.parent = initialParent;
             SendCustomEventDelayedFrames(nameof(_DisableCamera), 1);
 
             Debug.Log($"[Virtual-CNS][{this}:{GetHashCode():X8}] Rendered", gameObject);
+
+            RaiseTileChangedEvent();
+        }
+
+        private void RaiseTileChangedEvent()
+        {
+            if (Subscribers != null && Subscribers.Length > 0)
+            {
+                foreach (var subscriber in Subscribers)
+                {
+                    subscriber.SendCustomEvent("_RenderedTileChanged");
+                }
+            }
         }
 
         public void _DisableCamera()
@@ -100,7 +115,7 @@ namespace VirtualCNS
 
         private Vector2Int ToTileIndex(Vector3 worldPosition)
         {
-            return new Vector2Int(Mathf.RoundToInt(worldPosition.x / TileSize), Mathf.RoundToInt(worldPosition.y / TileSize));
+            return new Vector2Int(Mathf.RoundToInt(worldPosition.x / TileSize), Mathf.RoundToInt(worldPosition.z / TileSize));
         }
 
         private Vector2 GetTileCenter(Vector2Int tileIndex)
