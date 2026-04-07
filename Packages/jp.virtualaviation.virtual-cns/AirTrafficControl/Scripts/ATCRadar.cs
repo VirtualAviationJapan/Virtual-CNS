@@ -27,10 +27,10 @@ namespace VirtualCNS
         [Range(-360.0f, 360.0f)] public float headingOffset = 0.0f;
         public Camera terrainCamera;
 
-        [SerializeField] public Transform[] traffics = { };
-        [SerializeField] public string[] tailNumbers = { };
-        [SerializeField] public string[] callsigns = { };
-        [SerializeField] public GameObject[] ownerDetectors = { };
+        [HideInInspector] public Transform[] traffics = { };
+        [HideInInspector] public string[] tailNumbers = { };
+        [HideInInspector] public string[] callsigns = { };
+        [HideInInspector] public GameObject[] ownerDetectors = { };
 
         private Transform[] symbols = { };
         private TextMeshProUGUI[] symbolTexts = { };
@@ -43,12 +43,22 @@ namespace VirtualCNS
             if (raderOrigin == null) raderOrigin = transform;
             if (symbolContainer == null) symbolContainer = transform;
 
-            symbols = new Transform[traffics.Length];
-            symbolTexts = new TextMeshProUGUI[traffics.Length];
-            previousPositions = new Vector3[traffics.Length];
-            previousTimes = new float[traffics.Length];
+            var count = Mathf.Min(traffics.Length, tailNumbers.Length, callsigns.Length, ownerDetectors.Length);
+            if (count < traffics.Length)
+            {
+                Debug.LogWarning($"[Virtual-CNS][ATCRadar] Array length mismatch detected. Clamping to {count} entries.");
+                System.Array.Resize(ref traffics, count);
+                System.Array.Resize(ref tailNumbers, count);
+                System.Array.Resize(ref callsigns, count);
+                System.Array.Resize(ref ownerDetectors, count);
+            }
 
-            for (var i = 0; i < traffics.Length; i++)
+            symbols = new Transform[count];
+            symbolTexts = new TextMeshProUGUI[count];
+            previousPositions = new Vector3[count];
+            previousTimes = new float[count];
+
+            for (var i = 0; i < count; i++)
             {
                 var obj = Instantiate(symbolTemplate);
                 obj.SetActive(false);
