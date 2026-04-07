@@ -1,7 +1,6 @@
 ﻿
 using System;
 using UdonSharp;
-using UdonToolkit;
 using UnityEngine;
 using VRC.Udon;
 
@@ -15,8 +14,7 @@ namespace VirtualCNS
         readonly private char[] trimChars = new[] { '[', ']', ',', '.', ' ' };
 
         [TextArea] public string template = "AERODROME information [{0}] [{1}] [Z]. {2}. wind {3}. visibility 10 kilometers, sky clear. temperature [25], dewpoint [20], qnh [2992]. advise you have information [{0}]";
-        [ListView("Runway Operations")] public float[] windHeadings = { 0.0f, 180.0f };
-        [ListView("Runway Operations")]
+        public float[] windHeadings = { 0.0f, 180.0f };
         public string[] runwayTemplates = {
             "ils runway [36] approach. using runway [36]",
             "ils runway [18] approach. using runway [18]",
@@ -26,14 +24,14 @@ namespace VirtualCNS
         public string windWithGustTemplate = "[{0:000}] degrees {1:0} knots, maximum {2:0} knots";
 
         public UdonSharpBehaviour windSource;
-        [Popup("programVariable", "@windSource", "vector")] public string windVariableName = "Wind";
-        [Popup("programVariable", "@windSource", "float")] public string windGustVariableName = "WindGustStrength";
+        public string windVariableName = "Wind";
+        public string windGustVariableName = "WindGustStrength";
         [Tooltip("Knots")] public float minWind = 0.5f;
 
         public AudioClip[] digits = { }, phonetics = { };
         public AudioClip periodInterval, repeatInterval;
-        [ListView("Vocabulary")] public string[] clipWords = { };
-        [ListView("Vocabulary")] public AudioClip[] clips = { };
+        public string[] clipWords = { };
+        public AudioClip[] clips = { };
 
         private float magneticDeclination;
         private int informationIndex;

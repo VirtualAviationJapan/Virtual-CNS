@@ -1,6 +1,5 @@
 using UdonSharp;
 using UnityEngine;
-using UdonToolkit;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using System.Linq;
 using UdonSharpEditor;
@@ -11,9 +10,6 @@ namespace VirtualCNS
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-    [OnAfterEditor(nameof(AudioSelector.OnAfterEditor))]
-#endif
     public class AudioSelector : UdonSharpBehaviour
     {
         public RadioTuner[] comTuners = { };

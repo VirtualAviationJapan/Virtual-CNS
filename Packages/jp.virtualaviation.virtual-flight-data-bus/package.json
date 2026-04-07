@@ -20,8 +20,7 @@
   "dependencies": {
     "com.nekometer.esnya.udon-radio-communications": "5.0.0",
     "com.unity.textmeshpro": "2.1.6",
-    "jp.virtualaviation.virtual-cns": "6.1.0",
-    "sh.orels.udontoolkit": "1.1.2"
+    "jp.virtualaviation.virtual-cns": "6.1.0"
   },
   "unity": "2022.3",
   "url": "https://github.com/VirtualAviationJapan/Virtual-CNS.git?path=/Packages/jp.virtualaviation.virtual-flight-data-bus",

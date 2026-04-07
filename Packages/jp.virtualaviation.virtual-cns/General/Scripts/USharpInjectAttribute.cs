@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using UdonSharp;
 using UnityEngine;
 using System.Reflection;
-using UdonToolkit;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using UnityEditor.SceneManagement;
 using UnityEditor;
@@ -15,23 +14,9 @@ using VRC.SDKBase.Editor.BuildPipeline;
 namespace VirtualCNS
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-    public class USharpInjectAttribute : UTPropertyAttribute
-#else
     public class USharpInjectAttribute : Attribute
-#endif
     {
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-        public override void BeforeGUI(SerializedProperty property)
-        {
-            EditorGUI.BeginDisabledGroup(true);
-        }
-        public override void AfterGUI(SerializedProperty property)
-        {
-            EditorGUI.EndDisabledGroup();
-            EditorGUILayout.HelpBox("Auto injected by script.", MessageType.Info);
-        }
-
         private static void AutoSetup(Scene scene)
         {
             var rootGameObjects = scene.GetRootGameObjects();

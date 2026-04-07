@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Reflection;
-using UdonToolkit;
 using UdonSharp;
 #if UNITY_EDITOR
 using UnityEditor.SceneManagement;
@@ -14,27 +13,9 @@ using UdonSharpEditor;
 namespace VirtualCNS
 {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-#if UNITY_EDITOR
-    public class UdonSharpComponentInjectAttribute : UTPropertyAttribute
-#else
     public class UdonSharpComponentInjectAttribute : Attribute
-#endif
     {
 #if UNITY_EDITOR
-        public override void BeforeGUI(SerializedProperty property)
-        {
-            EditorGUI.BeginDisabledGroup(false);
-        }
-        public override void AfterGUI(SerializedProperty property)
-        {
-            EditorGUI.EndDisabledGroup();
-            EditorGUILayout.HelpBox("Auto injected by script.", MessageType.Info);
-            if (GUILayout.Button("Force Update"))
-            {
-                AutoSetup((property.serializedObject.targetObject as Component).gameObject.scene);
-            }
-        }
-
         private static void AutoSetup(Scene scene)
         {
             var rootGameObjects = scene.GetRootGameObjects();

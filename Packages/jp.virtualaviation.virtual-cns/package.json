@@ -19,8 +19,7 @@
   },
   "dependencies": {
     "com.nekometer.esnya.udon-radio-communications": "5.0.0",
-    "com.unity.textmeshpro": "2.1.6",
-    "sh.orels.udontoolkit": "1.1.2"
+    "com.unity.textmeshpro": "2.1.6"
   },
   "legacyFolders": {
     "Assets\\Virtual-CNS": ""

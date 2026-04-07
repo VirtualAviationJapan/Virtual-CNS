@@ -1,6 +1,5 @@
 using UdonSharp;
 using UnityEngine;
-using UdonToolkit;
 using TMPro;
 using URC;
 
@@ -14,9 +13,6 @@ namespace VirtualCNS
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-    [OnAfterEditor(nameof(StandbyFrequencySwitcher.OnAfterEditor))]
-#endif
     public class StandbyFrequencySwitcher : UdonSharpBehaviour
     {
         public RadioTuner active, standby;

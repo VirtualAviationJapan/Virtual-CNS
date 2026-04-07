@@ -1,5 +1,4 @@
 using UdonSharp;
-using UdonToolkit;
 using UnityEngine;
 using VRC.SDKBase;
 using TMPro;
@@ -14,14 +13,11 @@ namespace VirtualCNS
 {
 
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-    [OnAfterEditor(nameof(RadioTunerDemultiplexer.OnAfterEditor))]
-#endif
     public class RadioTunerDemultiplexer : UdonSharpBehaviour
     {
-        [ListView("Tuners")] public RadioTuner[] tuners = { };
-        [ListView("Tuners")] public RadioTuner[] standbyTuners = { };
-        [ListView("Tuners")] public GameObject[] toggledObjects = { };
+        public RadioTuner[] tuners = { };
+        public RadioTuner[] standbyTuners = { };
+        public GameObject[] toggledObjects = { };
 
         [UdonSynced][FieldChangeCallback(nameof(Index))] private int _index;
         public int Index

@@ -2,7 +2,6 @@
 using TMPro;
 using URC;
 using UdonSharp;
-using UdonToolkit;
 using UnityEngine;
 using VRC.SDKBase;
 
@@ -33,15 +32,15 @@ namespace VirtualCNS
         [Header("References")]
         public TextMeshPro frequencyDisplay;
         public GameObject listeningIndiator;
-        [HideIf("@navMode")] public GameObject micIndicator;
+        public GameObject micIndicator;
         public TextMeshPro identityDisplay;
-        [HideIf("@navMode")] public Receiver receiver;
-        [HideIf("@navMode")] public Transmitter transmitter;
-        [HideIf("@!navMode")] public NavSelector navSelector;
-        [HideIf("@!navMode")] public IdentityPlayer identityPlayer;
+        public Receiver receiver;
+        public Transmitter transmitter;
+        public NavSelector navSelector;
+        public IdentityPlayer identityPlayer;
         public Animator animator;
-        [Popup("animatorBool", "@animator", "bool")] public string listenBool = "listen";
-        [HideIf("@navMode")][Popup("animatorBool", "@animator", "bool")] public string micBool = "mic";
+        public string listenBool = "listen";
+        public string micBool = "mic";
 
         public string Identity
         {
@@ -370,7 +369,7 @@ namespace VirtualCNS
         }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-        [Button("Preset Airband", true)]
+        [ContextMenu("Preset Airband")]
         public void PresetAirband()
         {
             navMode = false;
@@ -380,7 +379,7 @@ namespace VirtualCNS
             frequencyFormat = "000.000";
         }
 
-        [Button("Preset Navigation", true)]
+        [ContextMenu("Preset Navigation")]
         public void PresetVOR()
         {
             navMode = true;

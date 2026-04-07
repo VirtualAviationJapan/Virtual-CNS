@@ -2,7 +2,6 @@ using TMPro;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using UdonToolkit;
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using System.Linq;
@@ -28,10 +27,10 @@ namespace VirtualCNS
         [Range(-360.0f, 360.0f)] public float headingOffset = 0.0f;
         public Camera terrainCamera;
 
-        [Disabled][ListView("Traffics")] public Transform[] traffics = { };
-        [Disabled][ListView("Traffics")] public string[] tailNumbers = { };
-        [Disabled][ListView("Traffics")] public string[] callsigns = { };
-        [Disabled][ListView("Traffics")] public GameObject[] ownerDetectors = { };
+        [SerializeField] public Transform[] traffics = { };
+        [SerializeField] public string[] tailNumbers = { };
+        [SerializeField] public string[] callsigns = { };
+        [SerializeField] public GameObject[] ownerDetectors = { };
 
         private Transform[] symbols = { };
         private TextMeshProUGUI[] symbolTexts = { };
@@ -115,7 +114,7 @@ namespace VirtualCNS
         }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-        [Button("Force Refresh Now", true)]
+        [ContextMenu("Force Refresh Now")]
         public void Setup()
         {
             var rootObjects = gameObject.scene.GetRootGameObjects();

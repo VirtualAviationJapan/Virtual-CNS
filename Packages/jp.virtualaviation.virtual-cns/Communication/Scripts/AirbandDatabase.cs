@@ -1,6 +1,5 @@
 using System;
 using UdonSharp;
-using UdonToolkit;
 using UnityEngine;
 using URC;
 
@@ -12,9 +11,9 @@ namespace VirtualCNS
     public class AirbandDatabase : UdonSharpBehaviour
     {
         [UdonSharpComponentInject] public UdonRadioCommunication urc;
-        [ListView("Stations")] public float[] frequencies = { };
-        [ListView("Stations")] public string[] identities = { };
-        [ListView("Stations")] public ATISPlayer[] atisPlayers = { };
+        public float[] frequencies = { };
+        public string[] identities = { };
+        public ATISPlayer[] atisPlayers = { };
         private float frequencyStep;
 
         private void Start()

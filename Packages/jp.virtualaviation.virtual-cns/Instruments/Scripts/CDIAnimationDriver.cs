@@ -1,6 +1,5 @@
 
 using UdonSharp;
-using UdonToolkit;
 using UnityEngine;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using UdonSharpEditor;
@@ -14,11 +13,11 @@ namespace VirtualCNS
     {
         public NavSelector navaidSelector;
         public Animator cdiAnimator;
-        [Popup("animatorFloat", "@cdiAnimator")] public string courseFloatParameter;
-        [Popup("animatorFloat", "@cdiAnimator")] public string courseDeviationFloatParameter;
-        [Popup("animatorFloat", "@cdiAnimator")] public string glideSlopeDeviationFloatParameter;
-        [Popup("animatorFloat", "@cdiAnimator")] public string toFromFloatParameeter;
-        [Popup("animatorBool", "@cdiAnimator")] public string glideSlopeBoolParameter;
+        public string courseFloatParameter;
+        public string courseDeviationFloatParameter;
+        public string glideSlopeDeviationFloatParameter;
+        public string toFromFloatParameeter;
+        public string glideSlopeBoolParameter;
         [Range(-1.0f, 1.0f)] public float cdOff = 0.0f;
         [Range(-1.0f, 1.0f)] public float gsOff = 0.0f;
         public int navaidUpdateInterval = 10;
