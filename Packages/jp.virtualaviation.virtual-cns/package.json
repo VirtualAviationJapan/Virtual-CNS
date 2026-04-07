@@ -19,16 +19,15 @@
   },
   "dependencies": {
     "com.nekometer.esnya.udon-radio-communications": "5.0.0",
-    "com.unity.textmeshpro": "2.1.6",
+    "com.unity.textmeshpro": "3.0.6",
     "sh.orels.udontoolkit": "1.1.2"
   },
   "legacyFolders": {
     "Assets\\Virtual-CNS": ""
   },
-  "unity": "2019.4",
+  "unity": "2022.3",
   "url": "https://github.com/VirtualAviationJapan/Virtual-CNS.git?path=/Packages/jp.virtualaviation.virtual-cns",
   "vpmDependencies": {
-    "com.vrchat.udonsharp": "1.1.7",
-    "com.vrchat.worlds": "3.1.1"
+    "com.vrchat.worlds": "3.10.2"
   }
 }

@@ -20,10 +20,9 @@
   "dependencies": {
     "jp.virtualaviation.virtual-flight-data-bus": "6.1.0"
   },
-  "unity": "2019.4",
+  "unity": "2022.3",
   "url": "https://github.com/VirtualAviationJapan/Virtual-CNS.git?path=/Packages/jp.virtualaviation.virtual-flight-data-bus.connector-sf",
   "vpmDependencies": {
-    "com.vrchat.worlds": "3.1.1",
-    "com.vrchat.udonsharp": "1.1.7"
+    "com.vrchat.worlds": "3.10.2"
   }
 }
