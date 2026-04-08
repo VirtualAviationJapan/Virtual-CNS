@@ -69,7 +69,7 @@ namespace VirtualCNS
                 symbolText.text = tailNumbers[i];
 
                 previousPositions[i] = traffics[i].position - raderOrigin.position;
-                previousTimes[i] = Time.time;
+                previousTimes[i] = Time.time - Mathf.Epsilon;
             }
 
             if (terrainCamera) terrainCamera.orthographicSize = range * 1852;

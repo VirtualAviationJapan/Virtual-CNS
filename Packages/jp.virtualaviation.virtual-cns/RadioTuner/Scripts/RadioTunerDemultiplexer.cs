@@ -18,7 +18,8 @@ namespace VirtualCNS
             set
             {
                 if (tuners.Length == 0) return;
-                var clamped = Mathf.Max(value, 0) % tuners.Length;
+                var maxIndex = standbyTuners.Length > 0 ? Mathf.Min(tuners.Length, standbyTuners.Length) : tuners.Length;
+                var clamped = Mathf.Max(value, 0) % maxIndex;
 
                 if (_index < toggledObjects.Length && toggledObjects[_index]) toggledObjects[_index].SetActive(false);
                 if (clamped < toggledObjects.Length && toggledObjects[clamped]) toggledObjects[clamped].SetActive(true);
