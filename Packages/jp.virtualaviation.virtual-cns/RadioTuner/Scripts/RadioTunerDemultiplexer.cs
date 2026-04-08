@@ -29,9 +29,9 @@ namespace VirtualCNS
             get => _index;
         }
 
-        public RadioTuner SelectedTuner => tuners[Index];
-        public RadioTuner StandbyTuner => standbyTuners[Index];
-        public RadioTuner FrequencyTargetTuner => StandbyTuner ? StandbyTuner : SelectedTuner;
+        public RadioTuner SelectedTuner => Index < tuners.Length ? tuners[Index] : null;
+        public RadioTuner StandbyTuner => Index < standbyTuners.Length ? standbyTuners[Index] : null;
+        public RadioTuner FrequencyTargetTuner => StandbyTuner != null ? StandbyTuner : SelectedTuner;
 
         private void Start()
         {
@@ -56,35 +56,36 @@ namespace VirtualCNS
             RequestSerialization();
         }
 
-        public void _ToggleListen() => SelectedTuner._ToggleListen();
-        public void _ToggleMic() => SelectedTuner._ToggleMic();
-        public void _ToggleListenAndMic() => SelectedTuner._ToggleListenAndMic();
-        public void _IncrementFrequency() => FrequencyTargetTuner._IncrementFrequency();
-        public void _DecrementFrequency() => FrequencyTargetTuner._DecrementFrequency();
-        public void _FastIncrementFrequency() => FrequencyTargetTuner._FastIncrementFrequency();
-        public void _FastDecrementFrequency() => FrequencyTargetTuner._FastDecrementFrequency();
+        public void _ToggleListen() { if (SelectedTuner != null) SelectedTuner._ToggleListen(); }
+        public void _ToggleMic() { if (SelectedTuner != null) SelectedTuner._ToggleMic(); }
+        public void _ToggleListenAndMic() { if (SelectedTuner != null) SelectedTuner._ToggleListenAndMic(); }
+        public void _IncrementFrequency() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._IncrementFrequency(); }
+        public void _DecrementFrequency() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._DecrementFrequency(); }
+        public void _FastIncrementFrequency() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._FastIncrementFrequency(); }
+        public void _FastDecrementFrequency() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._FastDecrementFrequency(); }
 
-        public void _IncrementCourse() => SelectedTuner._IncrementCourse();
-        public void _DecrementCourse() => SelectedTuner._DecrementCourse();
-        public void _FastIncrementCourse() => SelectedTuner._FastIncrementCourse();
-        public void _FastDecrementCourse() => SelectedTuner._FastDecrementCourse();
+        public void _IncrementCourse() { if (SelectedTuner != null) SelectedTuner._IncrementCourse(); }
+        public void _DecrementCourse() { if (SelectedTuner != null) SelectedTuner._DecrementCourse(); }
+        public void _FastIncrementCourse() { if (SelectedTuner != null) SelectedTuner._FastIncrementCourse(); }
+        public void _FastDecrementCourse() { if (SelectedTuner != null) SelectedTuner._FastDecrementCourse(); }
 
-        public void _StartPTT() => SelectedTuner._StartPTT();
-        public void _EndPTT() => SelectedTuner._EndPTT();
-        public void _Keypad1() => FrequencyTargetTuner._Keypad1();
-        public void _Keypad2() => FrequencyTargetTuner._Keypad2();
-        public void _Keypad3() => FrequencyTargetTuner._Keypad3();
-        public void _Keypad4() => FrequencyTargetTuner._Keypad4();
-        public void _Keypad5() => FrequencyTargetTuner._Keypad5();
-        public void _Keypad6() => FrequencyTargetTuner._Keypad6();
-        public void _Keypad7() => FrequencyTargetTuner._Keypad7();
-        public void _Keypad8() => FrequencyTargetTuner._Keypad8();
-        public void _Keypad9() => FrequencyTargetTuner._Keypad9();
-        public void _Keypad0() => FrequencyTargetTuner._Keypad0();
-        public void _KeypadClear() => FrequencyTargetTuner._KeypadClear();
+        public void _StartPTT() { if (SelectedTuner != null) SelectedTuner._StartPTT(); }
+        public void _EndPTT() { if (SelectedTuner != null) SelectedTuner._EndPTT(); }
+        public void _Keypad1() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._Keypad1(); }
+        public void _Keypad2() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._Keypad2(); }
+        public void _Keypad3() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._Keypad3(); }
+        public void _Keypad4() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._Keypad4(); }
+        public void _Keypad5() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._Keypad5(); }
+        public void _Keypad6() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._Keypad6(); }
+        public void _Keypad7() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._Keypad7(); }
+        public void _Keypad8() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._Keypad8(); }
+        public void _Keypad9() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._Keypad9(); }
+        public void _Keypad0() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._Keypad0(); }
+        public void _KeypadClear() { if (FrequencyTargetTuner != null) FrequencyTargetTuner._KeypadClear(); }
 
         public void _TransferFrequency()
         {
+            if (SelectedTuner == null || StandbyTuner == null) return;
             SelectedTuner._TakeOwnership();
             StandbyTuner._TakeOwnership();
 

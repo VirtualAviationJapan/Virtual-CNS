@@ -38,8 +38,8 @@ namespace VirtualCNS
                 if (isArray)
                 {
                     var components = rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).ToArray();
-                    var value = field.FieldType.GetConstructor(new[] { typeof(int) }).Invoke(new object[] { components.Length });
-                    Array.Copy(components, value as Array, components.Length);
+                    var value = Array.CreateInstance(valueType, components.Length);
+                    Array.Copy(components, value, components.Length);
                     field.SetValue(udon, value);
                 }
                 else
