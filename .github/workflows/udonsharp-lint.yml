@@ -1,8 +1,6 @@
 name: UdonSharp Lint
 on:
   push:
-    branches-ignore:
-      - master
     paths:
       - "Packages/**/*.cs"
       - ".config/dotnet-tools.json"
@@ -15,6 +13,8 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
