@@ -1,7 +1,5 @@
 using UdonSharp;
 using UnityEngine;
-using TMPro;
-using URC;
 
 namespace VirtualCNS
 {

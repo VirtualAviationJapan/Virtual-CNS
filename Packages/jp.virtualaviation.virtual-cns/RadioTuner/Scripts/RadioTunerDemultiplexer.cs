@@ -1,7 +1,6 @@
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using TMPro;
 
 namespace VirtualCNS
 {
@@ -18,10 +17,11 @@ namespace VirtualCNS
         {
             set
             {
+                if (tuners.Length == 0) return;
                 var clamped = Mathf.Max(value, 0) % tuners.Length;
 
-                if (toggledObjects[_index]) toggledObjects[_index].SetActive(false);
-                if (toggledObjects[clamped]) toggledObjects[clamped].SetActive(true);
+                if (_index < toggledObjects.Length && toggledObjects[_index]) toggledObjects[_index].SetActive(false);
+                if (clamped < toggledObjects.Length && toggledObjects[clamped]) toggledObjects[clamped].SetActive(true);
 
                 _index = clamped;
             }

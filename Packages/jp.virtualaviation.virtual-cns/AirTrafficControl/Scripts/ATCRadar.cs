@@ -67,6 +67,9 @@ namespace VirtualCNS
                 var symbolText = symbol.GetComponentInChildren<TextMeshProUGUI>();
                 symbolTexts[i] = symbolText;
                 symbolText.text = tailNumbers[i];
+
+                previousPositions[i] = traffics[i].position - raderOrigin.position;
+                previousTimes[i] = Time.time;
             }
 
             if (terrainCamera) terrainCamera.orthographicSize = range * 1852;
