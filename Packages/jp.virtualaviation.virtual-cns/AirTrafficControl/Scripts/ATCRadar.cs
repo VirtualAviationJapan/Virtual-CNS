@@ -32,6 +32,7 @@ namespace VirtualCNS
         [HideInInspector] public string[] callsigns = { };
         [HideInInspector] public GameObject[] ownerDetectors = { };
 
+        private int count;
         private Transform[] symbols = { };
         private TextMeshProUGUI[] symbolTexts = { };
         private Vector3[] previousPositions = { };
@@ -43,14 +44,10 @@ namespace VirtualCNS
             if (raderOrigin == null) raderOrigin = transform;
             if (symbolContainer == null) symbolContainer = transform;
 
-            var count = Mathf.Min(traffics.Length, tailNumbers.Length, callsigns.Length, ownerDetectors.Length);
+            count = Mathf.Min(traffics.Length, tailNumbers.Length, callsigns.Length, ownerDetectors.Length);
             if (count < traffics.Length)
             {
                 Debug.LogWarning($"[Virtual-CNS][ATCRadar] Array length mismatch detected. Clamping to {count} entries.");
-                System.Array.Resize(ref traffics, count);
-                System.Array.Resize(ref tailNumbers, count);
-                System.Array.Resize(ref callsigns, count);
-                System.Array.Resize(ref ownerDetectors, count);
             }
 
             symbols = new Transform[count];
@@ -80,7 +77,9 @@ namespace VirtualCNS
             var time = Time.time;
             var scale = uiRadius / (range * 1852);
 
-            var index = Time.frameCount % Mathf.Max(traffics.Length, 1);
+            if (count == 0) return;
+
+            var index = Time.frameCount % count;
 
             var traffic = traffics[index];
             var tailNumber = tailNumbers[index];

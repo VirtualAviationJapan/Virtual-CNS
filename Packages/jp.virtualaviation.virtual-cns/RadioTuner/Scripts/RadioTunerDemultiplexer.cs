@@ -3,12 +3,6 @@ using UnityEngine;
 using VRC.SDKBase;
 using TMPro;
 
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-using UnityEditor;
-using UdonSharpEditor;
-using System.Linq;
-#endif
-
 namespace VirtualCNS
 {
 
@@ -100,21 +94,5 @@ namespace VirtualCNS
             SelectedTuner.RequestSerialization();
             StandbyTuner.RequestSerialization();
         }
-
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-        public static void OnAfterEditor(SerializedObject serializedObject)
-        {
-            var demultiplexer = serializedObject.targetObject as RadioTunerDemultiplexer;
-            int i = 1;
-            foreach (var (active, standby) in demultiplexer.tuners.Zip(demultiplexer.standbyTuners, (active, standby) => (active, standby)))
-            {
-                EditorGUILayout.LabelField($"Tuner {i++}");
-                using (new EditorGUI.IndentLevelScope())
-                {
-                    StandbyFrequencySwitcher.SetupHelperGUI(active, standby);
-                }
-            }
-        }
-#endif
     }
 }

@@ -1,10 +1,5 @@
 using UdonSharp;
 using UnityEngine;
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-using System.Linq;
-using UdonSharpEditor;
-using UnityEditor;
-#endif
 
 namespace VirtualCNS
 {
@@ -191,17 +186,5 @@ namespace VirtualCNS
         public void _SelectXMTR2() => _SelectXMTR(1);
         public void _SelectXMTR3() => _SelectXMTR(2);
         #endregion
-
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-        public static void OnAfterEditor(SerializedObject serializedObject)
-        {
-            var audioSelector = serializedObject.targetObject as AudioSelector;
-            var coms = EditorGUILayout.ObjectField("Load COMs", null, typeof(RadioTunerDemultiplexer), true) as RadioTunerDemultiplexer;
-            if (coms) audioSelector.comTuners = coms.tuners.ToArray();
-
-            var navs = EditorGUILayout.ObjectField("Load NAVs", null, typeof(RadioTunerDemultiplexer), true) as RadioTunerDemultiplexer;
-            if (navs) audioSelector.navTuners = navs.tuners.ToArray();
-        }
-#endif
     }
 }
