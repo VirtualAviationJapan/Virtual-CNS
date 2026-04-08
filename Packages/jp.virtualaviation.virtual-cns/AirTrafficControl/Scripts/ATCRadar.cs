@@ -45,7 +45,7 @@ namespace VirtualCNS
             if (symbolContainer == null) symbolContainer = transform;
 
             count = Mathf.Min(traffics.Length, tailNumbers.Length, callsigns.Length, ownerDetectors.Length);
-            if (count < traffics.Length)
+            if (traffics.Length != count || tailNumbers.Length != count || callsigns.Length != count || ownerDetectors.Length != count)
             {
                 Debug.LogWarning($"[Virtual-CNS][ATCRadar] Array length mismatch detected. Clamping to {count} entries.");
             }

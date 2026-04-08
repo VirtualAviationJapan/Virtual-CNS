@@ -34,22 +34,17 @@ namespace VirtualCNS
             {
                 var isArray = field.FieldType.IsArray;
                 var valueType = isArray ? field.FieldType.GetElementType() : field.FieldType;
-                var isComponent = valueType.IsSubclassOf(typeof(UdonSharpBehaviour));
-                var variableName = field.Name;
 
                 if (isArray)
                 {
-                    var components = isComponent
-                        ? rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).ToArray()
-                        : rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).ToArray();
+                    var components = rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).ToArray();
                     var value = field.FieldType.GetConstructor(new[] { typeof(int) }).Invoke(new object[] { components.Length });
                     Array.Copy(components, value as Array, components.Length);
                     field.SetValue(component, value);
                 }
                 else
                 {
-                    if (isComponent) field.SetValue(component, rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).FirstOrDefault());
-                    else field.SetValue(component, rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).FirstOrDefault());
+                    field.SetValue(component, rootGameObjects.SelectMany(o => o.GetComponentsInChildren(valueType)).FirstOrDefault());
                 }
             }
         }

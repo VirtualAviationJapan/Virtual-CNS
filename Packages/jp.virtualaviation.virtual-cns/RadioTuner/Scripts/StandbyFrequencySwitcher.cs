@@ -17,11 +17,14 @@ namespace VirtualCNS
             standby._TakeOwnership();
         }
 
-        public void _RequenstSerialization()
+        public void _RequestSerialization()
         {
             active.RequestSerialization();
             standby.RequestSerialization();
         }
+
+        [System.Obsolete("Use _RequestSerialization() instead.")]
+        public void _RequenstSerialization() => _RequestSerialization();
 
         public void _TransferFrequency()
         {
@@ -31,7 +34,7 @@ namespace VirtualCNS
             standby.Frequency = active.Frequency;
             active.Frequency = tmp;
 
-            _RequenstSerialization();
+            _RequestSerialization();
         }
     }
 }

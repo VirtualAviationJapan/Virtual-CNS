@@ -39,7 +39,7 @@ namespace VirtualCNS
                 if (!o) continue;
                 o.SetActive(false);
             }
-            Index = 0;
+            if (tuners.Length > 0) Index = 0;
         }
 
         public void _TakeOwnership()
