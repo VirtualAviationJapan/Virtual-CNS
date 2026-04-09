@@ -1,5 +1,4 @@
 using UdonSharp;
-using UdonToolkit;
 using UnityEngine;
 
 namespace VirtualCNS

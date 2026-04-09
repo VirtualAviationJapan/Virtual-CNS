@@ -2,7 +2,6 @@ using TMPro;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
-using UdonToolkit;
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 using System.Linq;
@@ -28,11 +27,12 @@ namespace VirtualCNS
         [Range(-360.0f, 360.0f)] public float headingOffset = 0.0f;
         public Camera terrainCamera;
 
-        [Disabled][ListView("Traffics")] public Transform[] traffics = { };
-        [Disabled][ListView("Traffics")] public string[] tailNumbers = { };
-        [Disabled][ListView("Traffics")] public string[] callsigns = { };
-        [Disabled][ListView("Traffics")] public GameObject[] ownerDetectors = { };
+        [HideInInspector] public Transform[] traffics = { };
+        [HideInInspector] public string[] tailNumbers = { };
+        [HideInInspector] public string[] callsigns = { };
+        [HideInInspector] public GameObject[] ownerDetectors = { };
 
+        private int count;
         private Transform[] symbols = { };
         private TextMeshProUGUI[] symbolTexts = { };
         private Vector3[] previousPositions = { };
@@ -44,12 +44,18 @@ namespace VirtualCNS
             if (raderOrigin == null) raderOrigin = transform;
             if (symbolContainer == null) symbolContainer = transform;
 
-            symbols = new Transform[traffics.Length];
-            symbolTexts = new TextMeshProUGUI[traffics.Length];
-            previousPositions = new Vector3[traffics.Length];
-            previousTimes = new float[traffics.Length];
+            count = Mathf.Min(traffics.Length, tailNumbers.Length, callsigns.Length, ownerDetectors.Length);
+            if (traffics.Length != count || tailNumbers.Length != count || callsigns.Length != count || ownerDetectors.Length != count)
+            {
+                Debug.LogWarning($"[Virtual-CNS][ATCRadar] Array length mismatch detected. Clamping to {count} entries.");
+            }
 
-            for (var i = 0; i < traffics.Length; i++)
+            symbols = new Transform[count];
+            symbolTexts = new TextMeshProUGUI[count];
+            previousPositions = new Vector3[count];
+            previousTimes = new float[count];
+
+            for (var i = 0; i < count; i++)
             {
                 var obj = Instantiate(symbolTemplate);
                 obj.SetActive(false);
@@ -61,6 +67,9 @@ namespace VirtualCNS
                 var symbolText = symbol.GetComponentInChildren<TextMeshProUGUI>();
                 symbolTexts[i] = symbolText;
                 symbolText.text = tailNumbers[i];
+
+                previousPositions[i] = traffics[i].position - raderOrigin.position;
+                previousTimes[i] = Time.time - Mathf.Epsilon;
             }
 
             if (terrainCamera) terrainCamera.orthographicSize = range * 1852;
@@ -71,7 +80,9 @@ namespace VirtualCNS
             var time = Time.time;
             var scale = uiRadius / (range * 1852);
 
-            var index = Time.frameCount % Mathf.Max(traffics.Length, 1);
+            if (count == 0) return;
+
+            var index = Time.frameCount % count;
 
             var traffic = traffics[index];
             var tailNumber = tailNumbers[index];
@@ -90,7 +101,8 @@ namespace VirtualCNS
                 var altitude = (position.y - seaLevel.position.y) * 3.28084f;
 
                 var groundVelocity = Vector3.ProjectOnPlane(position - previousPositions[index], Vector3.up);
-                var groundSpeed = groundVelocity.magnitude / (time - previousTimes[index]) * 1.94384f;
+                var deltaTime = Mathf.Max(time - previousTimes[index], Mathf.Epsilon);
+                var groundSpeed = groundVelocity.magnitude / deltaTime * 1.94384f;
                 previousPositions[index] = position;
                 previousTimes[index] = time;
 
@@ -115,7 +127,7 @@ namespace VirtualCNS
         }
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-        [Button("Force Refresh Now", true)]
+        [ContextMenu("Force Refresh Now")]
         public void Setup()
         {
             var rootObjects = gameObject.scene.GetRootGameObjects();

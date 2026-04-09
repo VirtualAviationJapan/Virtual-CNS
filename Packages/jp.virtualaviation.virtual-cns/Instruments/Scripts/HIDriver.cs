@@ -68,7 +68,7 @@ namespace VirtualCNS
                 headingText.text = roundedHeadingAngle == 0 ? "360" : roundedHeadingAngle.ToString("000");
             }
 
-            
+
 
             if (turnIndicator != null)
             {

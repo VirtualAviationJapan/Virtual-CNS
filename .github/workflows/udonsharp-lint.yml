@@ -1,0 +1,26 @@
+name: UdonSharp Lint
+on:
+  push:
+    paths:
+      - "Packages/**/*.cs"
+      - ".config/dotnet-tools.json"
+      - ".github/workflows/udonsharp-lint.yml"
+  pull_request:
+    paths:
+      - "Packages/**/*.cs"
+      - ".config/dotnet-tools.json"
+      - ".github/workflows/udonsharp-lint.yml"
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "6.x"
+      - name: Restore dotnet tools
+        run: dotnet tool restore
+      - name: Run UdonSharp Linter
+        run: dotnet tool run udonsharp-lint Packages

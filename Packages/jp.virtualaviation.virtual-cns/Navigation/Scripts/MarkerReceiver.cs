@@ -1,5 +1,4 @@
 using UdonSharp;
-using UdonToolkit;
 using UnityEngine;
 using VRC.SDKBase;
 
@@ -15,13 +14,13 @@ namespace VirtualCNS
 
         [Header("Animator Trigger")]
         public Animator animator;
-        [Popup("animatorTrigger", "@animator")] public string triggerInnerMarker = "im", triggerMiddleMarker = "mm", triggerOuterMarker = "om";
-        [Popup("animatorBool", "@animator")] public string boolParameter = "mkr";
+        public string triggerInnerMarker = "im", triggerMiddleMarker = "mm", triggerOuterMarker = "om";
+        public string boolParameter = "mkr";
 
         [Header("Write Shader Property")]
         public new Renderer renderer;
-        [MaterialOf(nameof(renderer))] public Material material;
-        [Popup("shader", "@material", "vector")] public string materialPropertyName = "_Marker";
+        public Material material;
+        public string materialPropertyName = "_Marker";
 
         [Header("Indicator")]
         public GameObject indicator;

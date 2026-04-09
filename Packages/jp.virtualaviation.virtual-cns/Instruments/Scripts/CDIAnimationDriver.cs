@@ -1,10 +1,7 @@
 
 using UdonSharp;
-using UdonToolkit;
 using UnityEngine;
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-using UdonSharpEditor;
-#endif
+using UnityEngine.Serialization;
 
 namespace VirtualCNS
 {
@@ -14,11 +11,11 @@ namespace VirtualCNS
     {
         public NavSelector navaidSelector;
         public Animator cdiAnimator;
-        [Popup("animatorFloat", "@cdiAnimator")] public string courseFloatParameter;
-        [Popup("animatorFloat", "@cdiAnimator")] public string courseDeviationFloatParameter;
-        [Popup("animatorFloat", "@cdiAnimator")] public string glideSlopeDeviationFloatParameter;
-        [Popup("animatorFloat", "@cdiAnimator")] public string toFromFloatParameeter;
-        [Popup("animatorBool", "@cdiAnimator")] public string glideSlopeBoolParameter;
+        public string courseFloatParameter;
+        public string courseDeviationFloatParameter;
+        public string glideSlopeDeviationFloatParameter;
+        [FormerlySerializedAs("toFromFloatParameeter")] public string toFromFloatParameter;
+        public string glideSlopeBoolParameter;
         [Range(-1.0f, 1.0f)] public float cdOff = 0.0f;
         [Range(-1.0f, 1.0f)] public float gsOff = 0.0f;
         public int navaidUpdateInterval = 10;
@@ -69,7 +66,7 @@ namespace VirtualCNS
             {
                 var courceVector = NavigationMath.CourseToVector(course, magneticDeclination);
                 var toFrom = NavigationMath.GetVORToFrom(courceVector, relativePosition);
-                cdiAnimator.SetFloat(toFromFloatParameeter, NavigationMath.Remap11to01(toFrom), dampTime, deltaTime);
+                cdiAnimator.SetFloat(toFromFloatParameter, NavigationMath.Remap11to01(toFrom), dampTime, deltaTime);
                 cdiAnimator.SetFloat(
                     courseDeviationFloatParameter,
                     NavigationMath.Remap11to01(Mathf.Approximately(toFrom, 0.0f) ? cdOff : NavigationMath.GetCourseDeviation(relativePosition, courceVector) / 10.0f),
@@ -89,7 +86,7 @@ namespace VirtualCNS
                 var distance = relativePosition.magnitude;
                 var localizerCaptured = distance < maxRange && Mathf.Abs(courseDeviation) < (isBackCourse || distance > NavigationMath.LocalizerMaxWideRange ? 10.0f : 35.0f);
 
-                cdiAnimator.SetFloat(toFromFloatParameeter, localizerCaptured ? 1.0f : 0.5f, dampTime, deltaTime);
+                cdiAnimator.SetFloat(toFromFloatParameter, localizerCaptured ? 1.0f : 0.5f, dampTime, deltaTime);
                 cdiAnimator.SetFloat(
                     courseDeviationFloatParameter,
                     NavigationMath.Remap11to01(localizerCaptured ? courseDeviation / 3.0f : cdOff),
@@ -109,7 +106,7 @@ namespace VirtualCNS
             }
             else
             {
-                cdiAnimator.SetFloat(toFromFloatParameeter, 0.5f, dampTime, deltaTime);
+                cdiAnimator.SetFloat(toFromFloatParameter, 0.5f, dampTime, deltaTime);
                 cdiAnimator.SetFloat(courseDeviationFloatParameter, NavigationMath.Remap11to01(cdOff), dampTime, deltaTime);
                 cdiAnimator.SetBool(glideSlopeBoolParameter, false);
                 cdiAnimator.SetFloat(glideSlopeDeviationFloatParameter, NavigationMath.Remap11to01(gsOff), dampTime, deltaTime);
