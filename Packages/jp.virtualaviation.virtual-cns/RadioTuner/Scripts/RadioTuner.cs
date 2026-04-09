@@ -440,6 +440,7 @@ namespace VirtualCNS
                 UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target);
 
                 serializedObject.Update();
+                var presetApplied = false;
 
                 EditorGUILayout.PropertyField(navMode);
                 EditorGUILayout.Space();
@@ -453,6 +454,7 @@ namespace VirtualCNS
                             ((RadioTuner)obj).PresetAirband();
                             EditorUtility.SetDirty(obj);
                         }
+                        presetApplied = true;
                     }
 
                     if (GUILayout.Button("Preset Navigation"))
@@ -462,7 +464,13 @@ namespace VirtualCNS
                             ((RadioTuner)obj).PresetVOR();
                             EditorUtility.SetDirty(obj);
                         }
+                        presetApplied = true;
                     }
+                }
+
+                if (presetApplied)
+                {
+                    serializedObject.Update();
                 }
 
                 EditorGUILayout.PropertyField(defaultFrequency);
