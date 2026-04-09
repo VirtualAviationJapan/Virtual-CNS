@@ -179,6 +179,22 @@ namespace VirtualCNS
             }
             return true;
         }
+
+        private bool GetIsAutoForIndex(int index)
+        {
+            var tuner = GetTuner(comTuners, index);
+            if (tuner == null || !tuner.Mic) return false;
+
+            for (var i = 0; i < comTuners.Length; i++)
+            {
+                var other = comTuners[i];
+                if (other == null) continue;
+                if (i != index && other.Listen) return false;
+            }
+
+            return true;
+        }
+
         public void _SetAuto()
         {
             for (var i = 0; i < comTuners.Length; i++)
@@ -206,6 +222,8 @@ namespace VirtualCNS
         public void _SelectXMTR(int index)
         {
             if (GetTuner(comTuners, index) == null) return;
+            var wasAuto = _IsAuto();
+
             for (var i = 0; i < comTuners.Length; i++)
             {
                 var tuner = comTuners[i];
@@ -213,9 +231,8 @@ namespace VirtualCNS
                 tuner._SetMic(i == index);
             }
 
-            var isAuto = _IsAuto();
-           selectedMic = index;
-           if (isAuto) _SetAuto();
+            selectedMic = index;
+            if (wasAuto || GetIsAutoForIndex(index)) _SetAuto();
         }
         public void _SelectXMTR1() => _SelectXMTR(0);
         public void _SelectXMTR2() => _SelectXMTR(1);

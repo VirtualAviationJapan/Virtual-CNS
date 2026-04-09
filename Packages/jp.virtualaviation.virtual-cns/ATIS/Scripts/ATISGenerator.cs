@@ -45,7 +45,8 @@ namespace VirtualCNS
 
         public AudioClip[] _Generate()
         {
-            if (runwayTemplates == null || runwayTemplates.Length == 0 || windHeadings == null || windHeadings.Length == 0)
+            var runwayOperationCount = GetRunwayOperationCount();
+            if (runwayOperationCount == 0)
             {
                 Debug.LogError("[Virtual-CNS][ATIS] No runway operations configured. Fix the ATISGenerator inspector setup. Reusing the previous ATIS sequence if available.", gameObject);
                 return words ?? Array.Empty<AudioClip>();
@@ -71,7 +72,9 @@ namespace VirtualCNS
             var maxWindSpeed = windSpeed + Mathf.RoundToInt(windGustStrength * KNOTS);
 
             var windString = windCalm ? "calm" : string.Format(gusty ? windWithGustTemplate : windTemplate, new object[] { windHeading, windSpeed, maxWindSpeed });
-            var runwayOperationIndex = windCalm ? defaultRunwayIndex : IndexOfRunwayOperation(windHeading);
+            var runwayOperationIndex = windCalm
+                ? Mathf.Clamp(defaultRunwayIndex, 0, runwayOperationCount - 1)
+                : IndexOfRunwayOperation(windHeading, runwayOperationCount);
 
             var rawText = string.Format(template, (char)('A' + informationIndex), timestamp, runwayTemplates[runwayOperationIndex], windString);
             Debug.Log($"[Virtual-CNS][ATIS] Encoding: {rawText}");
@@ -177,14 +180,20 @@ namespace VirtualCNS
             return phonetics[c - 'A'];
         }
 
-        private int IndexOfRunwayOperation(float windHeading)
+        private int GetRunwayOperationCount()
         {
-            if (windHeadings == null || windHeadings.Length == 0) return 0;
+            if (windHeadings == null || runwayTemplates == null) return 0;
+            return Mathf.Min(windHeadings.Length, runwayTemplates.Length);
+        }
+
+        private int IndexOfRunwayOperation(float windHeading, int runwayOperationCount)
+        {
+            if (runwayOperationCount <= 0) return 0;
 
             var minDifference = float.MaxValue;
             var minIndex = 0;
 
-            for (var i = 0; i < windHeadings.Length; i++)
+            for (var i = 0; i < runwayOperationCount; i++)
             {
                 var difference = Mathf.Abs(Mathf.DeltaAngle(windHeading, windHeadings[i]));
                 if (difference < minDifference)

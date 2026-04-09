@@ -83,7 +83,8 @@ namespace VirtualCNS
             EditorGUILayout.LabelField("Runway Operations", EditorStyles.boldLabel);
 
             var count = DrawCountField("Operation Count", 1, windHeadings, runwayTemplates);
-            if (count == 0)
+            var effectiveCount = Mathf.Min(windHeadings.arraySize, runwayTemplates.arraySize);
+            if (effectiveCount == 0)
             {
                 EditorGUILayout.HelpBox("Add at least one runway operation. ATIS generation is blocked until this is fixed.", MessageType.Error);
                 defaultRunwayIndex.intValue = 0;
@@ -96,10 +97,20 @@ namespace VirtualCNS
                 return;
             }
 
-            defaultRunwayIndex.intValue = Mathf.Clamp(defaultRunwayIndex.intValue, 0, count - 1);
-            defaultRunwayIndex.intValue = EditorGUILayout.IntSlider("Default Runway Index", defaultRunwayIndex.intValue, 0, count - 1);
+            if (effectiveCount != count)
+            {
+                EditorGUILayout.HelpBox("Only the overlapping runway operation entries are active until the backing arrays are normalized.", MessageType.Warning);
+                if (GUILayout.Button("Normalize Runway Operation Arrays"))
+                {
+                    ResizeArrays(count, windHeadings, runwayTemplates);
+                    effectiveCount = count;
+                }
+            }
 
-            for (var i = 0; i < count; i++)
+            defaultRunwayIndex.intValue = Mathf.Clamp(defaultRunwayIndex.intValue, 0, effectiveCount - 1);
+            defaultRunwayIndex.intValue = EditorGUILayout.IntSlider("Default Runway Index", defaultRunwayIndex.intValue, 0, effectiveCount - 1);
+
+            for (var i = 0; i < effectiveCount; i++)
             {
                 using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
                 {
