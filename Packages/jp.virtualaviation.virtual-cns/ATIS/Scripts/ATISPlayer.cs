@@ -18,7 +18,9 @@ namespace VirtualCNS
                 if (value && value != _generator)
                 {
                     words = value._Generate();
-                    wordIndex = DateTime.UtcNow.Second % words.Length;
+                    wordIndex = words != null && words.Length > 0
+                        ? DateTime.UtcNow.Second % words.Length
+                        : 0;
                 }
 
                 _generator = value;
@@ -39,15 +41,37 @@ namespace VirtualCNS
                 return;
             }
 
+            if (words == null || words.Length == 0)
+            {
+                words = Generator._Generate();
+                if (words == null || words.Length == 0)
+                {
+                    return;
+                }
+                wordIndex = Mathf.Clamp(wordIndex, 0, words.Length - 1);
+            }
+
             if (wordIndex >= words.Length)
             {
                 words = Generator._Generate();
+                if (words == null || words.Length == 0)
+                {
+                    wordIndex = 0;
+                    return;
+                }
                 wordIndex = 0;
             }
 
             if (!audioSource.isPlaying)
             {
-                audioSource.PlayOneShot(words[wordIndex]);
+                var clip = words[wordIndex];
+                if (!clip)
+                {
+                    wordIndex += 1;
+                    return;
+                }
+
+                audioSource.PlayOneShot(clip);
                 wordIndex += 1;
             }
         }
