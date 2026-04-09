@@ -58,7 +58,7 @@ namespace VirtualCNS
             };
         }
 
-        public class BuildCallback : Editor, IVRCSDKBuildRequestedCallback
+        public class BuildCallback : IVRCSDKBuildRequestedCallback
         {
             public int callbackOrder => 10;
 

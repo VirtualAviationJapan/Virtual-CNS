@@ -7,7 +7,6 @@ using UdonSharp;
 #if UNITY_EDITOR
 using UnityEditor.SceneManagement;
 using UnityEditor;
-using UdonSharpEditor;
 #endif
 
 namespace VirtualCNS

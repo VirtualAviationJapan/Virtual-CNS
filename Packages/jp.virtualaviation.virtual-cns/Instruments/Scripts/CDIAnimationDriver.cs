@@ -2,9 +2,6 @@
 using UdonSharp;
 using UnityEngine;
 using UnityEngine.Serialization;
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-using UdonSharpEditor;
-#endif
 
 namespace VirtualCNS
 {

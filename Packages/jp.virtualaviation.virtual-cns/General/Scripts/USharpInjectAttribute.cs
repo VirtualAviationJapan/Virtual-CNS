@@ -5,9 +5,7 @@ using UdonSharp;
 using UnityEngine;
 using System.Reflection;
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-using UnityEditor.SceneManagement;
 using UnityEditor;
-using UdonSharpEditor;
 using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
@@ -55,7 +53,7 @@ namespace VirtualCNS
             AutoSetup(SceneManager.GetActiveScene());
         }
 
-        public class BuildCallback : Editor, IVRCSDKBuildRequestedCallback
+        public class BuildCallback : IVRCSDKBuildRequestedCallback
         {
             public int callbackOrder => 10;
 
