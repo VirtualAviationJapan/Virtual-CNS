@@ -23,7 +23,7 @@
     "com.vrchat.worlds": "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.worlds#3.10.2"
   },
   "dependencies": {
-    "com.nekometer.esnya.udon-radio-communications": "5.0.0",
+    "com.nekometer.esnya.udon-radio-communications": "https://github.com/esnya/UdonRadioCommunications.git?path=/Packages/com.nekometer.esnya.udon-radio-communications#alpha",
     "com.unity.textmeshpro": "2.1.6",
     "jp.virtualaviation.virtual-cns": "6.1.0"
   },
@@ -32,6 +32,7 @@
   "vpmDependencies": {
     "com.vrchat.base": ">=3.10.2",
     "com.vrchat.udonsharp": ">=1.0.0",
-    "com.vrchat.worlds": ">=3.10.2"
+    "com.vrchat.worlds": ">=3.10.2",
+    "com.nekometer.esnya.udon-radio-communications": ">=5.0.0-alpha"
   }
 }
