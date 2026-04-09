@@ -388,6 +388,155 @@ namespace VirtualCNS
             frequencyStep = 0.05f;
             frequencyFormat = "000.00";
         }
+
+        [CustomEditor(typeof(RadioTuner))]
+        public class RadioTunerEditor : Editor
+        {
+            private SerializedProperty navMode;
+            private SerializedProperty defaultFrequency;
+            private SerializedProperty minFrequency;
+            private SerializedProperty maxFrequency;
+            private SerializedProperty frequencyStep;
+            private SerializedProperty frequencyFormat;
+            private SerializedProperty autoMuteMic;
+            private SerializedProperty defaultMicMute;
+            private SerializedProperty frequencyDisplay;
+            private SerializedProperty listeningIndiator;
+            private SerializedProperty micIndicator;
+            private SerializedProperty identityDisplay;
+            private SerializedProperty receiver;
+            private SerializedProperty transmitter;
+            private SerializedProperty navSelector;
+            private SerializedProperty identityPlayer;
+            private SerializedProperty animator;
+            private SerializedProperty listenBool;
+            private SerializedProperty micBool;
+
+            private void OnEnable()
+            {
+                navMode = serializedObject.FindProperty(nameof(RadioTuner.navMode));
+                defaultFrequency = serializedObject.FindProperty(nameof(RadioTuner.defaultFrequency));
+                minFrequency = serializedObject.FindProperty(nameof(RadioTuner.minFrequency));
+                maxFrequency = serializedObject.FindProperty(nameof(RadioTuner.maxFrequency));
+                frequencyStep = serializedObject.FindProperty(nameof(RadioTuner.frequencyStep));
+                frequencyFormat = serializedObject.FindProperty(nameof(RadioTuner.frequencyFormat));
+                autoMuteMic = serializedObject.FindProperty(nameof(RadioTuner.autoMuteMic));
+                defaultMicMute = serializedObject.FindProperty(nameof(RadioTuner.defaultMicMute));
+                frequencyDisplay = serializedObject.FindProperty(nameof(RadioTuner.frequencyDisplay));
+                listeningIndiator = serializedObject.FindProperty(nameof(RadioTuner.listeningIndiator));
+                micIndicator = serializedObject.FindProperty(nameof(RadioTuner.micIndicator));
+                identityDisplay = serializedObject.FindProperty(nameof(RadioTuner.identityDisplay));
+                receiver = serializedObject.FindProperty(nameof(RadioTuner.receiver));
+                transmitter = serializedObject.FindProperty(nameof(RadioTuner.transmitter));
+                navSelector = serializedObject.FindProperty(nameof(RadioTuner.navSelector));
+                identityPlayer = serializedObject.FindProperty(nameof(RadioTuner.identityPlayer));
+                animator = serializedObject.FindProperty(nameof(RadioTuner.animator));
+                listenBool = serializedObject.FindProperty(nameof(RadioTuner.listenBool));
+                micBool = serializedObject.FindProperty(nameof(RadioTuner.micBool));
+            }
+
+            public override void OnInspectorGUI()
+            {
+                UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target);
+
+                serializedObject.Update();
+
+                EditorGUILayout.PropertyField(navMode);
+                EditorGUILayout.Space();
+
+                using (new EditorGUILayout.HorizontalScope())
+                {
+                    if (GUILayout.Button("Preset Airband"))
+                    {
+                        foreach (var obj in targets)
+                        {
+                            ((RadioTuner)obj).PresetAirband();
+                            EditorUtility.SetDirty(obj);
+                        }
+                    }
+
+                    if (GUILayout.Button("Preset Navigation"))
+                    {
+                        foreach (var obj in targets)
+                        {
+                            ((RadioTuner)obj).PresetVOR();
+                            EditorUtility.SetDirty(obj);
+                        }
+                    }
+                }
+
+                EditorGUILayout.PropertyField(defaultFrequency);
+                EditorGUILayout.PropertyField(minFrequency);
+                EditorGUILayout.PropertyField(maxFrequency);
+                EditorGUILayout.PropertyField(frequencyStep);
+                EditorGUILayout.PropertyField(frequencyFormat);
+                EditorGUILayout.PropertyField(autoMuteMic);
+                if (!navMode.boolValue)
+                {
+                    EditorGUILayout.PropertyField(defaultMicMute);
+                }
+
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("References", EditorStyles.boldLabel);
+                EditorGUILayout.PropertyField(frequencyDisplay);
+                EditorGUILayout.PropertyField(listeningIndiator);
+                EditorGUILayout.PropertyField(identityDisplay);
+
+                if (navMode.boolValue)
+                {
+                    EditorGUILayout.PropertyField(navSelector);
+                    EditorGUILayout.PropertyField(identityPlayer);
+                }
+                else
+                {
+                    EditorGUILayout.PropertyField(micIndicator);
+                    EditorGUILayout.PropertyField(receiver);
+                    EditorGUILayout.PropertyField(transmitter);
+                }
+
+                EditorGUILayout.PropertyField(animator);
+                DrawAnimatorParameterPopup(listenBool);
+                if (!navMode.boolValue)
+                {
+                    DrawAnimatorParameterPopup(micBool);
+                }
+
+                serializedObject.ApplyModifiedProperties();
+            }
+
+            private void DrawAnimatorParameterPopup(SerializedProperty property)
+            {
+                if (animator.objectReferenceValue is not Animator animatorTarget)
+                {
+                    EditorGUILayout.PropertyField(property);
+                    return;
+                }
+
+                var parameters = animatorTarget.parameters;
+                var boolNames = new string[parameters.Length];
+                var boolCount = 0;
+                for (var i = 0; i < parameters.Length; i++)
+                {
+                    if (parameters[i].type != AnimatorControllerParameterType.Bool) continue;
+                    boolNames[boolCount++] = parameters[i].name;
+                }
+
+                if (boolCount == 0)
+                {
+                    EditorGUILayout.PropertyField(property);
+                    EditorGUILayout.HelpBox("Animator has no bool parameters.", MessageType.Info);
+                    return;
+                }
+
+                System.Array.Resize(ref boolNames, boolCount);
+
+                var currentIndex = System.Array.IndexOf(boolNames, property.stringValue);
+                if (currentIndex < 0) currentIndex = 0;
+
+                var nextIndex = EditorGUILayout.Popup(ObjectNames.NicifyVariableName(property.name), currentIndex, boolNames);
+                property.stringValue = boolNames[nextIndex];
+            }
+        }
 #endif
     }
 }
