@@ -86,6 +86,11 @@ namespace VirtualCNS
             foreach (var rawWord in rawWords)
             {
                 var word = rawWord.Trim(trimChars);
+                if (string.IsNullOrEmpty(word))
+                {
+                    period = rawWord.EndsWith(".");
+                    continue;
+                }
                 var chars = word.ToCharArray();
                 var firstChar = chars[0];
 
