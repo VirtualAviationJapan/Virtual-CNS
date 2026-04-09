@@ -47,8 +47,8 @@ namespace VirtualCNS
         {
             if (runwayTemplates == null || runwayTemplates.Length == 0 || windHeadings == null || windHeadings.Length == 0)
             {
-                Debug.LogWarning("[Virtual-CNS][ATIS] No runway operations configured.");
-                return Array.Empty<AudioClip>();
+                Debug.LogError("[Virtual-CNS][ATIS] No runway operations configured. Fix the ATISGenerator inspector setup. Reusing the previous ATIS sequence if available.", gameObject);
+                return words ?? Array.Empty<AudioClip>();
             }
 
             var now = DateTime.UtcNow;

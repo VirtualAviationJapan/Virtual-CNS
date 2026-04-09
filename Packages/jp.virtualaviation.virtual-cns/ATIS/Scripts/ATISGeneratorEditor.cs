@@ -85,8 +85,14 @@ namespace VirtualCNS
             var count = DrawCountField("Operation Count", 1, windHeadings, runwayTemplates);
             if (count == 0)
             {
-                EditorGUILayout.HelpBox("Add at least one runway operation. The runtime now guards this case, but the inspector will not save 0 operations.", MessageType.Warning);
+                EditorGUILayout.HelpBox("Add at least one runway operation. ATIS generation is blocked until this is fixed.", MessageType.Error);
                 defaultRunwayIndex.intValue = 0;
+                if (GUILayout.Button("Create Default Runway Operation"))
+                {
+                    ResizeArrays(1, windHeadings, runwayTemplates);
+                    windHeadings.GetArrayElementAtIndex(0).floatValue = 0.0f;
+                    runwayTemplates.GetArrayElementAtIndex(0).stringValue = "runway operation unavailable";
+                }
                 return;
             }
 
