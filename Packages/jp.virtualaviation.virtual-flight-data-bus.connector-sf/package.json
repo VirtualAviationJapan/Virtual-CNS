@@ -23,13 +23,15 @@
     "com.vrchat.worlds": "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.worlds#3.10.2"
   },
   "dependencies": {
-    "jp.virtualaviation.virtual-flight-data-bus": "6.1.0"
+    "jp.virtualaviation.virtual-flight-data-bus": "6.1.0",
+    "io.github.sacchan-vrc.sacc-flight-and-vehicles": "1.8.1"
   },
   "unity": "2022.3",
   "url": "https://github.com/VirtualAviationJapan/Virtual-CNS.git?path=/Packages/jp.virtualaviation.virtual-flight-data-bus.connector-sf",
   "vpmDependencies": {
     "com.vrchat.base": ">=3.10.2",
     "com.vrchat.udonsharp": ">=1.0.0",
-    "com.vrchat.worlds": ">=3.10.2"
+    "com.vrchat.worlds": ">=3.10.2",
+    "io.github.sacchan-vrc.sacc-flight-and-vehicles": ">=1.8.1"
   }
 }
