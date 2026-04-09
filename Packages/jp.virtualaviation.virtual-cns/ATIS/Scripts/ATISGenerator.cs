@@ -45,6 +45,12 @@ namespace VirtualCNS
 
         public AudioClip[] _Generate()
         {
+            if (runwayTemplates == null || runwayTemplates.Length == 0 || windHeadings == null || windHeadings.Length == 0)
+            {
+                Debug.LogWarning("[Virtual-CNS][ATIS] No runway operations configured.");
+                return Array.Empty<AudioClip>();
+            }
+
             var now = DateTime.UtcNow;
             var hour = now.Hour;
             var minute = now.Minute / 30 * 30;
@@ -173,6 +179,8 @@ namespace VirtualCNS
 
         private int IndexOfRunwayOperation(float windHeading)
         {
+            if (windHeadings == null || windHeadings.Length == 0) return 0;
+
             var minDifference = float.MaxValue;
             var minIndex = 0;
 

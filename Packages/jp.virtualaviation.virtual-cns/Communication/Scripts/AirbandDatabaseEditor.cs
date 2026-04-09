@@ -31,9 +31,7 @@ namespace VirtualCNS
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Airband Entries", EditorStyles.boldLabel);
 
-            SyncArraySizes(frequencies, identities, atisPlayers);
-            var count = Mathf.Max(0, EditorGUILayout.IntField("Entry Count", frequencies.arraySize));
-            ResizeArrays(count, frequencies, identities, atisPlayers);
+            var count = DrawCountField("Entry Count", frequencies, identities, atisPlayers);
 
             for (var i = 0; i < count; i++)
             {
@@ -51,15 +49,31 @@ namespace VirtualCNS
             serializedObject.ApplyModifiedProperties();
         }
 
-        private static void SyncArraySizes(params SerializedProperty[] properties)
+        private static int DrawCountField(string label, params SerializedProperty[] properties)
         {
-            var size = 0;
+            var minSize = int.MaxValue;
+            var maxSize = 0;
             for (var i = 0; i < properties.Length; i++)
             {
-                size = Mathf.Max(size, properties[i].arraySize);
+                minSize = Mathf.Min(minSize, properties[i].arraySize);
+                maxSize = Mathf.Max(maxSize, properties[i].arraySize);
             }
 
-            ResizeArrays(size, properties);
+            if (minSize == int.MaxValue) minSize = 0;
+
+            if (minSize != maxSize)
+            {
+                EditorGUILayout.HelpBox($"{label} backing arrays are out of sync. Adjust the count to normalize them.", MessageType.Info);
+            }
+
+            var requestedSize = Mathf.Max(0, EditorGUILayout.IntField(label, maxSize));
+            if (requestedSize != maxSize)
+            {
+                ResizeArrays(requestedSize, properties);
+                return requestedSize;
+            }
+
+            return minSize;
         }
 
         private static void ResizeArrays(int size, params SerializedProperty[] properties)

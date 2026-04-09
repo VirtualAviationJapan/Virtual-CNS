@@ -11,12 +11,14 @@ namespace VirtualCNS
 
         public void _TakeOwnership()
         {
+            if (!active || !standby) return;
             active._TakeOwnership();
             standby._TakeOwnership();
         }
 
         public void _RequestSerialization()
         {
+            if (!active || !standby) return;
             active.RequestSerialization();
             standby.RequestSerialization();
         }
@@ -26,6 +28,8 @@ namespace VirtualCNS
 
         public void _TransferFrequency()
         {
+            if (!active || !standby) return;
+            if (active.navMode != standby.navMode) return;
             _TakeOwnership();
 
             var tmp = standby.Frequency;

@@ -82,13 +82,10 @@ namespace VirtualCNS
         {
             EditorGUILayout.LabelField("Runway Operations", EditorStyles.boldLabel);
 
-            SyncArraySizes(windHeadings, runwayTemplates);
-            var count = Mathf.Max(0, EditorGUILayout.IntField("Operation Count", windHeadings.arraySize));
-            ResizeArrays(count, windHeadings, runwayTemplates);
-
+            var count = DrawCountField("Operation Count", 1, windHeadings, runwayTemplates);
             if (count == 0)
             {
-                EditorGUILayout.HelpBox("Add at least one runway operation.", MessageType.Warning);
+                EditorGUILayout.HelpBox("Add at least one runway operation. The runtime now guards this case, but the inspector will not save 0 operations.", MessageType.Warning);
                 defaultRunwayIndex.intValue = 0;
                 return;
             }
@@ -111,9 +108,7 @@ namespace VirtualCNS
         {
             EditorGUILayout.LabelField("Word Clips", EditorStyles.boldLabel);
 
-            SyncArraySizes(clipWords, clips);
-            var count = Mathf.Max(0, EditorGUILayout.IntField("Clip Count", clipWords.arraySize));
-            ResizeArrays(count, clipWords, clips);
+            var count = DrawCountField("Clip Count", 0, clipWords, clips);
 
             for (var i = 0; i < count; i++)
             {
@@ -125,15 +120,31 @@ namespace VirtualCNS
             }
         }
 
-        private static void SyncArraySizes(params SerializedProperty[] properties)
+        private static int DrawCountField(string label, int minimumSize, params SerializedProperty[] properties)
         {
-            var size = 0;
+            var minSize = int.MaxValue;
+            var maxSize = 0;
             for (var i = 0; i < properties.Length; i++)
             {
-                size = Mathf.Max(size, properties[i].arraySize);
+                minSize = Mathf.Min(minSize, properties[i].arraySize);
+                maxSize = Mathf.Max(maxSize, properties[i].arraySize);
             }
 
-            ResizeArrays(size, properties);
+            if (minSize == int.MaxValue) minSize = 0;
+
+            if (minSize != maxSize)
+            {
+                EditorGUILayout.HelpBox($"{label} backing arrays are out of sync. Adjust the count to normalize them.", MessageType.Info);
+            }
+
+            var requestedSize = Mathf.Max(minimumSize, EditorGUILayout.IntField(label, Mathf.Max(minimumSize, maxSize)));
+            if (requestedSize != maxSize)
+            {
+                ResizeArrays(requestedSize, properties);
+                return requestedSize;
+            }
+
+            return minSize;
         }
 
         private static void ResizeArrays(int size, params SerializedProperty[] properties)

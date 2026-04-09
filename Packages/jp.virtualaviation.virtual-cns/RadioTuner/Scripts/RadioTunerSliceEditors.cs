@@ -7,7 +7,7 @@ namespace VirtualCNS
 {
     internal static class RadioTunerSliceEditorGUI
     {
-        public static void DrawTunerDetails(RadioTuner tuner, string label)
+        public static void DrawTunerDetails(RadioTuner tuner, string label, bool? expectedNavMode = null)
         {
             EditorGUILayout.LabelField(label, EditorStyles.boldLabel);
 
@@ -36,7 +36,7 @@ namespace VirtualCNS
                 var listenBool = serializedTuner.FindProperty(nameof(RadioTuner.listenBool));
                 var micBool = serializedTuner.FindProperty(nameof(RadioTuner.micBool));
 
-                EditorGUILayout.PropertyField(navMode);
+                DrawRoleField(tuner, navMode, expectedNavMode);
                 EditorGUILayout.PropertyField(frequencyDisplay);
                 EditorGUILayout.PropertyField(listeningIndiator);
                 EditorGUILayout.PropertyField(identityDisplay);
@@ -64,12 +64,75 @@ namespace VirtualCNS
             }
         }
 
+        private static void DrawRoleField(RadioTuner tuner, SerializedProperty navMode, bool? expectedNavMode)
+        {
+            var role = navMode.boolValue ? "NAV" : "COM";
+
+            using (new EditorGUI.DisabledGroupScope(true))
+            {
+                EditorGUILayout.Toggle("Navigation Mode", navMode.boolValue);
+            }
+            EditorGUILayout.LabelField("Role", role);
+
+            if (!expectedNavMode.HasValue) return;
+
+            var expectedRole = expectedNavMode.Value ? "NAV" : "COM";
+            if (navMode.boolValue == expectedNavMode.Value)
+            {
+                EditorGUILayout.HelpBox($"Role matches expected {expectedRole} tuner setup.", MessageType.None);
+                return;
+            }
+
+            EditorGUILayout.HelpBox($"This tuner is configured as {role}, but this slot expects {expectedRole}.", MessageType.Error);
+            if (GUILayout.Button($"Apply {expectedRole} Preset"))
+            {
+                Undo.RecordObject(tuner, $"Preset {expectedRole} tuner");
+                if (expectedNavMode.Value) tuner.PresetVOR();
+                else tuner.PresetAirband();
+                EditorUtility.SetDirty(tuner);
+                navMode.serializedObject.Update();
+            }
+        }
+
         public static void CopyTuners(SerializedProperty arrayProperty, RadioTuner[] tuners)
         {
             arrayProperty.arraySize = tuners?.Length ?? 0;
             for (var i = 0; i < arrayProperty.arraySize; i++)
             {
                 arrayProperty.GetArrayElementAtIndex(i).objectReferenceValue = tuners[i];
+            }
+        }
+
+        public static void DrawTunerArray(SerializedProperty arrayProperty, string label, bool expectedNavMode)
+        {
+            EditorGUILayout.LabelField(label, EditorStyles.boldLabel);
+            var count = Mathf.Max(0, EditorGUILayout.IntField($"{label} Count", arrayProperty.arraySize));
+            arrayProperty.arraySize = count;
+
+            for (var i = 0; i < count; i++)
+            {
+                var tunerProperty = arrayProperty.GetArrayElementAtIndex(i);
+                EditorGUILayout.PropertyField(tunerProperty, new GUIContent($"{label} {i + 1}"));
+
+                var tuner = tunerProperty.objectReferenceValue as RadioTuner;
+                if (!tuner)
+                {
+                    EditorGUILayout.HelpBox("Assign a RadioTuner. Null slots create runtime no-op paths.", MessageType.Warning);
+                    continue;
+                }
+
+                if (tuner.navMode != expectedNavMode)
+                {
+                    EditorGUILayout.HelpBox($"Assigned tuner role is {(tuner.navMode ? "NAV" : "COM")} but slot expects {(expectedNavMode ? "NAV" : "COM")}.", MessageType.Error);
+                }
+            }
+        }
+
+        public static void SyncArraySizes(int size, params SerializedProperty[] arrays)
+        {
+            for (var i = 0; i < arrays.Length; i++)
+            {
+                arrays[i].arraySize = size;
             }
         }
     }
@@ -121,22 +184,23 @@ namespace VirtualCNS
                 }
             }
 
-            EditorGUILayout.PropertyField(comTuners, true);
-            EditorGUILayout.PropertyField(navTuners, true);
+            RadioTunerSliceEditorGUI.DrawTunerArray(comTuners, "COM", false);
+            EditorGUILayout.Space();
+            RadioTunerSliceEditorGUI.DrawTunerArray(navTuners, "NAV", true);
 
             var selector = (AudioSelector)target;
             for (var i = 0; i < selector.comTuners.Length; i++)
             {
                 if (!selector.comTuners[i]) continue;
                 EditorGUILayout.Space();
-                RadioTunerSliceEditorGUI.DrawTunerDetails(selector.comTuners[i], $"COM {i + 1}");
+                RadioTunerSliceEditorGUI.DrawTunerDetails(selector.comTuners[i], $"COM {i + 1}", false);
             }
 
             for (var i = 0; i < selector.navTuners.Length; i++)
             {
                 if (!selector.navTuners[i]) continue;
                 EditorGUILayout.Space();
-                RadioTunerSliceEditorGUI.DrawTunerDetails(selector.navTuners[i], $"NAV {i + 1}");
+                RadioTunerSliceEditorGUI.DrawTunerDetails(selector.navTuners[i], $"NAV {i + 1}", true);
             }
 
             serializedObject.ApplyModifiedProperties();
@@ -162,13 +226,18 @@ namespace VirtualCNS
             serializedObject.Update();
             EditorGUILayout.PropertyField(active);
             EditorGUILayout.PropertyField(standby);
+            var activeTuner = active.objectReferenceValue as RadioTuner;
+            var standbyTuner = standby.objectReferenceValue as RadioTuner;
+            if (activeTuner && standbyTuner && activeTuner.navMode != standbyTuner.navMode)
+            {
+                EditorGUILayout.HelpBox("Active and standby tuners must have the same role. Frequency transfer is guarded against mixed COM/NAV pairs.", MessageType.Error);
+            }
             serializedObject.ApplyModifiedProperties();
 
-            var switcher = (StandbyFrequencySwitcher)target;
             EditorGUILayout.Space();
-            RadioTunerSliceEditorGUI.DrawTunerDetails(switcher.active, "Active");
+            RadioTunerSliceEditorGUI.DrawTunerDetails(activeTuner, "Active", activeTuner ? activeTuner.navMode : (bool?)null);
             EditorGUILayout.Space();
-            RadioTunerSliceEditorGUI.DrawTunerDetails(switcher.standby, "Standby");
+            RadioTunerSliceEditorGUI.DrawTunerDetails(standbyTuner, "Standby", activeTuner ? activeTuner.navMode : (bool?)null);
         }
     }
 
@@ -191,14 +260,40 @@ namespace VirtualCNS
             UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target);
 
             serializedObject.Update();
-            EditorGUILayout.PropertyField(tuners, true);
-            EditorGUILayout.PropertyField(standbyTuners, true);
-            EditorGUILayout.PropertyField(toggledObjects, true);
+            var rowCount = Mathf.Max(tuners.arraySize, standbyTuners.arraySize, toggledObjects.arraySize);
+            rowCount = Mathf.Max(0, EditorGUILayout.IntField("Tuner Count", rowCount));
+            RadioTunerSliceEditorGUI.SyncArraySizes(rowCount, tuners, standbyTuners, toggledObjects);
+
+            for (var i = 0; i < rowCount; i++)
+            {
+                using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
+                {
+                    EditorGUILayout.LabelField($"Tuner {i + 1}", EditorStyles.boldLabel);
+
+                    var toggleProperty = toggledObjects.GetArrayElementAtIndex(i);
+                    var activeProperty = tuners.GetArrayElementAtIndex(i);
+                    var standbyProperty = standbyTuners.GetArrayElementAtIndex(i);
+                    var activeTuner = activeProperty.objectReferenceValue as RadioTuner;
+                    var standbyTuner = standbyProperty.objectReferenceValue as RadioTuner;
+
+                    EditorGUILayout.PropertyField(toggleProperty, new GUIContent("Toggle Target"));
+                    EditorGUILayout.PropertyField(activeProperty, new GUIContent("Active Tuner"));
+                    EditorGUILayout.PropertyField(standbyProperty, new GUIContent("Standby Tuner"));
+
+                    if (!activeTuner)
+                    {
+                        EditorGUILayout.HelpBox("Active tuner is required for this slot.", MessageType.Warning);
+                    }
+                    else if (standbyTuner && activeTuner.navMode != standbyTuner.navMode)
+                    {
+                        EditorGUILayout.HelpBox("Standby tuner role does not match the active tuner role.", MessageType.Error);
+                    }
+                }
+            }
             serializedObject.ApplyModifiedProperties();
 
             var demultiplexer = (RadioTunerDemultiplexer)target;
-            var rowCount = Mathf.Max(demultiplexer.tuners.Length, demultiplexer.standbyTuners.Length, demultiplexer.toggledObjects.Length);
-            for (var i = 0; i < rowCount; i++)
+            for (var i = 0; i < demultiplexer.tuners.Length; i++)
             {
                 EditorGUILayout.Space();
                 EditorGUILayout.LabelField($"Tuner {i + 1}", EditorStyles.boldLabel);
@@ -209,14 +304,11 @@ namespace VirtualCNS
                         EditorGUILayout.ObjectField("Toggle Target", demultiplexer.toggledObjects[i], typeof(GameObject), true);
                     }
 
-                    if (i < demultiplexer.tuners.Length)
-                    {
-                        RadioTunerSliceEditorGUI.DrawTunerDetails(demultiplexer.tuners[i], "Active");
-                    }
+                    RadioTunerSliceEditorGUI.DrawTunerDetails(demultiplexer.tuners[i], "Active", demultiplexer.tuners[i] ? demultiplexer.tuners[i].navMode : (bool?)null);
 
                     if (i < demultiplexer.standbyTuners.Length)
                     {
-                        RadioTunerSliceEditorGUI.DrawTunerDetails(demultiplexer.standbyTuners[i], "Standby");
+                        RadioTunerSliceEditorGUI.DrawTunerDetails(demultiplexer.standbyTuners[i], "Standby", demultiplexer.tuners[i] ? demultiplexer.tuners[i].navMode : (bool?)null);
                     }
                 }
             }

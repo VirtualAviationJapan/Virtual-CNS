@@ -85,6 +85,7 @@ namespace VirtualCNS
         public void _TransferFrequency()
         {
             if (SelectedTuner == null || StandbyTuner == null) return;
+            if (SelectedTuner.navMode != StandbyTuner.navMode) return;
             SelectedTuner._TakeOwnership();
             StandbyTuner._TakeOwnership();
 
