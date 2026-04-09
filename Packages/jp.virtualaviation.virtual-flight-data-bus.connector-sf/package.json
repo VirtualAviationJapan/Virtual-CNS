@@ -17,12 +17,19 @@
     "name": "esnya",
     "url": "https://github.com/VirtualAviationJapan"
   },
+  "gitDependencies": {
+    "com.vrchat.udonsharp": "https://github.com/vrchat-community/UdonSharp.git?path=/Packages/com.vrchat.UdonSharp#vcc",
+    "com.vrchat.base": "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.base#3.10.2",
+    "com.vrchat.worlds": "https://github.com/vrchat/packages.git?path=/packages/com.vrchat.worlds#3.10.2"
+  },
   "dependencies": {
     "jp.virtualaviation.virtual-flight-data-bus": "6.1.0"
   },
   "unity": "2022.3",
   "url": "https://github.com/VirtualAviationJapan/Virtual-CNS.git?path=/Packages/jp.virtualaviation.virtual-flight-data-bus.connector-sf",
   "vpmDependencies": {
-    "com.vrchat.worlds": "3.10.2"
+    "com.vrchat.base": ">=3.10.2",
+    "com.vrchat.udonsharp": ">=1.0.0",
+    "com.vrchat.worlds": ">=3.10.2"
   }
 }

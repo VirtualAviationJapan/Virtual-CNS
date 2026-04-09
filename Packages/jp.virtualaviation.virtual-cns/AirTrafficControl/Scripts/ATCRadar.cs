@@ -101,7 +101,8 @@ namespace VirtualCNS
                 var altitude = (position.y - seaLevel.position.y) * 3.28084f;
 
                 var groundVelocity = Vector3.ProjectOnPlane(position - previousPositions[index], Vector3.up);
-                var groundSpeed = groundVelocity.magnitude / (time - previousTimes[index]) * 1.94384f;
+                var deltaTime = Mathf.Max(time - previousTimes[index], Mathf.Epsilon);
+                var groundSpeed = groundVelocity.magnitude / deltaTime * 1.94384f;
                 previousPositions[index] = position;
                 previousTimes[index] = time;
 
