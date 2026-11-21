@@ -63,7 +63,12 @@ namespace VirtualCNS
             var airVel = (Vector3)airVehicle.GetProgramVariable("AirVel");
             if (gsText)
             {
-                gsText.text = $"<size=75%>GS</size>{vehicleRigidbody.velocity.magnitude * 1.94384f:##0}";
+#if UNITY_6000_0_OR_NEWER
+                var linearVelocity = vehicleRigidbody.linearVelocity;
+#else
+                var linearVelocity = vehicleRigidbody.velocity;
+#endif
+                gsText.text = $"<size=75%>GS</size>{linearVelocity.magnitude * 1.94384f:##0}";
             }
 
             if (tasText)
